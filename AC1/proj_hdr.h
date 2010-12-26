@@ -21,6 +21,6 @@ Portable Heads Up Display
 #include <avr/io.h>
 #include <avr/interrupt.h>
 /* Module Includes */
-#include "spi.h"
+#include "usi.h"
 
 #endif

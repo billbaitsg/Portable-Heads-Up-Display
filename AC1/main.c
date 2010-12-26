@@ -16,6 +16,11 @@ Portable Heads Up Display
 
 int main(void)
 {
+	adc_init();
 	
+	while(1)
+	{
+		/* do nothing */
+	}	/* End of while */
 	return 0;
 }	/* End of main */
