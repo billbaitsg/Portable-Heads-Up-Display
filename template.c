@@ -10,3 +10,10 @@ Portable Heads Up Display
 	
 	Desc.:	
 **********************************************************/
+
+#include "proj_hdr.h"
+
+#ifndef _H
+#define _H
+
+#endif
