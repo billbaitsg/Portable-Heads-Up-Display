@@ -16,11 +16,18 @@ Portable Heads Up Display
 
 int main(void)
 {
-	adc_init();
+	/* Local Variables */
+	unsigned char val = 0;
+	
+	/* Initialize software modules */
+	//adc_init();	/* Initialize ADC */
+	USI_SPI_initmaster();	/* Initialize SPI as master */
 	
 	while(1)
 	{
-		/* do nothing */
+		spiX_put( val++ );	// Send temp value to SPI and increment
+		spiX_wait();		// wait for transmission to finish
+		_delay_ms(100);
 	}	/* End of while */
 	return 0;
 }	/* End of main */
