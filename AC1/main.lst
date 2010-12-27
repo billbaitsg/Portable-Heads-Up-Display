@@ -1,0 +1,85 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB6:
+  20               	.LM1:
+  21 0000 1F93      		push r17
+  22 0002 CF93      		push r28
+  23 0004 DF93      		push r29
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26               	.LM2:
+  27 0006 00D0      		rcall USI_SPI_initmaster
+  28 0008 10E0      		ldi r17,lo8(0)
+  29               	.LVL0:
+  30               	.LBB12:
+  31               	.LBB13:
+  32               	.LBB14:
+  33               	.LBB15:
+  34               	.LM3:
+  35 000a C8EC      		ldi r28,lo8(200)
+  36 000c D0E0      		ldi r29,hi8(200)
+  37               	.LVL1:
+  38               	.L3:
+  39               	.LBE15:
+  40               	.LBE14:
+  41               	.LBE13:
+  42               	.LBE12:
+  43               	.LM4:
+  44 000e 812F      		mov r24,r17
+  45               	.LVL2:
+  46 0010 1F5F      		subi r17,lo8(-(1))
+  47 0012 90E0      		ldi r25,lo8(0)
+  48 0014 00D0      		rcall USI_SPI_put
+  49               	.LVL3:
+  50               	.LM5:
+  51 0016 00D0      		rcall USI_SPI_wait
+  52 0018 88EE      		ldi r24,lo8(1000)
+  53 001a 93E0      		ldi r25,hi8(1000)
+  54               	.LVL4:
+  55               	.L2:
+  56               	.LBB19:
+  57               	.LBB18:
+  58               	.LBB17:
+  59               	.LBB16:
+  60               	.LM6:
+  61 001c FE01      		movw r30,r28
+  62               	.LVL5:
+  63               	/* #APP */
+  64               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  65 001e 3197      		1: sbiw r30,1
+  66 0020 01F4      		brne 1b
+  67               	 ;  0 "" 2
+  68               	/* #NOAPP */
+  69               	.LBE16:
+  70               	.LBE17:
+  71               	.LM7:
+  72 0022 0197      		sbiw r24,1
+  73               	.LM8:
+  74 0024 01F4      		brne .L2
+  75 0026 00C0      		rjmp .L3
+  76               	.LBE18:
+  77               	.LBE19:
+  78               	.LFE6:
+ 104               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\BILLTA~1\AppData\Local\Temp/ccUDvLcT.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccUDvLcT.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccUDvLcT.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccUDvLcT.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccUDvLcT.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccUDvLcT.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccUDvLcT.s:18     .text:00000000 main
+
+UNDEFINED SYMBOLS
+USI_SPI_initmaster
+USI_SPI_put
+USI_SPI_wait
