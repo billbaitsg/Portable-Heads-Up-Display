@@ -49,7 +49,7 @@ volatile struct usidriverStatus_t USI_SPI_status; //!< The driver status bits.
  */
 /*#pragma vector=TIMER0_COMP_vect */	/* Compiler specific directive */
 /*__interrupt void timer0comp_handler()*/
-ISR(TIMER0_COMP_vect)
+ISR(TIMER0_COMPA_vect)
 {
 	USICR |= (1<<USITC);	// Toggle clock output pin.
 }
@@ -68,7 +68,7 @@ ISR(USI_OVF_vect)
 	// Master must now disable the compare match interrupt
 	// to prevent more USI counter clocks.
 	if( USI_SPI_status.masterMode == 1 ) {
-		TIMSK0 &= ~(1<<OCIE0A);
+		TIMSK &= ~(1<<OCIE0A);
 	}
 	
 	// Update flags and clear USI counter
@@ -169,8 +169,8 @@ char USI_SPI_put( unsigned char val )
 	
 	// Master should now enable compare match interrupts.
 	if( USI_SPI_status.masterMode == 1 ) {
-		TIFR0 |= (1<<OCF0A);   // Clear compare match flag.
-		TIMSK0 |= (1<<OCIE0A); // Enable compare match interrupt.
+		TIFR |= (1<<OCF0A);   // Clear compare match flag.
+		TIMSK |= (1<<OCIE0A); // Enable compare match interrupt.
 	}
 
 	if( USI_SPI_status.writeCollision == 0 ) return 1;

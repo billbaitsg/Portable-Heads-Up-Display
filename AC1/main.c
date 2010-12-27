@@ -25,8 +25,8 @@ int main(void)
 	
 	while(1)
 	{
-		spiX_put( val++ );	// Send temp value to SPI and increment
-		spiX_wait();		// wait for transmission to finish
+		USI_SPI_put( val++ );	// Send temp value to SPI and increment
+		USI_SPI_wait();		// wait for transmission to finish
 		_delay_ms(100);
 	}	/* End of while */
 	return 0;
