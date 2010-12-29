@@ -91,16 +91,16 @@
  138               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 adc.c
-C:\Users\BILLTA~1\AppData\Local\Temp/cc658urc.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLTA~1\AppData\Local\Temp/cc658urc.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLTA~1\AppData\Local\Temp/cc658urc.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLTA~1\AppData\Local\Temp/cc658urc.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLTA~1\AppData\Local\Temp/cc658urc.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/cc658urc.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/cc658urc.s:18     .text:00000000 adc_init
-C:\Users\BILLTA~1\AppData\Local\Temp/cc658urc.s:47     .text:00000016 __vector_8
-C:\Users\BILLTA~1\AppData\Local\Temp/cc658urc.s:98     .bss:00000000 X_AXIS
-C:\Users\BILLTA~1\AppData\Local\Temp/cc658urc.s:104    .bss:00000001 Y_AXIS
+C:\Users\BILLTA~1\AppData\Local\Temp/ccgH4n0Y.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccgH4n0Y.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccgH4n0Y.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccgH4n0Y.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccgH4n0Y.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccgH4n0Y.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccgH4n0Y.s:18     .text:00000000 adc_init
+C:\Users\BILLTA~1\AppData\Local\Temp/ccgH4n0Y.s:47     .text:00000016 __vector_8
+C:\Users\BILLTA~1\AppData\Local\Temp/ccgH4n0Y.s:98     .bss:00000000 X_AXIS
+C:\Users\BILLTA~1\AppData\Local\Temp/ccgH4n0Y.s:104    .bss:00000001 Y_AXIS
 
 UNDEFINED SYMBOLS
 __do_clear_bss

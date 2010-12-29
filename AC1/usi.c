@@ -150,7 +150,7 @@ void USI_SPI_initslave(void)
  *
  *  \returns  0 if a write collision occurred, 1 otherwise.
  */
-char USI_SPI_put( unsigned char val )
+char USI_SPI_putc( unsigned char val )
 {
 	// Check if transmission in progress,
 	// i.e. USI counter unequal to zero.
@@ -183,7 +183,7 @@ char USI_SPI_put( unsigned char val )
  *  The transfer complete flag is not checked. Use this function
  *  like you would read from the SPDR register in the native SPI module.
  */
-unsigned char USI_SPI_get(void)
+unsigned char USI_SPI_getc(void)
 {
 	return storedUSIDR;
 }

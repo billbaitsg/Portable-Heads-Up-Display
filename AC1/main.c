@@ -23,9 +23,11 @@ int main(void)
 	//adc_init();	/* Initialize ADC */
 	USI_SPI_initmaster();	/* Initialize SPI as master */
 	
+	sei();	/* Enable global interrupts */
+	
 	while(1)
 	{
-		USI_SPI_put( val++ );	// Send temp value to SPI and increment
+		USI_SPI_putc( val++ );	// Send temp value to SPI and increment
 		USI_SPI_wait();		// wait for transmission to finish
 		_delay_ms(100);
 	}	/* End of while */

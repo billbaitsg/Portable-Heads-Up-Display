@@ -143,8 +143,8 @@
  157               	.LM32:
  158 00ba 0895      		ret
  159               	.LFE9:
- 161               	.global	USI_SPI_put
- 163               	USI_SPI_put:
+ 161               	.global	USI_SPI_putc
+ 163               	USI_SPI_putc:
  164               	.LFB10:
  165               	.LM33:
  166               	.LVL0:
@@ -197,8 +197,8 @@
  213               	.LM43:
  214 010c 0895      		ret
  215               	.LFE10:
- 217               	.global	USI_SPI_get
- 219               	USI_SPI_get:
+ 217               	.global	USI_SPI_getc
+ 219               	USI_SPI_getc:
  220               	.LFB11:
  221               	.LM44:
  222               	/* prologue: function */
@@ -228,21 +228,21 @@
  321               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 usi.c
-C:\Users\BILLTA~1\AppData\Local\Temp/ccPNgW4n.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccPNgW4n.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccPNgW4n.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccPNgW4n.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccPNgW4n.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccPNgW4n.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccPNgW4n.s:18     .text:00000000 __vector_10
-C:\Users\BILLTA~1\AppData\Local\Temp/ccPNgW4n.s:41     .text:00000016 __vector_14
+C:\Users\BILLTA~1\AppData\Local\Temp/ccjW8eWq.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccjW8eWq.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccjW8eWq.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccjW8eWq.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccjW8eWq.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccjW8eWq.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccjW8eWq.s:18     .text:00000000 __vector_10
+C:\Users\BILLTA~1\AppData\Local\Temp/ccjW8eWq.s:41     .text:00000016 __vector_14
                             *COM*:00000001 USI_SPI_status
                             *COM*:00000001 storedUSIDR
-C:\Users\BILLTA~1\AppData\Local\Temp/ccPNgW4n.s:83     .text:00000050 USI_SPI_initmaster
-C:\Users\BILLTA~1\AppData\Local\Temp/ccPNgW4n.s:126    .text:0000008a USI_SPI_initslave
-C:\Users\BILLTA~1\AppData\Local\Temp/ccPNgW4n.s:163    .text:000000bc USI_SPI_put
-C:\Users\BILLTA~1\AppData\Local\Temp/ccPNgW4n.s:219    .text:0000010e USI_SPI_get
-C:\Users\BILLTA~1\AppData\Local\Temp/ccPNgW4n.s:232    .text:00000114 USI_SPI_wait
+C:\Users\BILLTA~1\AppData\Local\Temp/ccjW8eWq.s:83     .text:00000050 USI_SPI_initmaster
+C:\Users\BILLTA~1\AppData\Local\Temp/ccjW8eWq.s:126    .text:0000008a USI_SPI_initslave
+C:\Users\BILLTA~1\AppData\Local\Temp/ccjW8eWq.s:163    .text:000000bc USI_SPI_putc
+C:\Users\BILLTA~1\AppData\Local\Temp/ccjW8eWq.s:219    .text:0000010e USI_SPI_getc
+C:\Users\BILLTA~1\AppData\Local\Temp/ccjW8eWq.s:232    .text:00000114 USI_SPI_wait
 
 UNDEFINED SYMBOLS
 __do_clear_bss
