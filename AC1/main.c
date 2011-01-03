@@ -14,6 +14,10 @@ Portable Heads Up Display
 
 #include "proj_hdr.h"	/* Include project header file */
 
+/* Global Variables for ADC readings */
+volatile char X_AXIS = 0;	/* X-axis accelerometer reading */
+volatile char Y_AXIS = 0;	/* Y-axis accelerometer reading */
+
 int main(void)
 {
 	/* Local Variables */
@@ -21,15 +25,15 @@ int main(void)
 	
 	/* Initialize software modules */
 	//adc_init();	/* Initialize ADC */
-	USI_SPI_initmaster();	/* Initialize SPI as master */
+	USI_SPI_initslave();	/* Initialize SPI as slave */
 	
 	sei();	/* Enable global interrupts */
 	
 	while(1)
 	{
+		val = USI_SPI_getc();
 		USI_SPI_putc( val++ );	// Send temp value to SPI and increment
 		USI_SPI_wait();		// wait for transmission to finish
-		_delay_ms(100);
 	}	/* End of while */
 	return 0;
 }	/* End of main */

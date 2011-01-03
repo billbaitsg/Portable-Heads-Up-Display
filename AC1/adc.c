@@ -14,9 +14,6 @@ Portable Heads Up Display
 
 #include "proj_hdr.h"
 
-volatile char X_AXIS = 0;	/* X-axis accelerometer reading */
-volatile char Y_AXIS = 0;	/* Y-axis accelerometer reading *?
-
 /* Initialize ADC functionality */
 void adc_init(void)
 {

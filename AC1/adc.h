@@ -17,10 +17,6 @@ Portable Heads Up Display
 	void adc_init(void);	/* Initialize ADC functionality */
 	ISR(ADC_vect);	/* ADC finished conversion interrupt */
 	
-	/* ADC Global Variables */
-	extern volatile char X_AXIS;
-	extern volatile char Y_AXIS;
-	
 	/* ADC Macros */
 	#define ADC_START (ADCSRA |= (1<<ADSC))
 #endif

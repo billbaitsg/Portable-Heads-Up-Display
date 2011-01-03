@@ -3,7 +3,7 @@ Archive member included because of file (symbol)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o (exit)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
-                              adc.o (__do_clear_bss)
+                              main.o (__do_clear_bss)
 
 Allocating common symbols
 Common symbol       size              file
@@ -123,7 +123,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x1e0
+.text           0x00000000      0x1d8
  *(.vectors)
  .vectors       0x00000000       0x1e c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
                 0x00000000                __vectors
@@ -183,36 +183,36 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
                 0x0000003e                __vector_6
                 0x0000003e                __vector_3
                 0x0000003e                __vector_11
-                0x0000003e                __vector_13
                 0x0000003e                __vector_7
                 0x0000003e                __vector_5
                 0x0000003e                __vector_4
                 0x0000003e                __vector_9
                 0x0000003e                __vector_2
- .text          0x00000040       0x2a main.o
+ .text          0x00000040        0xc main.o
                 0x00000040                main
- .text          0x0000006a       0x54 adc.o
-                0x0000006a                adc_init
-                0x00000080                __vector_8
- .text          0x000000be      0x11e usi.o
-                0x0000017a                USI_SPI_putc
-                0x00000148                USI_SPI_initslave
-                0x0000010e                USI_SPI_initmaster
-                0x000001cc                USI_SPI_getc
-                0x000001d2                USI_SPI_wait
-                0x000000d4                __vector_14
-                0x000000be                __vector_10
- .text          0x000001dc        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
- .text          0x000001dc        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
-                0x000001dc                . = ALIGN (0x2)
+ .text          0x0000004c       0x54 adc.o
+                0x0000004c                adc_init
+                0x00000062                __vector_8
+ .text          0x000000a0      0x134 usi.o
+                0x00000172                USI_SPI_putc
+                0x00000140                USI_SPI_initslave
+                0x00000104                USI_SPI_initmaster
+                0x000000b6                __vector_13
+                0x000001c4                USI_SPI_getc
+                0x000001ca                USI_SPI_wait
+                0x000000ca                __vector_14
+                0x000000a0                __vector_10
+ .text          0x000001d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .text          0x000001d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+                0x000001d4                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x000001dc        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
- .text.libgcc   0x000001dc        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
-                0x000001dc                . = ALIGN (0x2)
+ .text.libgcc   0x000001d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .text.libgcc   0x000001d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+                0x000001d4                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000001dc        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
-                0x000001dc                exit
-                0x000001dc                _exit
+ .fini9         0x000001d4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+                0x000001d4                exit
+                0x000001d4                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -231,11 +231,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000001dc        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .fini0         0x000001d4        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
  *(.fini0)
-                0x000001e0                _etext = .
+                0x000001d8                _etext = .
 
-.data           0x00800060        0x0 load address 0x000001e0
+.data           0x00800060        0x0 load address 0x000001d8
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
@@ -256,10 +256,10 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
                 0x00800060                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
- .bss           0x00800060        0x0 main.o
- .bss           0x00800060        0x2 adc.o
+ .bss           0x00800060        0x2 main.o
                 0x00800061                Y_AXIS
                 0x00800060                X_AXIS
+ .bss           0x00800062        0x0 adc.o
  .bss           0x00800062        0x0 usi.o
  .bss           0x00800062        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
  .bss           0x00800062        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
@@ -269,8 +269,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
                 0x00800062                USI_SPI_status
                 0x00800063                storedUSIDR
                 0x00800064                PROVIDE (__bss_end, .)
-                0x000001e0                __data_load_start = LOADADDR (.data)
-                0x000001e0                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000001d8                __data_load_start = LOADADDR (.data)
+                0x000001d8                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800064        0x0
                 0x00800064                PROVIDE (__noinit_start, .)
@@ -338,82 +338,81 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
                 0x00000040       0x20 usi.o
 
 .debug_pubnames
-                0x00000000      0x114
+                0x00000000      0x124
  *(.debug_pubnames)
  .debug_pubnames
-                0x00000000       0x1b main.o
+                0x00000000       0x31 main.o
  .debug_pubnames
-                0x0000001b       0x44 adc.o
+                0x00000031       0x2e adc.o
  .debug_pubnames
-                0x0000005f       0xb5 usi.o
+                0x0000005f       0xc5 usi.o
 
-.debug_info     0x00000000      0x34c
+.debug_info     0x00000000      0x2f0
  *(.debug_info)
- .debug_info    0x00000000      0x11c main.o
- .debug_info    0x0000011c       0xb6 adc.o
- .debug_info    0x000001d2      0x17a usi.o
+ .debug_info    0x00000000       0xb6 main.o
+ .debug_info    0x000000b6       0xac adc.o
+ .debug_info    0x00000162      0x18e usi.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x1d4
+.debug_abbrev   0x00000000      0x17b
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0xc1 main.o
- .debug_abbrev  0x000000c1       0x57 adc.o
- .debug_abbrev  0x00000118       0xbc usi.o
+ .debug_abbrev  0x00000000       0x68 main.o
+ .debug_abbrev  0x00000068       0x57 adc.o
+ .debug_abbrev  0x000000bf       0xbc usi.o
 
-.debug_line     0x00000000      0x3c2
+.debug_line     0x00000000      0x334
  *(.debug_line)
- .debug_line    0x00000000      0x12c main.o
- .debug_line    0x0000012c       0xcf adc.o
- .debug_line    0x000001fb      0x1c7 usi.o
+ .debug_line    0x00000000       0x78 main.o
+ .debug_line    0x00000078       0xdd adc.o
+ .debug_line    0x00000155      0x1df usi.o
 
-.debug_frame    0x00000000       0xd0
+.debug_frame    0x00000000       0xe0
  *(.debug_frame)
  .debug_frame   0x00000000       0x20 main.o
  .debug_frame   0x00000020       0x30 adc.o
- .debug_frame   0x00000050       0x80 usi.o
+ .debug_frame   0x00000050       0x90 usi.o
 
-.debug_str      0x00000000      0x1b8
+.debug_str      0x00000000      0x181
  *(.debug_str)
- .debug_str     0x00000000       0xce main.o
-                                0x102 (size before relaxing)
- .debug_str     0x000000ce       0x28 adc.o
+ .debug_str     0x00000000       0x99 main.o
+                                 0xd2 (size before relaxing)
+ .debug_str     0x00000099       0x1a adc.o
                                  0xe0 (size before relaxing)
- .debug_str     0x000000f6       0xc2 usi.o
-                                0x17a (size before relaxing)
+ .debug_str     0x000000b3       0xce usi.o
+                                0x186 (size before relaxing)
 
-.debug_loc      0x00000000       0x7c
+.debug_loc      0x00000000       0x1e
  *(.debug_loc)
- .debug_loc     0x00000000       0x5e main.o
- .debug_loc     0x0000005e       0x1e usi.o
+ .debug_loc     0x00000000       0x1e usi.o
 
 .debug_macinfo
  *(.debug_macinfo)
 OUTPUT(main.elf elf32-avr)
 LOAD linker stubs
 
-.debug_ranges   0x00000000       0x48
- .debug_ranges  0x00000000       0x48 main.o
-
 Cross Reference Table
 
 Symbol                                            File
 USI_SPI_getc                                      usi.o
-USI_SPI_initmaster                                usi.o
                                                   main.o
+USI_SPI_initmaster                                usi.o
 USI_SPI_initslave                                 usi.o
+                                                  main.o
 USI_SPI_putc                                      usi.o
                                                   main.o
 USI_SPI_status                                    usi.o
 USI_SPI_wait                                      usi.o
                                                   main.o
-X_AXIS                                            adc.o
-Y_AXIS                                            adc.o
+X_AXIS                                            main.o
+                                                  adc.o
+Y_AXIS                                            main.o
+                                                  adc.o
 __bad_interrupt                                   c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
 __bss_end                                         c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
 __bss_start                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
 __do_clear_bss                                    c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
                                                   usi.o
-                                                  adc.o
+                                                  main.o
 __heap_end                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
 __init                                            c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
 __stack                                           c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
@@ -422,7 +421,8 @@ __vector_10                                       usi.o
                                                   c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
 __vector_11                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
 __vector_12                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
-__vector_13                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
+__vector_13                                       usi.o
+                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
 __vector_14                                       usi.o
                                                   c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
 __vector_2                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o

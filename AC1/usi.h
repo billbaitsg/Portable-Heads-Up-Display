@@ -57,6 +57,7 @@ Portable Heads Up Display
 	
 	/* Function Prototypes */
 	ISR(TIMER0_COMPA_vect);
+	ISR(USI_START_vect);
 	ISR(USI_OVF_vect);
 	void USI_SPI_initmaster(void);
 	void USI_SPI_initslave(void);

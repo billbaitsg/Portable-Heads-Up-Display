@@ -23,5 +23,9 @@ Portable Heads Up Display
 /* Module Includes */
 #include "adc.h"
 #include "usi.h"
+	
+/* ADC Global Variables */
+extern volatile char X_AXIS;
+extern volatile char Y_AXIS;
 
 #endif

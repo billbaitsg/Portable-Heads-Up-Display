@@ -54,6 +54,12 @@ ISR(TIMER0_COMPA_vect)
 	USICR |= (1<<USITC);	// Toggle clock output pin.
 }
 
+/* USI SPI start condition interrupt */
+ISR(USI_START_vect)
+{
+	/* not enabled */
+}
+
 /*! \brief  USI Timer Overflow Interrupt handler.
  *
  *  This handler disables the compare match interrupt if in master mode.
@@ -100,7 +106,8 @@ void USI_SPI_initmaster(void)
 	        (1<<USICLK);
 
 	// Enable 'Clear Timer on Compare match' and init prescaler.
-	TCCR0A = (1<<WGM01) | TC0_PS_SETTING;
+	TCCR0A = (1<<WGM01);
+	TCCR0B = TC0_PS_SETTING;
 	
 	// Init Output Compare Register.
 	OCR0A = TC0_COMPARE_VALUE;
