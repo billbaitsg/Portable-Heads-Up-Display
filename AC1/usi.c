@@ -4,7 +4,7 @@ Purdue ECET
 Senior Project
 Portable Heads Up Display
 
-	Block:	Accelerometer Microcontroller 1
+	Block:	Accelerometer Microcontroller 1 
 	
 	Module:	Universal Serial Interface functions
 	
@@ -172,7 +172,7 @@ char USI_SPI_putc( unsigned char val )
 	USI_SPI_status.writeCollision = 0;
 
 	// Put data in USI data register.
-	USIDRm = val;
+	USIDR = val;
 	
 	// Master should now enable compare match interrupts.
 	if( USI_SPI_status.masterMode == 1 ) {

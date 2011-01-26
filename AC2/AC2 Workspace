@@ -1,0 +1,14 @@
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="5">
+            <File firstVisibleLine="39" xOffset="0" scrollWidth="553" startPos="2508" endPos="2508" selMode="0" lang="Makefile" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AC2\Makefile" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="420" startPos="646" endPos="646" selMode="0" lang="C++" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AC2\proj_hdr.h" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="434" startPos="169" endPos="169" selMode="0" lang="C++" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AC2\adc.h" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="581" startPos="919" endPos="919" selMode="0" lang="C" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AC2\adc.c" />
+            <File firstVisibleLine="6" xOffset="0" scrollWidth="700" startPos="1032" endPos="1032" selMode="0" lang="C++" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AC2\usi.h" />
+            <File firstVisibleLine="129" xOffset="0" scrollWidth="623" startPos="5905" endPos="5905" selMode="0" lang="C" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AC2\usi.c" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="525" startPos="709" endPos="709" selMode="0" lang="C" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AC2\main.c" />
+        </mainView>
+        <subView activeIndex="0" />
+    </Session>
+</NotepadPlus>
