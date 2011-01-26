@@ -10,50 +10,70 @@
   18               	main:
   19               	.LFB6:
   20               	.LM1:
-  21               	/* prologue: function */
-  22               	/* frame size = 0 */
-  23               	.LM2:
-  24 0000 00D0      		rcall USI_SPI_initslave
-  25               	.LM3:
-  26               	/* #APP */
-  27               	 ;  30 "main.c" 1
-  28 0002 7894      		sei
-  29               	 ;  0 "" 2
-  30               	/* #NOAPP */
-  31               	.L2:
-  32               	.LM4:
-  33 0004 00D0      		rcall USI_SPI_getc
-  34               	.LM5:
-  35 0006 00D0      		rcall USI_SPI_putc
-  36               	.LM6:
-  37 0008 00D0      		rcall USI_SPI_wait
-  38 000a 00C0      		rjmp .L2
-  39               	.LFE6:
-  41               	.global	X_AXIS
-  42               	.global	X_AXIS
-  43               		.section .bss
-  46               	X_AXIS:
-  47 0000 00        		.skip 1,0
-  48               	.global	Y_AXIS
-  49               	.global	Y_AXIS
-  52               	Y_AXIS:
-  53 0001 00        		.skip 1,0
-  78               	.Letext0:
+  21 0000 1F93      		push r17
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0002 00D0      		rcall adc_init
+  26               	.LM3:
+  27 0004 00D0      		rcall USI_SPI_initslave
+  28               	.LM4:
+  29               	/* #APP */
+  30               	 ;  31 "main.c" 1
+  31 0006 7894      		sei
+  32               	 ;  0 "" 2
+  33               	.LVL0:
+  34               	/* #NOAPP */
+  35               	.L7:
+  36               	.LM5:
+  37 0008 00D0      		rcall USI_SPI_getc
+  38 000a 182F      		mov r17,r24
+  39               	.LM6:
+  40 000c 00D0      		rcall USI_SPI_wait
+  41               	.LM7:
+  42 000e 1835      		cpi r17,lo8(88)
+  43 0010 01F4      		brne .L2
+  44               	.LM8:
+  45 0012 8091 0000 		lds r24,X_AXIS
+  46 0016 00C0      		rjmp .L8
+  47               	.L2:
+  48               	.LM9:
+  49 0018 1935      		cpi r17,lo8(89)
+  50 001a 01F4      		brne .L7
+  51               	.LM10:
+  52 001c 8091 0000 		lds r24,Y_AXIS
+  53               	.L8:
+  54 0020 00D0      		rcall USI_SPI_putc
+  55               	.LM11:
+  56 0022 00D0      		rcall USI_SPI_wait
+  57 0024 00C0      		rjmp .L7
+  58               	.LFE6:
+  60               	.global	X_AXIS
+  61               	.global	X_AXIS
+  62               		.section .bss
+  65               	X_AXIS:
+  66 0000 00        		.skip 1,0
+  67               	.global	Y_AXIS
+  68               	.global	Y_AXIS
+  71               	Y_AXIS:
+  72 0001 00        		.skip 1,0
+  97               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\BILLTA~1\AppData\Local\Temp/cctEiW8n.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLTA~1\AppData\Local\Temp/cctEiW8n.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLTA~1\AppData\Local\Temp/cctEiW8n.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLTA~1\AppData\Local\Temp/cctEiW8n.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLTA~1\AppData\Local\Temp/cctEiW8n.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/cctEiW8n.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/cctEiW8n.s:18     .text:00000000 main
-C:\Users\BILLTA~1\AppData\Local\Temp/cctEiW8n.s:46     .bss:00000000 X_AXIS
-C:\Users\BILLTA~1\AppData\Local\Temp/cctEiW8n.s:52     .bss:00000001 Y_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUn5M0A.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUn5M0A.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUn5M0A.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUn5M0A.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUn5M0A.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUn5M0A.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUn5M0A.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUn5M0A.s:65     .bss:00000000 X_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUn5M0A.s:71     .bss:00000001 Y_AXIS
 
 UNDEFINED SYMBOLS
+adc_init
 USI_SPI_initslave
 USI_SPI_getc
-USI_SPI_putc
 USI_SPI_wait
+USI_SPI_putc
 __do_clear_bss

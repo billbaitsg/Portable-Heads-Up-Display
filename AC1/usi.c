@@ -172,7 +172,7 @@ char USI_SPI_putc( unsigned char val )
 	USI_SPI_status.writeCollision = 0;
 
 	// Put data in USI data register.
-	USIDR = val;
+	USIDRm = val;
 	
 	// Master should now enable compare match interrupts.
 	if( USI_SPI_status.masterMode == 1 ) {
