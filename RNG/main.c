@@ -4,7 +4,7 @@ Purdue ECET
 Senior Project
 Portable Heads Up Display
 
-	Block:	Accelerometer Microcontroller 2
+	Block:	Range Finder 
 	
 	Module:	Main program
 	
@@ -15,7 +15,7 @@ Portable Heads Up Display
 #include "proj_hdr.h"	/* Include project header file */
 
 /* Global Variables for ADC readings */
-volatile char Z_AXIS = 0;	/* Z axis accelerometer reading */
+volatile char RANGE = 0;	/* Range to object */
 
 int main(void)
 {
@@ -31,15 +31,17 @@ int main(void)
 	while(1)
 	{
 		cmd = USI_SPI_getc();
-		if( cmd == 'Z' )	/* if the X axis is requested */
+		USI_SPI_wait();
+		if( cmd == 'R' )	/* if the X axis is requested */
 		{
-			USI_SPI_putc(Z_AXIS);	// Send temp value to SPI and increment
+			USI_SPI_putc(RANGE);	// Send temp value to SPI and increment
+			USI_SPI_wait();		// wait for transmission to finish
+			USI_SPI_putc(RANGE+1);	// Send temp value to SPI and increment
+			USI_SPI_wait();		// wait for transmission to finish
+			USI_SPI_putc(RANGE+2);	// Send temp value to SPI and increment
 			USI_SPI_wait();		// wait for transmission to finish
 		}
-		else	/* all other requests, do nothing */
-		{
-			USI_SPI_wait();
-		}
+		else{}	/* all other requests, do nothing */
 	}	/* End of while */
 	return 0;
 }	/* End of main */

@@ -22,35 +22,36 @@
   30 0004 7894      		sei
   31               	 ;  0 "" 2
   32               	/* #NOAPP */
-  33               	.L6:
+  33               	.L5:
   34               	.LM5:
   35 0006 00D0      		rcall USI_SPI_getc
   36               	.LM6:
   37 0008 8A35      		cpi r24,lo8(90)
-  38 000a 01F4      		brne .L6
+  38 000a 01F4      		brne .L2
   39               	.LM7:
   40 000c 8091 0000 		lds r24,Z_AXIS
   41 0010 00D0      		rcall USI_SPI_putc
-  42               	.LM8:
-  43 0012 00D0      		rcall USI_SPI_wait
-  44 0014 00C0      		rjmp .L6
-  45               	.LFE6:
-  47               	.global	Z_AXIS
+  42               	.L2:
+  43               	.LM8:
+  44 0012 00D0      		rcall USI_SPI_wait
+  45 0014 00C0      		rjmp .L5
+  46               	.LFE6:
   48               	.global	Z_AXIS
-  49               		.section .bss
-  52               	Z_AXIS:
-  53 0000 00        		.skip 1,0
-  78               	.Letext0:
+  49               	.global	Z_AXIS
+  50               		.section .bss
+  53               	Z_AXIS:
+  54 0000 00        		.skip 1,0
+  79               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\BILLBA~1\AppData\Local\Temp/ccyn9odc.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccyn9odc.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccyn9odc.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccyn9odc.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccyn9odc.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccyn9odc.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccyn9odc.s:18     .text:00000000 main
-C:\Users\BILLBA~1\AppData\Local\Temp/ccyn9odc.s:52     .bss:00000000 Z_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuC57xR.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuC57xR.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuC57xR.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuC57xR.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuC57xR.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuC57xR.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuC57xR.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuC57xR.s:53     .bss:00000000 Z_AXIS
 
 UNDEFINED SYMBOLS
 adc_init

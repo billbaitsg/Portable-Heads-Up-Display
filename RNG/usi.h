@@ -4,7 +4,7 @@ Purdue ECET
 Senior Project
 Portable Heads Up Display
 
-	Block:	Accelerometer Microcontroller 2
+	Block:	Range Finder 
 	
 	Module:	Universal Serial Interface header
 	
@@ -26,7 +26,7 @@ Portable Heads Up Display
 	#define USI_IN_REG		PINB	//!< USI port input register.
 	#define USI_DIR_REG		DDRB	//!< USI port direction register.
 	#define USI_CLOCK_PIN	2		//!< USI clock I/O pin.
-	#define USI_SELECT_PIN	3
+	#define USI_SELECT_PIN	0
 	#define USI_DATAIN_PIN	0		//!< USI data input pin.
 	#define USI_DATAOUT_PIN	1		//!< USI data output pin.
 
