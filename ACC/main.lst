@@ -30,56 +30,57 @@
   38               	.LM6:
   39 0008 8835      		cpi r24,lo8(88)
   40               	.LVL2:
-  41 000a 01F0      		breq .L10
-  42               	.L2:
-  43               	.LM7:
-  44 000c 8935      		cpi r24,lo8(89)
-  45 000e 01F4      		brne .L4
-  46               	.L10:
-  47               	.LM8:
-  48 0010 8091 0000 		lds r24,X_AXIS
-  49               	.LVL3:
-  50 0014 00C0      		rjmp .L9
-  51               	.LVL4:
-  52               	.L4:
-  53               	.LM9:
-  54 0016 8A35      		cpi r24,lo8(90)
-  55 0018 01F4      		brne .L8
-  56               	.LM10:
-  57 001a 8091 0000 		lds r24,Z_AXIS
-  58               	.LVL5:
-  59               	.L9:
-  60 001e 00D0      		rcall USI_SPI_putc
-  61               	.LM11:
-  62 0020 00D0      		rcall USI_SPI_wait
-  63 0022 00C0      		rjmp .L8
-  64               	.LFE6:
-  66               	.global	X_AXIS
-  67               	.global	X_AXIS
-  68               		.section .bss
-  71               	X_AXIS:
-  72 0000 00        		.skip 1,0
-  73               	.global	Y_AXIS
-  74               	.global	Y_AXIS
-  77               	Y_AXIS:
-  78 0001 00        		.skip 1,0
-  79               	.global	Z_AXIS
-  80               	.global	Z_AXIS
-  83               	Z_AXIS:
-  84 0002 00        		.skip 1,0
- 109               	.Letext0:
+  41 000a 01F4      		brne .L2
+  42               	.LM7:
+  43 000c 8091 0000 		lds r24,X_AXIS
+  44               	.LVL3:
+  45 0010 00C0      		rjmp .L9
+  46               	.LVL4:
+  47               	.L2:
+  48               	.LM8:
+  49 0012 8935      		cpi r24,lo8(89)
+  50 0014 01F4      		brne .L4
+  51               	.LM9:
+  52 0016 8091 0000 		lds r24,Y_AXIS
+  53               	.LVL5:
+  54 001a 00C0      		rjmp .L9
+  55               	.LVL6:
+  56               	.L4:
+  57               	.LM10:
+  58 001c 8A35      		cpi r24,lo8(90)
+  59 001e 01F4      		brne .L8
+  60               	.LM11:
+  61 0020 8091 0000 		lds r24,Z_AXIS
+  62               	.LVL7:
+  63               	.L9:
+  64 0024 00D0      		rcall USI_SPI_putc
+  65               	.LM12:
+  66 0026 00D0      		rcall USI_SPI_wait
+  67 0028 00C0      		rjmp .L8
+  68               	.LFE6:
+  70               	.global	X_AXIS
+  71               		.data
+  74               	X_AXIS:
+  75 0000 0A        		.byte	10
+  76               	.global	Y_AXIS
+  79               	Y_AXIS:
+  80 0001 14        		.byte	20
+  81               	.global	Z_AXIS
+  84               	Z_AXIS:
+  85 0002 1E        		.byte	30
+ 110               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:18     .text:00000000 main
-C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:71     .bss:00000000 X_AXIS
-C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:83     .bss:00000002 Z_AXIS
-C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:77     .bss:00000001 Y_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccyR6lRU.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccyR6lRU.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccyR6lRU.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccyR6lRU.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccyR6lRU.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccyR6lRU.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccyR6lRU.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/ccyR6lRU.s:74     .data:00000000 X_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccyR6lRU.s:79     .data:00000001 Y_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccyR6lRU.s:84     .data:00000002 Z_AXIS
 
 UNDEFINED SYMBOLS
 adc_init
@@ -87,4 +88,4 @@ USI_SPI_initslave
 USI_SPI_getc
 USI_SPI_putc
 USI_SPI_wait
-__do_clear_bss
+__do_copy_data

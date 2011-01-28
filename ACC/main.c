@@ -4,20 +4,20 @@ Purdue ECET
 Senior Project
 Portable Heads Up Display
 
-	Block:	Accelerometer Microcontroller 1 
+	Block:	Accelerometer Microcontroller
 	
 	Module:	Main program
 	
 	Desc.:	This is the main program section of the 
-			accelerometer microcontroller 1
+			Accelerometer microcontroller
 **********************************************************/
 
 #include "proj_hdr.h"	/* Include project header file */
 
 /* Global Variables for ADC readings */
-volatile char X_AXIS = 0;	/* X-axis accelerometer reading */
-volatile char Y_AXIS = 0;	/* Y-axis accelerometer reading */
-volatile char Z_AXIS = 0;	/* Z-axis accelerometer reading */
+volatile char X_AXIS = 10;	/* X-axis accelerometer reading */
+volatile char Y_AXIS = 20;	/* Y-axis accelerometer reading */
+volatile char Z_AXIS = 30;	/* Z-axis accelerometer reading */
 
 int main(void)
 {
@@ -41,7 +41,7 @@ int main(void)
 		}
 		else if( cmd == 'Y' )	/* if the Y axis is requested */
 		{
-			USI_SPI_putc(X_AXIS);	/* Send Y-axis value */
+			USI_SPI_putc(Y_AXIS);	/* Send Y-axis value */
 			USI_SPI_wait();			/* wait for transmission to finish */
 		}
 		else if( cmd == 'Z' )	/* if the Z axis is requested */

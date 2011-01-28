@@ -4,7 +4,7 @@ Purdue ECET
 Senior Project
 Portable Heads Up Display
 
-	Block:	Accelerometer Microcontroller
+	Block:	Accelerometer Microcontroller?
 
 	Module:	Analog to Digital converter header
 	

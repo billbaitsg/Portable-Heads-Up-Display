@@ -4,7 +4,7 @@ Purdue ECET
 Senior Project
 Portable Heads Up Display
 
-	Block:	Accelerometer Microcontroller 1 
+	Block:	Accelerometer Microcontroller
 	
 	Module:	Universal Serial Interface header
 	
