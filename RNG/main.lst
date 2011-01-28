@@ -1,0 +1,66 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB6:
+  20               	.LM1:
+  21 0000 1F93      		push r17
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0002 00D0      		rcall adc_init
+  26               	.LM3:
+  27 0004 00D0      		rcall USI_SPI_initslave
+  28               	.LM4:
+  29               	/* #APP */
+  30               	 ;  29 "main.c" 1
+  31 0006 7894      		sei
+  32               	 ;  0 "" 2
+  33               	.LVL0:
+  34               	/* #NOAPP */
+  35               	.L6:
+  36               	.LM5:
+  37 0008 00D0      		rcall USI_SPI_getc
+  38 000a 182F      		mov r17,r24
+  39               	.LM6:
+  40 000c 00D0      		rcall USI_SPI_wait
+  41               	.LM7:
+  42 000e 1235      		cpi r17,lo8(82)
+  43 0010 01F4      		brne .L6
+  44               	.LM8:
+  45 0012 8091 0000 		lds r24,RANGE
+  46 0016 00D0      		rcall USI_SPI_putc
+  47               	.LM9:
+  48 0018 00D0      		rcall USI_SPI_wait
+  49 001a 00C0      		rjmp .L6
+  50               	.LFE6:
+  52               	.global	RANGE
+  53               	.global	RANGE
+  54               		.section .bss
+  57               	RANGE:
+  58 0000 00        		.skip 1,0
+  83               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLuQdNd.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLuQdNd.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLuQdNd.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLuQdNd.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLuQdNd.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLuQdNd.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLuQdNd.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLuQdNd.s:57     .bss:00000000 RANGE
+
+UNDEFINED SYMBOLS
+adc_init
+USI_SPI_initslave
+USI_SPI_getc
+USI_SPI_wait
+USI_SPI_putc
+__do_clear_bss

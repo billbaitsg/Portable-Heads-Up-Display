@@ -1,0 +1,90 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 00D0      		rcall adc_init
+  25               	.LM3:
+  26 0002 00D0      		rcall USI_SPI_initslave
+  27               	.LM4:
+  28               	/* #APP */
+  29               	 ;  32 "main.c" 1
+  30 0004 7894      		sei
+  31               	 ;  0 "" 2
+  32               	.LVL0:
+  33               	/* #NOAPP */
+  34               	.L8:
+  35               	.LM5:
+  36 0006 00D0      		rcall USI_SPI_getc
+  37               	.LVL1:
+  38               	.LM6:
+  39 0008 8835      		cpi r24,lo8(88)
+  40               	.LVL2:
+  41 000a 01F0      		breq .L10
+  42               	.L2:
+  43               	.LM7:
+  44 000c 8935      		cpi r24,lo8(89)
+  45 000e 01F4      		brne .L4
+  46               	.L10:
+  47               	.LM8:
+  48 0010 8091 0000 		lds r24,X_AXIS
+  49               	.LVL3:
+  50 0014 00C0      		rjmp .L9
+  51               	.LVL4:
+  52               	.L4:
+  53               	.LM9:
+  54 0016 8A35      		cpi r24,lo8(90)
+  55 0018 01F4      		brne .L8
+  56               	.LM10:
+  57 001a 8091 0000 		lds r24,Z_AXIS
+  58               	.LVL5:
+  59               	.L9:
+  60 001e 00D0      		rcall USI_SPI_putc
+  61               	.LM11:
+  62 0020 00D0      		rcall USI_SPI_wait
+  63 0022 00C0      		rjmp .L8
+  64               	.LFE6:
+  66               	.global	X_AXIS
+  67               	.global	X_AXIS
+  68               		.section .bss
+  71               	X_AXIS:
+  72 0000 00        		.skip 1,0
+  73               	.global	Y_AXIS
+  74               	.global	Y_AXIS
+  77               	Y_AXIS:
+  78 0001 00        		.skip 1,0
+  79               	.global	Z_AXIS
+  80               	.global	Z_AXIS
+  83               	Z_AXIS:
+  84 0002 00        		.skip 1,0
+ 109               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:71     .bss:00000000 X_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:83     .bss:00000002 Z_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccv3eaOW.s:77     .bss:00000001 Y_AXIS
+
+UNDEFINED SYMBOLS
+adc_init
+USI_SPI_initslave
+USI_SPI_getc
+USI_SPI_putc
+USI_SPI_wait
+__do_clear_bss

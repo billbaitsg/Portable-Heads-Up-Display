@@ -1,0 +1,120 @@
+   1               		.file	"adc.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	adc_init
+  18               	adc_init:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 87B1      		in r24,39-32
+  25 0002 87B9      		out 39-32,r24
+  26               	.LM3:
+  27 0004 3C9A      		sbi 39-32,4
+  28               	.LM4:
+  29 0006 399A      		sbi 39-32,1
+  30               	.LM5:
+  31 0008 379A      		sbi 38-32,7
+  32               	.LM6:
+  33 000a 339A      		sbi 38-32,3
+  34               	.LM7:
+  35 000c 86B1      		in r24,38-32
+  36 000e 8360      		ori r24,lo8(3)
+  37 0010 86B9      		out 38-32,r24
+  38               	.LM8:
+  39 0012 369A      		sbi 38-32,6
+  40               	/* epilogue start */
+  41               	.LM9:
+  42 0014 0895      		ret
+  43               	.LFE6:
+  45               	.global	__vector_13
+  47               	__vector_13:
+  48               	.LFB7:
+  49               	.LM10:
+  50 0016 1F92      		push __zero_reg__
+  51 0018 0F92      		push r0
+  52 001a 0FB6      		in r0,__SREG__
+  53 001c 0F92      		push r0
+  54 001e 1124      		clr __zero_reg__
+  55 0020 8F93      		push r24
+  56 0022 9F93      		push r25
+  57               	/* prologue: Signal */
+  58               	/* frame size = 0 */
+  59               	.LM11:
+  60 0024 87B1      		in r24,39-32
+  61 0026 90E0      		ldi r25,lo8(0)
+  62 0028 8F70      		andi r24,lo8(15)
+  63 002a 9070      		andi r25,hi8(15)
+  64 002c 892B      		or r24,r25
+  65 002e 01F4      		brne .L4
+  66               	.LM12:
+  67 0030 85B1      		in r24,37-32
+  68               	.LVL0:
+  69 0032 8093 0000 		sts X_AXIS,r24
+  70               	.LM13:
+  71 0036 87B1      		in r24,39-32
+  72               	.LVL1:
+  73 0038 807F      		andi r24,lo8(-16)
+  74 003a 8160      		ori r24,lo8(1)
+  75 003c 00C0      		rjmp .L8
+  76               	.L4:
+  77               	.LM14:
+  78 003e 87B1      		in r24,39-32
+  79 0040 8F70      		andi r24,lo8(15)
+  80 0042 8130      		cpi r24,lo8(1)
+  81 0044 01F4      		brne .L6
+  82               	.LM15:
+  83 0046 85B1      		in r24,37-32
+  84               	.LVL2:
+  85 0048 8093 0000 		sts Y_AXIS,r24
+  86               	.LM16:
+  87 004c 87B1      		in r24,39-32
+  88               	.LVL3:
+  89 004e 807F      		andi r24,lo8(-16)
+  90 0050 8260      		ori r24,lo8(2)
+  91 0052 00C0      		rjmp .L8
+  92               	.L6:
+  93               	.LM17:
+  94 0054 85B1      		in r24,37-32
+  95               	.LVL4:
+  96 0056 8093 0000 		sts Z_AXIS,r24
+  97               	.LM18:
+  98 005a 87B1      		in r24,39-32
+  99               	.LVL5:
+ 100 005c 807F      		andi r24,lo8(-16)
+ 101               	.L8:
+ 102 005e 87B9      		out 39-32,r24
+ 103               	.LM19:
+ 104 0060 369A      		sbi 38-32,6
+ 105               	/* epilogue start */
+ 106               	.LM20:
+ 107 0062 9F91      		pop r25
+ 108 0064 8F91      		pop r24
+ 109 0066 0F90      		pop r0
+ 110 0068 0FBE      		out __SREG__,r0
+ 111 006a 0F90      		pop r0
+ 112 006c 1F90      		pop __zero_reg__
+ 113 006e 1895      		reti
+ 114               	.LFE7:
+ 148               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 adc.c
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDJEHg2.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDJEHg2.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDJEHg2.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDJEHg2.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDJEHg2.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDJEHg2.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDJEHg2.s:18     .text:00000000 adc_init
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDJEHg2.s:47     .text:00000016 __vector_13
+
+UNDEFINED SYMBOLS
+X_AXIS
+Y_AXIS
+Z_AXIS
