@@ -1,13 +1,13 @@
 <NotepadPlus>
     <Session activeView="0">
-        <mainView activeIndex="6">
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="553" startPos="1387" endPos="1387" selMode="0" lang="Makefile" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AMB\Makefile" />
+        <mainView activeIndex="0">
+            <File firstVisibleLine="39" xOffset="0" scrollWidth="553" startPos="2508" endPos="2508" selMode="0" lang="Makefile" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AMB\Makefile" />
             <File firstVisibleLine="0" xOffset="0" scrollWidth="420" startPos="626" endPos="626" selMode="0" lang="C++" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AMB\proj_hdr.h" />
             <File firstVisibleLine="0" xOffset="0" scrollWidth="434" startPos="504" endPos="504" selMode="0" lang="C++" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AMB\adc.h" />
             <File firstVisibleLine="0" xOffset="0" scrollWidth="581" startPos="151" endPos="151" selMode="0" lang="C" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AMB\adc.c" />
             <File firstVisibleLine="0" xOffset="0" scrollWidth="700" startPos="1051" endPos="1051" selMode="0" lang="C++" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AMB\usi.h" />
             <File firstVisibleLine="27" xOffset="0" scrollWidth="581" startPos="942" endPos="942" selMode="0" lang="C" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AMB\usi.c" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="525" startPos="986" endPos="986" selMode="0" lang="C" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AMB\main.c" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="525" startPos="497" endPos="497" selMode="0" lang="C" encoding="-1" filename="H:\Purdue Homework\Senior Project\Portable-Heads-Up-Display\AMB\main.c" />
         </mainView>
         <subView activeIndex="0" />
     </Session>
