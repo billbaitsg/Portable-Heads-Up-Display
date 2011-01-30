@@ -1,0 +1,77 @@
+   1               		.file	"adc.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	adc_init
+  18               	adc_init:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 87B1      		in r24,39-32
+  25 0002 87B9      		out 39-32,r24
+  26               	.LM3:
+  27 0004 3D9A      		sbi 39-32,5
+  28               	.LM4:
+  29 0006 399A      		sbi 39-32,1
+  30               	.LM5:
+  31 0008 379A      		sbi 38-32,7
+  32               	.LM6:
+  33 000a 339A      		sbi 38-32,3
+  34               	.LM7:
+  35 000c 86B1      		in r24,38-32
+  36 000e 8360      		ori r24,lo8(3)
+  37 0010 86B9      		out 38-32,r24
+  38               	.LM8:
+  39 0012 369A      		sbi 38-32,6
+  40               	/* epilogue start */
+  41               	.LM9:
+  42 0014 0895      		ret
+  43               	.LFE6:
+  45               	.global	__vector_8
+  47               	__vector_8:
+  48               	.LFB7:
+  49               	.LM10:
+  50 0016 1F92      		push __zero_reg__
+  51 0018 0F92      		push r0
+  52 001a 0FB6      		in r0,__SREG__
+  53 001c 0F92      		push r0
+  54 001e 1124      		clr __zero_reg__
+  55 0020 8F93      		push r24
+  56               	/* prologue: Signal */
+  57               	/* frame size = 0 */
+  58               	.LM11:
+  59 0022 85B1      		in r24,37-32
+  60               	.LVL0:
+  61 0024 8093 0000 		sts LIGHT,r24
+  62               	.LM12:
+  63 0028 369A      		sbi 38-32,6
+  64               	/* epilogue start */
+  65               	.LM13:
+  66 002a 8F91      		pop r24
+  67               	.LVL1:
+  68 002c 0F90      		pop r0
+  69 002e 0FBE      		out __SREG__,r0
+  70 0030 0F90      		pop r0
+  71 0032 1F90      		pop __zero_reg__
+  72 0034 1895      		reti
+  73               	.LFE7:
+ 107               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 adc.c
+C:\Users\BILLBA~1\AppData\Local\Temp/ccAqLngP.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccAqLngP.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccAqLngP.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccAqLngP.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccAqLngP.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccAqLngP.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccAqLngP.s:18     .text:00000000 adc_init
+C:\Users\BILLBA~1\AppData\Local\Temp/ccAqLngP.s:47     .text:00000016 __vector_8
+
+UNDEFINED SYMBOLS
+LIGHT

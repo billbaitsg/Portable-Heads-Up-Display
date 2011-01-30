@@ -17,7 +17,7 @@ Portable Heads Up Display
 /* Global Variables for ADC readings */
 volatile char LIGHT = 0;	/* Ambient Light value */
 
-int main(void)7
+int main(void)
 {
 	/* Local Variables */
 	unsigned char cmd = 0;
