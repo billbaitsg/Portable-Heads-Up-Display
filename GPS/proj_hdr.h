@@ -22,5 +22,7 @@ Portable Heads Up Display
 #include <util/delay.h>
 /* Module Includes */
 #include "usi.h"
+#include "uart.h"
+#include "nmea.h"
 
 #endif
