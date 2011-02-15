@@ -29,6 +29,8 @@ Portable Heads Up Display
 	#define USI_SELECT_PIN	7
 	#define USI_DATAIN_PIN	6		//!< USI data input pin.
 	#define USI_DATAOUT_PIN	5		//!< USI data output pin.
+	
+	#define USI_SS	((USI_IN_REG & (1<<USI_SELECT_PIN)) >> USI_SELECT_PIN)
 
 	/*  Speed configuration:
 	 *  Bits per second = CPUSPEED / PRESCALER / (COMPAREVALUE+1) / 2.

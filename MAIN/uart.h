@@ -25,7 +25,7 @@ Portable Heads Up Display
 	ISR( USART_DRE_vect );
 	
 	/* Global Variables */
-	extern volatile char UART_BUFFER[];
+	extern volatile unsigned char UART_BUFFER[];
 	
 	/* Defines */
 	#define UART_BUFFER_SIZE 8	/* Set max buffer size */

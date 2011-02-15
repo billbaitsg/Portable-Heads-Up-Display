@@ -20,10 +20,7 @@ volatile char Y_AXIS = 20;	/* Y-axis accelerometer reading */
 volatile char Z_AXIS = 30;	/* Z-axis accelerometer reading */
 
 int main(void)
-{
-	/* Local Variables */
-	unsigned char cmd = 0;
-	
+{	
 	/* Initialize software modules */
 	adc_init();	/* Initialize ADC */
 	//USI_SPI_initmaster();
@@ -33,26 +30,7 @@ int main(void)
 	
 	while(1)
 	{
-		cmd = USI_SPI_getc();
-		if( cmd == 'X' )	/* if the X axis is requested */
-		{
-			USI_SPI_putc(X_AXIS);	/* Send X-axis value */
-			USI_SPI_wait();			/* wait for transmission to finish */
-		}
-		else if( cmd == 'Y' )	/* if the Y axis is requested */
-		{
-			USI_SPI_putc(Y_AXIS);	/* Send Y-axis value */
-			USI_SPI_wait();			/* wait for transmission to finish */
-		}
-		else if( cmd == 'Z' )	/* if the Z axis is requested */
-		{
-			USI_SPI_putc(Z_AXIS);	/* Send X-axis value */
-			USI_SPI_wait();			/* wait for transmission to finish */
-		}
-		else	/* all other requests, do nothing */
-		{
-			/* Do nothing */
-		}/* End of if */
+		
 	}/* End of while */
 	return 0;
 }/* End of main */

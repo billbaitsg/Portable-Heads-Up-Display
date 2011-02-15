@@ -16,10 +16,10 @@ Portable Heads Up Display
 #define SPI_H
 	/* SPI Defines */
 	#define DDR_SPI	DDRB
-	#define DD_MOSI	0
-	#define DD_MISO	1
-	#define DD_SCK	2
-	#define DD_SSN	3
+	#define DD_MOSI	3
+	#define DD_MISO	4
+	#define DD_SCK	5
+	#define DD_SSN	2
 
 	/* SPI Function Prototypes */
 	void SPI_MasterInit(void);

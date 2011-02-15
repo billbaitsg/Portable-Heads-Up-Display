@@ -22,11 +22,11 @@ volatile unsigned char UART_BUF_CNT = 0;				/* UART Buffer position counter */
 volatile unsigned char UART_FLAGS = 0;	/* "Register" to store UART status */
 
 /* Initialize UART module, from datasheet */
-void UART_init( unsigned int baud )
+void UART_init( unsigned int ubrr )
 {
 	/* Set baud rate */
-	UBRR0H = (unsigned char)(baud>>8);
-	UBRR0L = (unsigned char)baud;
+	UBRR0H = (unsigned char)(ubrr>>8);
+	UBRR0L = (unsigned char)ubrr;
 	/* Enable receiver and transmitter */
 	UCSR0B = (1<<RXEN0)|(1<<TXEN0);
 	/* Set frame format: 8 data, 1 stop bit */

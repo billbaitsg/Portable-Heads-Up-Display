@@ -57,7 +57,35 @@ ISR(TIM0_COMPA_vect)
 /* USI SPI start condition interrupt */
 ISR(USI_START_vect)
 {
-	/* not enabled */
+	/* Local Variables */
+	unsigned char cmd = 0;
+	cmd = USI_SPI_getc();
+	if( !USI_SS )	/* if this SPI slave is selected */
+	{
+		if( cmd == 'X' )	/* if the X axis is requested */
+		{
+			USI_SPI_putc(X_AXIS);	/* Send X-axis value */
+			USI_SPI_wait();			/* wait for transmission to finish */
+		}
+		else if( cmd == 'Y' )	/* if the Y axis is requested */
+		{
+			USI_SPI_putc(Y_AXIS);	/* Send Y-axis value */
+			USI_SPI_wait();			/* wait for transmission to finish */
+		}
+		else if( cmd == 'Z' )	/* if the Z axis is requested */
+		{
+			USI_SPI_putc(Z_AXIS);	/* Send X-axis value */
+			USI_SPI_wait();			/* wait for transmission to finish */
+		}
+		else	/* all other requests, do nothing */
+		{
+			/* Do nothing */
+		}/* End of if */
+	}
+	else	/* if not selected, do nothing */
+	{
+		/* Do nothing */
+	}/* End of if */
 }
 
 /*! \brief  USI Timer Overflow Interrupt handler.
@@ -132,8 +160,8 @@ void USI_SPI_initslave(void)
 {
 	// Configure port directions.
 	USI_DIR_REG |= (1<<USI_DATAOUT_PIN);                      // Outputs.
-	USI_DIR_REG &= ~(1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN); // Inputs.
-	USI_OUT_REG |= (1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN);  // Pull-ups.
+	USI_DIR_REG &= ~(1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN) | (1<<USI_SELECT_PIN); // Inputs.
+	USI_OUT_REG |= (1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN) | (1<<USI_SELECT_PIN);  // Pull-ups.
 	
 	// Configure USI to 3-wire slave mode with overflow interrupt.
 	USICR = (1<<USIOIE) | (1<<USIWM0) |

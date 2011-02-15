@@ -14,13 +14,19 @@ Portable Heads Up Display
 
 #include "proj_hdr.h"	/* Include project header file */
 
+/* Calculation for UART baud rate */
+#define FOSC 8000000 // Clock Speed
+#define BAUD 9600
+#define MYUBRR FOSC/16/BAUD-1
+
 int main(void)
 {
 	/* Local Variables */
 	unsigned char cmd = 0;
 	
 	/* Initialize software modules */
-	UART_init(9800);
+	UART_init(MYUBRR);	/* Initialize UART */
+	SPI_MasterInit();	/* Initialize SPI */
 	
 	sei();	/* Enable global interrupts */
 	
@@ -29,7 +35,6 @@ int main(void)
 	
 	while(1)
 	{
-		printf(txt);
 		UART_putc('x');
 		_delay_ms(1000);
 	}	/* End of while */
