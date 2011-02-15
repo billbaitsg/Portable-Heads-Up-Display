@@ -1,0 +1,96 @@
+   1               		.file	"spi.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	SPI_MasterInit
+  18               	SPI_MasterInit:
+  19               	.LFB7:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 8DE0      		ldi r24,lo8(13)
+  25 0002 84B9      		out 36-32,r24
+  26               	.LM3:
+  27 0004 82E5      		ldi r24,lo8(82)
+  28 0006 8CBD      		out 76-32,r24
+  29               	.LM4:
+  30 0008 8DB5      		in r24,77-32
+  31               	.LVL0:
+  32               	.LM5:
+  33 000a 8EB5      		in r24,78-32
+  34               	.LVL1:
+  35               	/* epilogue start */
+  36               	.LM6:
+  37 000c 0895      		ret
+  38               	.LFE7:
+  40               	.global	SPI_MasterTransmit
+  42               	SPI_MasterTransmit:
+  43               	.LFB8:
+  44               	.LM7:
+  45               	.LVL2:
+  46               	/* prologue: function */
+  47               	/* frame size = 0 */
+  48               	.LM8:
+  49 000e 8EBD      		out 78-32,r24
+  50               	.L4:
+  51               	.LM9:
+  52 0010 0DB4      		in __tmp_reg__,77-32
+  53 0012 07FE      		sbrs __tmp_reg__,7
+  54 0014 00C0      		rjmp .L4
+  55               	/* epilogue start */
+  56               	.LM10:
+  57 0016 0895      		ret
+  58               	.LFE8:
+  60               	.global	SPI_SlaveInit
+  62               	SPI_SlaveInit:
+  63               	.LFB9:
+  64               	.LM11:
+  65               	/* prologue: function */
+  66               	/* frame size = 0 */
+  67               	.LM12:
+  68 0018 82E0      		ldi r24,lo8(2)
+  69 001a 84B9      		out 36-32,r24
+  70               	.LM13:
+  71 001c 80EC      		ldi r24,lo8(-64)
+  72 001e 8CBD      		out 76-32,r24
+  73               	/* epilogue start */
+  74               	.LM14:
+  75 0020 0895      		ret
+  76               	.LFE9:
+  78               	.global	SPI_SlaveReceive
+  80               	SPI_SlaveReceive:
+  81               	.LFB10:
+  82               	.LM15:
+  83               	/* prologue: function */
+  84               	/* frame size = 0 */
+  85               	.L10:
+  86               	.LM16:
+  87 0022 0DB4      		in __tmp_reg__,77-32
+  88 0024 07FE      		sbrs __tmp_reg__,7
+  89 0026 00C0      		rjmp .L10
+  90               	.LM17:
+  91 0028 8EB5      		in r24,78-32
+  92               	/* epilogue start */
+  93               	.LM18:
+  94 002a 0895      		ret
+  95               	.LFE10:
+ 145               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 spi.c
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:18     .text:00000000 SPI_MasterInit
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:42     .text:0000000e SPI_MasterTransmit
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:62     .text:00000018 SPI_SlaveInit
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:80     .text:00000022 SPI_SlaveReceive
+
+NO UNDEFINED SYMBOLS

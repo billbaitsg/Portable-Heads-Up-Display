@@ -17,4 +17,7 @@ Portable Heads Up Display
 
 	/* Function prototypes */
 	
+	/* Defines */
+	#define MAX_NMEA_SIZE 82	/* Maximum length of NMEA sentences */
+	
 #endif

@@ -204,3 +204,13 @@ void USI_SPI_wait(void)
 {
 	do {} while( USI_SPI_status.transferComplete == 0 );
 }
+
+/* Sends out a string of SPI data */
+void USI_SPI_puts(char * string )
+{
+	while(*string)	/* While there are still characters left */
+	{
+		USI_SPI_putc(*string++);	/* Send out the current character and increment */
+	}/* End of while */
+	return;
+}/* End of USI_SPI_puts() */

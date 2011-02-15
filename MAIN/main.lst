@@ -1,0 +1,131 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               		.data
+  17               	.LC0:
+  18 0000 4865 6C6C 		.string	"Hello World!\n\r"
+  18      6F20 576F 
+  18      726C 6421 
+  18      0A0D 00
+  19               		.text
+  20               	.global	main
+  22               	main:
+  23               	.LFB7:
+  24               	.LM1:
+  25 0000 EF92      		push r14
+  26 0002 FF92      		push r15
+  27 0004 0F93      		push r16
+  28 0006 1F93      		push r17
+  29 0008 DF93      		push r29
+  30 000a CF93      		push r28
+  31 000c CDB7      		in r28,__SP_L__
+  32 000e DEB7      		in r29,__SP_H__
+  33 0010 2F97      		sbiw r28,15
+  34 0012 0FB6      		in __tmp_reg__,__SREG__
+  35 0014 F894      		cli
+  36 0016 DEBF      		out __SP_H__,r29
+  37 0018 0FBE      		out __SREG__,__tmp_reg__
+  38 001a CDBF      		out __SP_L__,r28
+  39               	/* prologue: function */
+  40               	/* frame size = 15 */
+  41               	.LM2:
+  42 001c 88E4      		ldi r24,lo8(9800)
+  43 001e 96E2      		ldi r25,hi8(9800)
+  44 0020 0E94 0000 		call UART_init
+  45               	.LM3:
+  46               	/* #APP */
+  47               	 ;  25 "main.c" 1
+  48 0024 7894      		sei
+  49               	 ;  0 "" 2
+  50               	.LM4:
+  51               	/* #NOAPP */
+  52 0026 DE01      		movw r26,r28
+  53 0028 1196      		adiw r26,1
+  54 002a E0E0      		ldi r30,lo8(.LC0)
+  55 002c F0E0      		ldi r31,hi8(.LC0)
+  56 002e 8FE0      		ldi r24,lo8(15)
+  57               	.L2:
+  58 0030 0190      		ld r0,Z+
+  59 0032 0D92      		st X+,r0
+  60 0034 8150      		subi r24,lo8(-(-1))
+  61 0036 01F4      		brne .L2
+  62               	.LM5:
+  63 0038 7E01      		movw r14,r28
+  64 003a 0894      		sec
+  65 003c E11C      		adc r14,__zero_reg__
+  66 003e F11C      		adc r15,__zero_reg__
+  67               	.LBB12:
+  68               	.LBB13:
+  69               	.LBB14:
+  70               	.LBB15:
+  71               	.LM6:
+  72 0040 08EC      		ldi r16,lo8(200)
+  73 0042 10E0      		ldi r17,hi8(200)
+  74               	.LVL0:
+  75               	.L8:
+  76               	.LBE15:
+  77               	.LBE14:
+  78               	.LBE13:
+  79               	.LBE12:
+  80               	.LM7:
+  81 0044 00D0      		rcall .
+  82 0046 EDB7      		in r30,__SP_L__
+  83 0048 FEB7      		in r31,__SP_H__
+  84               	.LVL1:
+  85 004a F282      		std Z+2,r15
+  86 004c E182      		std Z+1,r14
+  87 004e 0E94 0000 		call printf
+  88               	.LVL2:
+  89               	.LM8:
+  90 0052 0F90      		pop __tmp_reg__
+  91 0054 0F90      		pop __tmp_reg__
+  92 0056 88E7      		ldi r24,lo8(120)
+  93 0058 0E94 0000 		call UART_putc
+  94 005c 80E1      		ldi r24,lo8(10000)
+  95 005e 97E2      		ldi r25,hi8(10000)
+  96               	.LVL3:
+  97               	.L3:
+  98               	.LBB19:
+  99               	.LBB18:
+ 100               	.LBB17:
+ 101               	.LBB16:
+ 102               	.LM9:
+ 103 0060 F801      		movw r30,r16
+ 104               	.LVL4:
+ 105               	/* #APP */
+ 106               	 ;  105 "d:/ee programs/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 107 0062 3197      		1: sbiw r30,1
+ 108 0064 01F4      		brne 1b
+ 109               	 ;  0 "" 2
+ 110               	/* #NOAPP */
+ 111               	.LBE16:
+ 112               	.LBE17:
+ 113               	.LM10:
+ 114 0066 0197      		sbiw r24,1
+ 115               	.LM11:
+ 116 0068 01F4      		brne .L3
+ 117 006a 00C0      		rjmp .L8
+ 118               	.LBE18:
+ 119               	.LBE19:
+ 120               	.LFE7:
+ 146               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:22     .text:00000000 main
+
+UNDEFINED SYMBOLS
+UART_init
+printf
+UART_putc
+__do_copy_data

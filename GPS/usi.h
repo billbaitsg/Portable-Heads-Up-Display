@@ -65,4 +65,5 @@ Portable Heads Up Display
 	char USI_SPI_putc(unsigned char);
 	unsigned char USI_SPI_getc(void);
 	void USI_SPI_wait(void);
+	void USI_SPI_puts(char *);
 #endif
