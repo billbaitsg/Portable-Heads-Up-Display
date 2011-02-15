@@ -82,15 +82,15 @@
  145               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 spi.c
-C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:18     .text:00000000 SPI_MasterInit
-C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:42     .text:0000000e SPI_MasterTransmit
-C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:62     .text:00000018 SPI_SlaveInit
-C:\Users\BILLBA~1\AppData\Local\Temp/ccNZdsIp.s:80     .text:00000022 SPI_SlaveReceive
+C:\Users\BILLTA~1\AppData\Local\Temp/ccXrJCtB.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccXrJCtB.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccXrJCtB.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccXrJCtB.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccXrJCtB.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccXrJCtB.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccXrJCtB.s:18     .text:00000000 SPI_MasterInit
+C:\Users\BILLTA~1\AppData\Local\Temp/ccXrJCtB.s:42     .text:0000000e SPI_MasterTransmit
+C:\Users\BILLTA~1\AppData\Local\Temp/ccXrJCtB.s:62     .text:00000018 SPI_SlaveInit
+C:\Users\BILLTA~1\AppData\Local\Temp/ccXrJCtB.s:80     .text:00000022 SPI_SlaveReceive
 
 NO UNDEFINED SYMBOLS

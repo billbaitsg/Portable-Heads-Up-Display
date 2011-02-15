@@ -98,7 +98,7 @@
  103 0060 F801      		movw r30,r16
  104               	.LVL4:
  105               	/* #APP */
- 106               	 ;  105 "d:/ee programs/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 106               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
  107 0062 3197      		1: sbiw r30,1
  108 0064 01F4      		brne 1b
  109               	 ;  0 "" 2
@@ -116,13 +116,13 @@
  146               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccYQTVVc.s:22     .text:00000000 main
+C:\Users\BILLTA~1\AppData\Local\Temp/ccBcxMNc.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccBcxMNc.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccBcxMNc.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccBcxMNc.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccBcxMNc.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccBcxMNc.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccBcxMNc.s:22     .text:00000000 main
 
 UNDEFINED SYMBOLS
 UART_init

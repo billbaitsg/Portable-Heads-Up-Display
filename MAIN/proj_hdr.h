@@ -16,13 +16,15 @@ Portable Heads Up Display
 #ifndef PROJ_HDR_H
 #define PROJ_HDR_H
 
-/* Include Files */
-#include <avr/io.h>
-#include <avr/interrupt.h>
-#include <util/delay.h>
-#include <stdio.h>
-/* Module Includes */
-#include "spi.h"
-#include "uart.h"
+	/* Include Files */
+	#include <avr/io.h>
+	#include <avr/interrupt.h>
+	#include <util/delay.h>
+	#include <stdio.h>
+	/* Module Includes */
+	#include "spi.h"
+	#include "uart.h"
+
+	/* Global Variables */
 
 #endif

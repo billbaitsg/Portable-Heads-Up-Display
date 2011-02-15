@@ -17,9 +17,9 @@ Portable Heads Up Display
 #include "proj_hdr.h"
 
 /* Global Variables */
-volatile char UART_BUFFER[UART_BUFFER_SIZE];		/* Set size of UART buffer */
-volatile char UART_BUF_CNT = 0;				/* UART Buffer position counter */
-volatile char UART_FLAGS = 0;	/* "Register" to store UART status */
+volatile unsigned char UART_BUFFER[UART_BUFFER_SIZE];		/* Set size of UART buffer */
+volatile unsigned char UART_BUF_CNT = 0;				/* UART Buffer position counter */
+volatile unsigned char UART_FLAGS = 0;	/* "Register" to store UART status */
 
 /* Initialize UART module, from datasheet */
 void UART_init( unsigned int baud )
