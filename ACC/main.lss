@@ -3,27 +3,27 @@ main.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000282  00000000  00000000  00000094  2**1
+  0 .text         00000222  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000004  00800060  00000282  00000316  2**0
+  1 .data         00000004  00800060  00000222  000002b6  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000002  00800064  00800064  0000031a  2**0
+  2 .bss          00000002  00800064  00800064  000002ba  2**0
                   ALLOC
-  3 .debug_aranges 00000060  00000000  00000000  0000031a  2**0
+  3 .debug_aranges 00000060  00000000  00000000  000002ba  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_pubnames 0000012f  00000000  00000000  0000037a  2**0
+  4 .debug_pubnames 0000011f  00000000  00000000  0000031a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000387  00000000  00000000  000004a9  2**0
+  5 .debug_info   000002ff  00000000  00000000  00000439  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000001d3  00000000  00000000  00000830  2**0
+  6 .debug_abbrev 0000017d  00000000  00000000  00000738  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000003b1  00000000  00000000  00000a03  2**0
+  7 .debug_line   00000374  00000000  00000000  000008b5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000000e0  00000000  00000000  00000db4  2**2
+  8 .debug_frame  000000d0  00000000  00000000  00000c2c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000188  00000000  00000000  00000e94  2**0
+  9 .debug_str    0000017c  00000000  00000000  00000cfc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000052  00000000  00000000  0000101c  2**0
+ 10 .debug_loc    00000052  00000000  00000000  00000e78  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -38,14 +38,14 @@ Disassembly of section .text:
    c:	25 c0       	rjmp	.+74     	; 0x58 <__bad_interrupt>
    e:	24 c0       	rjmp	.+72     	; 0x58 <__bad_interrupt>
   10:	23 c0       	rjmp	.+70     	; 0x58 <__bad_interrupt>
-  12:	61 c0       	rjmp	.+194    	; 0xd6 <__vector_9>
+  12:	74 c0       	rjmp	.+232    	; 0xfc <__vector_9>
   14:	21 c0       	rjmp	.+66     	; 0x58 <__bad_interrupt>
   16:	20 c0       	rjmp	.+64     	; 0x58 <__bad_interrupt>
   18:	1f c0       	rjmp	.+62     	; 0x58 <__bad_interrupt>
-  1a:	30 c0       	rjmp	.+96     	; 0x7c <__vector_13>
+  1a:	43 c0       	rjmp	.+134    	; 0xa2 <__vector_13>
   1c:	1d c0       	rjmp	.+58     	; 0x58 <__bad_interrupt>
-  1e:	e4 c0       	rjmp	.+456    	; 0x1e8 <__vector_15>
-  20:	65 c0       	rjmp	.+202    	; 0xec <__vector_16>
+  1e:	1c c0       	rjmp	.+56     	; 0x58 <__bad_interrupt>
+  20:	78 c0       	rjmp	.+240    	; 0x112 <__vector_16>
 
 00000022 <__ctors_end>:
   22:	11 24       	eor	r1, r1
@@ -59,7 +59,7 @@ Disassembly of section .text:
   2e:	10 e0       	ldi	r17, 0x00	; 0
   30:	a0 e6       	ldi	r26, 0x60	; 96
   32:	b0 e0       	ldi	r27, 0x00	; 0
-  34:	e2 e8       	ldi	r30, 0x82	; 130
+  34:	e2 e2       	ldi	r30, 0x22	; 34
   36:	f2 e0       	ldi	r31, 0x02	; 2
   38:	02 c0       	rjmp	.+4      	; 0x3e <.do_copy_data_start>
 
@@ -86,494 +86,406 @@ Disassembly of section .text:
   50:	b1 07       	cpc	r27, r17
   52:	e1 f7       	brne	.-8      	; 0x4c <.do_clear_bss_loop>
   54:	02 d0       	rcall	.+4      	; 0x5a <main>
-  56:	13 c1       	rjmp	.+550    	; 0x27e <_exit>
+  56:	e3 c0       	rjmp	.+454    	; 0x21e <_exit>
 
 00000058 <__bad_interrupt>:
   58:	d3 cf       	rjmp	.-90     	; 0x0 <__vectors>
 
 0000005a <main>:
-volatile char Z_AXIS = 30;	/* Z-axis accelerometer reading */
-
-int main(void)
 {	
+	/* Local Variables */
+	unsigned char cmd = 0;
+	
 	/* Initialize software modules */
 	adc_init();	/* Initialize ADC */
-  5a:	03 d0       	rcall	.+6      	; 0x62 <adc_init>
+  5a:	16 d0       	rcall	.+44     	; 0x88 <adc_init>
 	//USI_SPI_initmaster();
 	USI_SPI_initslave();	/* Initialize SPI as slave */
-  5c:	82 d0       	rcall	.+260    	; 0x162 <USI_SPI_initslave>
+  5c:	95 d0       	rcall	.+298    	; 0x188 <USI_SPI_initslave>
 	
 	sei();	/* Enable global interrupts */
   5e:	78 94       	sei
-  60:	ff cf       	rjmp	.-2      	; 0x60 <main+0x6>
+	
+	while(1)
+	{
+		cmd = USI_SPI_getc();
+  60:	d6 d0       	rcall	.+428    	; 0x20e <USI_SPI_getc>
+		if( !USI_SS )	/* if this SPI slave is selected */
+  62:	cf 99       	sbic	0x19, 7	; 25
+  64:	fd cf       	rjmp	.-6      	; 0x60 <main+0x6>
+		{
+			if( cmd == 'X' )	/* if the X axis is requested */
+  66:	88 35       	cpi	r24, 0x58	; 88
+  68:	19 f4       	brne	.+6      	; 0x70 <main+0x16>
+			{
+				USI_SPI_putc(X_AXIS);	/* Send X-axis value */
+  6a:	80 91 60 00 	lds	r24, 0x0060
+  6e:	09 c0       	rjmp	.+18     	; 0x82 <main+0x28>
+				USI_SPI_wait();			/* wait for transmission to finish */
+			}
+			else if( cmd == 'Y' )	/* if the Y axis is requested */
+  70:	89 35       	cpi	r24, 0x59	; 89
+  72:	19 f4       	brne	.+6      	; 0x7a <main+0x20>
+			{
+				USI_SPI_putc(Y_AXIS);	/* Send Y-axis value */
+  74:	80 91 61 00 	lds	r24, 0x0061
+  78:	04 c0       	rjmp	.+8      	; 0x82 <main+0x28>
+				USI_SPI_wait();			/* wait for transmission to finish */
+			}
+			else if( cmd == 'Z' )	/* if the Z axis is requested */
+  7a:	8a 35       	cpi	r24, 0x5A	; 90
+  7c:	89 f7       	brne	.-30     	; 0x60 <main+0x6>
+			{
+				USI_SPI_putc(Z_AXIS);	/* Send X-axis value */
+  7e:	80 91 62 00 	lds	r24, 0x0062
+  82:	9b d0       	rcall	.+310    	; 0x1ba <USI_SPI_putc>
+				USI_SPI_wait();			/* wait for transmission to finish */
+  84:	c7 d0       	rcall	.+398    	; 0x214 <USI_SPI_wait>
+  86:	ec cf       	rjmp	.-40     	; 0x60 <main+0x6>
 
-00000062 <adc_init>:
+00000088 <adc_init>:
 #include "proj_hdr.h"
 
 /* Initialize ADC functionality */
 void adc_init(void)
 {
 	ADMUX |= (0<<REFS1) | (0<<REFS0);	/* Vcc used as Vref, disconnect from PB0 */
-  62:	87 b1       	in	r24, 0x07	; 7
-  64:	87 b9       	out	0x07, r24	; 7
+  88:	87 b1       	in	r24, 0x07	; 7
+  8a:	87 b9       	out	0x07, r24	; 7
 	ADCSRB |= (1<<ADLAR);				/* ADC Left Adjust Result */
-  66:	1c 9a       	sbi	0x03, 4	; 3
+  8c:	1c 9a       	sbi	0x03, 4	; 3
 	ADMUX = (ADMUX & ~0x3F) | 0;							/* Single Ended Input ADC0 selected */
-  68:	87 b1       	in	r24, 0x07	; 7
-  6a:	80 7c       	andi	r24, 0xC0	; 192
-  6c:	87 b9       	out	0x07, r24	; 7
+  8e:	87 b1       	in	r24, 0x07	; 7
+  90:	80 7c       	andi	r24, 0xC0	; 192
+  92:	87 b9       	out	0x07, r24	; 7
 	ADCSRA |= (1<<ADEN);				/* ADC Enabled */
-  6e:	37 9a       	sbi	0x06, 7	; 6
+  94:	37 9a       	sbi	0x06, 7	; 6
 	ADCSRA |= (1<<ADIE);				/* ADC Interrupt Enabled */
-  70:	33 9a       	sbi	0x06, 3	; 6
+  96:	33 9a       	sbi	0x06, 3	; 6
 	ADCSRA |= 3;						/* 8MHz Clk/64 = 125kHz, ADC Prescaler */
-  72:	86 b1       	in	r24, 0x06	; 6
-  74:	83 60       	ori	r24, 0x03	; 3
-  76:	86 b9       	out	0x06, r24	; 6
+  98:	86 b1       	in	r24, 0x06	; 6
+  9a:	83 60       	ori	r24, 0x03	; 3
+  9c:	86 b9       	out	0x06, r24	; 6
 	
 	ADC_START;	/* Start ADC Conversion */
-  78:	36 9a       	sbi	0x06, 6	; 6
+  9e:	36 9a       	sbi	0x06, 6	; 6
 }
-  7a:	08 95       	ret
+  a0:	08 95       	ret
 
-0000007c <__vector_13>:
+000000a2 <__vector_13>:
 
 /* ADC finished conversion interrupt */
 ISR(ADC_vect)
 {
-  7c:	1f 92       	push	r1
-  7e:	0f 92       	push	r0
-  80:	0f b6       	in	r0, 0x3f	; 63
-  82:	0f 92       	push	r0
-  84:	11 24       	eor	r1, r1
-  86:	8f 93       	push	r24
-  88:	9f 93       	push	r25
+  a2:	1f 92       	push	r1
+  a4:	0f 92       	push	r0
+  a6:	0f b6       	in	r0, 0x3f	; 63
+  a8:	0f 92       	push	r0
+  aa:	11 24       	eor	r1, r1
+  ac:	8f 93       	push	r24
+  ae:	9f 93       	push	r25
 	if( (ADMUX & 0x3F) == 0 )	/* if ADC0 is selected */
-  8a:	87 b1       	in	r24, 0x07	; 7
-  8c:	90 e0       	ldi	r25, 0x00	; 0
-  8e:	8f 73       	andi	r24, 0x3F	; 63
-  90:	90 70       	andi	r25, 0x00	; 0
-  92:	89 2b       	or	r24, r25
-  94:	39 f4       	brne	.+14     	; 0xa4 <__vector_13+0x28>
+  b0:	87 b1       	in	r24, 0x07	; 7
+  b2:	90 e0       	ldi	r25, 0x00	; 0
+  b4:	8f 73       	andi	r24, 0x3F	; 63
+  b6:	90 70       	andi	r25, 0x00	; 0
+  b8:	89 2b       	or	r24, r25
+  ba:	39 f4       	brne	.+14     	; 0xca <__vector_13+0x28>
 	{
 		X_AXIS = ADCH;	/* Read the X-axis accelerometer measurment */
-  96:	85 b1       	in	r24, 0x05	; 5
-  98:	80 93 60 00 	sts	0x0060, r24
+  bc:	85 b1       	in	r24, 0x05	; 5
+  be:	80 93 60 00 	sts	0x0060, r24
 		ADMUX = (ADMUX & ~0x3F) | 1;	/* switch to ADC1 */
-  9c:	87 b1       	in	r24, 0x07	; 7
-  9e:	80 7c       	andi	r24, 0xC0	; 192
-  a0:	81 60       	ori	r24, 0x01	; 1
-  a2:	10 c0       	rjmp	.+32     	; 0xc4 <__vector_13+0x48>
+  c2:	87 b1       	in	r24, 0x07	; 7
+  c4:	80 7c       	andi	r24, 0xC0	; 192
+  c6:	81 60       	ori	r24, 0x01	; 1
+  c8:	10 c0       	rjmp	.+32     	; 0xea <__vector_13+0x48>
 	}
 	else if ( (ADMUX & 0x3F) == 1 )	/* if ADC1 is selected */
-  a4:	87 b1       	in	r24, 0x07	; 7
-  a6:	8f 73       	andi	r24, 0x3F	; 63
-  a8:	81 30       	cpi	r24, 0x01	; 1
-  aa:	39 f4       	brne	.+14     	; 0xba <__vector_13+0x3e>
+  ca:	87 b1       	in	r24, 0x07	; 7
+  cc:	8f 73       	andi	r24, 0x3F	; 63
+  ce:	81 30       	cpi	r24, 0x01	; 1
+  d0:	39 f4       	brne	.+14     	; 0xe0 <__vector_13+0x3e>
 	{
 		Y_AXIS = ADCH;	/* Read the Y-axis accelerometer measurment */
-  ac:	85 b1       	in	r24, 0x05	; 5
-  ae:	80 93 61 00 	sts	0x0061, r24
+  d2:	85 b1       	in	r24, 0x05	; 5
+  d4:	80 93 61 00 	sts	0x0061, r24
 		ADMUX = (ADMUX & ~0x3F) | 2;	/* switch back to ADC2 */
-  b2:	87 b1       	in	r24, 0x07	; 7
-  b4:	80 7c       	andi	r24, 0xC0	; 192
-  b6:	82 60       	ori	r24, 0x02	; 2
-  b8:	05 c0       	rjmp	.+10     	; 0xc4 <__vector_13+0x48>
+  d8:	87 b1       	in	r24, 0x07	; 7
+  da:	80 7c       	andi	r24, 0xC0	; 192
+  dc:	82 60       	ori	r24, 0x02	; 2
+  de:	05 c0       	rjmp	.+10     	; 0xea <__vector_13+0x48>
 	}
 	else 	/* any other ADC selected */
 	{
 		Z_AXIS = ADCH;	/* Read the Z-axis accelerometer measurement */
-  ba:	85 b1       	in	r24, 0x05	; 5
-  bc:	80 93 62 00 	sts	0x0062, r24
+  e0:	85 b1       	in	r24, 0x05	; 5
+  e2:	80 93 62 00 	sts	0x0062, r24
 		ADMUX = (ADMUX & ~0x3F) | 0;	/* switch back to ADC0 */
-  c0:	87 b1       	in	r24, 0x07	; 7
-  c2:	80 7c       	andi	r24, 0xC0	; 192
-  c4:	87 b9       	out	0x07, r24	; 7
+  e6:	87 b1       	in	r24, 0x07	; 7
+  e8:	80 7c       	andi	r24, 0xC0	; 192
+  ea:	87 b9       	out	0x07, r24	; 7
 	}
 	ADC_START;	/* Start next ADC conversion */
-  c6:	36 9a       	sbi	0x06, 6	; 6
-  c8:	9f 91       	pop	r25
-  ca:	8f 91       	pop	r24
-  cc:	0f 90       	pop	r0
-  ce:	0f be       	out	0x3f, r0	; 63
-  d0:	0f 90       	pop	r0
-  d2:	1f 90       	pop	r1
-  d4:	18 95       	reti
+  ec:	36 9a       	sbi	0x06, 6	; 6
+  ee:	9f 91       	pop	r25
+  f0:	8f 91       	pop	r24
+  f2:	0f 90       	pop	r0
+  f4:	0f be       	out	0x3f, r0	; 63
+  f6:	0f 90       	pop	r0
+  f8:	1f 90       	pop	r1
+  fa:	18 95       	reti
 
-000000d6 <__vector_9>:
+000000fc <__vector_9>:
  *  results in one clock period on the clock pin and for the USI counter.
  */
 /*#pragma vector=TIMER0_COMP_vect */	/* Compiler specific directive */
 /*__interrupt void timer0comp_handler()*/
 ISR(TIM0_COMPA_vect)
 {
-  d6:	1f 92       	push	r1
-  d8:	0f 92       	push	r0
-  da:	0f b6       	in	r0, 0x3f	; 63
-  dc:	0f 92       	push	r0
-  de:	11 24       	eor	r1, r1
+  fc:	1f 92       	push	r1
+  fe:	0f 92       	push	r0
+ 100:	0f b6       	in	r0, 0x3f	; 63
+ 102:	0f 92       	push	r0
+ 104:	11 24       	eor	r1, r1
 	USICR |= (1<<USITC);	// Toggle clock output pin.
-  e0:	68 9a       	sbi	0x0d, 0	; 13
+ 106:	68 9a       	sbi	0x0d, 0	; 13
 }
-  e2:	0f 90       	pop	r0
-  e4:	0f be       	out	0x3f, r0	; 63
-  e6:	0f 90       	pop	r0
-  e8:	1f 90       	pop	r1
-  ea:	18 95       	reti
+ 108:	0f 90       	pop	r0
+ 10a:	0f be       	out	0x3f, r0	; 63
+ 10c:	0f 90       	pop	r0
+ 10e:	1f 90       	pop	r1
+ 110:	18 95       	reti
 
-000000ec <__vector_16>:
+00000112 <__vector_16>:
  *  For all modes the USIDR contents are stored and flags are updated.
  */
 /*#pragma vector=USI_OVF_vect*/	/* Compiler specific directive */
 /*__interrupt void usiovf_handler()*/
 ISR(USI_OVF_vect)
 {
-  ec:	1f 92       	push	r1
-  ee:	0f 92       	push	r0
-  f0:	0f b6       	in	r0, 0x3f	; 63
-  f2:	0f 92       	push	r0
-  f4:	11 24       	eor	r1, r1
-  f6:	8f 93       	push	r24
+ 112:	1f 92       	push	r1
+ 114:	0f 92       	push	r0
+ 116:	0f b6       	in	r0, 0x3f	; 63
+ 118:	0f 92       	push	r0
+ 11a:	11 24       	eor	r1, r1
+ 11c:	8f 93       	push	r24
 	// Master must now disable the compare match interrupt
 	// to prevent more USI counter clocks.
 	if( USI_SPI_status.masterMode == 1 ) {
-  f8:	80 91 64 00 	lds	r24, 0x0064
-  fc:	80 ff       	sbrs	r24, 0
-  fe:	03 c0       	rjmp	.+6      	; 0x106 <__vector_16+0x1a>
+ 11e:	80 91 64 00 	lds	r24, 0x0064
+ 122:	80 ff       	sbrs	r24, 0
+ 124:	03 c0       	rjmp	.+6      	; 0x12c <__vector_16+0x1a>
 		TIMSK0 &= ~(1<<OCIE0A);
- 100:	89 b7       	in	r24, 0x39	; 57
- 102:	8d 7f       	andi	r24, 0xFD	; 253
- 104:	89 bf       	out	0x39, r24	; 57
+ 126:	89 b7       	in	r24, 0x39	; 57
+ 128:	8d 7f       	andi	r24, 0xFD	; 253
+ 12a:	89 bf       	out	0x39, r24	; 57
 	}
 	
 	// Update flags and clear USI counter
 	USISR = (1<<USIOIF);
- 106:	80 e4       	ldi	r24, 0x40	; 64
- 108:	8e b9       	out	0x0e, r24	; 14
+ 12c:	80 e4       	ldi	r24, 0x40	; 64
+ 12e:	8e b9       	out	0x0e, r24	; 14
 	USI_SPI_status.transferComplete = 1;
- 10a:	80 91 64 00 	lds	r24, 0x0064
- 10e:	82 60       	ori	r24, 0x02	; 2
- 110:	80 93 64 00 	sts	0x0064, r24
+ 130:	80 91 64 00 	lds	r24, 0x0064
+ 134:	82 60       	ori	r24, 0x02	; 2
+ 136:	80 93 64 00 	sts	0x0064, r24
 
 	// Copy USIDR to buffer to prevent overwrite on next transfer.
 	storedUSIDR = USIDR;
- 114:	8f b1       	in	r24, 0x0f	; 15
- 116:	80 93 65 00 	sts	0x0065, r24
+ 13a:	8f b1       	in	r24, 0x0f	; 15
+ 13c:	80 93 65 00 	sts	0x0065, r24
 }
- 11a:	8f 91       	pop	r24
- 11c:	0f 90       	pop	r0
- 11e:	0f be       	out	0x3f, r0	; 63
- 120:	0f 90       	pop	r0
- 122:	1f 90       	pop	r1
- 124:	18 95       	reti
+ 140:	8f 91       	pop	r24
+ 142:	0f 90       	pop	r0
+ 144:	0f be       	out	0x3f, r0	; 63
+ 146:	0f 90       	pop	r0
+ 148:	1f 90       	pop	r1
+ 14a:	18 95       	reti
 
-00000126 <USI_SPI_initmaster>:
+0000014c <USI_SPI_initmaster>:
  *  \param spi_mode  Required SPI mode, must be 0 or 1.
  */
 void USI_SPI_initmaster(void)
 {
 	// Configure port directions.
 	USI_DIR_REG |= (1<<USI_DATAOUT_PIN) | (1<<USI_CLOCK_PIN); // Outputs.
- 126:	8a b3       	in	r24, 0x1a	; 26
- 128:	80 63       	ori	r24, 0x30	; 48
- 12a:	8a bb       	out	0x1a, r24	; 26
+ 14c:	8a b3       	in	r24, 0x1a	; 26
+ 14e:	80 63       	ori	r24, 0x30	; 48
+ 150:	8a bb       	out	0x1a, r24	; 26
 	USI_DIR_REG &= ~(1<<USI_DATAIN_PIN);                      // Inputs.
- 12c:	d6 98       	cbi	0x1a, 6	; 26
+ 152:	d6 98       	cbi	0x1a, 6	; 26
 	USI_OUT_REG |= (1<<USI_DATAIN_PIN);                       // Pull-ups.
- 12e:	de 9a       	sbi	0x1b, 6	; 27
+ 154:	de 9a       	sbi	0x1b, 6	; 27
 	
 	// Configure USI to 3-wire master mode with overflow interrupt.
 	USICR = (1<<USIOIE) | (1<<USIWM0) |
- 130:	8a e5       	ldi	r24, 0x5A	; 90
- 132:	8d b9       	out	0x0d, r24	; 13
+ 156:	8a e5       	ldi	r24, 0x5A	; 90
+ 158:	8d b9       	out	0x0d, r24	; 13
 	        (1<<USICS1) | (SPI_MODE<<USICS0) |
 	        (1<<USICLK);
 
 	// Enable 'Clear Timer on Compare match' and init prescaler.
 	TCCR0A = (1<<WGM01);
- 134:	82 e0       	ldi	r24, 0x02	; 2
- 136:	80 bf       	out	0x30, r24	; 48
+ 15a:	82 e0       	ldi	r24, 0x02	; 2
+ 15c:	80 bf       	out	0x30, r24	; 48
 	TCCR0B = TC0_PS_SETTING;
- 138:	83 bf       	out	0x33, r24	; 51
+ 15e:	83 bf       	out	0x33, r24	; 51
 	
 	// Init Output Compare Register.
 	OCR0A = TC0_COMPARE_VALUE;
- 13a:	83 e0       	ldi	r24, 0x03	; 3
- 13c:	86 bf       	out	0x36, r24	; 54
+ 160:	83 e0       	ldi	r24, 0x03	; 3
+ 162:	86 bf       	out	0x36, r24	; 54
 	
 	// Init driver status register.
 	USI_SPI_status.masterMode       = 1;
- 13e:	80 91 64 00 	lds	r24, 0x0064
- 142:	81 60       	ori	r24, 0x01	; 1
- 144:	80 93 64 00 	sts	0x0064, r24
+ 164:	80 91 64 00 	lds	r24, 0x0064
+ 168:	81 60       	ori	r24, 0x01	; 1
+ 16a:	80 93 64 00 	sts	0x0064, r24
 	USI_SPI_status.transferComplete = 0;
- 148:	80 91 64 00 	lds	r24, 0x0064
- 14c:	8d 7f       	andi	r24, 0xFD	; 253
- 14e:	80 93 64 00 	sts	0x0064, r24
+ 16e:	80 91 64 00 	lds	r24, 0x0064
+ 172:	8d 7f       	andi	r24, 0xFD	; 253
+ 174:	80 93 64 00 	sts	0x0064, r24
 	USI_SPI_status.writeCollision   = 0;
- 152:	80 91 64 00 	lds	r24, 0x0064
- 156:	8b 7f       	andi	r24, 0xFB	; 251
- 158:	80 93 64 00 	sts	0x0064, r24
+ 178:	80 91 64 00 	lds	r24, 0x0064
+ 17c:	8b 7f       	andi	r24, 0xFB	; 251
+ 17e:	80 93 64 00 	sts	0x0064, r24
 	
 	storedUSIDR = 0;
- 15c:	10 92 65 00 	sts	0x0065, r1
+ 182:	10 92 65 00 	sts	0x0065, r1
 }
- 160:	08 95       	ret
+ 186:	08 95       	ret
 
-00000162 <USI_SPI_initslave>:
+00000188 <USI_SPI_initslave>:
  *  \param spi_mode  Required SPI mode, must be 0 or 1.
  */
 void USI_SPI_initslave(void)
 {
 	// Configure port directions.
 	USI_DIR_REG |= (1<<USI_DATAOUT_PIN);                      // Outputs.
- 162:	d5 9a       	sbi	0x1a, 5	; 26
+ 188:	d5 9a       	sbi	0x1a, 5	; 26
 	USI_DIR_REG &= ~(1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN) | (1<<USI_SELECT_PIN); // Inputs.
- 164:	d6 98       	cbi	0x1a, 6	; 26
+ 18a:	d6 98       	cbi	0x1a, 6	; 26
 	USI_OUT_REG |= (1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN) | (1<<USI_SELECT_PIN);  // Pull-ups.
- 166:	8b b3       	in	r24, 0x1b	; 27
- 168:	80 6d       	ori	r24, 0xD0	; 208
- 16a:	8b bb       	out	0x1b, r24	; 27
+ 18c:	8b b3       	in	r24, 0x1b	; 27
+ 18e:	80 6d       	ori	r24, 0xD0	; 208
+ 190:	8b bb       	out	0x1b, r24	; 27
 	
 	// Configure USI to 3-wire slave mode with overflow interrupt.
 	USICR = (1<<USIOIE) | (1<<USIWM0) |
- 16c:	88 e5       	ldi	r24, 0x58	; 88
- 16e:	8d b9       	out	0x0d, r24	; 13
+ 192:	88 e5       	ldi	r24, 0x58	; 88
+ 194:	8d b9       	out	0x0d, r24	; 13
 	        (1<<USICS1) | (SPI_MODE<<USICS0);
 	
 	// Init driver status register.
 	USI_SPI_status.masterMode       = 0;
- 170:	80 91 64 00 	lds	r24, 0x0064
- 174:	8e 7f       	andi	r24, 0xFE	; 254
- 176:	80 93 64 00 	sts	0x0064, r24
+ 196:	80 91 64 00 	lds	r24, 0x0064
+ 19a:	8e 7f       	andi	r24, 0xFE	; 254
+ 19c:	80 93 64 00 	sts	0x0064, r24
 	USI_SPI_status.transferComplete = 0;
- 17a:	80 91 64 00 	lds	r24, 0x0064
- 17e:	8d 7f       	andi	r24, 0xFD	; 253
- 180:	80 93 64 00 	sts	0x0064, r24
+ 1a0:	80 91 64 00 	lds	r24, 0x0064
+ 1a4:	8d 7f       	andi	r24, 0xFD	; 253
+ 1a6:	80 93 64 00 	sts	0x0064, r24
 	USI_SPI_status.writeCollision   = 0;
- 184:	80 91 64 00 	lds	r24, 0x0064
- 188:	8b 7f       	andi	r24, 0xFB	; 251
- 18a:	80 93 64 00 	sts	0x0064, r24
+ 1aa:	80 91 64 00 	lds	r24, 0x0064
+ 1ae:	8b 7f       	andi	r24, 0xFB	; 251
+ 1b0:	80 93 64 00 	sts	0x0064, r24
 	
 	storedUSIDR = 0;
- 18e:	10 92 65 00 	sts	0x0065, r1
+ 1b4:	10 92 65 00 	sts	0x0065, r1
 }
- 192:	08 95       	ret
+ 1b8:	08 95       	ret
 
-00000194 <USI_SPI_putc>:
+000001ba <USI_SPI_putc>:
  *  and return without altering the data registers.
  *
  *  \returns  0 if a write collision occurred, 1 otherwise.
  */
 char USI_SPI_putc( unsigned char val )
 {
- 194:	28 2f       	mov	r18, r24
+ 1ba:	28 2f       	mov	r18, r24
 	// Check if transmission in progress,
 	// i.e. USI counter unequal to zero.
 	if( (USISR & 0x0F) != 0 ) {
- 196:	8e b1       	in	r24, 0x0e	; 14
- 198:	90 e0       	ldi	r25, 0x00	; 0
- 19a:	8f 70       	andi	r24, 0x0F	; 15
- 19c:	90 70       	andi	r25, 0x00	; 0
- 19e:	89 2b       	or	r24, r25
- 1a0:	39 f0       	breq	.+14     	; 0x1b0 <USI_SPI_putc+0x1c>
+ 1bc:	8e b1       	in	r24, 0x0e	; 14
+ 1be:	90 e0       	ldi	r25, 0x00	; 0
+ 1c0:	8f 70       	andi	r24, 0x0F	; 15
+ 1c2:	90 70       	andi	r25, 0x00	; 0
+ 1c4:	89 2b       	or	r24, r25
+ 1c6:	39 f0       	breq	.+14     	; 0x1d6 <USI_SPI_putc+0x1c>
 		// Indicate write collision and return.
 		USI_SPI_status.writeCollision = 1;
- 1a2:	80 91 64 00 	lds	r24, 0x0064
- 1a6:	84 60       	ori	r24, 0x04	; 4
- 1a8:	80 93 64 00 	sts	0x0064, r24
- 1ac:	80 e0       	ldi	r24, 0x00	; 0
- 1ae:	08 95       	ret
+ 1c8:	80 91 64 00 	lds	r24, 0x0064
+ 1cc:	84 60       	ori	r24, 0x04	; 4
+ 1ce:	80 93 64 00 	sts	0x0064, r24
+ 1d2:	80 e0       	ldi	r24, 0x00	; 0
+ 1d4:	08 95       	ret
 		return 0;
 	}
 	
 	// Reinit flags.
 	USI_SPI_status.transferComplete = 0;
- 1b0:	80 91 64 00 	lds	r24, 0x0064
- 1b4:	8d 7f       	andi	r24, 0xFD	; 253
- 1b6:	80 93 64 00 	sts	0x0064, r24
+ 1d6:	80 91 64 00 	lds	r24, 0x0064
+ 1da:	8d 7f       	andi	r24, 0xFD	; 253
+ 1dc:	80 93 64 00 	sts	0x0064, r24
 	USI_SPI_status.writeCollision = 0;
- 1ba:	80 91 64 00 	lds	r24, 0x0064
- 1be:	8b 7f       	andi	r24, 0xFB	; 251
- 1c0:	80 93 64 00 	sts	0x0064, r24
+ 1e0:	80 91 64 00 	lds	r24, 0x0064
+ 1e4:	8b 7f       	andi	r24, 0xFB	; 251
+ 1e6:	80 93 64 00 	sts	0x0064, r24
 
 	// Put data in USI data register.
 	USIDR = val;
- 1c4:	2f b9       	out	0x0f, r18	; 15
+ 1ea:	2f b9       	out	0x0f, r18	; 15
 	
 	// Master should now enable compare match interrupts.
 	if( USI_SPI_status.masterMode == 1 ) {
- 1c6:	80 91 64 00 	lds	r24, 0x0064
- 1ca:	80 ff       	sbrs	r24, 0
- 1cc:	06 c0       	rjmp	.+12     	; 0x1da <USI_SPI_putc+0x46>
+ 1ec:	80 91 64 00 	lds	r24, 0x0064
+ 1f0:	80 ff       	sbrs	r24, 0
+ 1f2:	06 c0       	rjmp	.+12     	; 0x200 <USI_SPI_putc+0x46>
 		TIFR0 |= (1<<OCF0A);   // Clear compare match flag.
- 1ce:	88 b7       	in	r24, 0x38	; 56
- 1d0:	82 60       	ori	r24, 0x02	; 2
- 1d2:	88 bf       	out	0x38, r24	; 56
+ 1f4:	88 b7       	in	r24, 0x38	; 56
+ 1f6:	82 60       	ori	r24, 0x02	; 2
+ 1f8:	88 bf       	out	0x38, r24	; 56
 		TIMSK0 |= (1<<OCIE0A); // Enable compare match interrupt.
- 1d4:	89 b7       	in	r24, 0x39	; 57
- 1d6:	82 60       	ori	r24, 0x02	; 2
- 1d8:	89 bf       	out	0x39, r24	; 57
+ 1fa:	89 b7       	in	r24, 0x39	; 57
+ 1fc:	82 60       	ori	r24, 0x02	; 2
+ 1fe:	89 bf       	out	0x39, r24	; 57
 	}
 
 	if( USI_SPI_status.writeCollision == 0 ) return 1;
- 1da:	80 91 64 00 	lds	r24, 0x0064
- 1de:	86 95       	lsr	r24
- 1e0:	86 95       	lsr	r24
- 1e2:	80 95       	com	r24
- 1e4:	81 70       	andi	r24, 0x01	; 1
+ 200:	80 91 64 00 	lds	r24, 0x0064
+ 204:	86 95       	lsr	r24
+ 206:	86 95       	lsr	r24
+ 208:	80 95       	com	r24
+ 20a:	81 70       	andi	r24, 0x01	; 1
 	return 0;
 }
- 1e6:	08 95       	ret
+ 20c:	08 95       	ret
 
-000001e8 <__vector_15>:
-	USICR |= (1<<USITC);	// Toggle clock output pin.
-}
-
-/* USI SPI start condition interrupt */
-ISR(USI_START_vect)
-{
- 1e8:	1f 92       	push	r1
- 1ea:	0f 92       	push	r0
- 1ec:	0f b6       	in	r0, 0x3f	; 63
- 1ee:	0f 92       	push	r0
- 1f0:	11 24       	eor	r1, r1
- 1f2:	2f 93       	push	r18
- 1f4:	3f 93       	push	r19
- 1f6:	4f 93       	push	r20
- 1f8:	5f 93       	push	r21
- 1fa:	6f 93       	push	r22
- 1fc:	7f 93       	push	r23
- 1fe:	8f 93       	push	r24
- 200:	9f 93       	push	r25
- 202:	af 93       	push	r26
- 204:	bf 93       	push	r27
- 206:	ef 93       	push	r30
- 208:	ff 93       	push	r31
- *  The transfer complete flag is not checked. Use this function
- *  like you would read from the SPDR register in the native SPI module.
- */
-unsigned char USI_SPI_getc(void)
-{
-	return storedUSIDR;
- 20a:	80 91 65 00 	lds	r24, 0x0065
-ISR(USI_START_vect)
-{
-	/* Local Variables */
-	unsigned char cmd = 0;
-	cmd = USI_SPI_getc();
-	if( !USI_SS )	/* if this SPI slave is selected */
- 20e:	cf 99       	sbic	0x19, 7	; 25
- 210:	1d c0       	rjmp	.+58     	; 0x24c <__vector_15+0x64>
-	{
-		if( cmd == 'X' )	/* if the X axis is requested */
- 212:	88 35       	cpi	r24, 0x58	; 88
- 214:	41 f4       	brne	.+16     	; 0x226 <__vector_15+0x3e>
-		{
-			USI_SPI_putc(X_AXIS);	/* Send X-axis value */
- 216:	80 91 60 00 	lds	r24, 0x0060
- 21a:	bc df       	rcall	.-136    	; 0x194 <USI_SPI_putc>
- *  This function waits until the transfer complete flag is set.
- *  Use this function like you would wait for the native SPI interrupt flag.
- */
-void USI_SPI_wait(void)
-{
-	do {} while( USI_SPI_status.transferComplete == 0 );
- 21c:	80 91 64 00 	lds	r24, 0x0064
- 220:	81 ff       	sbrs	r24, 1
- 222:	fc cf       	rjmp	.-8      	; 0x21c <__vector_15+0x34>
- 224:	13 c0       	rjmp	.+38     	; 0x24c <__vector_15+0x64>
-		if( cmd == 'X' )	/* if the X axis is requested */
-		{
-			USI_SPI_putc(X_AXIS);	/* Send X-axis value */
-			USI_SPI_wait();			/* wait for transmission to finish */
-		}
-		else if( cmd == 'Y' )	/* if the Y axis is requested */
- 226:	89 35       	cpi	r24, 0x59	; 89
- 228:	41 f4       	brne	.+16     	; 0x23a <__vector_15+0x52>
-		{
-			USI_SPI_putc(Y_AXIS);	/* Send Y-axis value */
- 22a:	80 91 61 00 	lds	r24, 0x0061
- 22e:	b2 df       	rcall	.-156    	; 0x194 <USI_SPI_putc>
- *  This function waits until the transfer complete flag is set.
- *  Use this function like you would wait for the native SPI interrupt flag.
- */
-void USI_SPI_wait(void)
-{
-	do {} while( USI_SPI_status.transferComplete == 0 );
- 230:	80 91 64 00 	lds	r24, 0x0064
- 234:	81 ff       	sbrs	r24, 1
- 236:	fc cf       	rjmp	.-8      	; 0x230 <__vector_15+0x48>
- 238:	09 c0       	rjmp	.+18     	; 0x24c <__vector_15+0x64>
-		else if( cmd == 'Y' )	/* if the Y axis is requested */
-		{
-			USI_SPI_putc(Y_AXIS);	/* Send Y-axis value */
-			USI_SPI_wait();			/* wait for transmission to finish */
-		}
-		else if( cmd == 'Z' )	/* if the Z axis is requested */
- 23a:	8a 35       	cpi	r24, 0x5A	; 90
- 23c:	39 f4       	brne	.+14     	; 0x24c <__vector_15+0x64>
-		{
-			USI_SPI_putc(Z_AXIS);	/* Send X-axis value */
- 23e:	80 91 62 00 	lds	r24, 0x0062
- 242:	a8 df       	rcall	.-176    	; 0x194 <USI_SPI_putc>
- *  This function waits until the transfer complete flag is set.
- *  Use this function like you would wait for the native SPI interrupt flag.
- */
-void USI_SPI_wait(void)
-{
-	do {} while( USI_SPI_status.transferComplete == 0 );
- 244:	80 91 64 00 	lds	r24, 0x0064
- 248:	81 ff       	sbrs	r24, 1
- 24a:	fc cf       	rjmp	.-8      	; 0x244 <__vector_15+0x5c>
-	}
-	else	/* if not selected, do nothing */
-	{
-		/* Do nothing */
-	}/* End of if */
-}
- 24c:	ff 91       	pop	r31
- 24e:	ef 91       	pop	r30
- 250:	bf 91       	pop	r27
- 252:	af 91       	pop	r26
- 254:	9f 91       	pop	r25
- 256:	8f 91       	pop	r24
- 258:	7f 91       	pop	r23
- 25a:	6f 91       	pop	r22
- 25c:	5f 91       	pop	r21
- 25e:	4f 91       	pop	r20
- 260:	3f 91       	pop	r19
- 262:	2f 91       	pop	r18
- 264:	0f 90       	pop	r0
- 266:	0f be       	out	0x3f, r0	; 63
- 268:	0f 90       	pop	r0
- 26a:	1f 90       	pop	r1
- 26c:	18 95       	reti
-
-0000026e <USI_SPI_getc>:
+0000020e <USI_SPI_getc>:
  *  like you would read from the SPDR register in the native SPI module.
  */
 unsigned char USI_SPI_getc(void)
 {
 	return storedUSIDR;
 }
- 26e:	80 91 65 00 	lds	r24, 0x0065
- 272:	08 95       	ret
+ 20e:	80 91 65 00 	lds	r24, 0x0065
+ 212:	08 95       	ret
 
-00000274 <USI_SPI_wait>:
+00000214 <USI_SPI_wait>:
  *  This function waits until the transfer complete flag is set.
  *  Use this function like you would wait for the native SPI interrupt flag.
  */
 void USI_SPI_wait(void)
 {
 	do {} while( USI_SPI_status.transferComplete == 0 );
- 274:	80 91 64 00 	lds	r24, 0x0064
- 278:	81 ff       	sbrs	r24, 1
- 27a:	fc cf       	rjmp	.-8      	; 0x274 <USI_SPI_wait>
- 27c:	08 95       	ret
+ 214:	80 91 64 00 	lds	r24, 0x0064
+ 218:	81 ff       	sbrs	r24, 1
+ 21a:	fc cf       	rjmp	.-8      	; 0x214 <USI_SPI_wait>
+ 21c:	08 95       	ret
 
-0000027e <_exit>:
- 27e:	f8 94       	cli
+0000021e <_exit>:
+ 21e:	f8 94       	cli
 
-00000280 <__stop_program>:
- 280:	ff cf       	rjmp	.-2      	; 0x280 <__stop_program>
+00000220 <__stop_program>:
+ 220:	ff cf       	rjmp	.-2      	; 0x220 <__stop_program>

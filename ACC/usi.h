@@ -30,6 +30,7 @@ Portable Heads Up Display
 	#define USI_DATAIN_PIN	6		//!< USI data input pin.
 	#define USI_DATAOUT_PIN	5		//!< USI data output pin.
 	
+	/* USI slave select input */
 	#define USI_SS	((USI_IN_REG & (1<<USI_SELECT_PIN)) >> USI_SELECT_PIN)
 
 	/*  Speed configuration:
@@ -60,7 +61,6 @@ Portable Heads Up Display
 	
 	/* Function Prototypes */
 	ISR(TIM0_COMPA_vect);
-	ISR(USI_START_vect);
 	ISR(USI_OVF_vect);
 	void USI_SPI_initmaster(void);
 	void USI_SPI_initslave(void);

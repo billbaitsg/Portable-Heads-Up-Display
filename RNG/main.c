@@ -17,7 +17,7 @@ Portable Heads Up Display
 /* Global Variables for ADC readings */
 volatile char RANGE = 0;	/* Range to object */
 
-int main(void)7
+int main(void)
 {
 	/* Local Variables */
 	unsigned char cmd = 0;
@@ -31,13 +31,16 @@ int main(void)7
 	while(1)
 	{
 		cmd = USI_SPI_getc();
-		USI_SPI_wait();
-		if( cmd == 'R' )	/* if the X axis is requested */
+		if( !USI_SS )	/* if this SPI slave is selected */
 		{
-			USI_SPI_putc(RANGE);	// Send temp value to SPI and increment
-			USI_SPI_wait();		// wait for transmission to finish
+			if( cmd == 'R' )	/* if the X axis is requested */
+			{
+				USI_SPI_putc(RANGE);	// Send temp value to SPI and increment
+				USI_SPI_wait();		// wait for transmission to finish
+			}
+			else{}	/* all other requests, do nothing */
 		}
-		else{}	/* all other requests, do nothing */
+		else{}	/* if not selected, do nothing */		
 	}	/* End of while */
 	return 0;
 }	/* End of main */

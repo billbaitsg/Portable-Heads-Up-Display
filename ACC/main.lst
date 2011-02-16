@@ -18,38 +18,77 @@
   26 0002 00D0      		rcall USI_SPI_initslave
   27               	.LM4:
   28               	/* #APP */
-  29               	 ;  29 "main.c" 1
+  29               	 ;  32 "main.c" 1
   30 0004 7894      		sei
   31               	 ;  0 "" 2
-  32               	/* #NOAPP */
-  33               	.L2:
-  34 0006 00C0      		rjmp .L2
-  35               	.LFE6:
-  37               	.global	X_AXIS
-  38               		.data
-  41               	X_AXIS:
-  42 0000 0A        		.byte	10
-  43               	.global	Y_AXIS
-  46               	Y_AXIS:
-  47 0001 14        		.byte	20
-  48               	.global	Z_AXIS
-  51               	Z_AXIS:
-  52 0002 1E        		.byte	30
-  77               	.Letext0:
+  32               	.LVL0:
+  33               	/* #NOAPP */
+  34               	.L8:
+  35               	.LM5:
+  36 0006 00D0      		rcall USI_SPI_getc
+  37               	.LVL1:
+  38               	.LM6:
+  39 0008 CF99      		sbic 57-32,7
+  40 000a 00C0      		rjmp .L8
+  41               	.LM7:
+  42 000c 8835      		cpi r24,lo8(88)
+  43               	.LVL2:
+  44 000e 01F4      		brne .L3
+  45               	.LM8:
+  46 0010 8091 0000 		lds r24,X_AXIS
+  47               	.LVL3:
+  48 0014 00C0      		rjmp .L9
+  49               	.LVL4:
+  50               	.L3:
+  51               	.LM9:
+  52 0016 8935      		cpi r24,lo8(89)
+  53 0018 01F4      		brne .L4
+  54               	.LM10:
+  55 001a 8091 0000 		lds r24,Y_AXIS
+  56               	.LVL5:
+  57 001e 00C0      		rjmp .L9
+  58               	.LVL6:
+  59               	.L4:
+  60               	.LM11:
+  61 0020 8A35      		cpi r24,lo8(90)
+  62 0022 01F4      		brne .L8
+  63               	.LM12:
+  64 0024 8091 0000 		lds r24,Z_AXIS
+  65               	.LVL7:
+  66               	.L9:
+  67 0028 00D0      		rcall USI_SPI_putc
+  68               	.LM13:
+  69 002a 00D0      		rcall USI_SPI_wait
+  70 002c 00C0      		rjmp .L8
+  71               	.LFE6:
+  73               	.global	X_AXIS
+  74               		.data
+  77               	X_AXIS:
+  78 0000 0A        		.byte	10
+  79               	.global	Y_AXIS
+  82               	Y_AXIS:
+  83 0001 14        		.byte	20
+  84               	.global	Z_AXIS
+  87               	Z_AXIS:
+  88 0002 1E        		.byte	30
+ 113               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\BILLTA~1\AppData\Local\Temp/ccp5BAE8.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccp5BAE8.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccp5BAE8.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccp5BAE8.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccp5BAE8.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccp5BAE8.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccp5BAE8.s:18     .text:00000000 main
-C:\Users\BILLTA~1\AppData\Local\Temp/ccp5BAE8.s:41     .data:00000000 X_AXIS
-C:\Users\BILLTA~1\AppData\Local\Temp/ccp5BAE8.s:46     .data:00000001 Y_AXIS
-C:\Users\BILLTA~1\AppData\Local\Temp/ccp5BAE8.s:51     .data:00000002 Z_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccxNWTJd.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccxNWTJd.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccxNWTJd.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccxNWTJd.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccxNWTJd.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccxNWTJd.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccxNWTJd.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/ccxNWTJd.s:77     .data:00000000 X_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccxNWTJd.s:82     .data:00000001 Y_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccxNWTJd.s:87     .data:00000002 Z_AXIS
 
 UNDEFINED SYMBOLS
 adc_init
 USI_SPI_initslave
+USI_SPI_getc
+USI_SPI_putc
+USI_SPI_wait
 __do_copy_data

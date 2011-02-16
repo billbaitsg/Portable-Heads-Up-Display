@@ -54,40 +54,6 @@ ISR(TIM0_COMPA_vect)
 	USICR |= (1<<USITC);	// Toggle clock output pin.
 }
 
-/* USI SPI start condition interrupt */
-ISR(USI_START_vect)
-{
-	/* Local Variables */
-	unsigned char cmd = 0;
-	cmd = USI_SPI_getc();
-	if( !USI_SS )	/* if this SPI slave is selected */
-	{
-		if( cmd == 'X' )	/* if the X axis is requested */
-		{
-			USI_SPI_putc(X_AXIS);	/* Send X-axis value */
-			USI_SPI_wait();			/* wait for transmission to finish */
-		}
-		else if( cmd == 'Y' )	/* if the Y axis is requested */
-		{
-			USI_SPI_putc(Y_AXIS);	/* Send Y-axis value */
-			USI_SPI_wait();			/* wait for transmission to finish */
-		}
-		else if( cmd == 'Z' )	/* if the Z axis is requested */
-		{
-			USI_SPI_putc(Z_AXIS);	/* Send X-axis value */
-			USI_SPI_wait();			/* wait for transmission to finish */
-		}
-		else	/* all other requests, do nothing */
-		{
-			/* Do nothing */
-		}/* End of if */
-	}
-	else	/* if not selected, do nothing */
-	{
-		/* Do nothing */
-	}/* End of if */
-}
-
 /*! \brief  USI Timer Overflow Interrupt handler.
  *
  *  This handler disables the compare match interrupt if in master mode.

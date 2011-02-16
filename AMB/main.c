@@ -31,13 +31,19 @@ int main(void)
 	while(1)
 	{
 		cmd = USI_SPI_getc();
-		USI_SPI_wait();
-		if( cmd == 'L' )	/* if the X axis is requested */
+		if( !USI_SS )	/* if this SPI slave is selected */
 		{
-			USI_SPI_putc(LIGHT);	// Send temp value to SPI and increment
-			USI_SPI_wait();		// wait for transmission to finish
+			if( cmd == 'L' )	/* if the X axis is requested */
+			{
+				USI_SPI_putc(LIGHT);	// Send temp value to SPI and increment
+				USI_SPI_wait();		// wait for transmission to finish
+			}
+			else{}	/* all other requests, do nothing */
 		}
-		else{}	/* all other requests, do nothing */
+		else	/* if not selected, do nothing */
+		{
+			/* Do nothing */
+		}/* End of if */
 	}	/* End of while */
 	return 0;
 }	/* End of main */

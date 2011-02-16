@@ -188,20 +188,20 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
                 0x0000003e                __vector_4
                 0x0000003e                __vector_9
                 0x0000003e                __vector_2
- .text          0x00000040       0x1c main.o
+ .text          0x00000040       0x1a main.o
                 0x00000040                main
- .text          0x0000005c       0x36 adc.o
-                0x0000005c                adc_init
-                0x00000072                __vector_8
- .text          0x00000092      0x134 usi.o
+ .text          0x0000005a       0x36 adc.o
+                0x0000005a                adc_init
+                0x00000070                __vector_8
+ .text          0x00000090      0x136 usi.o
                 0x00000164                USI_SPI_putc
-                0x00000132                USI_SPI_initslave
-                0x000000f6                USI_SPI_initmaster
-                0x000000a8                __vector_13
+                0x00000130                USI_SPI_initslave
+                0x000000f4                USI_SPI_initmaster
+                0x000000a6                __vector_13
                 0x000001b6                USI_SPI_getc
                 0x000001bc                USI_SPI_wait
-                0x000000bc                __vector_14
-                0x00000092                __vector_10
+                0x000000ba                __vector_14
+                0x00000090                __vector_10
  .text          0x000001c6        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
  .text          0x000001c6        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
                 0x000001c6                . = ALIGN (0x2)
@@ -346,11 +346,11 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
  .debug_pubnames
                 0x00000053       0xc5 usi.o
 
-.debug_info     0x00000000      0x2d3
+.debug_info     0x00000000      0x2d5
  *(.debug_info)
- .debug_info    0x00000000       0xa6 main.o
- .debug_info    0x000000a6       0x9f adc.o
- .debug_info    0x00000145      0x18e usi.o
+ .debug_info    0x00000000       0xa8 main.o
+ .debug_info    0x000000a8       0x9f adc.o
+ .debug_info    0x00000147      0x18e usi.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev   0x00000000      0x17d
@@ -380,9 +380,10 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
  .debug_str     0x000000ab       0xce usi.o
                                 0x186 (size before relaxing)
 
-.debug_loc      0x00000000       0x1e
+.debug_loc      0x00000000       0x3c
  *(.debug_loc)
- .debug_loc     0x00000000       0x1e usi.o
+ .debug_loc     0x00000000       0x1e main.o
+ .debug_loc     0x0000001e       0x1e usi.o
 
 .debug_macinfo
  *(.debug_macinfo)

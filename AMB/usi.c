@@ -132,8 +132,8 @@ void USI_SPI_initslave(void)
 {
 	// Configure port directions.
 	USI_DIR_REG |= (1<<USI_DATAOUT_PIN);                      // Outputs.
-	USI_DIR_REG &= ~(1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN); // Inputs.
-	USI_OUT_REG |= (1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN);  // Pull-ups.
+	USI_DIR_REG &= ~(1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN) | (1<<USI_SELECT_PIN); // Inputs.
+	USI_OUT_REG |= (1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN) | (1<<USI_SELECT_PIN);  // Pull-ups.
 	
 	// Configure USI to 3-wire slave mode with overflow interrupt.
 	USICR = (1<<USIOIE) | (1<<USIWM0) |
