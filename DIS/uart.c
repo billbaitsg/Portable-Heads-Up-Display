@@ -29,10 +29,11 @@ void UART_init( unsigned int ubrr )
 	UBRR0L = (unsigned char)ubrr;
 	/* Enable receiver and transmitter */
 	UCSR0B = (1<<RXEN0)|(1<<TXEN0);
-	/* Set frame format: 8 data, 1 stop bit */
-	UCSR0C = (0<<USBS0)|(3<<UCSZ00);
+	/* Set frame format: 7 data, 1 stop, odd parity */
+	UCSR0C |= (1<<UCSZ01);	/* 7 data bits */
+	UCSR0C |= (1<<UPM01) | (1<<UPM00);	/* odd parity */
 	/* Enable the USART Recieve Complete interrupt (USART_RXC) */
-	UCSR0B |= (1<<RXCIE0);	
+	//UCSR0B |= (1<<RXCIE0);	
 }
 
 /* Send a byte via UART, from datasheet */
@@ -58,38 +59,4 @@ void UART_flush( void )
 {
 	unsigned char dummy;
 	while ( UCSR0A & (1<<RXC0) ) dummy = UDR0;
-}
-
-/* UART receive complete interrupt */
-ISR( USART_RXC_vect )
-{
-	/* Local Variables */
-	unsigned char rx = 0;
-	
-	/* Wait for completion of transmit (should be redundant) */
-	while ( !(UCSR0A & (1<<RXC0)) );	
-	// /* if BUFFER_SIZE is reached, reset to start of buffer */
-	// if (UART_BUF_CNT==UART_BUFFER_SIZE) 
-	// {
-		// UART_BUF_CNT=0;
-	// }/* End of if */
-	// /* Put character in buffer and increment counter */
-	// UART_BUFFER[UART_BUF_CNT++] = UDR0;
-	// /* Put up UART recieve byte complete flag */
-	//UART_FLAGS |= (1<<UART_RXC);
-	
-	rx = UDR0;
-	UART_putc(rx+1);
-}
-
-/* UART transmit complete interrupt */
-ISR( USART_TXC_vect )
-{
-	
-}
-
-/* UART data register empty */
-ISR( USART_DRE_vect )
-{
-
 }

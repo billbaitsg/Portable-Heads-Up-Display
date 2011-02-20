@@ -20,9 +20,6 @@ Portable Heads Up Display
 	void UART_putc( unsigned char data );
 	unsigned char UART_getc( void );
 	void UART_flush( void );
-	ISR( USART_RXC_vect );
-	ISR( USART_TXC_vect );
-	ISR( USART_DRE_vect );
 	
 	/* Global Variables */
 	extern volatile unsigned char UART_BUFFER[];

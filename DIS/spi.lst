@@ -1,0 +1,110 @@
+   1               		.file	"spi.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	SPI_MasterInit
+  18               	SPI_MasterInit:
+  19               	.LFB7:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 8CE2      		ldi r24,lo8(44)
+  25 0002 84B9      		out 36-32,r24
+  26               	.LM3:
+  27 0004 82E5      		ldi r24,lo8(82)
+  28 0006 8CBD      		out 76-32,r24
+  29               	.LM4:
+  30 0008 8DB5      		in r24,77-32
+  31               	.LVL0:
+  32               	.LM5:
+  33 000a 8EB5      		in r24,78-32
+  34               	.LVL1:
+  35               	/* epilogue start */
+  36               	.LM6:
+  37 000c 0895      		ret
+  38               	.LFE7:
+  40               	.global	SPI_putc
+  42               	SPI_putc:
+  43               	.LFB8:
+  44               	.LM7:
+  45               	.LVL2:
+  46               	/* prologue: function */
+  47               	/* frame size = 0 */
+  48               	.LM8:
+  49 000e 8EBD      		out 78-32,r24
+  50               	/* epilogue start */
+  51               	.LM9:
+  52 0010 0895      		ret
+  53               	.LFE8:
+  55               	.global	SPI_SlaveInit
+  57               	SPI_SlaveInit:
+  58               	.LFB9:
+  59               	.LM10:
+  60               	/* prologue: function */
+  61               	/* frame size = 0 */
+  62               	.LM11:
+  63 0012 80E1      		ldi r24,lo8(16)
+  64 0014 84B9      		out 36-32,r24
+  65               	.LM12:
+  66 0016 80EC      		ldi r24,lo8(-64)
+  67 0018 8CBD      		out 76-32,r24
+  68               	/* epilogue start */
+  69               	.LM13:
+  70 001a 0895      		ret
+  71               	.LFE9:
+  73               	.global	SPI_SSn
+  75               	SPI_SSn:
+  76               	.LFB10:
+  77               	.LM14:
+  78               	.LVL3:
+  79               	/* prologue: function */
+  80               	/* frame size = 0 */
+  81               	.LM15:
+  82 001c 8823      		tst r24
+  83 001e 01F4      		brne .L8
+  84               	.LM16:
+  85 0020 249A      		sbi 36-32,4
+  86 0022 0895      		ret
+  87               	.L8:
+  88               	.LM17:
+  89 0024 2498      		cbi 36-32,4
+  90 0026 0895      		ret
+  91               	.LFE10:
+  93               	.global	SPI_getc
+  95               	SPI_getc:
+  96               	.LFB11:
+  97               	.LM18:
+  98               	/* prologue: function */
+  99               	/* frame size = 0 */
+ 100               	.L12:
+ 101               	.LM19:
+ 102 0028 0DB4      		in __tmp_reg__,77-32
+ 103 002a 07FE      		sbrs __tmp_reg__,7
+ 104 002c 00C0      		rjmp .L12
+ 105               	.LM20:
+ 106 002e 8EB5      		in r24,78-32
+ 107               	/* epilogue start */
+ 108               	.LM21:
+ 109 0030 0895      		ret
+ 110               	.LFE11:
+ 168               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 spi.c
+C:\Users\BILLBA~1\AppData\Local\Temp/ccF5puMd.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccF5puMd.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccF5puMd.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccF5puMd.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccF5puMd.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccF5puMd.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccF5puMd.s:18     .text:00000000 SPI_MasterInit
+C:\Users\BILLBA~1\AppData\Local\Temp/ccF5puMd.s:42     .text:0000000e SPI_putc
+C:\Users\BILLBA~1\AppData\Local\Temp/ccF5puMd.s:57     .text:00000012 SPI_SlaveInit
+C:\Users\BILLBA~1\AppData\Local\Temp/ccF5puMd.s:75     .text:0000001c SPI_SSn
+C:\Users\BILLBA~1\AppData\Local\Temp/ccF5puMd.s:95     .text:00000028 SPI_getc
+
+NO UNDEFINED SYMBOLS

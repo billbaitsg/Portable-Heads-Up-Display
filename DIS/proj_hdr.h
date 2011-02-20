@@ -24,5 +24,6 @@ Portable Heads Up Display
 	/* Module Includes */
 	#include "spi.h"
 	#include "uart.h"
+	#include "vfd.h"
 	
 #endif

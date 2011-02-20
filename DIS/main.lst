@@ -1,0 +1,109 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB7:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 83E3      		ldi r24,lo8(51)
+  25 0002 90E0      		ldi r25,hi8(51)
+  26 0004 0E94 0000 		call UART_init
+  27               	.LM3:
+  28 0008 0E94 0000 		call SPI_SlaveInit
+  29               	.LM4:
+  30               	/* #APP */
+  31               	 ;  46 "main.c" 1
+  32 000c 7894      		sei
+  33               	 ;  0 "" 2
+  34               	/* #NOAPP */
+  35               	.L2:
+  36               	.LM5:
+  37 000e 0E94 0000 		call SPI_getc
+  38               	.LM6:
+  39 0012 8B5F      		subi r24,lo8(-(5))
+  40 0014 0E94 0000 		call SPI_putc
+  41 0018 00C0      		rjmp .L2
+  42               	.LFE7:
+  44               	.global	X_AXIS
+  45               	.global	X_AXIS
+  46               		.section .bss
+  49               	X_AXIS:
+  50 0000 00        		.skip 1,0
+  51               	.global	Y_AXIS
+  52               	.global	Y_AXIS
+  55               	Y_AXIS:
+  56 0001 00        		.skip 1,0
+  57               	.global	Z_AXIS
+  58               	.global	Z_AXIS
+  61               	Z_AXIS:
+  62 0002 00        		.skip 1,0
+  63               	.global	RANGE
+  64               	.global	RANGE
+  67               	RANGE:
+  68 0003 00        		.skip 1,0
+  69               	.global	LIGHT
+  70               	.global	LIGHT
+  73               	LIGHT:
+  74 0004 00        		.skip 1,0
+  75               	.global	ALTITUDE
+  76               	.global	ALTITUDE
+  79               	ALTITUDE:
+  80 0005 0000      		.skip 2,0
+  81               	.global	SPEED
+  82               	.global	SPEED
+  85               	SPEED:
+  86 0007 0000      		.skip 2,0
+  87               	.global	BEARING
+  88               	.global	BEARING
+  91               	BEARING:
+  92 0009 00        		.skip 1,0
+  93               	.global	HOURS
+  94               		.data
+  97               	HOURS:
+  98 0000 0C        		.byte	12
+  99               	.global	MINUTES
+ 100               	.global	MINUTES
+ 101               		.section .bss
+ 104               	MINUTES:
+ 105 000a 00        		.skip 1,0
+ 106               	.global	SECONDS
+ 107               	.global	SECONDS
+ 110               	SECONDS:
+ 111 000b 00        		.skip 1,0
+ 136               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:49     .bss:00000000 X_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:55     .bss:00000001 Y_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:61     .bss:00000002 Z_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:67     .bss:00000003 RANGE
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:73     .bss:00000004 LIGHT
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:79     .bss:00000005 ALTITUDE
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:85     .bss:00000007 SPEED
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:91     .bss:00000009 BEARING
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:97     .data:00000000 HOURS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:104    .bss:0000000a MINUTES
+C:\Users\BILLBA~1\AppData\Local\Temp/ccLsPM32.s:110    .bss:0000000b SECONDS
+
+UNDEFINED SYMBOLS
+UART_init
+SPI_SlaveInit
+SPI_getc
+SPI_putc
+__do_copy_data
+__do_clear_bss

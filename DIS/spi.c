@@ -33,14 +33,14 @@ void SPI_putc(char cData)
 	/* Start transmission */
 	SPDR = cData;
 	/* Wait for transmission complete */
-	while(!(SPSR & (1<<SPIF)));
+	//while(!(SPSR & (1<<SPIF)));
 }
 
 /* Initialize the SPI for slave mode */
 void SPI_SlaveInit(void)
 {
 	/* Set MISO output, all others input */
-	//DDR_SPI = (1<<DD_MISO);
+	DDR_SPI = (1<<DD_MISO);
 	/* Enable SPI */
 	SPCR = (1<<SPIE)|(1<<SPE);
 }
@@ -62,8 +62,7 @@ void SPI_SSn(unsigned char mode)
 char SPI_getc(void)
 {
 	/* Wait for reception complete */
-	while(!(SPSR & (1<<SPIF)))
-	;
+	while(!(SPSR & (1<<SPIF)))	;
 	/* Return Data Register */
 	return SPDR;
 }

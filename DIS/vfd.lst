@@ -1,0 +1,814 @@
+   1               		.file	"vfd.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	cancel
+  18               	cancel:
+  19               	.LFB31:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 88E1      		ldi r24,lo8(24)
+  25 0002 0E94 0000 		call UART_putc
+  26               	/* epilogue start */
+  27               	.LM3:
+  28 0006 0895      		ret
+  29               	.LFE31:
+  31               	.global	rcvd_data_test_exit
+  33               	rcvd_data_test_exit:
+  34               	.LFB30:
+  35               	.LM4:
+  36               	/* prologue: function */
+  37               	/* frame size = 0 */
+  38               	.LM5:
+  39 0008 8BE1      		ldi r24,lo8(27)
+  40 000a 0E94 0000 		call UART_putc
+  41               	.LM6:
+  42 000e 85E4      		ldi r24,lo8(69)
+  43 0010 0E94 0000 		call UART_putc
+  44               	/* epilogue start */
+  45               	.LM7:
+  46 0014 0895      		ret
+  47               	.LFE30:
+  49               	.global	rcvd_data_test
+  51               	rcvd_data_test:
+  52               	.LFB29:
+  53               	.LM8:
+  54               	/* prologue: function */
+  55               	/* frame size = 0 */
+  56               	.LM9:
+  57 0016 8BE1      		ldi r24,lo8(27)
+  58 0018 0E94 0000 		call UART_putc
+  59               	.LM10:
+  60 001c 84E4      		ldi r24,lo8(68)
+  61 001e 0E94 0000 		call UART_putc
+  62               	/* epilogue start */
+  63               	.LM11:
+  64 0022 0895      		ret
+  65               	.LFE29:
+  67               	.global	self_test
+  69               	self_test:
+  70               	.LFB28:
+  71               	.LM12:
+  72               	/* prologue: function */
+  73               	/* frame size = 0 */
+  74               	.LM13:
+  75 0024 8BE1      		ldi r24,lo8(27)
+  76 0026 0E94 0000 		call UART_putc
+  77               	.LM14:
+  78 002a 82E4      		ldi r24,lo8(66)
+  79 002c 0E94 0000 		call UART_putc
+  80               	/* epilogue start */
+  81               	.LM15:
+  82 0030 0895      		ret
+  83               	.LFE28:
+  85               	.global	brightness
+  87               	brightness:
+  88               	.LFB27:
+  89               	.LM16:
+  90               	.LVL0:
+  91 0032 1F93      		push r17
+  92               	/* prologue: function */
+  93               	/* frame size = 0 */
+  94 0034 182F      		mov r17,r24
+  95               	.LM17:
+  96 0036 8BE1      		ldi r24,lo8(27)
+  97               	.LVL1:
+  98 0038 0E94 0000 		call UART_putc
+  99               	.LM18:
+ 100 003c 83E2      		ldi r24,lo8(35)
+ 101 003e 0E94 0000 		call UART_putc
+ 102               	.LM19:
+ 103 0042 1130      		cpi r17,lo8(1)
+ 104 0044 01F4      		brne .L10
+ 105               	.LM20:
+ 106 0046 81E6      		ldi r24,lo8(97)
+ 107 0048 00C0      		rjmp .L16
+ 108               	.L10:
+ 109               	.LM21:
+ 110 004a 1230      		cpi r17,lo8(2)
+ 111 004c 01F4      		brne .L12
+ 112               	.LM22:
+ 113 004e 82E6      		ldi r24,lo8(98)
+ 114 0050 00C0      		rjmp .L16
+ 115               	.L12:
+ 116               	.LM23:
+ 117 0052 1330      		cpi r17,lo8(3)
+ 118 0054 01F4      		brne .L13
+ 119               	.LM24:
+ 120 0056 83E6      		ldi r24,lo8(99)
+ 121 0058 00C0      		rjmp .L16
+ 122               	.L13:
+ 123               	.LM25:
+ 124 005a 84E6      		ldi r24,lo8(100)
+ 125               	.L16:
+ 126 005c 0E94 0000 		call UART_putc
+ 127               	/* epilogue start */
+ 128               	.LM26:
+ 129 0060 1F91      		pop r17
+ 130               	.LVL2:
+ 131 0062 0895      		ret
+ 132               	.LFE27:
+ 134               	.global	dpmm
+ 136               	dpmm:
+ 137               	.LFB26:
+ 138               	.LM27:
+ 139               	.LVL3:
+ 140 0064 AF92      		push r10
+ 141               	.LVL4:
+ 142 0066 BF92      		push r11
+ 143 0068 CF92      		push r12
+ 144               	.LVL5:
+ 145 006a DF92      		push r13
+ 146 006c EF92      		push r14
+ 147               	.LVL6:
+ 148 006e FF92      		push r15
+ 149 0070 0F93      		push r16
+ 150               	.LVL7:
+ 151 0072 1F93      		push r17
+ 152               	/* prologue: function */
+ 153               	/* frame size = 0 */
+ 154 0074 182F      		mov r17,r24
+ 155 0076 F62E      		mov r15,r22
+ 156 0078 D42E      		mov r13,r20
+ 157 007a B22E      		mov r11,r18
+ 158               	.LM28:
+ 159 007c 8BE1      		ldi r24,lo8(27)
+ 160               	.LVL8:
+ 161 007e 0E94 0000 		call UART_putc
+ 162               	.LVL9:
+ 163               	.LM29:
+ 164 0082 8FE2      		ldi r24,lo8(47)
+ 165 0084 0E94 0000 		call UART_putc
+ 166               	.LM30:
+ 167 0088 84E3      		ldi r24,lo8(52)
+ 168 008a 0E94 0000 		call UART_putc
+ 169               	.LM31:
+ 170 008e 812F      		mov r24,r17
+ 171 0090 805D      		subi r24,lo8(-(48))
+ 172 0092 0E94 0000 		call UART_putc
+ 173               	.LM32:
+ 174 0096 8F2D      		mov r24,r15
+ 175 0098 805D      		subi r24,lo8(-(48))
+ 176 009a 0E94 0000 		call UART_putc
+ 177               	.LM33:
+ 178 009e 8D2D      		mov r24,r13
+ 179 00a0 805D      		subi r24,lo8(-(48))
+ 180 00a2 0E94 0000 		call UART_putc
+ 181               	.LM34:
+ 182 00a6 8B2D      		mov r24,r11
+ 183 00a8 805D      		subi r24,lo8(-(48))
+ 184 00aa 0E94 0000 		call UART_putc
+ 185               	.LM35:
+ 186 00ae 8CE2      		ldi r24,lo8(44)
+ 187 00b0 0E94 0000 		call UART_putc
+ 188               	.LM36:
+ 189 00b4 802F      		mov r24,r16
+ 190               	.LVL10:
+ 191 00b6 805D      		subi r24,lo8(-(48))
+ 192 00b8 0E94 0000 		call UART_putc
+ 193               	.LM37:
+ 194 00bc 8E2D      		mov r24,r14
+ 195               	.LVL11:
+ 196 00be 805D      		subi r24,lo8(-(48))
+ 197 00c0 0E94 0000 		call UART_putc
+ 198               	.LM38:
+ 199 00c4 8C2D      		mov r24,r12
+ 200               	.LVL12:
+ 201 00c6 805D      		subi r24,lo8(-(48))
+ 202 00c8 0E94 0000 		call UART_putc
+ 203               	.LM39:
+ 204 00cc 8A2D      		mov r24,r10
+ 205               	.LVL13:
+ 206 00ce 805D      		subi r24,lo8(-(48))
+ 207 00d0 0E94 0000 		call UART_putc
+ 208               	.LM40:
+ 209 00d4 8CE2      		ldi r24,lo8(44)
+ 210 00d6 0E94 0000 		call UART_putc
+ 211               	.LM41:
+ 212 00da 87E6      		ldi r24,lo8(103)
+ 213 00dc 0E94 0000 		call UART_putc
+ 214               	/* epilogue start */
+ 215               	.LM42:
+ 216 00e0 1F91      		pop r17
+ 217               	.LVL14:
+ 218 00e2 0F91      		pop r16
+ 219               	.LVL15:
+ 220 00e4 FF90      		pop r15
+ 221               	.LVL16:
+ 222 00e6 EF90      		pop r14
+ 223               	.LVL17:
+ 224 00e8 DF90      		pop r13
+ 225               	.LVL18:
+ 226 00ea CF90      		pop r12
+ 227               	.LVL19:
+ 228 00ec BF90      		pop r11
+ 229               	.LVL20:
+ 230 00ee AF90      		pop r10
+ 231               	.LVL21:
+ 232 00f0 0895      		ret
+ 233               	.LFE26:
+ 235               	.global	double_double
+ 237               	double_double:
+ 238               	.LFB25:
+ 239               	.LM43:
+ 240               	/* prologue: function */
+ 241               	/* frame size = 0 */
+ 242               	.LM44:
+ 243 00f2 8BE1      		ldi r24,lo8(27)
+ 244 00f4 0E94 0000 		call UART_putc
+ 245               	.LM45:
+ 246 00f8 83E2      		ldi r24,lo8(35)
+ 247 00fa 0E94 0000 		call UART_putc
+ 248               	.LM46:
+ 249 00fe 83E3      		ldi r24,lo8(51)
+ 250 0100 0E94 0000 		call UART_putc
+ 251               	/* epilogue start */
+ 252               	.LM47:
+ 253 0104 0895      		ret
+ 254               	.LFE25:
+ 256               	.global	single_single
+ 258               	single_single:
+ 259               	.LFB24:
+ 260               	.LM48:
+ 261               	/* prologue: function */
+ 262               	/* frame size = 0 */
+ 263               	.LM49:
+ 264 0106 8BE1      		ldi r24,lo8(27)
+ 265 0108 0E94 0000 		call UART_putc
+ 266               	.LM50:
+ 267 010c 83E2      		ldi r24,lo8(35)
+ 268 010e 0E94 0000 		call UART_putc
+ 269               	.LM51:
+ 270 0112 85E3      		ldi r24,lo8(53)
+ 271 0114 0E94 0000 		call UART_putc
+ 272               	/* epilogue start */
+ 273               	.LM52:
+ 274 0118 0895      		ret
+ 275               	.LFE24:
+ 277               	.global	reset
+ 279               	reset:
+ 280               	.LFB23:
+ 281               	.LM53:
+ 282               	/* prologue: function */
+ 283               	/* frame size = 0 */
+ 284               	.LM54:
+ 285 011a 8BE1      		ldi r24,lo8(27)
+ 286 011c 0E94 0000 		call UART_putc
+ 287               	.LM55:
+ 288 0120 83E4      		ldi r24,lo8(67)
+ 289 0122 0E94 0000 		call UART_putc
+ 290               	/* epilogue start */
+ 291               	.LM56:
+ 292 0126 0895      		ret
+ 293               	.LFE23:
+ 295               	.global	blinking_off
+ 297               	blinking_off:
+ 298               	.LFB22:
+ 299               	.LM57:
+ 300               	/* prologue: function */
+ 301               	/* frame size = 0 */
+ 302               	.LM58:
+ 303 0128 8BE1      		ldi r24,lo8(27)
+ 304 012a 0E94 0000 		call UART_putc
+ 305               	.LM59:
+ 306 012e 8BE5      		ldi r24,lo8(91)
+ 307 0130 0E94 0000 		call UART_putc
+ 308               	.LM60:
+ 309 0134 82E3      		ldi r24,lo8(50)
+ 310 0136 0E94 0000 		call UART_putc
+ 311               	.LM61:
+ 312 013a 85E3      		ldi r24,lo8(53)
+ 313 013c 0E94 0000 		call UART_putc
+ 314               	.LM62:
+ 315 0140 8DE6      		ldi r24,lo8(109)
+ 316 0142 0E94 0000 		call UART_putc
+ 317               	/* epilogue start */
+ 318               	.LM63:
+ 319 0146 0895      		ret
+ 320               	.LFE22:
+ 322               	.global	blinking_on
+ 324               	blinking_on:
+ 325               	.LFB21:
+ 326               	.LM64:
+ 327               	/* prologue: function */
+ 328               	/* frame size = 0 */
+ 329               	.LM65:
+ 330 0148 8BE1      		ldi r24,lo8(27)
+ 331 014a 0E94 0000 		call UART_putc
+ 332               	.LM66:
+ 333 014e 8BE5      		ldi r24,lo8(91)
+ 334 0150 0E94 0000 		call UART_putc
+ 335               	.LM67:
+ 336 0154 85E3      		ldi r24,lo8(53)
+ 337 0156 0E94 0000 		call UART_putc
+ 338               	.LM68:
+ 339 015a 8DE6      		ldi r24,lo8(109)
+ 340 015c 0E94 0000 		call UART_putc
+ 341               	/* epilogue start */
+ 342               	.LM69:
+ 343 0160 0895      		ret
+ 344               	.LFE21:
+ 346               	.global	reverse_video_off
+ 348               	reverse_video_off:
+ 349               	.LFB20:
+ 350               	.LM70:
+ 351               	/* prologue: function */
+ 352               	/* frame size = 0 */
+ 353               	.LM71:
+ 354 0162 8BE1      		ldi r24,lo8(27)
+ 355 0164 0E94 0000 		call UART_putc
+ 356               	.LM72:
+ 357 0168 8BE5      		ldi r24,lo8(91)
+ 358 016a 0E94 0000 		call UART_putc
+ 359               	.LM73:
+ 360 016e 82E3      		ldi r24,lo8(50)
+ 361 0170 0E94 0000 		call UART_putc
+ 362               	.LM74:
+ 363 0174 87E3      		ldi r24,lo8(55)
+ 364 0176 0E94 0000 		call UART_putc
+ 365               	.LM75:
+ 366 017a 8DE6      		ldi r24,lo8(109)
+ 367 017c 0E94 0000 		call UART_putc
+ 368               	/* epilogue start */
+ 369               	.LM76:
+ 370 0180 0895      		ret
+ 371               	.LFE20:
+ 373               	.global	reverse_video_on
+ 375               	reverse_video_on:
+ 376               	.LFB19:
+ 377               	.LM77:
+ 378               	/* prologue: function */
+ 379               	/* frame size = 0 */
+ 380               	.LM78:
+ 381 0182 8BE1      		ldi r24,lo8(27)
+ 382 0184 0E94 0000 		call UART_putc
+ 383               	.LM79:
+ 384 0188 8BE5      		ldi r24,lo8(91)
+ 385 018a 0E94 0000 		call UART_putc
+ 386               	.LM80:
+ 387 018e 87E3      		ldi r24,lo8(55)
+ 388 0190 0E94 0000 		call UART_putc
+ 389               	.LM81:
+ 390 0194 8DE6      		ldi r24,lo8(109)
+ 391 0196 0E94 0000 		call UART_putc
+ 392               	/* epilogue start */
+ 393               	.LM82:
+ 394 019a 0895      		ret
+ 395               	.LFE19:
+ 397               	.global	clear_all_attributes
+ 399               	clear_all_attributes:
+ 400               	.LFB18:
+ 401               	.LM83:
+ 402               	/* prologue: function */
+ 403               	/* frame size = 0 */
+ 404               	.LM84:
+ 405 019c 8BE1      		ldi r24,lo8(27)
+ 406 019e 0E94 0000 		call UART_putc
+ 407               	.LM85:
+ 408 01a2 8BE5      		ldi r24,lo8(91)
+ 409 01a4 0E94 0000 		call UART_putc
+ 410               	.LM86:
+ 411 01a8 80E3      		ldi r24,lo8(48)
+ 412 01aa 0E94 0000 		call UART_putc
+ 413               	.LM87:
+ 414 01ae 8DE6      		ldi r24,lo8(109)
+ 415 01b0 0E94 0000 		call UART_putc
+ 416               	/* epilogue start */
+ 417               	.LM88:
+ 418 01b4 0895      		ret
+ 419               	.LFE18:
+ 421               	.global	auto_linefeed_off
+ 423               	auto_linefeed_off:
+ 424               	.LFB17:
+ 425               	.LM89:
+ 426               	/* prologue: function */
+ 427               	/* frame size = 0 */
+ 428               	.LM90:
+ 429 01b6 8BE1      		ldi r24,lo8(27)
+ 430 01b8 0E94 0000 		call UART_putc
+ 431               	.LM91:
+ 432 01bc 8BE5      		ldi r24,lo8(91)
+ 433 01be 0E94 0000 		call UART_putc
+ 434               	.LM92:
+ 435 01c2 82E3      		ldi r24,lo8(50)
+ 436 01c4 0E94 0000 		call UART_putc
+ 437               	.LM93:
+ 438 01c8 80E3      		ldi r24,lo8(48)
+ 439 01ca 0E94 0000 		call UART_putc
+ 440               	.LM94:
+ 441 01ce 8CE6      		ldi r24,lo8(108)
+ 442 01d0 0E94 0000 		call UART_putc
+ 443               	/* epilogue start */
+ 444               	.LM95:
+ 445 01d4 0895      		ret
+ 446               	.LFE17:
+ 448               	.global	auto_linefeed_on
+ 450               	auto_linefeed_on:
+ 451               	.LFB16:
+ 452               	.LM96:
+ 453               	/* prologue: function */
+ 454               	/* frame size = 0 */
+ 455               	.LM97:
+ 456 01d6 8BE1      		ldi r24,lo8(27)
+ 457 01d8 0E94 0000 		call UART_putc
+ 458               	.LM98:
+ 459 01dc 8BE5      		ldi r24,lo8(91)
+ 460 01de 0E94 0000 		call UART_putc
+ 461               	.LM99:
+ 462 01e2 82E3      		ldi r24,lo8(50)
+ 463 01e4 0E94 0000 		call UART_putc
+ 464               	.LM100:
+ 465 01e8 80E3      		ldi r24,lo8(48)
+ 466 01ea 0E94 0000 		call UART_putc
+ 467               	.LM101:
+ 468 01ee 88E6      		ldi r24,lo8(104)
+ 469 01f0 0E94 0000 		call UART_putc
+ 470               	/* epilogue start */
+ 471               	.LM102:
+ 472 01f4 0895      		ret
+ 473               	.LFE16:
+ 475               	.global	restore_cursor
+ 477               	restore_cursor:
+ 478               	.LFB14:
+ 479               	.LM103:
+ 480               	/* prologue: function */
+ 481               	/* frame size = 0 */
+ 482               	.LM104:
+ 483 01f6 8BE1      		ldi r24,lo8(27)
+ 484 01f8 0E94 0000 		call UART_putc
+ 485               	.LM105:
+ 486 01fc 88E3      		ldi r24,lo8(56)
+ 487 01fe 0E94 0000 		call UART_putc
+ 488               	/* epilogue start */
+ 489               	.LM106:
+ 490 0202 0895      		ret
+ 491               	.LFE14:
+ 493               	.global	save_cursor
+ 495               	save_cursor:
+ 496               	.LFB13:
+ 497               	.LM107:
+ 498               	/* prologue: function */
+ 499               	/* frame size = 0 */
+ 500               	.LM108:
+ 501 0204 8BE1      		ldi r24,lo8(27)
+ 502 0206 0E94 0000 		call UART_putc
+ 503               	.LM109:
+ 504 020a 87E3      		ldi r24,lo8(55)
+ 505 020c 0E94 0000 		call UART_putc
+ 506               	/* epilogue start */
+ 507               	.LM110:
+ 508 0210 0895      		ret
+ 509               	.LFE13:
+ 511               	.global	cursor_position
+ 513               	cursor_position:
+ 514               	.LFB12:
+ 515               	.LM111:
+ 516               	.LVL22:
+ 517 0212 0F93      		push r16
+ 518 0214 1F93      		push r17
+ 519               	/* prologue: function */
+ 520               	/* frame size = 0 */
+ 521 0216 082F      		mov r16,r24
+ 522 0218 162F      		mov r17,r22
+ 523               	.LM112:
+ 524 021a 8BE1      		ldi r24,lo8(27)
+ 525               	.LVL23:
+ 526 021c 0E94 0000 		call UART_putc
+ 527               	.LVL24:
+ 528               	.LM113:
+ 529 0220 8BE5      		ldi r24,lo8(91)
+ 530 0222 0E94 0000 		call UART_putc
+ 531               	.LM114:
+ 532 0226 802F      		mov r24,r16
+ 533 0228 6AE0      		ldi r22,lo8(10)
+ 534 022a 0E94 0000 		call __udivmodqi4
+ 535 022e 805D      		subi r24,lo8(-(48))
+ 536 0230 0E94 0000 		call UART_putc
+ 537               	.LM115:
+ 538 0234 802F      		mov r24,r16
+ 539 0236 6AE0      		ldi r22,lo8(10)
+ 540 0238 0E94 0000 		call __udivmodqi4
+ 541 023c 892F      		mov r24,r25
+ 542 023e 805D      		subi r24,lo8(-(48))
+ 543 0240 0E94 0000 		call UART_putc
+ 544               	.LM116:
+ 545 0244 8BE3      		ldi r24,lo8(59)
+ 546 0246 0E94 0000 		call UART_putc
+ 547               	.LM117:
+ 548 024a 812F      		mov r24,r17
+ 549 024c 64E6      		ldi r22,lo8(100)
+ 550 024e 0E94 0000 		call __udivmodqi4
+ 551 0252 805D      		subi r24,lo8(-(48))
+ 552 0254 0E94 0000 		call UART_putc
+ 553               	.LM118:
+ 554 0258 812F      		mov r24,r17
+ 555 025a 6AE0      		ldi r22,lo8(10)
+ 556 025c 0E94 0000 		call __udivmodqi4
+ 557 0260 0E94 0000 		call __udivmodqi4
+ 558 0264 892F      		mov r24,r25
+ 559 0266 805D      		subi r24,lo8(-(48))
+ 560 0268 0E94 0000 		call UART_putc
+ 561               	.LM119:
+ 562 026c 812F      		mov r24,r17
+ 563 026e 6AE0      		ldi r22,lo8(10)
+ 564 0270 0E94 0000 		call __udivmodqi4
+ 565 0274 892F      		mov r24,r25
+ 566 0276 805D      		subi r24,lo8(-(48))
+ 567 0278 0E94 0000 		call UART_putc
+ 568               	.LM120:
+ 569 027c 82E5      		ldi r24,lo8(82)
+ 570 027e 0E94 0000 		call UART_putc
+ 571               	/* epilogue start */
+ 572               	.LM121:
+ 573 0282 1F91      		pop r17
+ 574               	.LVL25:
+ 575 0284 0F91      		pop r16
+ 576               	.LVL26:
+ 577 0286 0895      		ret
+ 578               	.LFE12:
+ 580               	.global	cursor_left
+ 582               	cursor_left:
+ 583               	.LFB11:
+ 584               	.LM122:
+ 585               	.LVL27:
+ 586 0288 1F93      		push r17
+ 587               	/* prologue: function */
+ 588               	/* frame size = 0 */
+ 589 028a 182F      		mov r17,r24
+ 590               	.LM123:
+ 591 028c 8BE1      		ldi r24,lo8(27)
+ 592               	.LVL28:
+ 593 028e 0E94 0000 		call UART_putc
+ 594               	.LM124:
+ 595 0292 8BE5      		ldi r24,lo8(91)
+ 596 0294 0E94 0000 		call UART_putc
+ 597               	.LM125:
+ 598 0298 812F      		mov r24,r17
+ 599 029a 805D      		subi r24,lo8(-(48))
+ 600 029c 0E94 0000 		call UART_putc
+ 601               	.LM126:
+ 602 02a0 84E4      		ldi r24,lo8(68)
+ 603 02a2 0E94 0000 		call UART_putc
+ 604               	/* epilogue start */
+ 605               	.LM127:
+ 606 02a6 1F91      		pop r17
+ 607               	.LVL29:
+ 608 02a8 0895      		ret
+ 609               	.LFE11:
+ 611               	.global	cursor_right
+ 613               	cursor_right:
+ 614               	.LFB10:
+ 615               	.LM128:
+ 616               	.LVL30:
+ 617 02aa 1F93      		push r17
+ 618               	/* prologue: function */
+ 619               	/* frame size = 0 */
+ 620 02ac 182F      		mov r17,r24
+ 621               	.LM129:
+ 622 02ae 8BE1      		ldi r24,lo8(27)
+ 623               	.LVL31:
+ 624 02b0 0E94 0000 		call UART_putc
+ 625               	.LM130:
+ 626 02b4 8BE5      		ldi r24,lo8(91)
+ 627 02b6 0E94 0000 		call UART_putc
+ 628               	.LM131:
+ 629 02ba 812F      		mov r24,r17
+ 630 02bc 805D      		subi r24,lo8(-(48))
+ 631 02be 0E94 0000 		call UART_putc
+ 632               	.LM132:
+ 633 02c2 83E4      		ldi r24,lo8(67)
+ 634 02c4 0E94 0000 		call UART_putc
+ 635               	/* epilogue start */
+ 636               	.LM133:
+ 637 02c8 1F91      		pop r17
+ 638               	.LVL32:
+ 639 02ca 0895      		ret
+ 640               	.LFE10:
+ 642               	.global	cursor_down
+ 644               	cursor_down:
+ 645               	.LFB9:
+ 646               	.LM134:
+ 647               	.LVL33:
+ 648 02cc 1F93      		push r17
+ 649               	/* prologue: function */
+ 650               	/* frame size = 0 */
+ 651 02ce 182F      		mov r17,r24
+ 652               	.LM135:
+ 653 02d0 8BE1      		ldi r24,lo8(27)
+ 654               	.LVL34:
+ 655 02d2 0E94 0000 		call UART_putc
+ 656               	.LM136:
+ 657 02d6 8BE5      		ldi r24,lo8(91)
+ 658 02d8 0E94 0000 		call UART_putc
+ 659               	.LM137:
+ 660 02dc 812F      		mov r24,r17
+ 661 02de 805D      		subi r24,lo8(-(48))
+ 662 02e0 0E94 0000 		call UART_putc
+ 663               	.LM138:
+ 664 02e4 82E4      		ldi r24,lo8(66)
+ 665 02e6 0E94 0000 		call UART_putc
+ 666               	/* epilogue start */
+ 667               	.LM139:
+ 668 02ea 1F91      		pop r17
+ 669               	.LVL35:
+ 670 02ec 0895      		ret
+ 671               	.LFE9:
+ 673               	.global	cursor_up
+ 675               	cursor_up:
+ 676               	.LFB8:
+ 677               	.LM140:
+ 678               	.LVL36:
+ 679 02ee 1F93      		push r17
+ 680               	/* prologue: function */
+ 681               	/* frame size = 0 */
+ 682 02f0 182F      		mov r17,r24
+ 683               	.LM141:
+ 684 02f2 8BE1      		ldi r24,lo8(27)
+ 685               	.LVL37:
+ 686 02f4 0E94 0000 		call UART_putc
+ 687               	.LM142:
+ 688 02f8 8BE5      		ldi r24,lo8(91)
+ 689 02fa 0E94 0000 		call UART_putc
+ 690               	.LM143:
+ 691 02fe 812F      		mov r24,r17
+ 692 0300 805D      		subi r24,lo8(-(48))
+ 693 0302 0E94 0000 		call UART_putc
+ 694               	.LM144:
+ 695 0306 81E4      		ldi r24,lo8(65)
+ 696 0308 0E94 0000 		call UART_putc
+ 697               	/* epilogue start */
+ 698               	.LM145:
+ 699 030c 1F91      		pop r17
+ 700               	.LVL38:
+ 701 030e 0895      		ret
+ 702               	.LFE8:
+ 704               	.global	cursor_home
+ 706               	cursor_home:
+ 707               	.LFB7:
+ 708               	.LM146:
+ 709               	/* prologue: function */
+ 710               	/* frame size = 0 */
+ 711               	.LM147:
+ 712 0310 8BE1      		ldi r24,lo8(27)
+ 713 0312 0E94 0000 		call UART_putc
+ 714               	.LM148:
+ 715 0316 8BE5      		ldi r24,lo8(91)
+ 716 0318 0E94 0000 		call UART_putc
+ 717               	.LM149:
+ 718 031c 88E4      		ldi r24,lo8(72)
+ 719 031e 0E94 0000 		call UART_putc
+ 720               	/* epilogue start */
+ 721               	.LM150:
+ 722 0322 0895      		ret
+ 723               	.LFE7:
+ 725               	.global	request_cursor
+ 727               	request_cursor:
+ 728               	.LFB15:
+ 729               	.LM151:
+ 730 0324 0F93      		push r16
+ 731 0326 1F93      		push r17
+ 732               	/* prologue: function */
+ 733               	/* frame size = 0 */
+ 734               	.LM152:
+ 735 0328 1092 0000 		sts row_report,__zero_reg__
+ 736               	.LM153:
+ 737 032c 1092 0000 		sts col_report,__zero_reg__
+ 738               	.LM154:
+ 739 0330 8BE1      		ldi r24,lo8(27)
+ 740 0332 0E94 0000 		call UART_putc
+ 741               	.LM155:
+ 742 0336 8BE5      		ldi r24,lo8(91)
+ 743 0338 0E94 0000 		call UART_putc
+ 744               	.LM156:
+ 745 033c 86E3      		ldi r24,lo8(54)
+ 746 033e 0E94 0000 		call UART_putc
+ 747               	.LM157:
+ 748 0342 8EE6      		ldi r24,lo8(110)
+ 749 0344 0E94 0000 		call UART_putc
+ 750               	.LM158:
+ 751 0348 0E94 0000 		call UART_getc
+ 752               	.LM159:
+ 753 034c 0E94 0000 		call UART_getc
+ 754               	.LM160:
+ 755 0350 1091 0000 		lds r17,row_report
+ 756 0354 0E94 0000 		call UART_getc
+ 757 0358 105E      		subi r17,lo8(-(32))
+ 758 035a 0AE0      		ldi r16,lo8(10)
+ 759 035c 809F      		mul r24,r16
+ 760 035e C001      		movw r24,r0
+ 761 0360 1124      		clr r1
+ 762 0362 180F      		add r17,r24
+ 763 0364 1093 0000 		sts row_report,r17
+ 764               	.LM161:
+ 765 0368 1091 0000 		lds r17,row_report
+ 766 036c 0E94 0000 		call UART_getc
+ 767 0370 1053      		subi r17,lo8(-(-48))
+ 768 0372 180F      		add r17,r24
+ 769 0374 1093 0000 		sts row_report,r17
+ 770               	.LM162:
+ 771 0378 0E94 0000 		call UART_getc
+ 772               	.LM163:
+ 773 037c 1091 0000 		lds r17,col_report
+ 774 0380 0E94 0000 		call UART_getc
+ 775 0384 105C      		subi r17,lo8(-(64))
+ 776 0386 94E6      		ldi r25,lo8(100)
+ 777 0388 899F      		mul r24,r25
+ 778 038a C001      		movw r24,r0
+ 779 038c 1124      		clr r1
+ 780 038e 180F      		add r17,r24
+ 781 0390 1093 0000 		sts col_report,r17
+ 782               	.LM164:
+ 783 0394 1091 0000 		lds r17,col_report
+ 784 0398 0E94 0000 		call UART_getc
+ 785 039c 105E      		subi r17,lo8(-(32))
+ 786 039e 809F      		mul r24,r16
+ 787 03a0 C001      		movw r24,r0
+ 788 03a2 1124      		clr r1
+ 789 03a4 180F      		add r17,r24
+ 790 03a6 1093 0000 		sts col_report,r17
+ 791               	.LM165:
+ 792 03aa 1091 0000 		lds r17,col_report
+ 793 03ae 0E94 0000 		call UART_getc
+ 794 03b2 1053      		subi r17,lo8(-(-48))
+ 795 03b4 180F      		add r17,r24
+ 796 03b6 1093 0000 		sts col_report,r17
+ 797               	.LM166:
+ 798 03ba 0E94 0000 		call UART_getc
+ 799 03be 8235      		cpi r24,lo8(82)
+ 800 03c0 01F4      		brne .L56
+ 801               	.LM167:
+ 802 03c2 81E0      		ldi r24,lo8(1)
+ 803 03c4 8093 0000 		sts cursor_responded,r24
+ 804 03c8 00C0      		rjmp .L58
+ 805               	.L56:
+ 806               	.LM168:
+ 807 03ca 1092 0000 		sts cursor_responded,__zero_reg__
+ 808               	.L58:
+ 809               	/* epilogue start */
+ 810               	.LM169:
+ 811 03ce 1F91      		pop r17
+ 812 03d0 0F91      		pop r16
+ 813 03d2 0895      		ret
+ 814               	.LFE15:
+ 816               	.global	row_report
+ 817               	.global	row_report
+ 818               		.section .bss
+ 821               	row_report:
+ 822 0000 00        		.skip 1,0
+ 823               	.global	col_report
+ 824               	.global	col_report
+ 827               	col_report:
+ 828 0001 00        		.skip 1,0
+ 829               	.global	cursor_responded
+ 830               	.global	cursor_responded
+ 833               	cursor_responded:
+ 834 0002 00        		.skip 1,0
+ 1051               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 vfd.c
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:18     .text:00000000 cancel
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:33     .text:00000008 rcvd_data_test_exit
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:51     .text:00000016 rcvd_data_test
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:69     .text:00000024 self_test
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:87     .text:00000032 brightness
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:136    .text:00000064 dpmm
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:237    .text:000000f2 double_double
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:258    .text:00000106 single_single
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:279    .text:0000011a reset
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:297    .text:00000128 blinking_off
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:324    .text:00000148 blinking_on
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:348    .text:00000162 reverse_video_off
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:375    .text:00000182 reverse_video_on
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:399    .text:0000019c clear_all_attributes
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:423    .text:000001b6 auto_linefeed_off
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:450    .text:000001d6 auto_linefeed_on
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:477    .text:000001f6 restore_cursor
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:495    .text:00000204 save_cursor
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:513    .text:00000212 cursor_position
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:582    .text:00000288 cursor_left
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:613    .text:000002aa cursor_right
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:644    .text:000002cc cursor_down
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:675    .text:000002ee cursor_up
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:706    .text:00000310 cursor_home
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:727    .text:00000324 request_cursor
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:821    .bss:00000000 row_report
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:827    .bss:00000001 col_report
+C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:833    .bss:00000002 cursor_responded
+
+UNDEFINED SYMBOLS
+UART_putc
+__udivmodqi4
+UART_getc
+__do_clear_bss

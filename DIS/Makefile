@@ -83,6 +83,7 @@ OBJDIR = .
 SRC = $(TARGET).c
 SRC += spi.c
 SRC += uart.c
+SRC += vfd.c
 
 # List C++ source files here. (C dependencies are automatically generated.)
 CPPSRC = 
