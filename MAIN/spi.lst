@@ -28,8 +28,8 @@
   36               	.LM6:
   37 000c 0895      		ret
   38               	.LFE7:
-  40               	.global	SPI_MasterTransmit
-  42               	SPI_MasterTransmit:
+  40               	.global	SPI_putc
+  42               	SPI_putc:
   43               	.LFB8:
   44               	.LM7:
   45               	.LVL2:
@@ -62,8 +62,8 @@
   74               	.LM14:
   75 0020 0895      		ret
   76               	.LFE9:
-  78               	.global	SPI_SlaveReceive
-  80               	SPI_SlaveReceive:
+  78               	.global	SPI_getc
+  80               	SPI_getc:
   81               	.LFB10:
   82               	.LM15:
   83               	/* prologue: function */
@@ -82,15 +82,15 @@
  145               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 spi.c
-C:\Users\BILLTA~1\AppData\Local\Temp/cc6q4gpX.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLTA~1\AppData\Local\Temp/cc6q4gpX.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLTA~1\AppData\Local\Temp/cc6q4gpX.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLTA~1\AppData\Local\Temp/cc6q4gpX.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLTA~1\AppData\Local\Temp/cc6q4gpX.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/cc6q4gpX.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/cc6q4gpX.s:18     .text:00000000 SPI_MasterInit
-C:\Users\BILLTA~1\AppData\Local\Temp/cc6q4gpX.s:42     .text:0000000e SPI_MasterTransmit
-C:\Users\BILLTA~1\AppData\Local\Temp/cc6q4gpX.s:62     .text:00000018 SPI_SlaveInit
-C:\Users\BILLTA~1\AppData\Local\Temp/cc6q4gpX.s:80     .text:00000022 SPI_SlaveReceive
+C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:18     .text:00000000 SPI_MasterInit
+C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:42     .text:0000000e SPI_putc
+C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:62     .text:00000018 SPI_SlaveInit
+C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:80     .text:00000022 SPI_getc
 
 NO UNDEFINED SYMBOLS

@@ -138,134 +138,152 @@
  154               	.LM27:
  155 00a0 B99A      		sbi 55-32,1
  156               	.LM28:
- 157 00a2 87B3      		in r24,55-32
- 158 00a4 87BB      		out 55-32,r24
- 159               	.LM29:
- 160 00a6 88B3      		in r24,56-32
- 161 00a8 8560      		ori r24,lo8(5)
- 162 00aa 88BB      		out 56-32,r24
- 163               	.LM30:
- 164 00ac 88E5      		ldi r24,lo8(88)
- 165 00ae 8DB9      		out 45-32,r24
- 166               	.LM31:
- 167 00b0 8091 0000 		lds r24,USI_SPI_status
- 168 00b4 8E7F      		andi r24,lo8(-2)
- 169 00b6 8093 0000 		sts USI_SPI_status,r24
- 170               	.LM32:
- 171 00ba 8091 0000 		lds r24,USI_SPI_status
- 172 00be 8D7F      		andi r24,lo8(-3)
- 173 00c0 8093 0000 		sts USI_SPI_status,r24
- 174               	.LM33:
- 175 00c4 8091 0000 		lds r24,USI_SPI_status
- 176 00c8 8B7F      		andi r24,lo8(-5)
- 177 00ca 8093 0000 		sts USI_SPI_status,r24
- 178               	.LM34:
- 179 00ce 1092 0000 		sts storedUSIDR,__zero_reg__
- 180               	/* epilogue start */
- 181               	.LM35:
- 182 00d2 0895      		ret
- 183               	.LFE10:
- 185               	.global	USI_SPI_putc
- 187               	USI_SPI_putc:
- 188               	.LFB11:
- 189               	.LM36:
- 190               	.LVL0:
- 191               	/* prologue: function */
- 192               	/* frame size = 0 */
- 193 00d4 282F      		mov r18,r24
- 194               	.LM37:
- 195 00d6 8EB1      		in r24,46-32
- 196               	.LVL1:
- 197 00d8 90E0      		ldi r25,lo8(0)
- 198 00da 8F70      		andi r24,lo8(15)
- 199 00dc 9070      		andi r25,hi8(15)
- 200 00de 892B      		or r24,r25
- 201 00e0 01F0      		breq .L13
- 202               	.LM38:
- 203 00e2 8091 0000 		lds r24,USI_SPI_status
- 204 00e6 8460      		ori r24,lo8(4)
- 205 00e8 8093 0000 		sts USI_SPI_status,r24
- 206 00ec 0895      		ret
- 207               	.L13:
- 208               	.LM39:
- 209 00ee 8091 0000 		lds r24,USI_SPI_status
- 210 00f2 8D7F      		andi r24,lo8(-3)
- 211 00f4 8093 0000 		sts USI_SPI_status,r24
- 212               	.LM40:
- 213 00f8 8091 0000 		lds r24,USI_SPI_status
- 214 00fc 8B7F      		andi r24,lo8(-5)
- 215 00fe 8093 0000 		sts USI_SPI_status,r24
- 216               	.LM41:
- 217 0102 2FB9      		out 47-32,r18
- 218               	.LM42:
- 219 0104 8091 0000 		lds r24,USI_SPI_status
- 220 0108 80FF      		sbrs r24,0
- 221 010a 00C0      		rjmp .L14
- 222               	.LM43:
- 223 010c 88B7      		in r24,88-32
- 224 010e 8061      		ori r24,lo8(16)
- 225 0110 88BF      		out 88-32,r24
- 226               	.LM44:
- 227 0112 89B7      		in r24,89-32
- 228 0114 8061      		ori r24,lo8(16)
- 229 0116 89BF      		out 89-32,r24
- 230               	.L14:
- 231               	.LM45:
- 232 0118 8091 0000 		lds r24,USI_SPI_status
- 233 011c 8695      		lsr r24
- 234 011e 8695      		lsr r24
- 235 0120 8095      		com r24
- 236 0122 8170      		andi r24,lo8(1)
+ 157 00a2 B898      		cbi 55-32,0
+ 158               	.LM29:
+ 159 00a4 88B3      		in r24,56-32
+ 160 00a6 8D60      		ori r24,lo8(13)
+ 161 00a8 88BB      		out 56-32,r24
+ 162               	.LM30:
+ 163 00aa 88E5      		ldi r24,lo8(88)
+ 164 00ac 8DB9      		out 45-32,r24
+ 165               	.LM31:
+ 166 00ae 8091 0000 		lds r24,USI_SPI_status
+ 167 00b2 8E7F      		andi r24,lo8(-2)
+ 168 00b4 8093 0000 		sts USI_SPI_status,r24
+ 169               	.LM32:
+ 170 00b8 8091 0000 		lds r24,USI_SPI_status
+ 171 00bc 8D7F      		andi r24,lo8(-3)
+ 172 00be 8093 0000 		sts USI_SPI_status,r24
+ 173               	.LM33:
+ 174 00c2 8091 0000 		lds r24,USI_SPI_status
+ 175 00c6 8B7F      		andi r24,lo8(-5)
+ 176 00c8 8093 0000 		sts USI_SPI_status,r24
+ 177               	.LM34:
+ 178 00cc 1092 0000 		sts storedUSIDR,__zero_reg__
+ 179               	/* epilogue start */
+ 180               	.LM35:
+ 181 00d0 0895      		ret
+ 182               	.LFE10:
+ 184               	.global	USI_SPI_SSn
+ 186               	USI_SPI_SSn:
+ 187               	.LFB11:
+ 188               	.LM36:
+ 189               	.LVL0:
+ 190               	/* prologue: function */
+ 191               	/* frame size = 0 */
+ 192               	.LM37:
+ 193 00d2 8823      		tst r24
+ 194 00d4 01F4      		brne .L13
+ 195               	.LM38:
+ 196 00d6 B99A      		sbi 55-32,1
+ 197 00d8 0895      		ret
+ 198               	.L13:
+ 199               	.LM39:
+ 200 00da B998      		cbi 55-32,1
+ 201 00dc 0895      		ret
+ 202               	.LFE11:
+ 204               	.global	USI_SPI_putc
+ 206               	USI_SPI_putc:
+ 207               	.LFB12:
+ 208               	.LM40:
+ 209               	.LVL1:
+ 210               	/* prologue: function */
+ 211               	/* frame size = 0 */
+ 212 00de 282F      		mov r18,r24
+ 213               	.LM41:
+ 214 00e0 8EB1      		in r24,46-32
+ 215               	.LVL2:
+ 216 00e2 90E0      		ldi r25,lo8(0)
+ 217 00e4 8F70      		andi r24,lo8(15)
+ 218 00e6 9070      		andi r25,hi8(15)
+ 219 00e8 892B      		or r24,r25
+ 220 00ea 01F0      		breq .L17
+ 221               	.LM42:
+ 222 00ec 8091 0000 		lds r24,USI_SPI_status
+ 223 00f0 8460      		ori r24,lo8(4)
+ 224 00f2 8093 0000 		sts USI_SPI_status,r24
+ 225 00f6 0895      		ret
+ 226               	.L17:
+ 227               	.LM43:
+ 228 00f8 8091 0000 		lds r24,USI_SPI_status
+ 229 00fc 8D7F      		andi r24,lo8(-3)
+ 230 00fe 8093 0000 		sts USI_SPI_status,r24
+ 231               	.LM44:
+ 232 0102 8091 0000 		lds r24,USI_SPI_status
+ 233 0106 8B7F      		andi r24,lo8(-5)
+ 234 0108 8093 0000 		sts USI_SPI_status,r24
+ 235               	.LM45:
+ 236 010c 2FB9      		out 47-32,r18
  237               	.LM46:
- 238 0124 0895      		ret
- 239               	.LFE11:
- 241               	.global	USI_SPI_getc
- 243               	USI_SPI_getc:
- 244               	.LFB12:
- 245               	.LM47:
- 246               	/* prologue: function */
- 247               	/* frame size = 0 */
- 248               	.LM48:
- 249 0126 8091 0000 		lds r24,storedUSIDR
- 250               	/* epilogue start */
- 251 012a 0895      		ret
- 252               	.LFE12:
- 254               	.global	USI_SPI_wait
- 256               	USI_SPI_wait:
- 257               	.LFB13:
- 258               	.LM49:
- 259               	/* prologue: function */
- 260               	/* frame size = 0 */
- 261               	.L19:
- 262               	.LM50:
- 263 012c 8091 0000 		lds r24,USI_SPI_status
- 264 0130 81FF      		sbrs r24,1
- 265 0132 00C0      		rjmp .L19
- 266               	/* epilogue start */
- 267               	.LM51:
- 268 0134 0895      		ret
- 269               	.LFE13:
- 271               		.comm storedUSIDR,1,1
- 272               		.comm USI_SPI_status,1,1
- 353               	.Letext0:
+ 238 010e 8091 0000 		lds r24,USI_SPI_status
+ 239 0112 80FF      		sbrs r24,0
+ 240 0114 00C0      		rjmp .L18
+ 241               	.LM47:
+ 242 0116 88B7      		in r24,88-32
+ 243 0118 8061      		ori r24,lo8(16)
+ 244 011a 88BF      		out 88-32,r24
+ 245               	.LM48:
+ 246 011c 89B7      		in r24,89-32
+ 247 011e 8061      		ori r24,lo8(16)
+ 248 0120 89BF      		out 89-32,r24
+ 249               	.L18:
+ 250               	.LM49:
+ 251 0122 8091 0000 		lds r24,USI_SPI_status
+ 252 0126 8695      		lsr r24
+ 253 0128 8695      		lsr r24
+ 254 012a 8095      		com r24
+ 255 012c 8170      		andi r24,lo8(1)
+ 256               	.LM50:
+ 257 012e 0895      		ret
+ 258               	.LFE12:
+ 260               	.global	USI_SPI_getc
+ 262               	USI_SPI_getc:
+ 263               	.LFB13:
+ 264               	.LM51:
+ 265               	/* prologue: function */
+ 266               	/* frame size = 0 */
+ 267               	.LM52:
+ 268 0130 8091 0000 		lds r24,storedUSIDR
+ 269               	/* epilogue start */
+ 270 0134 0895      		ret
+ 271               	.LFE13:
+ 273               	.global	USI_SPI_wait
+ 275               	USI_SPI_wait:
+ 276               	.LFB14:
+ 277               	.LM53:
+ 278               	/* prologue: function */
+ 279               	/* frame size = 0 */
+ 280               	.L23:
+ 281               	.LM54:
+ 282 0136 8091 0000 		lds r24,USI_SPI_status
+ 283 013a 81FF      		sbrs r24,1
+ 284 013c 00C0      		rjmp .L23
+ 285               	/* epilogue start */
+ 286               	.LM55:
+ 287 013e 0895      		ret
+ 288               	.LFE14:
+ 290               		.comm storedUSIDR,1,1
+ 291               		.comm USI_SPI_status,1,1
+ 380               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 usi.c
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:18     .text:00000000 __vector_10
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:41     .text:00000016 __vector_13
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:62     .text:0000002a __vector_14
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:18     .text:00000000 __vector_10
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:41     .text:00000016 __vector_13
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:62     .text:0000002a __vector_14
                             *COM*:00000001 USI_SPI_status
                             *COM*:00000001 storedUSIDR
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:104    .text:00000064 USI_SPI_initmaster
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:149    .text:000000a0 USI_SPI_initslave
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:187    .text:000000d4 USI_SPI_putc
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:243    .text:00000126 USI_SPI_getc
-C:\Users\BILLBA~1\AppData\Local\Temp/ccbUBTD3.s:256    .text:0000012c USI_SPI_wait
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:104    .text:00000064 USI_SPI_initmaster
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:149    .text:000000a0 USI_SPI_initslave
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:186    .text:000000d2 USI_SPI_SSn
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:206    .text:000000de USI_SPI_putc
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:262    .text:00000130 USI_SPI_getc
+C:\Users\BILLBA~1\AppData\Local\Temp/ccuVFWhR.s:275    .text:00000136 USI_SPI_wait
 
 UNDEFINED SYMBOLS
 __do_clear_bss

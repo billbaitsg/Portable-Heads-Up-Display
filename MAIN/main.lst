@@ -10,76 +10,362 @@
   18               	main:
   19               	.LFB7:
   20               	.LM1:
-  21 0000 CF93      		push r28
-  22 0002 DF93      		push r29
-  23               	/* prologue: function */
-  24               	/* frame size = 0 */
-  25               	.LM2:
-  26 0004 83E3      		ldi r24,lo8(51)
-  27 0006 90E0      		ldi r25,hi8(51)
-  28 0008 0E94 0000 		call UART_init
-  29               	.LM3:
-  30               	/* #APP */
-  31               	 ;  30 "main.c" 1
-  32 000c 7894      		sei
-  33               	 ;  0 "" 2
-  34               	/* #NOAPP */
-  35               	.LBB12:
-  36               	.LBB13:
-  37               	.LBB14:
-  38               	.LBB15:
-  39               	.LM4:
-  40 000e C8EC      		ldi r28,lo8(200)
-  41 0010 D0E0      		ldi r29,hi8(200)
-  42               	.LVL0:
-  43               	.L3:
-  44               	.LBE15:
-  45               	.LBE14:
-  46               	.LBE13:
-  47               	.LBE12:
-  48               	.LM5:
-  49 0012 88E7      		ldi r24,lo8(120)
-  50               	.LVL1:
-  51 0014 0E94 0000 		call UART_putc
-  52               	.LVL2:
-  53 0018 80E1      		ldi r24,lo8(10000)
-  54 001a 97E2      		ldi r25,hi8(10000)
-  55               	.LVL3:
-  56               	.L2:
-  57               	.LBB19:
-  58               	.LBB18:
-  59               	.LBB17:
-  60               	.LBB16:
-  61               	.LM6:
-  62 001c FE01      		movw r30,r28
-  63               	.LVL4:
-  64               	/* #APP */
-  65               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
-  66 001e 3197      		1: sbiw r30,1
-  67 0020 01F4      		brne 1b
-  68               	 ;  0 "" 2
-  69               	/* #NOAPP */
-  70               	.LBE16:
-  71               	.LBE17:
-  72               	.LM7:
-  73 0022 0197      		sbiw r24,1
-  74               	.LM8:
-  75 0024 01F4      		brne .L2
-  76 0026 00C0      		rjmp .L3
-  77               	.LBE18:
-  78               	.LBE19:
-  79               	.LFE7:
- 105               	.Letext0:
+  21 0000 CF92      		push r12
+  22 0002 DF92      		push r13
+  23 0004 EF92      		push r14
+  24 0006 FF92      		push r15
+  25 0008 1F93      		push r17
+  26 000a CF93      		push r28
+  27 000c DF93      		push r29
+  28               	/* prologue: function */
+  29               	/* frame size = 0 */
+  30               	.LM2:
+  31 000e 0E94 0000 		call SPI_MasterInit
+  32               	.LM3:
+  33 0012 8FEF      		ldi r24,lo8(-1)
+  34 0014 8AB9      		out 42-32,r24
+  35               	.LM4:
+  36 0016 5B9A      		sbi 43-32,3
+  37               	.LM5:
+  38 0018 5D9A      		sbi 43-32,5
+  39               	.LM6:
+  40 001a 5E9A      		sbi 43-32,6
+  41               	.LM7:
+  42 001c 5C9A      		sbi 43-32,4
+  43               	.LM8:
+  44 001e 5F9A      		sbi 43-32,7
+  45               	.LM9:
+  46               	/* #APP */
+  47               	 ;  53 "main.c" 1
+  48 0020 7894      		sei
+  49               	 ;  0 "" 2
+  50               	/* #NOAPP */
+  51               	.L2:
+  52               	.LM10:
+  53 0022 5B98      		cbi 43-32,3
+  54               	.LM11:
+  55 0024 88E5      		ldi r24,lo8(88)
+  56 0026 0E94 0000 		call SPI_putc
+  57               	.LM12:
+  58 002a 80E0      		ldi r24,lo8(0)
+  59 002c 0E94 0000 		call SPI_putc
+  60               	.LM13:
+  61 0030 0E94 0000 		call SPI_getc
+  62 0034 8093 0000 		sts X_AXIS,r24
+  63               	.LM14:
+  64 0038 89E5      		ldi r24,lo8(89)
+  65 003a 0E94 0000 		call SPI_putc
+  66               	.LM15:
+  67 003e 80E0      		ldi r24,lo8(0)
+  68 0040 0E94 0000 		call SPI_putc
+  69               	.LM16:
+  70 0044 0E94 0000 		call SPI_getc
+  71 0048 8093 0000 		sts Y_AXIS,r24
+  72               	.LM17:
+  73 004c 8AE5      		ldi r24,lo8(90)
+  74 004e 0E94 0000 		call SPI_putc
+  75               	.LM18:
+  76 0052 80E0      		ldi r24,lo8(0)
+  77 0054 0E94 0000 		call SPI_putc
+  78               	.LM19:
+  79 0058 0E94 0000 		call SPI_getc
+  80 005c 8093 0000 		sts Z_AXIS,r24
+  81               	.LM20:
+  82 0060 5B9A      		sbi 43-32,3
+  83               	.LM21:
+  84 0062 5E98      		cbi 43-32,6
+  85               	.LM22:
+  86 0064 8CE4      		ldi r24,lo8(76)
+  87 0066 0E94 0000 		call SPI_putc
+  88               	.LM23:
+  89 006a 80E0      		ldi r24,lo8(0)
+  90 006c 0E94 0000 		call SPI_putc
+  91               	.LM24:
+  92 0070 0E94 0000 		call SPI_getc
+  93 0074 8093 0000 		sts LIGHT,r24
+  94               	.LM25:
+  95 0078 5E9A      		sbi 43-32,6
+  96               	.LM26:
+  97 007a 5C98      		cbi 43-32,4
+  98               	.LM27:
+  99 007c 82E5      		ldi r24,lo8(82)
+ 100 007e 0E94 0000 		call SPI_putc
+ 101               	.LM28:
+ 102 0082 80E0      		ldi r24,lo8(0)
+ 103 0084 0E94 0000 		call SPI_putc
+ 104               	.LM29:
+ 105 0088 0E94 0000 		call SPI_getc
+ 106 008c 8093 0000 		sts RANGE,r24
+ 107               	.LM30:
+ 108 0090 5C9A      		sbi 43-32,4
+ 109               	.LM31:
+ 110 0092 5D98      		cbi 43-32,5
+ 111               	.LM32:
+ 112 0094 81E4      		ldi r24,lo8(65)
+ 113 0096 0E94 0000 		call SPI_putc
+ 114               	.LM33:
+ 115 009a 80E0      		ldi r24,lo8(0)
+ 116 009c 0E94 0000 		call SPI_putc
+ 117               	.LM34:
+ 118 00a0 0E94 0000 		call SPI_getc
+ 119 00a4 182F      		mov r17,r24
+ 120               	.LVL0:
+ 121               	.LM35:
+ 122 00a6 80E0      		ldi r24,lo8(0)
+ 123 00a8 0E94 0000 		call SPI_putc
+ 124               	.LM36:
+ 125 00ac 0E94 0000 		call SPI_getc
+ 126               	.LM37:
+ 127 00b0 D12E      		mov r13,r17
+ 128               	.LVL1:
+ 129 00b2 CC24      		clr r12
+ 130               	.LVL2:
+ 131 00b4 90E0      		ldi r25,lo8(0)
+ 132               	.LVL3:
+ 133 00b6 8C21      		and r24,r12
+ 134 00b8 9D21      		and r25,r13
+ 135               	.LVL4:
+ 136 00ba 9093 0000 		sts (ALTITUDE)+1,r25
+ 137 00be 8093 0000 		sts ALTITUDE,r24
+ 138               	.LM38:
+ 139 00c2 86E5      		ldi r24,lo8(86)
+ 140               	.LVL5:
+ 141 00c4 0E94 0000 		call SPI_putc
+ 142               	.LVL6:
+ 143               	.LM39:
+ 144 00c8 80E0      		ldi r24,lo8(0)
+ 145 00ca 0E94 0000 		call SPI_putc
+ 146               	.LM40:
+ 147 00ce 0E94 0000 		call SPI_getc
+ 148 00d2 182F      		mov r17,r24
+ 149               	.LVL7:
+ 150               	.LM41:
+ 151 00d4 80E0      		ldi r24,lo8(0)
+ 152 00d6 0E94 0000 		call SPI_putc
+ 153               	.LM42:
+ 154 00da 0E94 0000 		call SPI_getc
+ 155               	.LM43:
+ 156 00de F12E      		mov r15,r17
+ 157               	.LVL8:
+ 158 00e0 EE24      		clr r14
+ 159               	.LVL9:
+ 160 00e2 90E0      		ldi r25,lo8(0)
+ 161               	.LVL10:
+ 162 00e4 8E21      		and r24,r14
+ 163 00e6 9F21      		and r25,r15
+ 164               	.LVL11:
+ 165 00e8 9093 0000 		sts (SPEED)+1,r25
+ 166 00ec 8093 0000 		sts SPEED,r24
+ 167               	.LM44:
+ 168 00f0 82E4      		ldi r24,lo8(66)
+ 169               	.LVL12:
+ 170 00f2 0E94 0000 		call SPI_putc
+ 171               	.LVL13:
+ 172               	.LM45:
+ 173 00f6 80E0      		ldi r24,lo8(0)
+ 174 00f8 0E94 0000 		call SPI_putc
+ 175               	.LM46:
+ 176 00fc 0E94 0000 		call SPI_getc
+ 177 0100 182F      		mov r17,r24
+ 178               	.LVL14:
+ 179               	.LM47:
+ 180 0102 80E0      		ldi r24,lo8(0)
+ 181 0104 0E94 0000 		call SPI_putc
+ 182               	.LM48:
+ 183 0108 0E94 0000 		call SPI_getc
+ 184               	.LM49:
+ 185 010c D12F      		mov r29,r17
+ 186               	.LVL15:
+ 187 010e C0E0      		ldi r28,lo8(0)
+ 188               	.LVL16:
+ 189 0110 90E0      		ldi r25,lo8(0)
+ 190               	.LVL17:
+ 191 0112 8C23      		and r24,r28
+ 192 0114 9D23      		and r25,r29
+ 193               	.LVL18:
+ 194 0116 9093 0000 		sts (BEARING)+1,r25
+ 195 011a 8093 0000 		sts BEARING,r24
+ 196               	.LM50:
+ 197 011e 88E4      		ldi r24,lo8(72)
+ 198               	.LVL19:
+ 199 0120 0E94 0000 		call SPI_putc
+ 200               	.LVL20:
+ 201               	.LM51:
+ 202 0124 80E0      		ldi r24,lo8(0)
+ 203 0126 0E94 0000 		call SPI_putc
+ 204               	.LM52:
+ 205 012a 0E94 0000 		call SPI_getc
+ 206 012e 8093 0000 		sts HOURS,r24
+ 207               	.LM53:
+ 208 0132 8DE4      		ldi r24,lo8(77)
+ 209 0134 0E94 0000 		call SPI_putc
+ 210               	.LM54:
+ 211 0138 80E0      		ldi r24,lo8(0)
+ 212 013a 0E94 0000 		call SPI_putc
+ 213               	.LM55:
+ 214 013e 0E94 0000 		call SPI_getc
+ 215 0142 8093 0000 		sts MINUTES,r24
+ 216               	.LM56:
+ 217 0146 83E5      		ldi r24,lo8(83)
+ 218 0148 0E94 0000 		call SPI_putc
+ 219               	.LM57:
+ 220 014c 80E0      		ldi r24,lo8(0)
+ 221 014e 0E94 0000 		call SPI_putc
+ 222               	.LM58:
+ 223 0152 0E94 0000 		call SPI_getc
+ 224 0156 8093 0000 		sts SECONDS,r24
+ 225               	.LM59:
+ 226 015a 5D9A      		sbi 43-32,5
+ 227               	.LM60:
+ 228 015c 5F98      		cbi 43-32,7
+ 229               	.LM61:
+ 230 015e 88E7      		ldi r24,lo8(120)
+ 231 0160 0E94 0000 		call SPI_putc
+ 232               	.LM62:
+ 233 0164 8091 0000 		lds r24,X_AXIS
+ 234 0168 0E94 0000 		call SPI_putc
+ 235               	.LM63:
+ 236 016c 89E7      		ldi r24,lo8(121)
+ 237 016e 0E94 0000 		call SPI_putc
+ 238               	.LM64:
+ 239 0172 8091 0000 		lds r24,Y_AXIS
+ 240 0176 0E94 0000 		call SPI_putc
+ 241               	.LM65:
+ 242 017a 8AE7      		ldi r24,lo8(122)
+ 243 017c 0E94 0000 		call SPI_putc
+ 244               	.LM66:
+ 245 0180 8091 0000 		lds r24,Z_AXIS
+ 246 0184 0E94 0000 		call SPI_putc
+ 247               	.LM67:
+ 248 0188 8CE6      		ldi r24,lo8(108)
+ 249 018a 0E94 0000 		call SPI_putc
+ 250               	.LM68:
+ 251 018e 8091 0000 		lds r24,LIGHT
+ 252 0192 0E94 0000 		call SPI_putc
+ 253               	.LM69:
+ 254 0196 82E7      		ldi r24,lo8(114)
+ 255 0198 0E94 0000 		call SPI_putc
+ 256               	.LM70:
+ 257 019c 8091 0000 		lds r24,RANGE
+ 258 01a0 0E94 0000 		call SPI_putc
+ 259               	.LM71:
+ 260 01a4 81E6      		ldi r24,lo8(97)
+ 261 01a6 0E94 0000 		call SPI_putc
+ 262               	.LM72:
+ 263 01aa 8091 0000 		lds r24,ALTITUDE
+ 264 01ae 9091 0000 		lds r25,(ALTITUDE)+1
+ 265 01b2 892F      		mov r24,r25
+ 266 01b4 990F      		lsl r25
+ 267 01b6 990B      		sbc r25,r25
+ 268 01b8 0E94 0000 		call SPI_putc
+ 269               	.LM73:
+ 270 01bc 8091 0000 		lds r24,ALTITUDE
+ 271 01c0 9091 0000 		lds r25,(ALTITUDE)+1
+ 272 01c4 0E94 0000 		call SPI_putc
+ 273               	.LM74:
+ 274 01c8 86E7      		ldi r24,lo8(118)
+ 275 01ca 0E94 0000 		call SPI_putc
+ 276               	.LM75:
+ 277 01ce 8091 0000 		lds r24,SPEED
+ 278 01d2 9091 0000 		lds r25,(SPEED)+1
+ 279 01d6 892F      		mov r24,r25
+ 280 01d8 0E94 0000 		call SPI_putc
+ 281               	.LM76:
+ 282 01dc 8091 0000 		lds r24,SPEED
+ 283 01e0 9091 0000 		lds r25,(SPEED)+1
+ 284 01e4 0E94 0000 		call SPI_putc
+ 285               	.LM77:
+ 286 01e8 82E6      		ldi r24,lo8(98)
+ 287 01ea 0E94 0000 		call SPI_putc
+ 288               	.LM78:
+ 289 01ee 8091 0000 		lds r24,BEARING
+ 290 01f2 9091 0000 		lds r25,(BEARING)+1
+ 291 01f6 892F      		mov r24,r25
+ 292 01f8 0E94 0000 		call SPI_putc
+ 293               	.LM79:
+ 294 01fc 8091 0000 		lds r24,BEARING
+ 295 0200 9091 0000 		lds r25,(BEARING)+1
+ 296 0204 0E94 0000 		call SPI_putc
+ 297               	.LM80:
+ 298 0208 88E6      		ldi r24,lo8(104)
+ 299 020a 0E94 0000 		call SPI_putc
+ 300               	.LM81:
+ 301 020e 8091 0000 		lds r24,HOURS
+ 302 0212 0E94 0000 		call SPI_putc
+ 303               	.LM82:
+ 304 0216 8DE6      		ldi r24,lo8(109)
+ 305 0218 0E94 0000 		call SPI_putc
+ 306               	.LM83:
+ 307 021c 8091 0000 		lds r24,MINUTES
+ 308 0220 0E94 0000 		call SPI_putc
+ 309               	.LM84:
+ 310 0224 83E7      		ldi r24,lo8(115)
+ 311 0226 0E94 0000 		call SPI_putc
+ 312               	.LM85:
+ 313 022a 8091 0000 		lds r24,SECONDS
+ 314 022e 0E94 0000 		call SPI_putc
+ 315               	.LM86:
+ 316 0232 5F9A      		sbi 43-32,7
+ 317 0234 00C0      		rjmp .L2
+ 318               	.LFE7:
+ 320               	.global	X_AXIS
+ 321               		.data
+ 324               	X_AXIS:
+ 325 0000 02        		.byte	2
+ 326               	.global	Y_AXIS
+ 329               	Y_AXIS:
+ 330 0001 03        		.byte	3
+ 331               	.global	Z_AXIS
+ 334               	Z_AXIS:
+ 335 0002 04        		.byte	4
+ 336               	.global	RANGE
+ 339               	RANGE:
+ 340 0003 05        		.byte	5
+ 341               	.global	LIGHT
+ 344               	LIGHT:
+ 345 0004 06        		.byte	6
+ 346               	.global	ALTITUDE
+ 349               	ALTITUDE:
+ 350 0005 0700      		.word	7
+ 351               	.global	SPEED
+ 354               	SPEED:
+ 355 0007 0800      		.word	8
+ 356               	.global	BEARING
+ 359               	BEARING:
+ 360 0009 0900      		.word	9
+ 361               	.global	HOURS
+ 364               	HOURS:
+ 365 000b 0A        		.byte	10
+ 366               	.global	MINUTES
+ 369               	MINUTES:
+ 370 000c 0B        		.byte	11
+ 371               	.global	SECONDS
+ 374               	SECONDS:
+ 375 000d 0C        		.byte	12
+ 400               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\BILLTA~1\AppData\Local\Temp/ccnfRncf.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccnfRncf.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccnfRncf.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccnfRncf.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccnfRncf.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccnfRncf.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccnfRncf.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:324    .data:00000000 X_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:329    .data:00000001 Y_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:334    .data:00000002 Z_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:344    .data:00000004 LIGHT
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:339    .data:00000003 RANGE
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:349    .data:00000005 ALTITUDE
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:354    .data:00000007 SPEED
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:359    .data:00000009 BEARING
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:364    .data:0000000b HOURS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:369    .data:0000000c MINUTES
+C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:374    .data:0000000d SECONDS
 
 UNDEFINED SYMBOLS
-UART_init
-UART_putc
+SPI_MasterInit
+SPI_putc
+SPI_getc
+__do_copy_data

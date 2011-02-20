@@ -21,47 +21,52 @@
   29               	 ;  29 "main.c" 1
   30 0004 7894      		sei
   31               	 ;  0 "" 2
-  32               	.LVL0:
-  33               	/* #NOAPP */
-  34               	.L6:
-  35               	.LM5:
-  36 0006 00D0      		rcall USI_SPI_getc
-  37               	.LVL1:
-  38               	.LM6:
-  39 0008 B399      		sbic 54-32,3
-  40 000a 00C0      		rjmp .L6
-  41               	.LM7:
-  42 000c 8C34      		cpi r24,lo8(76)
-  43               	.LVL2:
-  44 000e 01F4      		brne .L6
-  45               	.LM8:
-  46 0010 8091 0000 		lds r24,LIGHT
-  47               	.LVL3:
-  48 0014 00D0      		rcall USI_SPI_putc
-  49               	.LM9:
-  50 0016 00D0      		rcall USI_SPI_wait
-  51 0018 00C0      		rjmp .L6
-  52               	.LFE6:
-  54               	.global	LIGHT
-  55               	.global	LIGHT
-  56               		.section .bss
-  59               	LIGHT:
-  60 0000 00        		.skip 1,0
-  85               	.Letext0:
+  32               	/* #NOAPP */
+  33               	.L7:
+  34               	.LM5:
+  35 0006 B399      		sbic 54-32,3
+  36 0008 00C0      		rjmp .L2
+  37               	.LM6:
+  38 000a 80E0      		ldi r24,lo8(0)
+  39 000c 00D0      		rcall USI_SPI_SSn
+  40               	.LM7:
+  41 000e 00D0      		rcall USI_SPI_getc
+  42               	.LM8:
+  43 0010 8C34      		cpi r24,lo8(76)
+  44 0012 01F4      		brne .L7
+  45               	.LM9:
+  46 0014 8091 0000 		lds r24,LIGHT
+  47 0018 00D0      		rcall USI_SPI_putc
+  48               	.LM10:
+  49 001a 00D0      		rcall USI_SPI_wait
+  50 001c 00C0      		rjmp .L7
+  51               	.L2:
+  52               	.LM11:
+  53 001e 81E0      		ldi r24,lo8(1)
+  54 0020 00D0      		rcall USI_SPI_SSn
+  55 0022 00C0      		rjmp .L7
+  56               	.LFE6:
+  58               	.global	LIGHT
+  59               	.global	LIGHT
+  60               		.section .bss
+  63               	LIGHT:
+  64 0000 00        		.skip 1,0
+  89               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\BILLBA~1\AppData\Local\Temp/cc66aM8y.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLBA~1\AppData\Local\Temp/cc66aM8y.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLBA~1\AppData\Local\Temp/cc66aM8y.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLBA~1\AppData\Local\Temp/cc66aM8y.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLBA~1\AppData\Local\Temp/cc66aM8y.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/cc66aM8y.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/cc66aM8y.s:18     .text:00000000 main
-C:\Users\BILLBA~1\AppData\Local\Temp/cc66aM8y.s:59     .bss:00000000 LIGHT
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmyof4K.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmyof4K.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmyof4K.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmyof4K.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmyof4K.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmyof4K.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmyof4K.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmyof4K.s:63     .bss:00000000 LIGHT
 
 UNDEFINED SYMBOLS
 adc_init
 USI_SPI_initslave
+USI_SPI_SSn
 USI_SPI_getc
 USI_SPI_putc
 USI_SPI_wait

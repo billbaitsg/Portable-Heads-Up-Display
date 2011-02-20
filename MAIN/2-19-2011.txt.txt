@@ -5,6 +5,133 @@ Senior Project
 Portable Heads Up Display
 
 	Block:	Main Controller
+
+	Module:	Project header
+	
+	Desc.:	This file contains information useful to all
+			modules in this block, namely global variables
+			and include files
+**********************************************************/
+
+#ifndef PROJ_HDR_H
+#define PROJ_HDR_H
+
+	/* Include Files */
+	#include <avr/io.h>
+	#include <avr/interrupt.h>
+	#include <util/delay.h>
+	#include <stdio.h>
+	/* Module Includes */
+	#include "spi.h"
+	
+	/* SPI Slave Select Macros */
+	#define ACC_SS_0 (PORTD &= ~0x08)	/* Set Accelerometer SS low */
+	#define ACC_SS_1 (PORTD |= 0x08)	/* Set Accelerometer SS high */
+	#define RNG_SS_0 (PORTD &= ~0x10)	/* Set Range SS low */
+	#define RNG_SS_1 (PORTD |= 0x10)	/* Set Range SS high */
+	#define GPS_SS_0 (PORTD &= ~0x20)	/* Set GPS SS low */
+	#define GPS_SS_1 (PORTD |= 0x20)	/* Set GPS SS high */
+	#define AMB_SS_0 (PORTD &= ~0x40)	/* Set Ambient SS low */
+	#define AMB_SS_1 (PORTD |= 0x40)	/* Set Ambient SS high */
+	#define DIS_SS_0 (PORTD &= ~0x80)	/* Set Display SS low */
+	#define DIS_SS_1 (PORTD |= 0x80)	/* Set Display SS high */
+
+#endif
+
+/***********************************************************
+Bill Bai
+Purdue ECET
+Senior Project
+Portable Heads Up Display
+
+	Block:	Main Controller
+
+	Module:	SPI bus header
+	
+	Desc.:	This file contains the function prototype and
+			variable definitions for the SPI bus functions
+**********************************************************/
+
+#ifndef SPI_H
+#define SPI_H
+	/* SPI Defines */
+	#define DDR_SPI	DDRB
+	#define DD_MOSI	3
+	#define DD_MISO	4
+	#define DD_SCK	5
+	#define DD_SSN	2
+
+	/* SPI Function Prototypes */
+	void SPI_MasterInit(void);
+	void SPI_putc(char cData);
+	void SPI_SlaveInit(void);
+	char SPI_getc(void);
+#endif
+
+/***********************************************************
+Bill Bai
+Purdue ECET
+Senior Project
+Portable Heads Up Display
+
+	Block:	Main Controller
+
+	Module:	SPI bus functions
+	
+	Desc.:	This file contains the source code for the SPI
+			bus functions
+**********************************************************/
+
+#include "proj_hdr.h"
+
+/* Initialize SPI for master mode */
+void SPI_MasterInit(void)
+{
+	/* Cofigure SSn, MOSI, and SCK as output */
+	DDR_SPI = (1<<DD_MOSI)|(1<<DD_SCK)|(1<<DD_SSN);
+	/* Set SPE and MSTR of the SPCR register */
+	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR1);
+	/* Clear SPI Interrupt Flag by reading SPSR and SPDR */
+	char read;
+	read = SPSR;
+	read = SPDR;
+}
+
+/* Transmit a byte of data via the SPI bus in master mode */
+void SPI_putc(char cData)
+{
+	/* Start transmission */
+	SPDR = cData;
+	/* Wait for transmission complete */
+	while(!(SPSR & (1<<SPIF)));
+}
+
+/* Initialize the SPI for slave mode */
+void SPI_SlaveInit(void)
+{
+	/* Set MISO output, all others input */
+	DDR_SPI = (1<<DD_MISO);
+	/* Enable SPI */
+	SPCR = (1<<SPIE)|(1<<SPE);
+}
+
+/* Recieve a byte of data via the SPI bus in slave mode */
+char SPI_getc(void)
+{
+	/* Wait for reception complete */
+	while(!(SPSR & (1<<SPIF)))
+	;
+	/* Return Data Register */
+	return SPDR;
+}
+
+/***********************************************************
+Bill Bai
+Purdue ECET
+Senior Project
+Portable Heads Up Display
+
+	Block:	Main Controller
 	
 	Module:	Main program
 	

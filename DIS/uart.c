@@ -4,7 +4,7 @@ Purdue ECET
 Senior Project
 Portable Heads Up Display
 
-	Block:	Main Controller
+	Block:	Display Controller
 	
 	Module:	UART functions
 	

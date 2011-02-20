@@ -26,7 +26,7 @@ Portable Heads Up Display
 	#define USI_IN_REG		PINB	//!< USI port input register.
 	#define USI_DIR_REG		DDRB	//!< USI port direction register.
 	#define USI_CLOCK_PIN	2		//!< USI clock I/O pin.
-	#define USI_SELECT_PIN	0
+	#define USI_SELECT_PIN	3
 	#define USI_DATAIN_PIN	0		//!< USI data input pin.
 	#define USI_DATAOUT_PIN	1		//!< USI data output pin.
 	
@@ -65,6 +65,7 @@ Portable Heads Up Display
 	ISR(USI_OVF_vect);
 	void USI_SPI_initmaster(void);
 	void USI_SPI_initslave(void);
+	void USI_SPI_SSn(unsigned char);
 	char USI_SPI_putc(unsigned char);
 	unsigned char USI_SPI_getc(void);
 	void USI_SPI_wait(void);

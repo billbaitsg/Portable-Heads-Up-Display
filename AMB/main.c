@@ -30,9 +30,10 @@ int main(void)
 	
 	while(1)
 	{
-		cmd = USI_SPI_getc();
 		if( !USI_SS )	/* if this SPI slave is selected */
 		{
+			USI_SPI_SSn(0);		/* Active low slave selected */
+			cmd = USI_SPI_getc();
 			if( cmd == 'L' )	/* if the X axis is requested */
 			{
 				USI_SPI_putc(LIGHT);	// Send temp value to SPI and increment
@@ -42,7 +43,7 @@ int main(void)
 		}
 		else	/* if not selected, do nothing */
 		{
-			/* Do nothing */
+			USI_SPI_SSn(1);		/* Active low slave not selected */
 		}/* End of if */
 	}	/* End of while */
 	return 0;

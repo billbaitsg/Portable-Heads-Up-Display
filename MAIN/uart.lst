@@ -103,81 +103,81 @@
  119 0054 1124      		clr __zero_reg__
  120 0056 8F93      		push r24
  121 0058 9F93      		push r25
- 122 005a EF93      		push r30
- 123 005c FF93      		push r31
- 124               	/* prologue: Signal */
- 125               	/* frame size = 0 */
- 126               	.L16:
- 127               	.LM20:
- 128 005e 8091 C000 		lds r24,192
- 129 0062 87FF      		sbrs r24,7
- 130 0064 00C0      		rjmp .L16
- 131               	.LM21:
- 132 0066 8091 0000 		lds r24,UART_BUF_CNT
- 133 006a 8830      		cpi r24,lo8(8)
- 134 006c 01F4      		brne .L17
+ 122               	/* prologue: Signal */
+ 123               	/* frame size = 0 */
+ 124               	.L16:
+ 125               	.LM20:
+ 126 005a 8091 C000 		lds r24,192
+ 127 005e 87FF      		sbrs r24,7
+ 128 0060 00C0      		rjmp .L16
+ 129               	.LM21:
+ 130 0062 9091 C600 		lds r25,198
+ 131               	.LVL7:
+ 132               	.L17:
+ 133               	.LBB4:
+ 134               	.LBB5:
  135               	.LM22:
- 136 006e 1092 0000 		sts UART_BUF_CNT,__zero_reg__
- 137               	.L17:
- 138               	.LM23:
- 139 0072 8091 0000 		lds r24,UART_BUF_CNT
- 140 0076 E82F      		mov r30,r24
- 141 0078 F0E0      		ldi r31,lo8(0)
- 142 007a 9091 C600 		lds r25,198
- 143 007e E050      		subi r30,lo8(-(UART_BUFFER))
- 144 0080 F040      		sbci r31,hi8(-(UART_BUFFER))
- 145 0082 9083      		st Z,r25
- 146 0084 8F5F      		subi r24,lo8(-(1))
- 147 0086 8093 0000 		sts UART_BUF_CNT,r24
- 148               	/* epilogue start */
- 149               	.LM24:
- 150 008a FF91      		pop r31
- 151 008c EF91      		pop r30
- 152 008e 9F91      		pop r25
- 153 0090 8F91      		pop r24
- 154 0092 0F90      		pop r0
- 155 0094 0FBE      		out __SREG__,r0
- 156 0096 0F90      		pop r0
- 157 0098 1F90      		pop __zero_reg__
- 158 009a 1895      		reti
+ 136 0066 8091 C000 		lds r24,192
+ 137 006a 85FF      		sbrs r24,5
+ 138 006c 00C0      		rjmp .L17
+ 139               	.LBE5:
+ 140               	.LBE4:
+ 141               	.LM23:
+ 142 006e 9F5F      		subi r25,lo8(-(1))
+ 143               	.LBB7:
+ 144               	.LBB6:
+ 145               	.LM24:
+ 146 0070 9093 C600 		sts 198,r25
+ 147               	/* epilogue start */
+ 148               	.LBE6:
+ 149               	.LBE7:
+ 150               	.LM25:
+ 151 0074 9F91      		pop r25
+ 152               	.LVL8:
+ 153 0076 8F91      		pop r24
+ 154 0078 0F90      		pop r0
+ 155 007a 0FBE      		out __SREG__,r0
+ 156 007c 0F90      		pop r0
+ 157 007e 1F90      		pop __zero_reg__
+ 158 0080 1895      		reti
  159               	.LFE11:
  161               	.global	USART_TXC_vect
  163               	USART_TXC_vect:
  164               	.LFB12:
- 165               	.LM25:
- 166 009c 1F92      		push __zero_reg__
- 167 009e 0F92      		push r0
- 168 00a0 0FB6      		in r0,__SREG__
- 169 00a2 0F92      		push r0
- 170 00a4 1124      		clr __zero_reg__
+ 165               	.LM26:
+ 166 0082 1F92      		push __zero_reg__
+ 167 0084 0F92      		push r0
+ 168 0086 0FB6      		in r0,__SREG__
+ 169 0088 0F92      		push r0
+ 170 008a 1124      		clr __zero_reg__
  171               	/* prologue: Signal */
  172               	/* frame size = 0 */
  173               	/* epilogue start */
- 174               	.LM26:
- 175 00a6 0F90      		pop r0
- 176 00a8 0FBE      		out __SREG__,r0
- 177 00aa 0F90      		pop r0
- 178 00ac 1F90      		pop __zero_reg__
- 179 00ae 1895      		reti
+ 174               	.LM27:
+ 175 008c 0F90      		pop r0
+ 176 008e 0FBE      		out __SREG__,r0
+ 177 0090 0F90      		pop r0
+ 178 0092 1F90      		pop __zero_reg__
+ 179 0094 1895      		reti
  180               	.LFE12:
  182               	.global	USART_DRE_vect
  184               	USART_DRE_vect:
  185               	.LFB13:
- 186               	.LM27:
- 187 00b0 1F92      		push __zero_reg__
- 188 00b2 0F92      		push r0
- 189 00b4 0FB6      		in r0,__SREG__
- 190 00b6 0F92      		push r0
- 191 00b8 1124      		clr __zero_reg__
+ 186               	.LM28:
+ 187 0096 1F92      		push __zero_reg__
+ 188 0098 0F92      		push r0
+ 189 009a 0FB6      		in r0,__SREG__
+ 190 009c 0F92      		push r0
+ 191 009e 1124      		clr __zero_reg__
  192               	/* prologue: Signal */
  193               	/* frame size = 0 */
  194               	/* epilogue start */
- 195               	.LM28:
- 196 00ba 0F90      		pop r0
- 197 00bc 0FBE      		out __SREG__,r0
- 198 00be 0F90      		pop r0
- 199 00c0 1F90      		pop __zero_reg__
- 200 00c2 1895      		reti
+ 195               	.LM29:
+ 196 00a0 0F90      		pop r0
+ 197 00a2 0FBE      		out __SREG__,r0
+ 198 00a4 0F90      		pop r0
+ 199 00a6 1F90      		pop __zero_reg__
+ 200 00a8 1895      		reti
  201               	.LFE13:
  203               	.global	UART_BUF_CNT
  204               	.global	UART_BUF_CNT
@@ -192,22 +192,22 @@
  289               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 uart.c
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:18     .text:00000000 UART_init
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:49     .text:0000001e UART_putc
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:71     .text:0000002e UART_getc
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:90     .text:0000003c UART_flush
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:112    .text:0000004c USART_RXC_vect
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:208    .bss:00000000 UART_BUF_CNT
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:18     .text:00000000 UART_init
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:49     .text:0000001e UART_putc
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:71     .text:0000002e UART_getc
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:90     .text:0000003c UART_flush
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:112    .text:0000004c USART_RXC_vect
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:163    .text:00000082 USART_TXC_vect
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:184    .text:00000096 USART_DRE_vect
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:208    .bss:00000000 UART_BUF_CNT
+C:\Users\BILLBA~1\AppData\Local\Temp/ccNDSxBT.s:214    .bss:00000001 UART_FLAGS
                             *COM*:00000008 UART_BUFFER
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:163    .text:0000009c USART_TXC_vect
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:184    .text:000000b0 USART_DRE_vect
-C:\Users\BILLTA~1\AppData\Local\Temp/cccLMMij.s:214    .bss:00000001 UART_FLAGS
 
 UNDEFINED SYMBOLS
 __do_clear_bss

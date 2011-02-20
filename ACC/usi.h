@@ -64,6 +64,7 @@ Portable Heads Up Display
 	ISR(USI_OVF_vect);
 	void USI_SPI_initmaster(void);
 	void USI_SPI_initslave(void);
+	void USI_SPI_SSn(unsigned char);
 	char USI_SPI_putc(unsigned char);
 	unsigned char USI_SPI_getc(void);
 	void USI_SPI_wait(void);

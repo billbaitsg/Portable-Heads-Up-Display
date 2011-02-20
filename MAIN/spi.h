@@ -23,7 +23,7 @@ Portable Heads Up Display
 
 	/* SPI Function Prototypes */
 	void SPI_MasterInit(void);
-	void SPI_MasterTransmit(char cData);
+	void SPI_putc(char cData);
 	void SPI_SlaveInit(void);
-	char SPI_SlaveReceive(void);
+	char SPI_getc(void);
 #endif

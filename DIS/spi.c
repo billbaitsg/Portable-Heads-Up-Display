@@ -4,7 +4,7 @@ Purdue ECET
 Senior Project
 Portable Heads Up Display
 
-	Block:	Accelerometer Microcontroller 1
+	Block:	Display Controller
 
 	Module:	SPI bus functions
 	
@@ -28,7 +28,7 @@ void SPI_MasterInit(void)
 }
 
 /* Transmit a byte of data via the SPI bus in master mode */
-void SPI_MasterTransmit(char cData)
+void SPI_putc(char cData)
 {
 	/* Start transmission */
 	SPDR = cData;
@@ -40,13 +40,26 @@ void SPI_MasterTransmit(char cData)
 void SPI_SlaveInit(void)
 {
 	/* Set MISO output, all others input */
-	DDR_SPI = (1<<DD_MISO);
+	//DDR_SPI = (1<<DD_MISO);
 	/* Enable SPI */
 	SPCR = (1<<SPIE)|(1<<SPE);
 }
 
+/* Changes SPI MISO between input and output when slave is selected or not */
+void SPI_SSn(unsigned char mode)
+{
+	if( mode == 0 )		/* Slave is selected */
+	{
+		DDR_SPI |= (1<<DD_MISO);	/* Set MISO pin to output */
+	}
+	else				/* Slave is not selected */
+	{
+		DDR_SPI &= ~(1<<DD_MISO);	/* Set MISO pin to input w/o pull-up resistor */
+	}/* End of if */
+}
+
 /* Recieve a byte of data via the SPI bus in slave mode */
-char SPI_SlaveReceive(void)
+char SPI_getc(void)
 {
 	/* Wait for reception complete */
 	while(!(SPSR & (1<<SPIF)))

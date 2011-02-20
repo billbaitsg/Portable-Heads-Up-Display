@@ -123,7 +123,7 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x1c8
+.text           0x00000000      0x1dc
  *(.vectors)
  .vectors       0x00000000       0x1e d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
                 0x00000000                __vectors
@@ -188,31 +188,32 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
                 0x0000003e                __vector_4
                 0x0000003e                __vector_9
                 0x0000003e                __vector_2
- .text          0x00000040       0x1a main.o
+ .text          0x00000040       0x24 main.o
                 0x00000040                main
- .text          0x0000005a      0x134 usi.o
-                0x0000012c                USI_SPI_putc
-                0x000000fa                USI_SPI_initslave
-                0x000000be                USI_SPI_initmaster
-                0x00000070                __vector_13
-                0x0000017e                USI_SPI_getc
-                0x00000184                USI_SPI_wait
-                0x00000084                __vector_14
-                0x0000005a                __vector_10
- .text          0x0000018e       0x36 adc.o
-                0x0000018e                adc_init
-                0x000001a4                __vector_8
- .text          0x000001c4        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
- .text          0x000001c4        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
-                0x000001c4                . = ALIGN (0x2)
+ .text          0x00000064      0x13e usi.o
+                0x00000140                USI_SPI_putc
+                0x00000104                USI_SPI_initslave
+                0x000000c8                USI_SPI_initmaster
+                0x0000007a                __vector_13
+                0x00000192                USI_SPI_getc
+                0x00000134                USI_SPI_SSn
+                0x00000198                USI_SPI_wait
+                0x0000008e                __vector_14
+                0x00000064                __vector_10
+ .text          0x000001a2       0x36 adc.o
+                0x000001a2                adc_init
+                0x000001b8                __vector_8
+ .text          0x000001d8        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .text          0x000001d8        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+                0x000001d8                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x000001c4        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
- .text.libgcc   0x000001c4        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
-                0x000001c4                . = ALIGN (0x2)
+ .text.libgcc   0x000001d8        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .text.libgcc   0x000001d8        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+                0x000001d8                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000001c4        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
-                0x000001c4                exit
-                0x000001c4                _exit
+ .fini9         0x000001d8        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+                0x000001d8                exit
+                0x000001d8                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -231,11 +232,11 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000001c4        0x4 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .fini0         0x000001d8        0x4 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
  *(.fini0)
-                0x000001c8                _etext = .
+                0x000001dc                _etext = .
 
-.data           0x00800060        0x0 load address 0x000001c8
+.data           0x00800060        0x0 load address 0x000001dc
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn85.o
@@ -268,8 +269,8 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
                 0x00800061                USI_SPI_status
                 0x00800062                storedUSIDR
                 0x00800063                PROVIDE (__bss_end, .)
-                0x000001c8                __data_load_start = LOADADDR (.data)
-                0x000001c8                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000001dc                __data_load_start = LOADADDR (.data)
+                0x000001dc                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800063        0x0
                 0x00800063                PROVIDE (__noinit_start, .)
@@ -337,53 +338,52 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
                 0x00000040       0x20 adc.o
 
 .debug_pubnames
-                0x00000000      0x118
+                0x00000000      0x128
  *(.debug_pubnames)
  .debug_pubnames
                 0x00000000       0x25 main.o
  .debug_pubnames
-                0x00000025       0xc5 usi.o
+                0x00000025       0xd5 usi.o
  .debug_pubnames
-                0x000000ea       0x2e adc.o
+                0x000000fa       0x2e adc.o
 
-.debug_info     0x00000000      0x2d5
+.debug_info     0x00000000      0x2f7
  *(.debug_info)
- .debug_info    0x00000000       0xa8 main.o
- .debug_info    0x000000a8      0x18e usi.o
- .debug_info    0x00000236       0x9f adc.o
+ .debug_info    0x00000000       0xa4 main.o
+ .debug_info    0x000000a4      0x1b4 usi.o
+ .debug_info    0x00000258       0x9f adc.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x17d
+.debug_abbrev   0x00000000      0x1a1
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0x6a main.o
- .debug_abbrev  0x0000006a       0xbc usi.o
- .debug_abbrev  0x00000126       0x57 adc.o
+ .debug_abbrev  0x00000000       0x68 main.o
+ .debug_abbrev  0x00000068       0xe2 usi.o
+ .debug_abbrev  0x0000014a       0x57 adc.o
 
-.debug_line     0x00000000      0x32c
+.debug_line     0x00000000      0x354
  *(.debug_line)
- .debug_line    0x00000000       0x90 main.o
- .debug_line    0x00000090      0x1df usi.o
- .debug_line    0x0000026f       0xbd adc.o
+ .debug_line    0x00000000       0xa0 main.o
+ .debug_line    0x000000a0      0x1f7 usi.o
+ .debug_line    0x00000297       0xbd adc.o
 
-.debug_frame    0x00000000       0xe0
+.debug_frame    0x00000000       0xf0
  *(.debug_frame)
  .debug_frame   0x00000000       0x20 main.o
- .debug_frame   0x00000020       0x90 usi.o
- .debug_frame   0x000000b0       0x30 adc.o
+ .debug_frame   0x00000020       0xa0 usi.o
+ .debug_frame   0x000000c0       0x30 adc.o
 
-.debug_str      0x00000000      0x179
+.debug_str      0x00000000      0x18a
  *(.debug_str)
  .debug_str     0x00000000       0x91 main.o
                                  0xca (size before relaxing)
- .debug_str     0x00000091       0xce usi.o
-                                0x186 (size before relaxing)
- .debug_str     0x0000015f       0x1a adc.o
+ .debug_str     0x00000091       0xdf usi.o
+                                0x197 (size before relaxing)
+ .debug_str     0x00000170       0x1a adc.o
                                  0xd8 (size before relaxing)
 
-.debug_loc      0x00000000       0x3c
+.debug_loc      0x00000000       0x1e
  *(.debug_loc)
- .debug_loc     0x00000000       0x1e main.o
- .debug_loc     0x0000001e       0x1e usi.o
+ .debug_loc     0x00000000       0x1e usi.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -395,6 +395,8 @@ Cross Reference Table
 Symbol                                            File
 LIGHT                                             main.o
                                                   adc.o
+USI_SPI_SSn                                       usi.o
+                                                  main.o
 USI_SPI_getc                                      usi.o
                                                   main.o
 USI_SPI_initmaster                                usi.o

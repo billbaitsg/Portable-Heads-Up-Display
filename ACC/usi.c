@@ -125,7 +125,7 @@ void USI_SPI_initmaster(void)
 void USI_SPI_initslave(void)
 {
 	// Configure port directions.
-	USI_DIR_REG |= (1<<USI_DATAOUT_PIN);                      // Outputs.
+	//USI_DIR_REG |= (1<<USI_DATAOUT_PIN);                      // Outputs.
 	USI_DIR_REG &= ~(1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN) | (1<<USI_SELECT_PIN); // Inputs.
 	USI_OUT_REG |= (1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN) | (1<<USI_SELECT_PIN);  // Pull-ups.
 	
@@ -139,6 +139,19 @@ void USI_SPI_initslave(void)
 	USI_SPI_status.writeCollision   = 0;
 	
 	storedUSIDR = 0;
+}
+
+/* Changes USI MISO between input and output when slave is selected or not */
+void USI_SPI_SSn(unsigned char mode)
+{
+	if( mode == 0 )		/* Slave is selected */
+	{
+		USI_DIR_REG |= (1<<USI_DATAOUT_PIN);	/* Set MISO pin to output */
+	}
+	else				/* Slave is not selected */
+	{
+		USI_DIR_REG &= ~(1<<USI_DATAOUT_PIN);	/* Set MISO pin to input w/o pull-up resistor */
+	}/* End of if */
 }
 
 /*! \brief  Put one byte on bus.

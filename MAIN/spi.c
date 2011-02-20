@@ -28,7 +28,7 @@ void SPI_MasterInit(void)
 }
 
 /* Transmit a byte of data via the SPI bus in master mode */
-void SPI_MasterTransmit(char cData)
+void SPI_putc(char cData)
 {
 	/* Start transmission */
 	SPDR = cData;
@@ -46,7 +46,7 @@ void SPI_SlaveInit(void)
 }
 
 /* Recieve a byte of data via the SPI bus in slave mode */
-char SPI_SlaveReceive(void)
+char SPI_getc(void)
 {
 	/* Wait for reception complete */
 	while(!(SPSR & (1<<SPIF)))

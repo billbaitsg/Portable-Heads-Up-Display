@@ -147,6 +147,19 @@ void USI_SPI_initslave(void)
 	storedUSIDR = 0;
 }
 
+/* Changes USI MISO between input and output when slave is selected or not */
+void USI_SPI_SSn(unsigned char mode)
+{
+	if( mode == 0 )		/* Slave is selected */
+	{
+		USI_DIR_REG |= (1<<USI_DATAOUT_PIN);	/* Set MISO pin to output */
+	}
+	else				/* Slave is not selected */
+	{
+		USI_DIR_REG &= ~(1<<USI_DATAOUT_PIN);	/* Set MISO pin to input w/o pull-up resistor */
+	}/* End of if */
+}
+
 /*! \brief  Put one byte on bus.
  *
  *  Use this function like you would write to the SPDR register in the native SPI module.
