@@ -26,6 +26,7 @@ Portable Heads Up Display
 	void SPI_putc(char cData);
 	void SPI_SlaveInit(void);
 	char SPI_getc(void);
+	ISR(SPI_STC_vect);
 	
 	/* SPI Macros */
 	#define SPI_SS	((DDR_SPI & (1<<DD_SSN)) >> DD_SSN)

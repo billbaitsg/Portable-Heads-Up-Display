@@ -128,7 +128,7 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x530
+.text           0x00000000      0x74a
  *(.vectors)
  .vectors       0x00000000       0x68 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
                 0x00000000                __vectors
@@ -195,7 +195,6 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x000000a2                __vector_25
                 0x000000a2                __vector_11
                 0x000000a2                __vector_13
-                0x000000a2                __vector_17
                 0x000000a2                __vector_19
                 0x000000a2                __vector_7
                 0x000000a2                __vector_5
@@ -210,61 +209,61 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x000000a2                __vector_16
                 0x000000a2                __vector_18
                 0x000000a2                __vector_20
- .text          0x000000a6       0x1a main.o
+ .text          0x000000a6       0x2e main.o
                 0x000000a6                main
- .text          0x000000c0       0x32 spi.o
-                0x000000e8                SPI_getc
-                0x000000c0                SPI_MasterInit
-                0x000000dc                SPI_SSn
-                0x000000d2                SPI_SlaveInit
-                0x000000ce                SPI_putc
- .text          0x000000f2       0x4e uart.o
-                0x00000130                UART_flush
-                0x00000122                UART_getc
-                0x00000112                UART_putc
-                0x000000f2                UART_init
- .text          0x00000140      0x3d4 vfd.o
-                0x00000140                cancel
-                0x0000042e                cursor_up
-                0x000003c8                cursor_left
-                0x00000246                single_single
-                0x00000268                blinking_off
-                0x000002a2                reverse_video_off
-                0x00000156                rcvd_data_test
-                0x00000450                cursor_home
-                0x0000025a                reset
-                0x000002c2                reverse_video_on
-                0x00000336                restore_cursor
-                0x00000464                request_cursor
-                0x000001a4                dpmm
-                0x00000288                blinking_on
-                0x000002dc                clear_all_attributes
-                0x00000232                double_double
-                0x00000148                rcvd_data_test_exit
-                0x00000316                auto_linefeed_on
-                0x00000344                save_cursor
-                0x000002f6                auto_linefeed_off
-                0x0000040c                cursor_down
-                0x000003ea                cursor_right
-                0x00000164                self_test
-                0x00000172                brightness
-                0x00000352                cursor_position
- .text          0x00000514        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
- .text          0x00000514        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text          0x00000514        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text          0x00000514        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x00000514                . = ALIGN (0x2)
+ .text          0x000000d4      0x238 spi.o
+                0x000000fa                SPI_getc
+                0x00000104                __vector_17
+                0x000000d4                SPI_MasterInit
+                0x000000ec                SPI_SlaveInit
+                0x000000e2                SPI_putc
+ .text          0x0000030c       0x4e uart.o
+                0x0000034a                UART_flush
+                0x0000033c                UART_getc
+                0x0000032c                UART_putc
+                0x0000030c                UART_init
+ .text          0x0000035a      0x3d4 vfd.o
+                0x0000035a                cancel
+                0x00000648                cursor_up
+                0x000005e2                cursor_left
+                0x00000460                single_single
+                0x00000482                blinking_off
+                0x000004bc                reverse_video_off
+                0x00000370                rcvd_data_test
+                0x0000066a                cursor_home
+                0x00000474                reset
+                0x000004dc                reverse_video_on
+                0x00000550                restore_cursor
+                0x0000067e                request_cursor
+                0x000003be                dpmm
+                0x000004a2                blinking_on
+                0x000004f6                clear_all_attributes
+                0x0000044c                double_double
+                0x00000362                rcvd_data_test_exit
+                0x00000530                auto_linefeed_on
+                0x0000055e                save_cursor
+                0x00000510                auto_linefeed_off
+                0x00000626                cursor_down
+                0x00000604                cursor_right
+                0x0000037e                self_test
+                0x0000038c                brightness
+                0x0000056c                cursor_position
+ .text          0x0000072e        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+ .text          0x0000072e        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text          0x0000072e        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text          0x0000072e        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x0000072e                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x00000514       0x18 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
-                0x00000514                __udivmodqi4
- .text.libgcc   0x0000052c        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x0000052c        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x0000052c        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x0000052c                . = ALIGN (0x2)
+ .text.libgcc   0x0000072e       0x18 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+                0x0000072e                __udivmodqi4
+ .text.libgcc   0x00000746        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00000746        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000746        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00000746                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000052c        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x0000052c                exit
-                0x0000052c                _exit
+ .fini9         0x00000746        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00000746                exit
+                0x00000746                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -283,11 +282,11 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000052c        0x4 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000746        0x4 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000530                _etext = .
+                0x0000074a                _etext = .
 
-.data           0x00800100        0x2 load address 0x00000530
+.data           0x00800100        0x2 load address 0x0000074a
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
@@ -309,7 +308,7 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00800102                _edata = .
                 0x00800102                PROVIDE (__data_end, .)
 
-.bss            0x00800102       0x19
+.bss            0x00800102       0x1b
                 0x00800102                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x00800102        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
@@ -324,32 +323,34 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00800102                X_AXIS
                 0x0080010c                MINUTES
                 0x0080010b                BEARING
- .bss           0x0080010e        0x0 spi.o
- .bss           0x0080010e        0x2 uart.o
-                0x0080010e                UART_BUF_CNT
-                0x0080010f                UART_FLAGS
- .bss           0x00800110        0x3 vfd.o
-                0x00800111                col_report
-                0x00800112                cursor_responded
-                0x00800110                row_report
- .bss           0x00800113        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
- .bss           0x00800113        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .bss           0x00800113        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .bss           0x00800113        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x0080010e        0x2 spi.o
+                0x0080010f                type
+                0x0080010e                cnt
+ .bss           0x00800110        0x2 uart.o
+                0x00800110                UART_BUF_CNT
+                0x00800111                UART_FLAGS
+ .bss           0x00800112        0x3 vfd.o
+                0x00800113                col_report
+                0x00800114                cursor_responded
+                0x00800112                row_report
+ .bss           0x00800115        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+ .bss           0x00800115        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .bss           0x00800115        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .bss           0x00800115        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x00800113        0x8 uart.o
-                0x00800113                UART_BUFFER
-                0x0080011b                PROVIDE (__bss_end, .)
-                0x00000530                __data_load_start = LOADADDR (.data)
-                0x00000532                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800115        0x8 uart.o
+                0x00800115                UART_BUFFER
+                0x0080011d                PROVIDE (__bss_end, .)
+                0x0000074a                __data_load_start = LOADADDR (.data)
+                0x0000074c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080011b        0x0
-                0x0080011b                PROVIDE (__noinit_start, .)
+.noinit         0x0080011d        0x0
+                0x0080011d                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0080011b                PROVIDE (__noinit_end, .)
-                0x0080011b                _end = .
-                0x0080011b                PROVIDE (__heap_start, .)
+                0x0080011d                PROVIDE (__noinit_end, .)
+                0x0080011d                _end = .
+                0x0080011d                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -412,38 +413,38 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00000060       0x20 vfd.o
 
 .debug_pubnames
-                0x00000000      0x365
+                0x00000000      0x37a
  *(.debug_pubnames)
  .debug_pubnames
                 0x00000000       0x95 main.o
  .debug_pubnames
-                0x00000095       0x5d spi.o
+                0x00000095       0x72 spi.o
  .debug_pubnames
-                0x000000f2       0x7b uart.o
+                0x00000107       0x7b uart.o
  .debug_pubnames
-                0x0000016d      0x1f8 vfd.o
+                0x00000182      0x1f8 vfd.o
 
-.debug_info     0x00000000      0x74f
+.debug_info     0x00000000      0x89a
  *(.debug_info)
- .debug_info    0x00000000      0x178 main.o
- .debug_info    0x00000178      0x103 spi.o
- .debug_info    0x0000027b      0x148 uart.o
- .debug_info    0x000003c3      0x38c vfd.o
+ .debug_info    0x00000000      0x1ed main.o
+ .debug_info    0x000001ed      0x1d9 spi.o
+ .debug_info    0x000003c6      0x148 uart.o
+ .debug_info    0x0000050e      0x38c vfd.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x24a
+.debug_abbrev   0x00000000      0x2d5
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0x75 main.o
- .debug_abbrev  0x00000075       0x8b spi.o
- .debug_abbrev  0x00000100       0xa9 uart.o
- .debug_abbrev  0x000001a9       0xa1 vfd.o
+ .debug_abbrev  0x00000000       0xcc main.o
+ .debug_abbrev  0x000000cc       0xbf spi.o
+ .debug_abbrev  0x0000018b       0xa9 uart.o
+ .debug_abbrev  0x00000234       0xa1 vfd.o
 
-.debug_line     0x00000000      0x7f7
+.debug_line     0x00000000      0xaf8
  *(.debug_line)
- .debug_line    0x00000000       0x78 main.o
- .debug_line    0x00000078       0xef spi.o
- .debug_line    0x00000167       0xd8 uart.o
- .debug_line    0x0000023f      0x5b8 vfd.o
+ .debug_line    0x00000000      0x143 main.o
+ .debug_line    0x00000143      0x325 spi.o
+ .debug_line    0x00000468       0xd8 uart.o
+ .debug_line    0x00000540      0x5b8 vfd.o
 
 .debug_frame    0x00000000      0x270
  *(.debug_frame)
@@ -452,46 +453,56 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .debug_frame   0x00000080       0x50 uart.o
  .debug_frame   0x000000d0      0x1a0 vfd.o
 
-.debug_str      0x00000000      0x323
+.debug_str      0x00000000      0x357
  *(.debug_str)
- .debug_str     0x00000000       0xe5 main.o
-                                0x11e (size before relaxing)
- .debug_str     0x000000e5       0x4d spi.o
-                                0x105 (size before relaxing)
- .debug_str     0x00000132       0x64 uart.o
+ .debug_str     0x00000000      0x115 main.o
+                                0x155 (size before relaxing)
+ .debug_str     0x00000115       0x51 spi.o
+                                0x157 (size before relaxing)
+ .debug_str     0x00000166       0x64 uart.o
                                 0x11c (size before relaxing)
- .debug_str     0x00000196      0x18d vfd.o
+ .debug_str     0x000001ca      0x18d vfd.o
                                 0x245 (size before relaxing)
 
-.debug_loc      0x00000000      0x20b
+.debug_loc      0x00000000      0x284
  *(.debug_loc)
- .debug_loc     0x00000000       0x49 uart.o
- .debug_loc     0x00000049      0x1c2 vfd.o
+ .debug_loc     0x00000000       0x50 main.o
+ .debug_loc     0x00000050       0x29 spi.o
+ .debug_loc     0x00000079       0x49 uart.o
+ .debug_loc     0x000000c2      0x1c2 vfd.o
 
 .debug_macinfo
  *(.debug_macinfo)
 OUTPUT(main.elf elf32-avr)
 LOAD linker stubs
 
+.debug_ranges   0x00000000       0x48
+ .debug_ranges  0x00000000       0x48 main.o
+
 Cross Reference Table
 
 Symbol                                            File
 ALTITUDE                                          main.o
+                                                  spi.o
 BEARING                                           main.o
+                                                  spi.o
 HOURS                                             main.o
+                                                  spi.o
 LIGHT                                             main.o
+                                                  spi.o
 MINUTES                                           main.o
+                                                  spi.o
 RANGE                                             main.o
+                                                  spi.o
 SECONDS                                           main.o
+                                                  spi.o
 SPEED                                             main.o
+                                                  spi.o
 SPI_MasterInit                                    spi.o
-SPI_SSn                                           spi.o
 SPI_SlaveInit                                     spi.o
                                                   main.o
 SPI_getc                                          spi.o
-                                                  main.o
 SPI_putc                                          spi.o
-                                                  main.o
 UART_BUFFER                                       uart.o
 UART_BUF_CNT                                      uart.o
 UART_FLAGS                                        uart.o
@@ -502,9 +513,13 @@ UART_init                                         uart.o
                                                   main.o
 UART_putc                                         uart.o
                                                   vfd.o
+                                                  main.o
 X_AXIS                                            main.o
+                                                  spi.o
 Y_AXIS                                            main.o
+                                                  spi.o
 Z_AXIS                                            main.o
+                                                  spi.o
 __bad_interrupt                                   d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
 __bss_end                                         d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
 __bss_start                                       d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
@@ -514,6 +529,7 @@ __data_start                                      d:/ee programs/winavr-20100110
 __do_clear_bss                                    d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
                                                   vfd.o
                                                   uart.o
+                                                  spi.o
                                                   main.o
 __do_copy_data                                    d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
                                                   main.o
@@ -530,7 +546,8 @@ __vector_13                                       d:/ee programs/winavr-20100110
 __vector_14                                       d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
 __vector_15                                       d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
 __vector_16                                       d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
-__vector_17                                       d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
+__vector_17                                       spi.o
+                                                  d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
 __vector_18                                       d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
 __vector_19                                       d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
 __vector_2                                        d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
@@ -557,6 +574,7 @@ blinking_on                                       vfd.o
 brightness                                        vfd.o
 cancel                                            vfd.o
 clear_all_attributes                              vfd.o
+cnt                                               spi.o
 col_report                                        vfd.o
 cursor_down                                       vfd.o
 cursor_home                                       vfd.o
@@ -582,3 +600,4 @@ row_report                                        vfd.o
 save_cursor                                       vfd.o
 self_test                                         vfd.o
 single_single                                     vfd.o
+type                                              spi.o

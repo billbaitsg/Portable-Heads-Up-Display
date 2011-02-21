@@ -26,4 +26,17 @@ Portable Heads Up Display
 	#include "uart.h"
 	#include "vfd.h"
 	
+	/* Global Variables */
+	extern volatile unsigned char X_AXIS;	/* X-axis acceleration */
+	extern volatile unsigned char Y_AXIS;	/* Y-axis acceleration */
+	extern volatile unsigned char Z_AXIS;	/* Z-axis acceleration */
+	extern volatile unsigned char RANGE;	/* Range finder distance */
+	extern volatile unsigned char LIGHT;	/* Ambient light level */
+	extern volatile int ALTITUDE;			/* Altitude in meters */
+	extern volatile unsigned int SPEED;	/* Speed in kilometers per hour */
+	extern volatile unsigned char BEARING;	/* Heading of the vehicle */
+	extern volatile unsigned char HOURS;	/* Hour of the current time */
+	extern volatile unsigned char MINUTES;	/* Minutes of the current hour */
+	extern volatile unsigned char SECONDS;	/* Seconds of the current hour */
+	
 #endif

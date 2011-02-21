@@ -772,40 +772,40 @@
  1051               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 vfd.c
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:18     .text:00000000 cancel
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:33     .text:00000008 rcvd_data_test_exit
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:51     .text:00000016 rcvd_data_test
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:69     .text:00000024 self_test
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:87     .text:00000032 brightness
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:136    .text:00000064 dpmm
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:237    .text:000000f2 double_double
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:258    .text:00000106 single_single
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:279    .text:0000011a reset
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:297    .text:00000128 blinking_off
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:324    .text:00000148 blinking_on
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:348    .text:00000162 reverse_video_off
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:375    .text:00000182 reverse_video_on
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:399    .text:0000019c clear_all_attributes
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:423    .text:000001b6 auto_linefeed_off
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:450    .text:000001d6 auto_linefeed_on
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:477    .text:000001f6 restore_cursor
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:495    .text:00000204 save_cursor
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:513    .text:00000212 cursor_position
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:582    .text:00000288 cursor_left
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:613    .text:000002aa cursor_right
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:644    .text:000002cc cursor_down
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:675    .text:000002ee cursor_up
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:706    .text:00000310 cursor_home
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:727    .text:00000324 request_cursor
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:821    .bss:00000000 row_report
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:827    .bss:00000001 col_report
-C:\Users\BILLBA~1\AppData\Local\Temp/ccUgnlgZ.s:833    .bss:00000002 cursor_responded
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:18     .text:00000000 cancel
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:33     .text:00000008 rcvd_data_test_exit
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:51     .text:00000016 rcvd_data_test
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:69     .text:00000024 self_test
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:87     .text:00000032 brightness
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:136    .text:00000064 dpmm
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:237    .text:000000f2 double_double
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:258    .text:00000106 single_single
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:279    .text:0000011a reset
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:297    .text:00000128 blinking_off
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:324    .text:00000148 blinking_on
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:348    .text:00000162 reverse_video_off
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:375    .text:00000182 reverse_video_on
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:399    .text:0000019c clear_all_attributes
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:423    .text:000001b6 auto_linefeed_off
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:450    .text:000001d6 auto_linefeed_on
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:477    .text:000001f6 restore_cursor
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:495    .text:00000204 save_cursor
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:513    .text:00000212 cursor_position
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:582    .text:00000288 cursor_left
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:613    .text:000002aa cursor_right
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:644    .text:000002cc cursor_down
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:675    .text:000002ee cursor_up
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:706    .text:00000310 cursor_home
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:727    .text:00000324 request_cursor
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:821    .bss:00000000 row_report
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:827    .bss:00000001 col_report
+C:\Users\BILLBA~1\AppData\Local\Temp/ccgy9Ybl.s:833    .bss:00000002 cursor_responded
 
 UNDEFINED SYMBOLS
 UART_putc
