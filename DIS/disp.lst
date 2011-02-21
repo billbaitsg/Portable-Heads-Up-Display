@@ -1,0 +1,143 @@
+   1               		.file	"disp.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	display_x
+  18               	display_x:
+  19               	.LFB7:
+  20               	.LM1:
+  21 0000 1F93      		push r17
+  22 0002 CF93      		push r28
+  23 0004 DF93      		push r29
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26               	.LM2:
+  27 0006 8091 0000 		lds r24,X_AXIS
+  28 000a 873D      		cpi r24,lo8(-41)
+  29 000c 00F0      		brlo .L2
+  30               	.LM3:
+  31 000e 8091 0000 		lds r24,X_AXIS
+  32 0012 90E0      		ldi r25,lo8(0)
+  33 0014 8058      		subi r24,lo8(-(-128))
+  34 0016 9040      		sbci r25,hi8(-(-128))
+  35 0018 68E1      		ldi r22,lo8(24)
+  36 001a 70E0      		ldi r23,hi8(24)
+  37 001c 0E94 0000 		call __divmodhi4
+  38 0020 84E6      		ldi r24,lo8(100)
+  39 0022 90E0      		ldi r25,hi8(100)
+  40 0024 9B01      		movw r18,r22
+  41 0026 289F      		mul r18,r24
+  42 0028 B001      		movw r22,r0
+  43 002a 299F      		mul r18,r25
+  44 002c 700D      		add r23,r0
+  45 002e 389F      		mul r19,r24
+  46 0030 700D      		add r23,r0
+  47 0032 1124      		clr r1
+  48 0034 8827      		clr r24
+  49 0036 77FD      		sbrc r23,7
+  50 0038 8095      		com r24
+  51 003a 982F      		mov r25,r24
+  52 003c 0E94 0000 		call __floatsisf
+  53 0040 0E94 0000 		call __fixunssfsi
+  54 0044 EB01      		movw r28,r22
+  55               	.LVL0:
+  56 0046 1DE2      		ldi r17,lo8(45)
+  57               	.LVL1:
+  58 0048 00C0      		rjmp .L3
+  59               	.LVL2:
+  60               	.L2:
+  61               	.LM4:
+  62 004a 2091 0000 		lds r18,X_AXIS
+  63 004e 80E8      		ldi r24,lo8(128)
+  64 0050 90E0      		ldi r25,hi8(128)
+  65 0052 821B      		sub r24,r18
+  66 0054 9109      		sbc r25,__zero_reg__
+  67 0056 68E1      		ldi r22,lo8(24)
+  68 0058 70E0      		ldi r23,hi8(24)
+  69 005a 0E94 0000 		call __divmodhi4
+  70 005e 84E6      		ldi r24,lo8(100)
+  71 0060 90E0      		ldi r25,hi8(100)
+  72 0062 9B01      		movw r18,r22
+  73 0064 289F      		mul r18,r24
+  74 0066 B001      		movw r22,r0
+  75 0068 299F      		mul r18,r25
+  76 006a 700D      		add r23,r0
+  77 006c 389F      		mul r19,r24
+  78 006e 700D      		add r23,r0
+  79 0070 1124      		clr r1
+  80 0072 8827      		clr r24
+  81 0074 77FD      		sbrc r23,7
+  82 0076 8095      		com r24
+  83 0078 982F      		mov r25,r24
+  84 007a 0E94 0000 		call __floatsisf
+  85 007e 0E94 0000 		call __fixunssfsi
+  86 0082 EB01      		movw r28,r22
+  87               	.LVL3:
+  88 0084 1BE2      		ldi r17,lo8(43)
+  89               	.LVL4:
+  90               	.L3:
+  91               	.LM5:
+  92 0086 88E0      		ldi r24,lo8(8)
+  93 0088 60E0      		ldi r22,lo8(0)
+  94 008a 0E94 0000 		call cursor_position
+  95               	.LM6:
+  96 008e 812F      		mov r24,r17
+  97 0090 0E94 0000 		call UART_putc
+  98               	.LM7:
+  99 0094 CE01      		movw r24,r28
+ 100 0096 64E6      		ldi r22,lo8(100)
+ 101 0098 70E0      		ldi r23,hi8(100)
+ 102 009a 0E94 0000 		call __udivmodhi4
+ 103 009e 862F      		mov r24,r22
+ 104 00a0 0E94 0000 		call UART_putc
+ 105               	.LM8:
+ 106 00a4 8EE2      		ldi r24,lo8(46)
+ 107 00a6 0E94 0000 		call UART_putc
+ 108               	.LM9:
+ 109 00aa CE01      		movw r24,r28
+ 110 00ac 6AE0      		ldi r22,lo8(10)
+ 111 00ae 70E0      		ldi r23,hi8(10)
+ 112 00b0 0E94 0000 		call __udivmodhi4
+ 113 00b4 CB01      		movw r24,r22
+ 114 00b6 6AE0      		ldi r22,lo8(10)
+ 115 00b8 70E0      		ldi r23,hi8(10)
+ 116 00ba 0E94 0000 		call __udivmodhi4
+ 117 00be 0E94 0000 		call UART_putc
+ 118               	.LM10:
+ 119 00c2 CE01      		movw r24,r28
+ 120 00c4 6AE0      		ldi r22,lo8(10)
+ 121 00c6 70E0      		ldi r23,hi8(10)
+ 122 00c8 0E94 0000 		call __udivmodhi4
+ 123 00cc 0E94 0000 		call UART_putc
+ 124               	/* epilogue start */
+ 125               	.LM11:
+ 126 00d0 DF91      		pop r29
+ 127 00d2 CF91      		pop r28
+ 128               	.LVL5:
+ 129 00d4 1F91      		pop r17
+ 130               	.LVL6:
+ 131 00d6 0895      		ret
+ 132               	.LFE7:
+ 158               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 disp.c
+C:\Users\BILLTA~1\AppData\Local\Temp/ccAXJuTJ.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccAXJuTJ.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccAXJuTJ.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccAXJuTJ.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccAXJuTJ.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccAXJuTJ.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLTA~1\AppData\Local\Temp/ccAXJuTJ.s:18     .text:00000000 display_x
+
+UNDEFINED SYMBOLS
+X_AXIS
+__divmodhi4
+__floatsisf
+__fixunssfsi
+cursor_position
+UART_putc
+__udivmodhi4

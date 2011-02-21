@@ -25,6 +25,7 @@ Portable Heads Up Display
 	#include "spi.h"
 	#include "uart.h"
 	#include "vfd.h"
+	#include "disp.h"
 	
 	/* Global Variables */
 	extern volatile unsigned char X_AXIS;	/* X-axis acceleration */

@@ -84,6 +84,7 @@ SRC = $(TARGET).c
 SRC += spi.c
 SRC += uart.c
 SRC += vfd.c
+SRC += disp.c
 
 # List C++ source files here. (C dependencies are automatically generated.)
 CPPSRC = 

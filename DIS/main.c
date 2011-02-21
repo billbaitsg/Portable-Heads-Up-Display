@@ -43,8 +43,10 @@ int main(void)
 	sei();	/* Enable global interrupts */
 	while(1)
 	{
-		UART_putc(X_AXIS);
+		UART_putc(X_AXIS++);
 		_delay_ms(500);
+		
+		
 	}	/* End of while */
 	return 0;
 }	/* End of main */
