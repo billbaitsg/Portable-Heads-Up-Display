@@ -82,6 +82,8 @@ OBJDIR = .
 # List C source files here. (C dependencies are automatically generated.)
 SRC = $(TARGET).c
 SRC += usi.c
+SRC += uart.c
+SRC += nmea.c
 
 
 # List C++ source files here. (C dependencies are automatically generated.)

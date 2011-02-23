@@ -22,11 +22,13 @@ volatile char UART_BUF_CNT = 0;				/* UART Buffer position counter */
 volatile char UART_FLAGS = 0;	/* "Register" to store UART status */
 
 /* Initialize UART module, from datasheet */
-void UART_init( unsigned int baud )
+void UART_init( void )
 {
+	/* UBRR = (fosc/16/baud)-1 = (8MHz/16/9600bps)-1 = 51.083 = 51 */
+	unsigned int ubrr = 51;
 	/* Set baud rate */
-	UBRRH = (unsigned char)(baud>>8);
-	UBRRL = (unsigned char)baud;
+	UBRRH = (unsigned char)(ubrr>>8);
+	UBRRL = (unsigned char)ubrr;
 	/* Enable receiver and transmitter */
 	UCSRB = (1<<RXEN)|(1<<TXEN);
 	/* Set frame format: 8 data, 1 stop bit */
@@ -61,7 +63,7 @@ void UART_flush( void )
 }
 
 /* UART receive complete interrupt */
-ISR( USART0_RXC_vect )
+ISR( USART_RX_vect )
 {
 	/* Wait for completion of transmit (should be redundant) */
 	while ( !(UCSRA & (1<<RXC)) );	
@@ -77,13 +79,13 @@ ISR( USART0_RXC_vect )
 }
 
 /* UART transmit complete interrupt */
-ISR( USART0_TXC_vect )
+ISR( USART_TX_vect )
 {
 	
 }
 
 /* UART data register empty */
-ISR( USART0_DRE_vect )
+ISR( USART_UDRE_vect )
 {
 
 }

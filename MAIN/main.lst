@@ -345,24 +345,24 @@
  400               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:18     .text:00000000 main
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:324    .data:00000000 X_AXIS
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:329    .data:00000001 Y_AXIS
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:334    .data:00000002 Z_AXIS
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:344    .data:00000004 LIGHT
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:339    .data:00000003 RANGE
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:349    .data:00000005 ALTITUDE
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:354    .data:00000007 SPEED
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:359    .data:00000009 BEARING
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:364    .data:0000000b HOURS
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:369    .data:0000000c MINUTES
-C:\Users\BILLBA~1\AppData\Local\Temp/ccT00E0D.s:374    .data:0000000d SECONDS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:324    .data:00000000 X_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:329    .data:00000001 Y_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:334    .data:00000002 Z_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:344    .data:00000004 LIGHT
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:339    .data:00000003 RANGE
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:349    .data:00000005 ALTITUDE
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:354    .data:00000007 SPEED
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:359    .data:00000009 BEARING
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:364    .data:0000000b HOURS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:369    .data:0000000c MINUTES
+C:\Users\BILLBA~1\AppData\Local\Temp/ccQJStXt.s:374    .data:0000000d SECONDS
 
 UNDEFINED SYMBOLS
 SPI_MasterInit

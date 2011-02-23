@@ -17,34 +17,36 @@ Portable Heads Up Display
 int main(void)
 {
 	/* Local Variables */
-	unsigned char cmd = 0;
+	//unsigned char cmd = 0;
 	
 	/* Initialize software modules */
-	USI_SPI_initslave();	/* Initialize SPI as slave */
+	//USI_SPI_initslave();	/* Initialize SPI as slave */
+	//UART_init();			/* Initialize UART for 9600, 8N1 */
 	
 	sei();	/* Enable global interrupts */
 	
 	while(1)
 	{
-		cmd = USI_SPI_getc();
-		if( cmd == 'H' ) 		/* Heading requested */
-		{
+		//UART_putc(cmd++);
+		// cmd = USI_SPI_getc();
+		// if( cmd == 'H' ) 		/* Heading requested */
+		// {
 		
-		}
-		else if( cmd == "V" )	/* Speed requested (Velocity) */
-		{
+		// }
+		// else if( cmd == "V" )	/* Speed requested (Velocity) */
+		// {
 		
-		}
-		else if( cmd == "A" )	/* Altitude requested */
-		{
+		// }
+		// else if( cmd == "A" )	/* Altitude requested */
+		// {
 		
-		}
-		else if( cmd == "T" )	/* Time requested */
-		{
+		// }
+		// else if( cmd == "T" )	/* Time requested */
+		// {
 		
-		}
-		else					/* Ignore all other requests */
-		{}	/* End of if */
+		// }
+		// else					/* Ignore all other requests */
+		// {}	/* End of if */
 	}	/* End of while */
 	return 0;
 }	/* End of main */

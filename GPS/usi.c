@@ -69,7 +69,7 @@ ISR(USI_START_vect)
  */
 /*#pragma vector=USI_OVF_vect*/	/* Compiler specific directive */
 /*__interrupt void usiovf_handler()*/
-ISR(USI_OVF_vect)
+ISR(USI_OVERFLOW_vect)
 {
 	// Master must now disable the compare match interrupt
 	// to prevent more USI counter clocks.

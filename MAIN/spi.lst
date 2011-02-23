@@ -82,15 +82,15 @@
  145               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 spi.c
-C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:18     .text:00000000 SPI_MasterInit
-C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:42     .text:0000000e SPI_putc
-C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:62     .text:00000018 SPI_SlaveInit
-C:\Users\BILLBA~1\AppData\Local\Temp/ccFZs9ac.s:80     .text:00000022 SPI_getc
+C:\Users\BILLBA~1\AppData\Local\Temp/ccS2UP4N.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccS2UP4N.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccS2UP4N.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccS2UP4N.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccS2UP4N.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccS2UP4N.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccS2UP4N.s:18     .text:00000000 SPI_MasterInit
+C:\Users\BILLBA~1\AppData\Local\Temp/ccS2UP4N.s:42     .text:0000000e SPI_putc
+C:\Users\BILLBA~1\AppData\Local\Temp/ccS2UP4N.s:62     .text:00000018 SPI_SlaveInit
+C:\Users\BILLBA~1\AppData\Local\Temp/ccS2UP4N.s:80     .text:00000022 SPI_getc
 
 NO UNDEFINED SYMBOLS

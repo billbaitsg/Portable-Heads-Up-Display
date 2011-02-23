@@ -373,9 +373,9 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .debug_str      0x00000000      0x126
  *(.debug_str)
  .debug_str     0x00000000       0xe6 main.o
-                                0x11f (size before relaxing)
+                                0x124 (size before relaxing)
  .debug_str     0x000000e6       0x40 spi.o
-                                 0xf9 (size before relaxing)
+                                 0xfe (size before relaxing)
 
 .debug_loc      0x00000000       0xcb
  *(.debug_loc)
