@@ -14,7 +14,12 @@ Portable Heads Up Display
 
 #ifndef UART_H
 #define UART_H
-
+	
 	/* Function prototypes */
+	
+	/* NMEA Flag definitiongs */
+	#define NMEA_RXC 1
+	#define NMEA_START 2
+	#define NMEA_ERROR 3
 	
 #endif

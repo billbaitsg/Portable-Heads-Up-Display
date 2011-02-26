@@ -1,0 +1,122 @@
+   1               		.file	"adc.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	adc_init
+  18               	adc_init:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 87B1      		in r24,39-32
+  25 0002 87B9      		out 39-32,r24
+  26               	.LM3:
+  27 0004 1C9A      		sbi 35-32,4
+  28               	.LM4:
+  29 0006 87B1      		in r24,39-32
+  30 0008 807C      		andi r24,lo8(-64)
+  31 000a 87B9      		out 39-32,r24
+  32               	.LM5:
+  33 000c 379A      		sbi 38-32,7
+  34               	.LM6:
+  35 000e 339A      		sbi 38-32,3
+  36               	.LM7:
+  37 0010 86B1      		in r24,38-32
+  38 0012 8360      		ori r24,lo8(3)
+  39 0014 86B9      		out 38-32,r24
+  40               	.LM8:
+  41 0016 369A      		sbi 38-32,6
+  42               	/* epilogue start */
+  43               	.LM9:
+  44 0018 0895      		ret
+  45               	.LFE6:
+  47               	.global	__vector_13
+  49               	__vector_13:
+  50               	.LFB7:
+  51               	.LM10:
+  52 001a 1F92      		push __zero_reg__
+  53 001c 0F92      		push r0
+  54 001e 0FB6      		in r0,__SREG__
+  55 0020 0F92      		push r0
+  56 0022 1124      		clr __zero_reg__
+  57 0024 8F93      		push r24
+  58 0026 9F93      		push r25
+  59               	/* prologue: Signal */
+  60               	/* frame size = 0 */
+  61               	.LM11:
+  62 0028 87B1      		in r24,39-32
+  63 002a 90E0      		ldi r25,lo8(0)
+  64 002c 8F73      		andi r24,lo8(63)
+  65 002e 9070      		andi r25,hi8(63)
+  66 0030 892B      		or r24,r25
+  67 0032 01F4      		brne .L4
+  68               	.LM12:
+  69 0034 85B1      		in r24,37-32
+  70               	.LVL0:
+  71 0036 8093 0000 		sts X_AXIS,r24
+  72               	.LM13:
+  73 003a 87B1      		in r24,39-32
+  74               	.LVL1:
+  75 003c 807C      		andi r24,lo8(-64)
+  76 003e 8160      		ori r24,lo8(1)
+  77 0040 00C0      		rjmp .L8
+  78               	.L4:
+  79               	.LM14:
+  80 0042 87B1      		in r24,39-32
+  81 0044 8F73      		andi r24,lo8(63)
+  82 0046 8130      		cpi r24,lo8(1)
+  83 0048 01F4      		brne .L6
+  84               	.LM15:
+  85 004a 85B1      		in r24,37-32
+  86               	.LVL2:
+  87 004c 8093 0000 		sts Y_AXIS,r24
+  88               	.LM16:
+  89 0050 87B1      		in r24,39-32
+  90               	.LVL3:
+  91 0052 807C      		andi r24,lo8(-64)
+  92 0054 8260      		ori r24,lo8(2)
+  93 0056 00C0      		rjmp .L8
+  94               	.L6:
+  95               	.LM17:
+  96 0058 85B1      		in r24,37-32
+  97               	.LVL4:
+  98 005a 8093 0000 		sts Z_AXIS,r24
+  99               	.LM18:
+ 100 005e 87B1      		in r24,39-32
+ 101               	.LVL5:
+ 102 0060 807C      		andi r24,lo8(-64)
+ 103               	.L8:
+ 104 0062 87B9      		out 39-32,r24
+ 105               	.LM19:
+ 106 0064 369A      		sbi 38-32,6
+ 107               	/* epilogue start */
+ 108               	.LM20:
+ 109 0066 9F91      		pop r25
+ 110 0068 8F91      		pop r24
+ 111 006a 0F90      		pop r0
+ 112 006c 0FBE      		out __SREG__,r0
+ 113 006e 0F90      		pop r0
+ 114 0070 1F90      		pop __zero_reg__
+ 115 0072 1895      		reti
+ 116               	.LFE7:
+ 150               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 adc.c
+C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:18     .text:00000000 adc_init
+C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:49     .text:0000001a __vector_13
+
+UNDEFINED SYMBOLS
+X_AXIS
+Y_AXIS
+Z_AXIS

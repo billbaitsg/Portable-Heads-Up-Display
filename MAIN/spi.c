@@ -17,8 +17,12 @@ Portable Heads Up Display
 /* Initialize SPI for master mode */
 void SPI_MasterInit(void)
 {
-	/* Cofigure SSn, MOSI, and SCK as output */
-	DDR_SPI = (1<<DD_MOSI)|(1<<DD_SCK)|(1<<DD_SSN);
+	/* Configure SSn, MOSI, and SCK as output */
+	DDR_SPI |= (1<<DD_MOSI)|(1<<DD_SCK)|(1<<DD_SSN);
+	/* Configure MISO as input */
+	DDR_SPI &= ~(1<<DD_MISO);
+	/* Set MISO pull up resistor */
+	PORT_SPI |= (1<<DD_MISO);
 	/* Set SPE and MSTR of the SPCR register */
 	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR1);
 	/* Clear SPI Interrupt Flag by reading SPSR and SPDR */

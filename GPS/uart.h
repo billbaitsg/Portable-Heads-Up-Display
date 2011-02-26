@@ -15,6 +15,9 @@ Portable Heads Up Display
 #ifndef UART_H
 #define UART_H
 
+	/* Includes */
+	#include <string.h>
+
 	/* Function prototypes */
 	void UART_init( void );
 	void UART_putc( unsigned char data );

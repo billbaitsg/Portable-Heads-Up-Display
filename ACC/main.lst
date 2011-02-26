@@ -1,0 +1,105 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 00D0      		rcall adc_init
+  25               	.LM3:
+  26 0002 00D0      		rcall USI_SPI_initslave
+  27               	.LM4:
+  28               	/* #APP */
+  29               	 ;  32 "main.c" 1
+  30 0004 7894      		sei
+  31               	 ;  0 "" 2
+  32               	.LVL0:
+  33               	/* #NOAPP */
+  34               	.L9:
+  35               	.LM5:
+  36 0006 CF99      		sbic 57-32,7
+  37 0008 00C0      		rjmp .L2
+  38               	.LM6:
+  39 000a 80E0      		ldi r24,lo8(0)
+  40               	.LVL1:
+  41 000c 00D0      		rcall USI_SPI_SSn
+  42               	.LM7:
+  43 000e 00D0      		rcall USI_SPI_getc
+  44               	.LM8:
+  45 0010 8835      		cpi r24,lo8(88)
+  46               	.LVL2:
+  47 0012 01F4      		brne .L3
+  48               	.LM9:
+  49 0014 8091 0000 		lds r24,X_AXIS
+  50               	.LVL3:
+  51 0018 00C0      		rjmp .L10
+  52               	.LVL4:
+  53               	.L3:
+  54               	.LM10:
+  55 001a 8935      		cpi r24,lo8(89)
+  56 001c 01F4      		brne .L5
+  57               	.LM11:
+  58 001e 8091 0000 		lds r24,Y_AXIS
+  59               	.LVL5:
+  60 0022 00C0      		rjmp .L10
+  61               	.LVL6:
+  62               	.L5:
+  63               	.LM12:
+  64 0024 8A35      		cpi r24,lo8(90)
+  65 0026 01F4      		brne .L9
+  66               	.LM13:
+  67 0028 8091 0000 		lds r24,Z_AXIS
+  68               	.LVL7:
+  69               	.L10:
+  70 002c 00D0      		rcall USI_SPI_putc
+  71               	.LM14:
+  72 002e 00D0      		rcall USI_SPI_wait
+  73 0030 00C0      		rjmp .L9
+  74               	.LVL8:
+  75               	.L2:
+  76               	.LM15:
+  77 0032 81E0      		ldi r24,lo8(1)
+  78               	.LVL9:
+  79 0034 00D0      		rcall USI_SPI_SSn
+  80 0036 00C0      		rjmp .L9
+  81               	.LFE6:
+  83               	.global	X_AXIS
+  84               		.data
+  87               	X_AXIS:
+  88 0000 0A        		.byte	10
+  89               	.global	Y_AXIS
+  92               	Y_AXIS:
+  93 0001 14        		.byte	20
+  94               	.global	Z_AXIS
+  97               	Z_AXIS:
+  98 0002 1E        		.byte	30
+ 123               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:87     .data:00000000 X_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:92     .data:00000001 Y_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:97     .data:00000002 Z_AXIS
+
+UNDEFINED SYMBOLS
+adc_init
+USI_SPI_initslave
+USI_SPI_SSn
+USI_SPI_getc
+USI_SPI_putc
+USI_SPI_wait
+__do_copy_data

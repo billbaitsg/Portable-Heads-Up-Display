@@ -32,12 +32,12 @@ ISR(ADC_vect)
 {
 	if( (ADMUX & 0x3F) == 0 )	/* if ADC0 is selected */
 	{
-		X_AXIS = ADCH;	/* Read the X-axis accelerometer measurment */
+		X_AXIS = ADCH;	/* Read the X-axis accelerometer measurement */
 		ADMUX = (ADMUX & ~0x3F) | 1;	/* switch to ADC1 */
 	}
 	else if ( (ADMUX & 0x3F) == 1 )	/* if ADC1 is selected */
 	{
-		Y_AXIS = ADCH;	/* Read the Y-axis accelerometer measurment */
+		Y_AXIS = ADCH;	/* Read the Y-axis accelerometer measurement */
 		ADMUX = (ADMUX & ~0x3F) | 2;	/* switch back to ADC2 */
 	}
 	else 	/* any other ADC selected */

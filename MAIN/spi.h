@@ -16,6 +16,8 @@ Portable Heads Up Display
 #define SPI_H
 	/* SPI Defines */
 	#define DDR_SPI	DDRB
+	#define PORT_SPI PORTB
+	#define PIN_SPI PINB
 	#define DD_MOSI	3
 	#define DD_MISO	4
 	#define DD_SCK	5

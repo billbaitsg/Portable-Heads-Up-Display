@@ -151,6 +151,7 @@ void USI_SPI_SSn(unsigned char mode)
 	else				/* Slave is not selected */
 	{
 		USI_DIR_REG &= ~(1<<USI_DATAOUT_PIN);	/* Set MISO pin to input w/o pull-up resistor */
+		USI_OUT_REG &= ~(1<<USI_DATAOUT_PIN);	/* Turn off pull up resistor */
 	}/* End of if */
 }
 
