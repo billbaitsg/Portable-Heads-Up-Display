@@ -18,6 +18,7 @@ Portable Heads Up Display
 	/* Function prototypes */
 	void UART_init( unsigned int baud );
 	void UART_putc( unsigned char data );
+	void UART_puts( unsigned char * string );
 	unsigned char UART_getc( void );
 	void UART_flush( void );
 	

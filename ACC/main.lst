@@ -84,16 +84,16 @@
  123               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:18     .text:00000000 main
-C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:87     .data:00000000 X_AXIS
-C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:92     .data:00000001 Y_AXIS
-C:\Users\BILLBA~1\AppData\Local\Temp/cch4IfOt.s:97     .data:00000002 Z_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccKTIhov.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccKTIhov.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccKTIhov.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccKTIhov.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccKTIhov.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccKTIhov.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccKTIhov.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/ccKTIhov.s:87     .data:00000000 X_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccKTIhov.s:92     .data:00000001 Y_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccKTIhov.s:97     .data:00000002 Z_AXIS
 
 UNDEFINED SYMBOLS
 adc_init

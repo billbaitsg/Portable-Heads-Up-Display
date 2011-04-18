@@ -205,12 +205,16 @@ void USI_SPI_wait(void)
 	do {} while( USI_SPI_status.transferComplete == 0 );
 }
 
-/* Sends out a string of SPI data */
-void USI_SPI_puts(char * string )
+/* Changes USI MISO between input and output when slave is selected or not */
+void USI_SPI_SSn(unsigned char mode)
 {
-	while(*string)	/* While there are still characters left */
+	if( mode == 0 )		/* Slave is selected */
 	{
-		USI_SPI_putc(*string++);	/* Send out the current character and increment */
-	}/* End of while */
-	return;
-}/* End of USI_SPI_puts() */
+		USI_DIR_REG |= (1<<USI_DATAOUT_PIN);	/* Set MISO pin to output */
+	}
+	else				/* Slave is not selected */
+	{
+		USI_DIR_REG &= ~(1<<USI_DATAOUT_PIN);	/* Set MISO pin to input w/o pull-up resistor */
+		USI_OUT_REG &= ~(1<<USI_DATAOUT_PIN);	/* Turn off pull up resistor */
+	}/* End of if */
+}

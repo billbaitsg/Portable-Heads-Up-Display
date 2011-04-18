@@ -265,23 +265,23 @@
  378               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 usi.c
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:18     .text:00000000 __vector_10
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:41     .text:00000016 __vector_13
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:62     .text:0000002a __vector_14
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:18     .text:00000000 __vector_10
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:41     .text:00000016 __vector_13
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:62     .text:0000002a __vector_14
                             *COM*:00000001 USI_SPI_status
                             *COM*:00000001 storedUSIDR
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:104    .text:00000064 USI_SPI_initmaster
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:149    .text:000000a0 USI_SPI_initslave
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:184    .text:000000d0 USI_SPI_SSn
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:204    .text:000000dc USI_SPI_putc
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:260    .text:0000012e USI_SPI_getc
-C:\Users\BILLBA~1\AppData\Local\Temp/cc4KZfu6.s:273    .text:00000134 USI_SPI_wait
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:104    .text:00000064 USI_SPI_initmaster
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:149    .text:000000a0 USI_SPI_initslave
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:184    .text:000000d0 USI_SPI_SSn
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:204    .text:000000dc USI_SPI_putc
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:260    .text:0000012e USI_SPI_getc
+C:\Users\BILLBA~1\AppData\Local\Temp/cc12XkJs.s:273    .text:00000134 USI_SPI_wait
 
 UNDEFINED SYMBOLS
 __do_clear_bss

@@ -22,7 +22,7 @@ volatile unsigned char col_report = 0;
 volatile unsigned char cursor_responded = 0;
 
 /* Moves cursor to home position */
-void cursor_home(void)
+void cursor_home(void)	/* works */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x5B);	/* [ */
@@ -30,7 +30,7 @@ void cursor_home(void)
 }
 
 /* Moves the cursor up 1-6 lines in the same column, stops at the top */
-void cursor_up(unsigned char lines)
+void cursor_up(unsigned char lines)	/* unknown */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x5B);	/* [ */
@@ -39,7 +39,7 @@ void cursor_up(unsigned char lines)
 }
 
 /* Moves the cursor down 1-6 lines in the same column, stops at the bottom */
-void cursor_down(unsigned char lines)
+void cursor_down(unsigned char lines)	/* unknown */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x5B);	/* [ */
@@ -48,7 +48,7 @@ void cursor_down(unsigned char lines)
 }
 
 /* Moves the cursor right 1-9 columns, stops at the right margin */
-void cursor_right(unsigned char cols)
+void cursor_right(unsigned char cols)	/* unknown */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x5B);	/* [ */
@@ -57,7 +57,7 @@ void cursor_right(unsigned char cols)
 }
 
 /* Moves the cursor left 1-9 columns, stops at the left margin */
-void cursor_left(unsigned char cols)
+void cursor_left(unsigned char cols)	/* unknown */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x5B);	/* [ */
@@ -66,7 +66,7 @@ void cursor_left(unsigned char cols)
 }
 
 /* Moves the cursor to an arbitrary position */
-void cursor_position(unsigned char row, unsigned char col)
+void cursor_position(unsigned char row, unsigned char col)	/* DOES NOT work */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x5B);	/* [ */
@@ -82,21 +82,21 @@ void cursor_position(unsigned char row, unsigned char col)
 /* Saves the present value of the cursor location, 
 character attribute, and character set selection,
 moves to home if none were saved */
-void save_cursor(void)
+void save_cursor(void)	/* unknown */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x37);	/* 7 */
 }
 
 /* Restores the previously saved cursor position */
-void restore_cursor(void)
+void restore_cursor(void)	/* unknown */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x38);	/* 8 */
 }
 
 /* Request cursor position */
-void request_cursor(void)
+void request_cursor(void)	/* unknown, probably doesnt work */
 {
 	row_report = 0;
 	col_report = 0;
@@ -124,7 +124,7 @@ void request_cursor(void)
 
 /* With Auto Linefeed on, LF, CR, FF, and vertical tab commands
 cause cursor to move to first column on the next line */
-void auto_linefeed_on(void)
+void auto_linefeed_on(void)	/* unknown */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x5B);	/* [ */
@@ -132,7 +132,7 @@ void auto_linefeed_on(void)
 	UART_putc(0x30);	/* 0 */
 	UART_putc(0x68);	/* h */
 }
-void auto_linefeed_off(void)
+void auto_linefeed_off(void)	/* unknown */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x5B);	/* [ */
@@ -142,7 +142,7 @@ void auto_linefeed_off(void)
 }
 
 /* Clear all character and graphic attributes */
-void clear_all_attributes(void)
+void clear_all_attributes(void)	/* unknown */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x5B);	/* [ */
@@ -151,14 +151,14 @@ void clear_all_attributes(void)
 }
 
 /* Reverse Video */
-void reverse_video_on(void)
+void reverse_video_on(void)	/* works */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x5B);	/* [ */
 	UART_putc(0x37);	/* 7 */
 	UART_putc(0x6D);	/* m */
 }
-void reverse_video_off(void)
+void reverse_video_off(void)	/* works, tested by Barnett */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x5B);	/* [ */
@@ -168,14 +168,14 @@ void reverse_video_off(void)
 }
 
 /* Blinking */
-void blinking_on(void)
+void blinking_on(void)	/* works */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x5B);	/* [ */
 	UART_putc(0x35);	/* 5 */
 	UART_putc(0x6D);	/* m */
 }
-void blinking_off(void)
+void blinking_off(void)	/* works, tested by Barnett */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x5B);	/* [ */
@@ -189,20 +189,20 @@ void blinking_off(void)
 the screen and all communication parameters,
 and character attributes teturn to their defaults.
 No characters can be sent for 900ms after the reset. */
-void reset(void)
+void reset(void)	/* works */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x43);	/* C */
 }
 
 /* Character Sizes */
-void single_single(void)
+void single_single(void)	/* works */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x23);	/* # */
 	UART_putc(0x35);	/* 5 */
 }
-void double_double(void)
+void double_double(void)	/* works */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x23);	/* # */
@@ -215,7 +215,7 @@ void double_double(void)
    Display:	+123 +10 */
 void dpmm(unsigned char a, unsigned char b, unsigned char c,
 	unsigned char d, unsigned char e, unsigned char f,
-	unsigned char g, unsigned char h)
+	unsigned char g, unsigned char h)	/* works, tested by Barnett */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x2F);	/* / */
@@ -234,7 +234,7 @@ void dpmm(unsigned char a, unsigned char b, unsigned char c,
 }
 
 /* Brightness, 4 levels */
-void brightness(unsigned char level)
+void brightness(unsigned char level)	/* works, tested by Barnett */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x23);	/* # */
@@ -261,7 +261,7 @@ void brightness(unsigned char level)
 }
 
 /* Self-test mode */
-void self_test(void)
+void self_test(void)	/* works */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x42);	/* B */
@@ -270,19 +270,19 @@ void self_test(void)
 /* Recieved data test mode */
 /* All bytes recieved will be displayed in HEX
 rather than ASCII. */
-void rcvd_data_test(void)
+void rcvd_data_test(void)	/* works */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x44);	/* D */
 }
-void rcvd_data_test_exit(void)
+void rcvd_data_test_exit(void)	/* unknown */
 {
 	UART_putc(0x1B);	/* ESC */
 	UART_putc(0x45);	/* E */
 }
 
 /* Cancel */
-void cancel(void)
+void cancel(void)	/* unknown */
 {
 	UART_putc(0x18);	/* CAN */
 }

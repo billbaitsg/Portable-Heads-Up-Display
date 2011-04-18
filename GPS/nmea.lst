@@ -1,0 +1,57 @@
+   1               		.file	"nmea.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	NMEA_TYPE
+  17               	.global	NMEA_TYPE
+  18               		.section .bss
+  21               	NMEA_TYPE:
+  22 0000 00        		.skip 1,0
+  23               	.global	ALTITUDE
+  24               	.global	ALTITUDE
+  27               	ALTITUDE:
+  28 0001 0000      		.skip 2,0
+  29               	.global	BEARING
+  30               		.data
+  33               	BEARING:
+  34 0000 8409      		.word	2436
+  35               	.global	SPEED
+  36               	.global	SPEED
+  37               		.section .bss
+  40               	SPEED:
+  41 0003 0000      		.skip 2,0
+  42               	.global	HOURS
+  43               		.data
+  46               	HOURS:
+  47 0002 0C        		.byte	12
+  48               	.global	MINUTES
+  51               	MINUTES:
+  52 0003 1E        		.byte	30
+  53               	.global	SECONDS
+  56               	SECONDS:
+  57 0004 2D        		.byte	45
+  58               		.text
+  59               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 nmea.c
+C:\Users\BILLBA~1\AppData\Local\Temp/ccrXvDSb.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccrXvDSb.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccrXvDSb.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccrXvDSb.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccrXvDSb.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccrXvDSb.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccrXvDSb.s:21     .bss:00000000 NMEA_TYPE
+C:\Users\BILLBA~1\AppData\Local\Temp/ccrXvDSb.s:27     .bss:00000001 ALTITUDE
+C:\Users\BILLBA~1\AppData\Local\Temp/ccrXvDSb.s:33     .data:00000000 BEARING
+C:\Users\BILLBA~1\AppData\Local\Temp/ccrXvDSb.s:40     .bss:00000003 SPEED
+C:\Users\BILLBA~1\AppData\Local\Temp/ccrXvDSb.s:46     .data:00000002 HOURS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccrXvDSb.s:51     .data:00000003 MINUTES
+C:\Users\BILLBA~1\AppData\Local\Temp/ccrXvDSb.s:56     .data:00000004 SECONDS
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

@@ -20,33 +20,56 @@ Portable Heads Up Display
 #define MYUBRR FOSC/16/BAUD-1
 
 /* Global Variables */
-volatile unsigned char X_AXIS = 0;	/* X-axis acceleration */
-volatile unsigned char Y_AXIS = 0;	/* Y-axis acceleration */
-volatile unsigned char Z_AXIS = 0;	/* Z-axis acceleration */
-volatile unsigned char RANGE = 0;	/* Range finder distance */
-volatile unsigned char LIGHT = 0;	/* Ambient light level */
-volatile int ALTITUDE = 0;			/* Altitude in meters */
-volatile unsigned int SPEED = 0;	/* Speed in kilometers per hour */
-volatile unsigned char BEARING = 0;	/* Heading of the vehicle */
+volatile unsigned char X_AXIS = 100;	/* X-axis acceleration */
+volatile unsigned char Y_AXIS = 128;	/* Y-axis acceleration */
+volatile unsigned char Z_AXIS = 156;	/* Z-axis acceleration */
+volatile unsigned char RANGE = 10;	/* Range finder distance */
+volatile unsigned char LIGHT = 10;	/* Ambient light level */
+volatile int ALTITUDE = 12345;			/* Altitude in meters */
+volatile unsigned int SPEED = 1234;	/* Speed in kilometers per hour */
+volatile unsigned char BEARING = 123;	/* Heading of the vehicle */
 volatile unsigned char HOURS = 12;	/* Hour of the current time */
-volatile unsigned char MINUTES = 0;	/* Minutes of the current hour */
-volatile unsigned char SECONDS = 0;	/* Seconds of the current hour */
+volatile unsigned char MINUTES = 34;	/* Minutes of the current hour */
+volatile unsigned char SECONDS = 56;	/* Seconds of the current hour */
 
 int main(void)
 {
 	/* Local Variables */
+	unsigned char cmd = 0x20;
 	
 	/* Initialize software modules */
 	SPI_SlaveInit();	/* Initialize SPI */
 	UART_init(MYUBRR);	/* Initialize UART */
 	
 	sei();	/* Enable global interrupts */
+
+	_delay_ms(200);
+	reset();
+	/* Wait 200ms for display to boot up */
+	_delay_ms(500);
+
 	while(1)
 	{
-		UART_putc(X_AXIS++);
-		_delay_ms(500);
-		
-		
+		cursor_home();
+		display_counter();
+		//cursor_position(0,0);	/* Set cursor row 0, column 0 */
+		cursor_home();
+		UART_puts("\tAccelerometer");	/* Print information */
+		display_x();	/* Display X-axis value */
+		display_y();	/* Display Y-axis value */
+		display_z();	/* Display Z-axis value */
+		UART_puts("\n\r\tRange Finder");
+		display_r();	/* Display Range value */
+		UART_puts("\n\r\tAmbient Light");
+		display_l();	/* Display Ambient Light value */
+		cursor_home();
+		UART_puts("\t\t\tGPS Data");
+		display_a();
+		display_v();
+		display_b();
+		UART_puts("\n\n\r\t\t\tGPS Time");
+		display_time();
+		_delay_ms(100);
 	}	/* End of while */
 	return 0;
 }	/* End of main */

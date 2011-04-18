@@ -96,362 +96,386 @@
  112 0038 1124      		clr __zero_reg__
  113 003a 2F93      		push r18
  114 003c 3F93      		push r19
- 115 003e 8F93      		push r24
- 116 0040 9F93      		push r25
- 117               	/* prologue: Signal */
- 118               	/* frame size = 0 */
- 119               	.LM22:
- 120 0042 9EB5      		in r25,78-32
- 121               	.LVL5:
- 122               	.LM23:
- 123 0044 8091 0000 		lds r24,cnt
- 124 0048 8823      		tst r24
- 125 004a 01F0      		breq .+2
- 126 004c 00C0      		rjmp .L14
- 127               	.LM24:
- 128 004e 9837      		cpi r25,lo8(120)
- 129 0050 01F4      		brne .L15
- 130               	.LM25:
- 131 0052 81E0      		ldi r24,lo8(1)
- 132 0054 8093 0000 		sts cnt,r24
- 133 0058 00C0      		rjmp .L44
- 134               	.L15:
- 135               	.LM26:
- 136 005a 9937      		cpi r25,lo8(121)
- 137 005c 01F4      		brne .L17
- 138               	.LM27:
- 139 005e 81E0      		ldi r24,lo8(1)
- 140 0060 8093 0000 		sts cnt,r24
- 141               	.LM28:
- 142 0064 82E0      		ldi r24,lo8(2)
- 143               	.L44:
- 144 0066 8093 0000 		sts type,r24
- 145 006a 00C0      		rjmp .L43
- 146               	.L17:
- 147               	.LM29:
- 148 006c 9A37      		cpi r25,lo8(122)
- 149 006e 01F4      		brne .L18
- 150               	.LM30:
- 151 0070 81E0      		ldi r24,lo8(1)
- 152 0072 8093 0000 		sts cnt,r24
- 153               	.LM31:
- 154 0076 83E0      		ldi r24,lo8(3)
- 155 0078 00C0      		rjmp .L44
- 156               	.L18:
- 157               	.LM32:
- 158 007a 9C36      		cpi r25,lo8(108)
- 159 007c 01F4      		brne .L19
- 160               	.LM33:
- 161 007e 81E0      		ldi r24,lo8(1)
- 162 0080 8093 0000 		sts cnt,r24
- 163               	.LM34:
- 164 0084 84E0      		ldi r24,lo8(4)
- 165 0086 00C0      		rjmp .L44
- 166               	.L19:
- 167               	.LM35:
- 168 0088 9237      		cpi r25,lo8(114)
- 169 008a 01F4      		brne .L20
- 170               	.LM36:
- 171 008c 81E0      		ldi r24,lo8(1)
- 172 008e 8093 0000 		sts cnt,r24
- 173               	.LM37:
- 174 0092 85E0      		ldi r24,lo8(5)
- 175 0094 00C0      		rjmp .L44
- 176               	.L20:
- 177               	.LM38:
- 178 0096 9136      		cpi r25,lo8(97)
- 179 0098 01F4      		brne .L21
- 180               	.LM39:
- 181 009a 82E0      		ldi r24,lo8(2)
- 182 009c 8093 0000 		sts cnt,r24
- 183               	.LM40:
- 184 00a0 86E0      		ldi r24,lo8(6)
- 185 00a2 00C0      		rjmp .L44
- 186               	.L21:
- 187               	.LM41:
- 188 00a4 9637      		cpi r25,lo8(118)
- 189 00a6 01F4      		brne .L22
- 190               	.LM42:
- 191 00a8 82E0      		ldi r24,lo8(2)
- 192 00aa 8093 0000 		sts cnt,r24
- 193               	.LM43:
- 194 00ae 87E0      		ldi r24,lo8(7)
- 195 00b0 00C0      		rjmp .L44
- 196               	.L22:
- 197               	.LM44:
- 198 00b2 9236      		cpi r25,lo8(98)
- 199 00b4 01F4      		brne .L23
- 200               	.LM45:
- 201 00b6 82E0      		ldi r24,lo8(2)
- 202 00b8 8093 0000 		sts cnt,r24
- 203               	.LM46:
- 204 00bc 88E0      		ldi r24,lo8(8)
- 205 00be 00C0      		rjmp .L44
- 206               	.L23:
- 207               	.LM47:
- 208 00c0 9836      		cpi r25,lo8(104)
- 209 00c2 01F4      		brne .L24
- 210               	.LM48:
- 211 00c4 81E0      		ldi r24,lo8(1)
- 212 00c6 8093 0000 		sts cnt,r24
- 213               	.LM49:
- 214 00ca 89E0      		ldi r24,lo8(9)
- 215 00cc 00C0      		rjmp .L44
- 216               	.L24:
- 217               	.LM50:
- 218 00ce 9D36      		cpi r25,lo8(109)
- 219 00d0 01F4      		brne .L25
- 220               	.LM51:
- 221 00d2 81E0      		ldi r24,lo8(1)
- 222 00d4 8093 0000 		sts cnt,r24
- 223               	.LM52:
- 224 00d8 8AE0      		ldi r24,lo8(10)
- 225 00da 00C0      		rjmp .L44
- 226               	.L25:
- 227               	.LM53:
- 228 00dc 9337      		cpi r25,lo8(115)
- 229 00de 01F0      		breq .+2
- 230 00e0 00C0      		rjmp .L39
- 231               	.LM54:
- 232 00e2 81E0      		ldi r24,lo8(1)
- 233 00e4 8093 0000 		sts cnt,r24
- 234               	.LM55:
- 235 00e8 8BE0      		ldi r24,lo8(11)
- 236 00ea 00C0      		rjmp .L44
- 237               	.L14:
- 238               	.LM56:
- 239 00ec 8091 0000 		lds r24,cnt
- 240 00f0 8130      		cpi r24,lo8(1)
- 241 00f2 01F0      		breq .+2
- 242 00f4 00C0      		rjmp .L27
- 243               	.LM57:
- 244 00f6 8091 0000 		lds r24,type
- 245 00fa 8130      		cpi r24,lo8(1)
- 246 00fc 01F4      		brne .L28
- 247               	.LM58:
- 248 00fe 8EB5      		in r24,78-32
- 249               	.LVL6:
- 250 0100 8093 0000 		sts X_AXIS,r24
- 251 0104 00C0      		rjmp .L39
- 252               	.LVL7:
- 253               	.L28:
- 254               	.LM59:
- 255 0106 8091 0000 		lds r24,type
- 256 010a 8230      		cpi r24,lo8(2)
- 257 010c 01F4      		brne .L29
- 258               	.LM60:
- 259 010e 8EB5      		in r24,78-32
- 260               	.LVL8:
- 261 0110 8093 0000 		sts Y_AXIS,r24
- 262 0114 00C0      		rjmp .L39
- 263               	.LVL9:
- 264               	.L29:
- 265               	.LM61:
- 266 0116 8091 0000 		lds r24,type
- 267 011a 8330      		cpi r24,lo8(3)
- 268 011c 01F4      		brne .L30
- 269               	.LM62:
- 270 011e 8EB5      		in r24,78-32
- 271               	.LVL10:
- 272 0120 8093 0000 		sts Z_AXIS,r24
- 273 0124 00C0      		rjmp .L39
- 274               	.LVL11:
- 275               	.L30:
- 276               	.LM63:
- 277 0126 8091 0000 		lds r24,type
- 278 012a 8430      		cpi r24,lo8(4)
- 279 012c 01F4      		brne .L31
- 280               	.LM64:
- 281 012e 8EB5      		in r24,78-32
- 282               	.LVL12:
- 283 0130 8093 0000 		sts LIGHT,r24
- 284 0134 00C0      		rjmp .L39
- 285               	.LVL13:
- 286               	.L31:
- 287               	.LM65:
- 288 0136 8091 0000 		lds r24,type
- 289 013a 8530      		cpi r24,lo8(5)
- 290 013c 01F4      		brne .L32
- 291               	.LM66:
- 292 013e 8EB5      		in r24,78-32
- 293               	.LVL14:
- 294 0140 8093 0000 		sts RANGE,r24
- 295 0144 00C0      		rjmp .L39
- 296               	.LVL15:
- 297               	.L32:
- 298               	.LM67:
- 299 0146 8091 0000 		lds r24,type
- 300 014a 8630      		cpi r24,lo8(6)
- 301 014c 01F4      		brne .L33
- 302               	.LM68:
- 303 014e 8091 0000 		lds r24,ALTITUDE
- 304 0152 9091 0000 		lds r25,(ALTITUDE)+1
- 305 0156 2EB5      		in r18,78-32
- 306 0158 820F      		add r24,r18
- 307 015a 911D      		adc r25,__zero_reg__
- 308 015c 9093 0000 		sts (ALTITUDE)+1,r25
- 309 0160 8093 0000 		sts ALTITUDE,r24
- 310 0164 00C0      		rjmp .L39
- 311               	.L33:
- 312               	.LM69:
- 313 0166 8091 0000 		lds r24,type
- 314 016a 8730      		cpi r24,lo8(7)
- 315 016c 01F4      		brne .L34
- 316               	.LM70:
- 317 016e 8091 0000 		lds r24,SPEED
- 318 0172 9091 0000 		lds r25,(SPEED)+1
- 319 0176 2EB5      		in r18,78-32
- 320 0178 820F      		add r24,r18
- 321 017a 911D      		adc r25,__zero_reg__
- 322 017c 9093 0000 		sts (SPEED)+1,r25
- 323 0180 8093 0000 		sts SPEED,r24
- 324 0184 00C0      		rjmp .L39
- 325               	.L34:
- 326               	.LM71:
- 327 0186 8091 0000 		lds r24,type
- 328 018a 8830      		cpi r24,lo8(8)
- 329 018c 01F4      		brne .L35
- 330               	.LM72:
- 331 018e 9091 0000 		lds r25,BEARING
- 332               	.LVL16:
- 333 0192 8EB5      		in r24,78-32
- 334 0194 890F      		add r24,r25
- 335 0196 8093 0000 		sts BEARING,r24
- 336 019a 00C0      		rjmp .L39
- 337               	.LVL17:
- 338               	.L35:
- 339               	.LM73:
- 340 019c 8091 0000 		lds r24,type
- 341 01a0 8930      		cpi r24,lo8(9)
- 342 01a2 01F4      		brne .L36
- 343               	.LM74:
- 344 01a4 8EB5      		in r24,78-32
- 345               	.LVL18:
- 346 01a6 8093 0000 		sts HOURS,r24
- 347 01aa 00C0      		rjmp .L39
- 348               	.LVL19:
- 349               	.L36:
- 350               	.LM75:
- 351 01ac 8091 0000 		lds r24,type
- 352 01b0 8A30      		cpi r24,lo8(10)
- 353 01b2 01F4      		brne .L37
- 354               	.LM76:
- 355 01b4 8EB5      		in r24,78-32
- 356               	.LVL20:
- 357 01b6 8093 0000 		sts MINUTES,r24
- 358 01ba 00C0      		rjmp .L39
- 359               	.LVL21:
- 360               	.L37:
- 361               	.LM77:
- 362 01bc 8091 0000 		lds r24,type
- 363 01c0 8B30      		cpi r24,lo8(11)
- 364 01c2 01F4      		brne .L39
- 365               	.LM78:
- 366 01c4 8EB5      		in r24,78-32
- 367               	.LVL22:
- 368 01c6 8093 0000 		sts SECONDS,r24
- 369 01ca 00C0      		rjmp .L39
- 370               	.LVL23:
- 371               	.L27:
- 372               	.LM79:
- 373 01cc 8091 0000 		lds r24,cnt
- 374 01d0 8230      		cpi r24,lo8(2)
- 375 01d2 01F4      		brne .L39
- 376               	.LM80:
- 377 01d4 9091 0000 		lds r25,type
- 378               	.LVL24:
- 379 01d8 9630      		cpi r25,lo8(6)
- 380 01da 01F4      		brne .L40
- 381               	.LM81:
- 382 01dc 8EB5      		in r24,78-32
- 383 01de 382F      		mov r19,r24
- 384               	.LVL25:
- 385 01e0 20E0      		ldi r18,lo8(0)
- 386               	.LVL26:
- 387 01e2 3093 0000 		sts (ALTITUDE)+1,r19
- 388 01e6 2093 0000 		sts ALTITUDE,r18
- 389 01ea 00C0      		rjmp .L45
- 390               	.LVL27:
- 391               	.L40:
- 392               	.LM82:
- 393 01ec 9091 0000 		lds r25,type
- 394 01f0 9730      		cpi r25,lo8(7)
- 395 01f2 01F4      		brne .L41
- 396               	.LM83:
- 397 01f4 8EB5      		in r24,78-32
- 398 01f6 382F      		mov r19,r24
- 399               	.LVL28:
- 400 01f8 20E0      		ldi r18,lo8(0)
- 401               	.LVL29:
- 402 01fa 3093 0000 		sts (SPEED)+1,r19
- 403 01fe 2093 0000 		sts SPEED,r18
- 404 0202 00C0      		rjmp .L45
- 405               	.LVL30:
- 406               	.L41:
- 407               	.LM84:
- 408 0204 9091 0000 		lds r25,type
- 409 0208 9830      		cpi r25,lo8(8)
- 410 020a 01F4      		brne .L39
- 411               	.LM85:
- 412 020c 8EB5      		in r24,78-32
- 413 020e 1092 0000 		sts BEARING,__zero_reg__
- 414               	.LVL31:
- 415               	.L45:
- 416               	.LM86:
- 417 0212 81E0      		ldi r24,lo8(1)
- 418 0214 8093 0000 		sts cnt,r24
- 419               	.LM87:
- 420 0218 9093 0000 		sts type,r25
- 421 021c 00C0      		rjmp .L43
- 422               	.LVL32:
- 423               	.L39:
- 424               	.LM88:
- 425 021e 1092 0000 		sts cnt,__zero_reg__
- 426               	.LM89:
- 427 0222 1092 0000 		sts type,__zero_reg__
- 428               	.LVL33:
- 429               	.L43:
- 430               	/* epilogue start */
- 431               	.LM90:
- 432 0226 9F91      		pop r25
- 433               	.LVL34:
- 434 0228 8F91      		pop r24
- 435               	.LVL35:
- 436 022a 3F91      		pop r19
- 437               	.LVL36:
- 438 022c 2F91      		pop r18
- 439               	.LVL37:
- 440 022e 0F90      		pop r0
- 441 0230 0FBE      		out __SREG__,r0
- 442 0232 0F90      		pop r0
- 443 0234 1F90      		pop __zero_reg__
- 444 0236 1895      		reti
- 445               	.LFE11:
- 447               	.global	cnt
- 448               	.global	cnt
- 449               		.section .bss
- 452               	cnt:
- 453 0000 00        		.skip 1,0
- 454               	.global	type
- 455               	.global	type
- 458               	type:
- 459 0001 00        		.skip 1,0
- 516               	.Letext0:
+ 115 003e 4F93      		push r20
+ 116 0040 5F93      		push r21
+ 117 0042 8F93      		push r24
+ 118 0044 9F93      		push r25
+ 119               	/* prologue: Signal */
+ 120               	/* frame size = 0 */
+ 121               	.LM22:
+ 122 0046 9EB5      		in r25,78-32
+ 123               	.LVL5:
+ 124               	.LM23:
+ 125 0048 8091 0000 		lds r24,cnt
+ 126 004c 8823      		tst r24
+ 127 004e 01F0      		breq .+2
+ 128 0050 00C0      		rjmp .L14
+ 129               	.LM24:
+ 130 0052 9837      		cpi r25,lo8(120)
+ 131 0054 01F4      		brne .L15
+ 132               	.LM25:
+ 133 0056 81E0      		ldi r24,lo8(1)
+ 134 0058 8093 0000 		sts cnt,r24
+ 135 005c 00C0      		rjmp .L44
+ 136               	.L15:
+ 137               	.LM26:
+ 138 005e 9937      		cpi r25,lo8(121)
+ 139 0060 01F4      		brne .L17
+ 140               	.LM27:
+ 141 0062 81E0      		ldi r24,lo8(1)
+ 142 0064 8093 0000 		sts cnt,r24
+ 143               	.LM28:
+ 144 0068 82E0      		ldi r24,lo8(2)
+ 145               	.L44:
+ 146 006a 8093 0000 		sts type,r24
+ 147 006e 00C0      		rjmp .L43
+ 148               	.L17:
+ 149               	.LM29:
+ 150 0070 9A37      		cpi r25,lo8(122)
+ 151 0072 01F4      		brne .L18
+ 152               	.LM30:
+ 153 0074 81E0      		ldi r24,lo8(1)
+ 154 0076 8093 0000 		sts cnt,r24
+ 155               	.LM31:
+ 156 007a 83E0      		ldi r24,lo8(3)
+ 157 007c 00C0      		rjmp .L44
+ 158               	.L18:
+ 159               	.LM32:
+ 160 007e 9C36      		cpi r25,lo8(108)
+ 161 0080 01F4      		brne .L19
+ 162               	.LM33:
+ 163 0082 81E0      		ldi r24,lo8(1)
+ 164 0084 8093 0000 		sts cnt,r24
+ 165               	.LM34:
+ 166 0088 84E0      		ldi r24,lo8(4)
+ 167 008a 00C0      		rjmp .L44
+ 168               	.L19:
+ 169               	.LM35:
+ 170 008c 9237      		cpi r25,lo8(114)
+ 171 008e 01F4      		brne .L20
+ 172               	.LM36:
+ 173 0090 81E0      		ldi r24,lo8(1)
+ 174 0092 8093 0000 		sts cnt,r24
+ 175               	.LM37:
+ 176 0096 85E0      		ldi r24,lo8(5)
+ 177 0098 00C0      		rjmp .L44
+ 178               	.L20:
+ 179               	.LM38:
+ 180 009a 9136      		cpi r25,lo8(97)
+ 181 009c 01F4      		brne .L21
+ 182               	.LM39:
+ 183 009e 82E0      		ldi r24,lo8(2)
+ 184 00a0 8093 0000 		sts cnt,r24
+ 185               	.LM40:
+ 186 00a4 86E0      		ldi r24,lo8(6)
+ 187 00a6 00C0      		rjmp .L44
+ 188               	.L21:
+ 189               	.LM41:
+ 190 00a8 9637      		cpi r25,lo8(118)
+ 191 00aa 01F4      		brne .L22
+ 192               	.LM42:
+ 193 00ac 82E0      		ldi r24,lo8(2)
+ 194 00ae 8093 0000 		sts cnt,r24
+ 195               	.LM43:
+ 196 00b2 87E0      		ldi r24,lo8(7)
+ 197 00b4 00C0      		rjmp .L44
+ 198               	.L22:
+ 199               	.LM44:
+ 200 00b6 9236      		cpi r25,lo8(98)
+ 201 00b8 01F4      		brne .L23
+ 202               	.LM45:
+ 203 00ba 82E0      		ldi r24,lo8(2)
+ 204 00bc 8093 0000 		sts cnt,r24
+ 205               	.LM46:
+ 206 00c0 88E0      		ldi r24,lo8(8)
+ 207 00c2 00C0      		rjmp .L44
+ 208               	.L23:
+ 209               	.LM47:
+ 210 00c4 9836      		cpi r25,lo8(104)
+ 211 00c6 01F4      		brne .L24
+ 212               	.LM48:
+ 213 00c8 81E0      		ldi r24,lo8(1)
+ 214 00ca 8093 0000 		sts cnt,r24
+ 215               	.LM49:
+ 216 00ce 89E0      		ldi r24,lo8(9)
+ 217 00d0 00C0      		rjmp .L44
+ 218               	.L24:
+ 219               	.LM50:
+ 220 00d2 9D36      		cpi r25,lo8(109)
+ 221 00d4 01F4      		brne .L25
+ 222               	.LM51:
+ 223 00d6 81E0      		ldi r24,lo8(1)
+ 224 00d8 8093 0000 		sts cnt,r24
+ 225               	.LM52:
+ 226 00dc 8AE0      		ldi r24,lo8(10)
+ 227 00de 00C0      		rjmp .L44
+ 228               	.L25:
+ 229               	.LM53:
+ 230 00e0 9337      		cpi r25,lo8(115)
+ 231 00e2 01F0      		breq .+2
+ 232 00e4 00C0      		rjmp .L39
+ 233               	.LM54:
+ 234 00e6 81E0      		ldi r24,lo8(1)
+ 235 00e8 8093 0000 		sts cnt,r24
+ 236               	.LM55:
+ 237 00ec 8BE0      		ldi r24,lo8(11)
+ 238 00ee 00C0      		rjmp .L44
+ 239               	.L14:
+ 240               	.LM56:
+ 241 00f0 8091 0000 		lds r24,cnt
+ 242 00f4 8130      		cpi r24,lo8(1)
+ 243 00f6 01F0      		breq .+2
+ 244 00f8 00C0      		rjmp .L27
+ 245               	.LM57:
+ 246 00fa 8091 0000 		lds r24,type
+ 247 00fe 8130      		cpi r24,lo8(1)
+ 248 0100 01F4      		brne .L28
+ 249               	.LM58:
+ 250 0102 8EB5      		in r24,78-32
+ 251               	.LVL6:
+ 252 0104 8093 0000 		sts X_AXIS,r24
+ 253 0108 00C0      		rjmp .L39
+ 254               	.LVL7:
+ 255               	.L28:
+ 256               	.LM59:
+ 257 010a 8091 0000 		lds r24,type
+ 258 010e 8230      		cpi r24,lo8(2)
+ 259 0110 01F4      		brne .L29
+ 260               	.LM60:
+ 261 0112 8EB5      		in r24,78-32
+ 262               	.LVL8:
+ 263 0114 8093 0000 		sts Y_AXIS,r24
+ 264 0118 00C0      		rjmp .L39
+ 265               	.LVL9:
+ 266               	.L29:
+ 267               	.LM61:
+ 268 011a 8091 0000 		lds r24,type
+ 269 011e 8330      		cpi r24,lo8(3)
+ 270 0120 01F4      		brne .L30
+ 271               	.LM62:
+ 272 0122 8EB5      		in r24,78-32
+ 273               	.LVL10:
+ 274 0124 8093 0000 		sts Z_AXIS,r24
+ 275 0128 00C0      		rjmp .L39
+ 276               	.LVL11:
+ 277               	.L30:
+ 278               	.LM63:
+ 279 012a 8091 0000 		lds r24,type
+ 280 012e 8430      		cpi r24,lo8(4)
+ 281 0130 01F4      		brne .L31
+ 282               	.LM64:
+ 283 0132 8EB5      		in r24,78-32
+ 284               	.LVL12:
+ 285 0134 8093 0000 		sts LIGHT,r24
+ 286 0138 00C0      		rjmp .L39
+ 287               	.LVL13:
+ 288               	.L31:
+ 289               	.LM65:
+ 290 013a 8091 0000 		lds r24,type
+ 291 013e 8530      		cpi r24,lo8(5)
+ 292 0140 01F4      		brne .L32
+ 293               	.LM66:
+ 294 0142 8EB5      		in r24,78-32
+ 295               	.LVL14:
+ 296 0144 8093 0000 		sts RANGE,r24
+ 297 0148 00C0      		rjmp .L39
+ 298               	.LVL15:
+ 299               	.L32:
+ 300               	.LM67:
+ 301 014a 8091 0000 		lds r24,type
+ 302 014e 8630      		cpi r24,lo8(6)
+ 303 0150 01F4      		brne .L33
+ 304               	.LM68:
+ 305 0152 8091 0000 		lds r24,ALTITUDE
+ 306 0156 9091 0000 		lds r25,(ALTITUDE)+1
+ 307 015a 2EB5      		in r18,78-32
+ 308 015c 820F      		add r24,r18
+ 309 015e 911D      		adc r25,__zero_reg__
+ 310 0160 9093 0000 		sts (ALTITUDE)+1,r25
+ 311 0164 8093 0000 		sts ALTITUDE,r24
+ 312 0168 00C0      		rjmp .L39
+ 313               	.L33:
+ 314               	.LM69:
+ 315 016a 8091 0000 		lds r24,type
+ 316 016e 8730      		cpi r24,lo8(7)
+ 317 0170 01F4      		brne .L34
+ 318               	.LM70:
+ 319 0172 8091 0000 		lds r24,SPEED
+ 320 0176 9091 0000 		lds r25,(SPEED)+1
+ 321 017a 2EB5      		in r18,78-32
+ 322 017c 820F      		add r24,r18
+ 323 017e 911D      		adc r25,__zero_reg__
+ 324 0180 9093 0000 		sts (SPEED)+1,r25
+ 325 0184 8093 0000 		sts SPEED,r24
+ 326 0188 00C0      		rjmp .L39
+ 327               	.L34:
+ 328               	.LM71:
+ 329 018a 8091 0000 		lds r24,type
+ 330 018e 8830      		cpi r24,lo8(8)
+ 331 0190 01F4      		brne .L35
+ 332               	.LM72:
+ 333 0192 9091 0000 		lds r25,BEARING
+ 334               	.LVL16:
+ 335 0196 8EB5      		in r24,78-32
+ 336 0198 890F      		add r24,r25
+ 337 019a 8093 0000 		sts BEARING,r24
+ 338 019e 00C0      		rjmp .L39
+ 339               	.LVL17:
+ 340               	.L35:
+ 341               	.LM73:
+ 342 01a0 8091 0000 		lds r24,type
+ 343 01a4 8930      		cpi r24,lo8(9)
+ 344 01a6 01F4      		brne .L36
+ 345               	.LM74:
+ 346 01a8 8EB5      		in r24,78-32
+ 347               	.LVL18:
+ 348 01aa 8093 0000 		sts HOURS,r24
+ 349 01ae 00C0      		rjmp .L39
+ 350               	.LVL19:
+ 351               	.L36:
+ 352               	.LM75:
+ 353 01b0 8091 0000 		lds r24,type
+ 354 01b4 8A30      		cpi r24,lo8(10)
+ 355 01b6 01F4      		brne .L37
+ 356               	.LM76:
+ 357 01b8 8EB5      		in r24,78-32
+ 358               	.LVL20:
+ 359 01ba 8093 0000 		sts MINUTES,r24
+ 360 01be 00C0      		rjmp .L39
+ 361               	.LVL21:
+ 362               	.L37:
+ 363               	.LM77:
+ 364 01c0 8091 0000 		lds r24,type
+ 365 01c4 8B30      		cpi r24,lo8(11)
+ 366 01c6 01F0      		breq .+2
+ 367 01c8 00C0      		rjmp .L39
+ 368               	.LM78:
+ 369 01ca 8EB5      		in r24,78-32
+ 370               	.LVL22:
+ 371 01cc 8093 0000 		sts SECONDS,r24
+ 372 01d0 00C0      		rjmp .L39
+ 373               	.LVL23:
+ 374               	.L27:
+ 375               	.LM79:
+ 376 01d2 8091 0000 		lds r24,cnt
+ 377 01d6 8230      		cpi r24,lo8(2)
+ 378 01d8 01F0      		breq .+2
+ 379 01da 00C0      		rjmp .L39
+ 380               	.LM80:
+ 381 01dc 3091 0000 		lds r19,type
+ 382 01e0 3630      		cpi r19,lo8(6)
+ 383 01e2 01F4      		brne .L40
+ 384               	.LM81:
+ 385 01e4 1092 0000 		sts (ALTITUDE)+1,__zero_reg__
+ 386 01e8 1092 0000 		sts ALTITUDE,__zero_reg__
+ 387               	.LM82:
+ 388 01ec 4091 0000 		lds r20,ALTITUDE
+ 389 01f0 5091 0000 		lds r21,(ALTITUDE)+1
+ 390 01f4 2EB5      		in r18,78-32
+ 391 01f6 922F      		mov r25,r18
+ 392               	.LVL24:
+ 393 01f8 80E0      		ldi r24,lo8(0)
+ 394 01fa 840F      		add r24,r20
+ 395 01fc 951F      		adc r25,r21
+ 396 01fe 9093 0000 		sts (ALTITUDE)+1,r25
+ 397 0202 8093 0000 		sts ALTITUDE,r24
+ 398 0206 00C0      		rjmp .L45
+ 399               	.LVL25:
+ 400               	.L40:
+ 401               	.LM83:
+ 402 0208 3091 0000 		lds r19,type
+ 403 020c 3730      		cpi r19,lo8(7)
+ 404 020e 01F4      		brne .L41
+ 405               	.LM84:
+ 406 0210 1092 0000 		sts (SPEED)+1,__zero_reg__
+ 407 0214 1092 0000 		sts SPEED,__zero_reg__
+ 408               	.LM85:
+ 409 0218 4091 0000 		lds r20,SPEED
+ 410 021c 5091 0000 		lds r21,(SPEED)+1
+ 411 0220 2EB5      		in r18,78-32
+ 412 0222 922F      		mov r25,r18
+ 413               	.LVL26:
+ 414 0224 80E0      		ldi r24,lo8(0)
+ 415 0226 840F      		add r24,r20
+ 416 0228 951F      		adc r25,r21
+ 417 022a 9093 0000 		sts (SPEED)+1,r25
+ 418 022e 8093 0000 		sts SPEED,r24
+ 419               	.L45:
+ 420               	.LM86:
+ 421 0232 81E0      		ldi r24,lo8(1)
+ 422 0234 8093 0000 		sts cnt,r24
+ 423               	.LM87:
+ 424 0238 3093 0000 		sts type,r19
+ 425 023c 00C0      		rjmp .L43
+ 426               	.LVL27:
+ 427               	.L41:
+ 428               	.LM88:
+ 429 023e 9091 0000 		lds r25,type
+ 430               	.LVL28:
+ 431 0242 9830      		cpi r25,lo8(8)
+ 432 0244 01F4      		brne .L39
+ 433               	.LM89:
+ 434 0246 1092 0000 		sts BEARING,__zero_reg__
+ 435               	.LM90:
+ 436 024a 8EB5      		in r24,78-32
+ 437 024c 8091 0000 		lds r24,BEARING
+ 438               	.LVL29:
+ 439 0250 8093 0000 		sts BEARING,r24
+ 440               	.LM91:
+ 441 0254 81E0      		ldi r24,lo8(1)
+ 442               	.LVL30:
+ 443 0256 8093 0000 		sts cnt,r24
+ 444               	.LM92:
+ 445 025a 9093 0000 		sts type,r25
+ 446 025e 00C0      		rjmp .L43
+ 447               	.LVL31:
+ 448               	.L39:
+ 449               	.LM93:
+ 450 0260 1092 0000 		sts cnt,__zero_reg__
+ 451               	.LM94:
+ 452 0264 1092 0000 		sts type,__zero_reg__
+ 453               	.L43:
+ 454               	/* epilogue start */
+ 455               	.LM95:
+ 456 0268 9F91      		pop r25
+ 457               	.LVL32:
+ 458 026a 8F91      		pop r24
+ 459               	.LVL33:
+ 460 026c 5F91      		pop r21
+ 461 026e 4F91      		pop r20
+ 462 0270 3F91      		pop r19
+ 463 0272 2F91      		pop r18
+ 464 0274 0F90      		pop r0
+ 465 0276 0FBE      		out __SREG__,r0
+ 466 0278 0F90      		pop r0
+ 467 027a 1F90      		pop __zero_reg__
+ 468 027c 1895      		reti
+ 469               	.LFE11:
+ 471               	.global	cnt
+ 472               	.global	cnt
+ 473               		.section .bss
+ 476               	cnt:
+ 477 0000 00        		.skip 1,0
+ 478               	.global	type
+ 479               	.global	type
+ 482               	type:
+ 483 0001 00        		.skip 1,0
+ 540               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 spi.c
-C:\Users\BILLTA~1\AppData\Local\Temp/ccgtNH61.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccgtNH61.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccgtNH61.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccgtNH61.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccgtNH61.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccgtNH61.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccgtNH61.s:18     .text:00000000 SPI_MasterInit
-C:\Users\BILLTA~1\AppData\Local\Temp/ccgtNH61.s:42     .text:0000000e SPI_putc
-C:\Users\BILLTA~1\AppData\Local\Temp/ccgtNH61.s:62     .text:00000018 SPI_SlaveInit
-C:\Users\BILLTA~1\AppData\Local\Temp/ccgtNH61.s:86     .text:00000026 SPI_getc
-C:\Users\BILLTA~1\AppData\Local\Temp/ccgtNH61.s:105    .text:00000030 __vector_17
-C:\Users\BILLTA~1\AppData\Local\Temp/ccgtNH61.s:452    .bss:00000000 cnt
-C:\Users\BILLTA~1\AppData\Local\Temp/ccgtNH61.s:458    .bss:00000001 type
+C:\Users\BILLBA~1\AppData\Local\Temp/cceEQVyK.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/cceEQVyK.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/cceEQVyK.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/cceEQVyK.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/cceEQVyK.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/cceEQVyK.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/cceEQVyK.s:18     .text:00000000 SPI_MasterInit
+C:\Users\BILLBA~1\AppData\Local\Temp/cceEQVyK.s:42     .text:0000000e SPI_putc
+C:\Users\BILLBA~1\AppData\Local\Temp/cceEQVyK.s:62     .text:00000018 SPI_SlaveInit
+C:\Users\BILLBA~1\AppData\Local\Temp/cceEQVyK.s:86     .text:00000026 SPI_getc
+C:\Users\BILLBA~1\AppData\Local\Temp/cceEQVyK.s:105    .text:00000030 __vector_17
+C:\Users\BILLBA~1\AppData\Local\Temp/cceEQVyK.s:476    .bss:00000000 cnt
+C:\Users\BILLBA~1\AppData\Local\Temp/cceEQVyK.s:482    .bss:00000001 type
 
 UNDEFINED SYMBOLS
 X_AXIS

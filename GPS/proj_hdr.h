@@ -20,9 +20,14 @@ Portable Heads Up Display
 	#include <avr/io.h>
 	#include <avr/interrupt.h>
 	#include <util/delay.h>
+	#include <stdio.h>
+	#include <string.h>
 	/* Module Includes */
 	#include "usi.h"
 	#include "uart.h"
 	#include "nmea.h"
+
+	/* Global Variables */
+
 
 #endif

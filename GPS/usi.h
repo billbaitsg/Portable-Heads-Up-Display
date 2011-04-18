@@ -29,6 +29,9 @@ Portable Heads Up Display
 	#define USI_SELECT_PIN	4
 	#define USI_DATAIN_PIN	5		//!< USI data input pin.
 	#define USI_DATAOUT_PIN	6		//!< USI data output pin.
+	
+	/* USI slave select input */
+	#define USI_SS	((USI_IN_REG & (1<<USI_SELECT_PIN)) >> USI_SELECT_PIN)
 
 	/*  Speed configuration:
 	 *  Bits per second = CPUSPEED / PRESCALER / (COMPAREVALUE+1) / 2.
@@ -65,5 +68,5 @@ Portable Heads Up Display
 	char USI_SPI_putc(unsigned char);
 	unsigned char USI_SPI_getc(void);
 	void USI_SPI_wait(void);
-	void USI_SPI_puts(char *);
+	void USI_SPI_SSn(unsigned char);
 #endif

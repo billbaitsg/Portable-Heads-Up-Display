@@ -30,9 +30,8 @@ void UART_init( unsigned int ubrr )
 	/* Enable receiver and transmitter */
 	UCSR0B = (1<<RXEN0)|(1<<TXEN0);
 	/* Set frame format: 7 data, 1 stop, odd parity */
-	UCSR0C |= (1<<UCSZ01);	/* 7 data bits */
-	UCSR0C |= (1<<UPM01) | (1<<UPM00);	/* odd parity */
-	/* Enable the USART Recieve Complete interrupt (USART_RXC) */
+	UCSR0C = (1<<UCSZ01)|(1<<UPM01)|(1<<UPM00);	/* 7 data bits, odd parity */
+	/* Enable the USART Receive Complete interrupt (USART_RXC) */
 	//UCSR0B |= (1<<RXCIE0);	
 }
 
@@ -43,6 +42,16 @@ void UART_putc( unsigned char data )
 	while ( !( UCSR0A & (1<<UDRE0)) );
 	/* Put data into buffer, sends the data */
 	UDR0 = data;
+}
+
+/* Send a string via UART */
+void UART_puts(unsigned char * string )
+{
+	unsigned char n = 0;
+	while( n < strlen(string) )	/* while not at the end of the string */
+	{
+		UART_putc(string[n++]);	/* putc the next character */
+	}/* end while */
 }
 
 /* Get a byte via UART, from datasheet */

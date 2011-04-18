@@ -1,0 +1,984 @@
+   1               		.file	"uart.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	UART_init
+  18               	UART_init:
+  19               	.LFB7:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 12B8      		out 34-32,__zero_reg__
+  25               	.LM3:
+  26 0002 83E3      		ldi r24,lo8(51)
+  27 0004 89B9      		out 41-32,r24
+  28               	.LM4:
+  29 0006 88E1      		ldi r24,lo8(24)
+  30 0008 8AB9      		out 42-32,r24
+  31               	.LM5:
+  32 000a 86E0      		ldi r24,lo8(6)
+  33 000c 83B9      		out 35-32,r24
+  34               	.LM6:
+  35 000e 579A      		sbi 42-32,7
+  36               	/* epilogue start */
+  37               	.LM7:
+  38 0010 0895      		ret
+  39               	.LFE7:
+  41               	.global	UART_putc
+  43               	UART_putc:
+  44               	.LFB8:
+  45               	.LM8:
+  46               	/* prologue: function */
+  47               	/* frame size = 0 */
+  48               	.LVL0:
+  49               	.L4:
+  50               	.LM9:
+  51 0012 5D9B      		sbis 43-32,5
+  52 0014 00C0      		rjmp .L4
+  53               	.LM10:
+  54 0016 8CB9      		out 44-32,r24
+  55               	/* epilogue start */
+  56               	.LM11:
+  57 0018 0895      		ret
+  58               	.LFE8:
+  60               	.global	UART_getc
+  62               	UART_getc:
+  63               	.LFB9:
+  64               	.LM12:
+  65               	/* prologue: function */
+  66               	/* frame size = 0 */
+  67               	.L8:
+  68               	.LM13:
+  69 001a 5F9B      		sbis 43-32,7
+  70 001c 00C0      		rjmp .L8
+  71               	.LM14:
+  72 001e 8CB1      		in r24,44-32
+  73               	/* epilogue start */
+  74               	.LM15:
+  75 0020 0895      		ret
+  76               	.LFE9:
+  78               	.global	UART_flush
+  80               	UART_flush:
+  81               	.LFB10:
+  82               	.LM16:
+  83               	/* prologue: function */
+  84               	/* frame size = 0 */
+  85 0022 00C0      		rjmp .L12
+  86               	.LVL1:
+  87               	.L13:
+  88               	.LM17:
+  89 0024 8CB1      		in r24,44-32
+  90               	.L12:
+  91 0026 5F99      		sbic 43-32,7
+  92 0028 00C0      		rjmp .L13
+  93               	/* epilogue start */
+  94               	.LM18:
+  95 002a 0895      		ret
+  96               	.LFE10:
+  98               	.global	__vector_7
+ 100               	__vector_7:
+ 101               	.LFB11:
+ 102               	.LM19:
+ 103 002c 1F92      		push __zero_reg__
+ 104 002e 0F92      		push r0
+ 105 0030 0FB6      		in r0,__SREG__
+ 106 0032 0F92      		push r0
+ 107 0034 1124      		clr __zero_reg__
+ 108 0036 0F93      		push r16
+ 109 0038 2F93      		push r18
+ 110 003a 3F93      		push r19
+ 111 003c 4F93      		push r20
+ 112 003e 5F93      		push r21
+ 113 0040 6F93      		push r22
+ 114 0042 7F93      		push r23
+ 115 0044 8F93      		push r24
+ 116 0046 9F93      		push r25
+ 117 0048 AF93      		push r26
+ 118 004a BF93      		push r27
+ 119 004c EF93      		push r30
+ 120 004e FF93      		push r31
+ 121 0050 DF93      		push r29
+ 122 0052 CF93      		push r28
+ 123 0054 00D0      		rcall .
+ 124 0056 CDB7      		in r28,__SP_L__
+ 125 0058 DEB7      		in r29,__SP_H__
+ 126               	/* prologue: Signal */
+ 127               	/* frame size = 2 */
+ 128               	.L16:
+ 129               	.LM20:
+ 130 005a 5F9B      		sbis 43-32,7
+ 131 005c 00C0      		rjmp .L16
+ 132               	.LM21:
+ 133 005e 0CB1      		in r16,44-32
+ 134               	.LVL2:
+ 135               	.LM22:
+ 136 0060 0432      		cpi r16,lo8(36)
+ 137 0062 01F4      		brne .L17
+ 138               	.LM23:
+ 139 0064 1092 0000 		sts COUNT,__zero_reg__
+ 140               	.LM24:
+ 141 0068 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 142               	.L17:
+ 143               	.LM25:
+ 144 006c 8091 0000 		lds r24,COUNT
+ 145 0070 8130      		cpi r24,lo8(1)
+ 146 0072 01F4      		brne .L18
+ 147               	.LM26:
+ 148 0074 0734      		cpi r16,lo8(71)
+ 149 0076 01F0      		breq .L18
+ 150               	.LM27:
+ 151 0078 83E5      		ldi r24,lo8(83)
+ 152 007a 8093 0000 		sts COUNT,r24
+ 153               	.L18:
+ 154               	.LM28:
+ 155 007e 8091 0000 		lds r24,COUNT
+ 156 0082 8230      		cpi r24,lo8(2)
+ 157 0084 01F4      		brne .L19
+ 158               	.LM29:
+ 159 0086 0035      		cpi r16,lo8(80)
+ 160 0088 01F0      		breq .L19
+ 161               	.LM30:
+ 162 008a 83E5      		ldi r24,lo8(83)
+ 163 008c 8093 0000 		sts COUNT,r24
+ 164               	.L19:
+ 165               	.LM31:
+ 166 0090 8091 0000 		lds r24,COUNT
+ 167 0094 8330      		cpi r24,lo8(3)
+ 168 0096 01F4      		brne .L20
+ 169               	.LM32:
+ 170 0098 0635      		cpi r16,lo8(86)
+ 171 009a 01F4      		brne .L21
+ 172               	.LM33:
+ 173 009c 86E0      		ldi r24,lo8(6)
+ 174 009e 00C0      		rjmp .L77
+ 175               	.L21:
+ 176               	.LM34:
+ 177 00a0 0734      		cpi r16,lo8(71)
+ 178 00a2 01F4      		brne .L22
+ 179               	.LM35:
+ 180 00a4 81E0      		ldi r24,lo8(1)
+ 181               	.L77:
+ 182 00a6 8093 0000 		sts NMEA_TYPE,r24
+ 183 00aa 00C0      		rjmp .L20
+ 184               	.L22:
+ 185               	.LM36:
+ 186 00ac 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 187               	.LM37:
+ 188 00b0 83E5      		ldi r24,lo8(83)
+ 189 00b2 8093 0000 		sts COUNT,r24
+ 190               	.L20:
+ 191               	.LM38:
+ 192 00b6 8091 0000 		lds r24,COUNT
+ 193 00ba 8430      		cpi r24,lo8(4)
+ 194 00bc 01F4      		brne .L23
+ 195               	.LM39:
+ 196 00be 0435      		cpi r16,lo8(84)
+ 197 00c0 01F4      		brne .L24
+ 198 00c2 8091 0000 		lds r24,NMEA_TYPE
+ 199 00c6 8630      		cpi r24,lo8(6)
+ 200 00c8 01F4      		brne .L25
+ 201 00ca 00C0      		rjmp .L78
+ 202               	.L24:
+ 203               	.LM40:
+ 204 00cc 0734      		cpi r16,lo8(71)
+ 205 00ce 01F4      		brne .L25
+ 206 00d0 8091 0000 		lds r24,NMEA_TYPE
+ 207 00d4 8130      		cpi r24,lo8(1)
+ 208 00d6 01F4      		brne .L25
+ 209               	.L78:
+ 210               	.LM41:
+ 211 00d8 8093 0000 		sts NMEA_TYPE,r24
+ 212 00dc 00C0      		rjmp .L23
+ 213               	.L25:
+ 214               	.LM42:
+ 215 00de 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 216               	.LM43:
+ 217 00e2 83E5      		ldi r24,lo8(83)
+ 218 00e4 8093 0000 		sts COUNT,r24
+ 219               	.L23:
+ 220               	.LM44:
+ 221 00e8 8091 0000 		lds r24,COUNT
+ 222 00ec 8530      		cpi r24,lo8(5)
+ 223 00ee 01F4      		brne .L26
+ 224               	.LM45:
+ 225 00f0 0734      		cpi r16,lo8(71)
+ 226 00f2 01F4      		brne .L27
+ 227 00f4 8091 0000 		lds r24,NMEA_TYPE
+ 228 00f8 8630      		cpi r24,lo8(6)
+ 229 00fa 01F4      		brne .L28
+ 230 00fc 00C0      		rjmp .L79
+ 231               	.L27:
+ 232               	.LM46:
+ 233 00fe 0134      		cpi r16,lo8(65)
+ 234 0100 01F4      		brne .L28
+ 235 0102 8091 0000 		lds r24,NMEA_TYPE
+ 236 0106 8130      		cpi r24,lo8(1)
+ 237 0108 01F4      		brne .L28
+ 238               	.L79:
+ 239               	.LM47:
+ 240 010a 8093 0000 		sts NMEA_TYPE,r24
+ 241 010e 00C0      		rjmp .L26
+ 242               	.L28:
+ 243               	.LM48:
+ 244 0110 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 245               	.LM49:
+ 246 0114 83E5      		ldi r24,lo8(83)
+ 247 0116 8093 0000 		sts COUNT,r24
+ 248               	.L26:
+ 249               	.LM50:
+ 250 011a 8091 0000 		lds r24,COUNT
+ 251 011e 8730      		cpi r24,lo8(7)
+ 252 0120 01F4      		brne .L29
+ 253               	.LM51:
+ 254 0122 8091 0000 		lds r24,NMEA_TYPE
+ 255 0126 8130      		cpi r24,lo8(1)
+ 256 0128 01F4      		brne .L30
+ 257               	.LM52:
+ 258 012a 1092 0000 		sts (TEMP)+1,__zero_reg__
+ 259 012e 1092 0000 		sts TEMP,__zero_reg__
+ 260               	.LM53:
+ 261 0132 2091 0000 		lds r18,TEMP
+ 262 0136 3091 0000 		lds r19,(TEMP)+1
+ 263 013a 205E      		subi r18,lo8(-(-480))
+ 264 013c 3140      		sbci r19,hi8(-(-480))
+ 265 013e 802F      		mov r24,r16
+ 266 0140 90E0      		ldi r25,lo8(0)
+ 267 0142 6AE0      		ldi r22,lo8(10)
+ 268 0144 70E0      		ldi r23,hi8(10)
+ 269 0146 00C0      		rjmp .L80
+ 270               	.L30:
+ 271               	.LM54:
+ 272 0148 8091 0000 		lds r24,NMEA_TYPE
+ 273 014c 8630      		cpi r24,lo8(6)
+ 274 014e 01F4      		brne .L31
+ 275               	.LM55:
+ 276 0150 1092 0000 		sts (TEMP)+1,__zero_reg__
+ 277 0154 1092 0000 		sts TEMP,__zero_reg__
+ 278               	.LM56:
+ 279 0158 2091 0000 		lds r18,TEMP
+ 280 015c 3091 0000 		lds r19,(TEMP)+1
+ 281 0160 802F      		mov r24,r16
+ 282 0162 90E0      		ldi r25,lo8(0)
+ 283               	.LVL3:
+ 284 0164 C097      		sbiw r24,48
+ 285 0166 68EE      		ldi r22,lo8(1000)
+ 286 0168 73E0      		ldi r23,hi8(1000)
+ 287               	.L80:
+ 288 016a 00D0      		rcall __mulhi3
+ 289 016c 280F      		add r18,r24
+ 290 016e 391F      		adc r19,r25
+ 291 0170 3093 0000 		sts (TEMP)+1,r19
+ 292 0174 2093 0000 		sts TEMP,r18
+ 293 0178 00C0      		rjmp .L29
+ 294               	.LVL4:
+ 295               	.L31:
+ 296               	.LM57:
+ 297 017a 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 298               	.LM58:
+ 299 017e 83E5      		ldi r24,lo8(83)
+ 300 0180 8093 0000 		sts COUNT,r24
+ 301               	.LVL5:
+ 302               	.L29:
+ 303               	.LM59:
+ 304 0184 8091 0000 		lds r24,COUNT
+ 305 0188 8830      		cpi r24,lo8(8)
+ 306 018a 01F4      		brne .L32
+ 307               	.LM60:
+ 308 018c 8091 0000 		lds r24,NMEA_TYPE
+ 309 0190 8130      		cpi r24,lo8(1)
+ 310 0192 01F4      		brne .L33
+ 311               	.LM61:
+ 312 0194 8091 0000 		lds r24,TEMP
+ 313 0198 9091 0000 		lds r25,(TEMP)+1
+ 314 019c C097      		sbiw r24,48
+ 315 019e 800F      		add r24,r16
+ 316 01a0 911D      		adc r25,__zero_reg__
+ 317 01a2 9093 0000 		sts (TEMP)+1,r25
+ 318 01a6 8093 0000 		sts TEMP,r24
+ 319               	.LM62:
+ 320 01aa 8091 0000 		lds r24,TEMP
+ 321 01ae 9091 0000 		lds r25,(TEMP)+1
+ 322 01b2 8093 0000 		sts HOURS,r24
+ 323 01b6 00C0      		rjmp .L32
+ 324               	.L33:
+ 325               	.LM63:
+ 326 01b8 8091 0000 		lds r24,NMEA_TYPE
+ 327 01bc 8630      		cpi r24,lo8(6)
+ 328 01be 01F4      		brne .L34
+ 329               	.LM64:
+ 330 01c0 2091 0000 		lds r18,TEMP
+ 331 01c4 3091 0000 		lds r19,(TEMP)+1
+ 332 01c8 205C      		subi r18,lo8(-(-4800))
+ 333 01ca 3241      		sbci r19,hi8(-(-4800))
+ 334 01cc 802F      		mov r24,r16
+ 335 01ce 90E0      		ldi r25,lo8(0)
+ 336               	.LVL6:
+ 337 01d0 64E6      		ldi r22,lo8(100)
+ 338 01d2 70E0      		ldi r23,hi8(100)
+ 339 01d4 00D0      		rcall __mulhi3
+ 340 01d6 280F      		add r18,r24
+ 341 01d8 391F      		adc r19,r25
+ 342 01da 3093 0000 		sts (TEMP)+1,r19
+ 343 01de 2093 0000 		sts TEMP,r18
+ 344 01e2 00C0      		rjmp .L32
+ 345               	.LVL7:
+ 346               	.L34:
+ 347               	.LM65:
+ 348 01e4 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 349               	.LM66:
+ 350 01e8 83E5      		ldi r24,lo8(83)
+ 351 01ea 8093 0000 		sts COUNT,r24
+ 352               	.L32:
+ 353               	.LM67:
+ 354 01ee 8091 0000 		lds r24,COUNT
+ 355 01f2 8930      		cpi r24,lo8(9)
+ 356 01f4 01F4      		brne .L35
+ 357               	.LM68:
+ 358 01f6 8091 0000 		lds r24,NMEA_TYPE
+ 359 01fa 8130      		cpi r24,lo8(1)
+ 360 01fc 01F4      		brne .L36
+ 361               	.LM69:
+ 362 01fe 1092 0000 		sts (TEMP)+1,__zero_reg__
+ 363 0202 1092 0000 		sts TEMP,__zero_reg__
+ 364 0206 00C0      		rjmp .L81
+ 365               	.L36:
+ 366               	.LM70:
+ 367 0208 8091 0000 		lds r24,NMEA_TYPE
+ 368 020c 8630      		cpi r24,lo8(6)
+ 369 020e 01F4      		brne .L37
+ 370               	.L81:
+ 371               	.LM71:
+ 372 0210 2091 0000 		lds r18,TEMP
+ 373 0214 3091 0000 		lds r19,(TEMP)+1
+ 374 0218 205E      		subi r18,lo8(-(-480))
+ 375 021a 3140      		sbci r19,hi8(-(-480))
+ 376 021c 802F      		mov r24,r16
+ 377 021e 90E0      		ldi r25,lo8(0)
+ 378               	.LVL8:
+ 379 0220 6AE0      		ldi r22,lo8(10)
+ 380 0222 70E0      		ldi r23,hi8(10)
+ 381 0224 00D0      		rcall __mulhi3
+ 382 0226 280F      		add r18,r24
+ 383 0228 391F      		adc r19,r25
+ 384 022a 3093 0000 		sts (TEMP)+1,r19
+ 385 022e 2093 0000 		sts TEMP,r18
+ 386 0232 00C0      		rjmp .L35
+ 387               	.LVL9:
+ 388               	.L37:
+ 389               	.LM72:
+ 390 0234 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 391               	.LM73:
+ 392 0238 83E5      		ldi r24,lo8(83)
+ 393 023a 8093 0000 		sts COUNT,r24
+ 394               	.L35:
+ 395               	.LM74:
+ 396 023e 8091 0000 		lds r24,COUNT
+ 397 0242 8A30      		cpi r24,lo8(10)
+ 398 0244 01F4      		brne .L38
+ 399               	.LM75:
+ 400 0246 8091 0000 		lds r24,NMEA_TYPE
+ 401 024a 8130      		cpi r24,lo8(1)
+ 402 024c 01F4      		brne .L39
+ 403               	.LM76:
+ 404 024e 8091 0000 		lds r24,TEMP
+ 405 0252 9091 0000 		lds r25,(TEMP)+1
+ 406 0256 C097      		sbiw r24,48
+ 407 0258 800F      		add r24,r16
+ 408 025a 911D      		adc r25,__zero_reg__
+ 409 025c 9093 0000 		sts (TEMP)+1,r25
+ 410 0260 8093 0000 		sts TEMP,r24
+ 411               	.LM77:
+ 412 0264 8091 0000 		lds r24,TEMP
+ 413 0268 9091 0000 		lds r25,(TEMP)+1
+ 414 026c 8093 0000 		sts MINUTES,r24
+ 415 0270 00C0      		rjmp .L38
+ 416               	.L39:
+ 417               	.LM78:
+ 418 0272 8091 0000 		lds r24,NMEA_TYPE
+ 419 0276 8630      		cpi r24,lo8(6)
+ 420 0278 01F4      		brne .L40
+ 421               	.LM79:
+ 422 027a 0E32      		cpi r16,lo8(46)
+ 423 027c 01F4      		brne .L40
+ 424               	.LM80:
+ 425 027e 8093 0000 		sts NMEA_TYPE,r24
+ 426 0282 00C0      		rjmp .L38
+ 427               	.L40:
+ 428               	.LM81:
+ 429 0284 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 430               	.LM82:
+ 431 0288 83E5      		ldi r24,lo8(83)
+ 432 028a 8093 0000 		sts COUNT,r24
+ 433               	.L38:
+ 434               	.LM83:
+ 435 028e 8091 0000 		lds r24,COUNT
+ 436 0292 8B30      		cpi r24,lo8(11)
+ 437 0294 01F4      		brne .L42
+ 438               	.LM84:
+ 439 0296 8091 0000 		lds r24,NMEA_TYPE
+ 440 029a 8130      		cpi r24,lo8(1)
+ 441 029c 01F4      		brne .L43
+ 442               	.LM85:
+ 443 029e 1092 0000 		sts (TEMP)+1,__zero_reg__
+ 444 02a2 1092 0000 		sts TEMP,__zero_reg__
+ 445               	.LM86:
+ 446 02a6 2091 0000 		lds r18,TEMP
+ 447 02aa 3091 0000 		lds r19,(TEMP)+1
+ 448 02ae 205E      		subi r18,lo8(-(-480))
+ 449 02b0 3140      		sbci r19,hi8(-(-480))
+ 450 02b2 802F      		mov r24,r16
+ 451 02b4 90E0      		ldi r25,lo8(0)
+ 452               	.LVL10:
+ 453 02b6 6AE0      		ldi r22,lo8(10)
+ 454 02b8 70E0      		ldi r23,hi8(10)
+ 455 02ba 00D0      		rcall __mulhi3
+ 456 02bc 280F      		add r18,r24
+ 457 02be 391F      		adc r19,r25
+ 458 02c0 3093 0000 		sts (TEMP)+1,r19
+ 459 02c4 2093 0000 		sts TEMP,r18
+ 460 02c8 00C0      		rjmp .L42
+ 461               	.LVL11:
+ 462               	.L43:
+ 463               	.LM87:
+ 464 02ca 8091 0000 		lds r24,NMEA_TYPE
+ 465 02ce 8630      		cpi r24,lo8(6)
+ 466 02d0 01F4      		brne .L44
+ 467               	.LM88:
+ 468 02d2 8091 0000 		lds r24,TEMP
+ 469 02d6 9091 0000 		lds r25,(TEMP)+1
+ 470 02da C097      		sbiw r24,48
+ 471 02dc 800F      		add r24,r16
+ 472 02de 911D      		adc r25,__zero_reg__
+ 473 02e0 9093 0000 		sts (TEMP)+1,r25
+ 474 02e4 8093 0000 		sts TEMP,r24
+ 475               	.LM89:
+ 476 02e8 8091 0000 		lds r24,TEMP
+ 477 02ec 9091 0000 		lds r25,(TEMP)+1
+ 478               	.LVL12:
+ 479 02f0 9093 0000 		sts (BEARING)+1,r25
+ 480 02f4 8093 0000 		sts BEARING,r24
+ 481 02f8 00C0      		rjmp .L42
+ 482               	.LVL13:
+ 483               	.L44:
+ 484               	.LM90:
+ 485 02fa 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 486               	.LM91:
+ 487 02fe 83E5      		ldi r24,lo8(83)
+ 488 0300 8093 0000 		sts COUNT,r24
+ 489               	.LVL14:
+ 490               	.L42:
+ 491               	.LM92:
+ 492 0304 8091 0000 		lds r24,COUNT
+ 493               	.LVL15:
+ 494 0308 8C30      		cpi r24,lo8(12)
+ 495 030a 01F4      		brne .L45
+ 496               	.LM93:
+ 497 030c 8091 0000 		lds r24,NMEA_TYPE
+ 498 0310 8130      		cpi r24,lo8(1)
+ 499 0312 01F4      		brne .L46
+ 500               	.LM94:
+ 501 0314 8091 0000 		lds r24,TEMP
+ 502 0318 9091 0000 		lds r25,(TEMP)+1
+ 503 031c C097      		sbiw r24,48
+ 504 031e 800F      		add r24,r16
+ 505 0320 911D      		adc r25,__zero_reg__
+ 506 0322 9093 0000 		sts (TEMP)+1,r25
+ 507 0326 8093 0000 		sts TEMP,r24
+ 508               	.LM95:
+ 509 032a 8091 0000 		lds r24,TEMP
+ 510 032e 9091 0000 		lds r25,(TEMP)+1
+ 511 0332 8093 0000 		sts SECONDS,r24
+ 512 0336 00C0      		rjmp .L45
+ 513               	.L46:
+ 514               	.LM96:
+ 515 0338 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 516               	.LM97:
+ 517 033c 83E5      		ldi r24,lo8(83)
+ 518 033e 8093 0000 		sts COUNT,r24
+ 519               	.L45:
+ 520               	.LM98:
+ 521 0342 8091 0000 		lds r24,COUNT
+ 522 0346 8931      		cpi r24,lo8(25)
+ 523 0348 01F4      		brne .L47
+ 524               	.LM99:
+ 525 034a 8091 0000 		lds r24,NMEA_TYPE
+ 526 034e 8630      		cpi r24,lo8(6)
+ 527 0350 01F4      		brne .L48
+ 528               	.LM100:
+ 529 0352 1092 0000 		sts (TEMP)+1,__zero_reg__
+ 530 0356 1092 0000 		sts TEMP,__zero_reg__
+ 531               	.LM101:
+ 532 035a 2091 0000 		lds r18,TEMP
+ 533 035e 3091 0000 		lds r19,(TEMP)+1
+ 534 0362 802F      		mov r24,r16
+ 535 0364 90E0      		ldi r25,lo8(0)
+ 536               	.LVL16:
+ 537 0366 C097      		sbiw r24,48
+ 538 0368 60E1      		ldi r22,lo8(10000)
+ 539 036a 77E2      		ldi r23,hi8(10000)
+ 540 036c 00D0      		rcall __mulhi3
+ 541 036e 280F      		add r18,r24
+ 542 0370 391F      		adc r19,r25
+ 543 0372 3093 0000 		sts (TEMP)+1,r19
+ 544 0376 2093 0000 		sts TEMP,r18
+ 545 037a 00C0      		rjmp .L47
+ 546               	.L48:
+ 547               	.LM102:
+ 548 037c 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 549               	.LM103:
+ 550 0380 83E5      		ldi r24,lo8(83)
+ 551 0382 8093 0000 		sts COUNT,r24
+ 552               	.L47:
+ 553               	.LM104:
+ 554 0386 8091 0000 		lds r24,COUNT
+ 555 038a 8A31      		cpi r24,lo8(26)
+ 556 038c 01F4      		brne .L49
+ 557               	.LM105:
+ 558 038e 8091 0000 		lds r24,NMEA_TYPE
+ 559 0392 8630      		cpi r24,lo8(6)
+ 560 0394 01F4      		brne .L50
+ 561               	.LM106:
+ 562 0396 2091 0000 		lds r18,TEMP
+ 563 039a 3091 0000 		lds r19,(TEMP)+1
+ 564 039e 802F      		mov r24,r16
+ 565 03a0 90E0      		ldi r25,lo8(0)
+ 566               	.LVL17:
+ 567 03a2 C097      		sbiw r24,48
+ 568 03a4 68EE      		ldi r22,lo8(1000)
+ 569 03a6 73E0      		ldi r23,hi8(1000)
+ 570 03a8 00D0      		rcall __mulhi3
+ 571 03aa 280F      		add r18,r24
+ 572 03ac 391F      		adc r19,r25
+ 573 03ae 3093 0000 		sts (TEMP)+1,r19
+ 574 03b2 2093 0000 		sts TEMP,r18
+ 575 03b6 00C0      		rjmp .L49
+ 576               	.L50:
+ 577               	.LM107:
+ 578 03b8 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 579               	.LM108:
+ 580 03bc 83E5      		ldi r24,lo8(83)
+ 581 03be 8093 0000 		sts COUNT,r24
+ 582               	.L49:
+ 583               	.LM109:
+ 584 03c2 8091 0000 		lds r24,COUNT
+ 585 03c6 8B31      		cpi r24,lo8(27)
+ 586 03c8 01F4      		brne .L51
+ 587               	.LM110:
+ 588 03ca 8091 0000 		lds r24,NMEA_TYPE
+ 589 03ce 8630      		cpi r24,lo8(6)
+ 590 03d0 01F4      		brne .L52
+ 591               	.LM111:
+ 592 03d2 2091 0000 		lds r18,TEMP
+ 593 03d6 3091 0000 		lds r19,(TEMP)+1
+ 594 03da 205C      		subi r18,lo8(-(-4800))
+ 595 03dc 3241      		sbci r19,hi8(-(-4800))
+ 596 03de 802F      		mov r24,r16
+ 597 03e0 90E0      		ldi r25,lo8(0)
+ 598               	.LVL18:
+ 599 03e2 64E6      		ldi r22,lo8(100)
+ 600 03e4 70E0      		ldi r23,hi8(100)
+ 601 03e6 00D0      		rcall __mulhi3
+ 602 03e8 280F      		add r18,r24
+ 603 03ea 391F      		adc r19,r25
+ 604 03ec 3093 0000 		sts (TEMP)+1,r19
+ 605 03f0 2093 0000 		sts TEMP,r18
+ 606 03f4 00C0      		rjmp .L51
+ 607               	.LVL19:
+ 608               	.L52:
+ 609               	.LM112:
+ 610 03f6 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 611               	.LM113:
+ 612 03fa 83E5      		ldi r24,lo8(83)
+ 613 03fc 8093 0000 		sts COUNT,r24
+ 614               	.L51:
+ 615               	.LM114:
+ 616 0400 8091 0000 		lds r24,COUNT
+ 617 0404 8C31      		cpi r24,lo8(28)
+ 618 0406 01F4      		brne .L53
+ 619               	.LM115:
+ 620 0408 8091 0000 		lds r24,NMEA_TYPE
+ 621 040c 8630      		cpi r24,lo8(6)
+ 622 040e 01F4      		brne .L54
+ 623               	.LM116:
+ 624 0410 2091 0000 		lds r18,TEMP
+ 625 0414 3091 0000 		lds r19,(TEMP)+1
+ 626 0418 205E      		subi r18,lo8(-(-480))
+ 627 041a 3140      		sbci r19,hi8(-(-480))
+ 628 041c 802F      		mov r24,r16
+ 629 041e 90E0      		ldi r25,lo8(0)
+ 630               	.LVL20:
+ 631 0420 6AE0      		ldi r22,lo8(10)
+ 632 0422 70E0      		ldi r23,hi8(10)
+ 633 0424 00D0      		rcall __mulhi3
+ 634 0426 280F      		add r18,r24
+ 635 0428 391F      		adc r19,r25
+ 636 042a 3093 0000 		sts (TEMP)+1,r19
+ 637 042e 2093 0000 		sts TEMP,r18
+ 638 0432 00C0      		rjmp .L53
+ 639               	.LVL21:
+ 640               	.L54:
+ 641               	.LM117:
+ 642 0434 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 643               	.LM118:
+ 644 0438 83E5      		ldi r24,lo8(83)
+ 645 043a 8093 0000 		sts COUNT,r24
+ 646               	.L53:
+ 647               	.LM119:
+ 648 043e 8091 0000 		lds r24,COUNT
+ 649 0442 8D31      		cpi r24,lo8(29)
+ 650 0444 01F4      		brne .L55
+ 651               	.LM120:
+ 652 0446 8091 0000 		lds r24,NMEA_TYPE
+ 653 044a 8630      		cpi r24,lo8(6)
+ 654 044c 01F4      		brne .L56
+ 655               	.LM121:
+ 656 044e 0E32      		cpi r16,lo8(46)
+ 657 0450 01F4      		brne .L56
+ 658               	.LM122:
+ 659 0452 8093 0000 		sts NMEA_TYPE,r24
+ 660 0456 00C0      		rjmp .L55
+ 661               	.L56:
+ 662               	.LM123:
+ 663 0458 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 664               	.LM124:
+ 665 045c 83E5      		ldi r24,lo8(83)
+ 666 045e 8093 0000 		sts COUNT,r24
+ 667               	.L55:
+ 668               	.LM125:
+ 669 0462 8091 0000 		lds r24,COUNT
+ 670 0466 8E31      		cpi r24,lo8(30)
+ 671 0468 01F4      		brne .L58
+ 672               	.LM126:
+ 673 046a 8091 0000 		lds r24,NMEA_TYPE
+ 674 046e 8630      		cpi r24,lo8(6)
+ 675 0470 01F4      		brne .L59
+ 676               	.LM127:
+ 677 0472 8091 0000 		lds r24,TEMP
+ 678 0476 9091 0000 		lds r25,(TEMP)+1
+ 679 047a C097      		sbiw r24,48
+ 680 047c 800F      		add r24,r16
+ 681 047e 911D      		adc r25,__zero_reg__
+ 682 0480 9093 0000 		sts (TEMP)+1,r25
+ 683 0484 8093 0000 		sts TEMP,r24
+ 684               	.LM128:
+ 685 0488 8091 0000 		lds r24,TEMP
+ 686 048c 9091 0000 		lds r25,(TEMP)+1
+ 687               	.LVL22:
+ 688 0490 9093 0000 		sts (SPEED)+1,r25
+ 689 0494 8093 0000 		sts SPEED,r24
+ 690 0498 00C0      		rjmp .L58
+ 691               	.LVL23:
+ 692               	.L59:
+ 693               	.LM129:
+ 694 049a 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 695               	.LM130:
+ 696 049e 83E5      		ldi r24,lo8(83)
+ 697 04a0 8093 0000 		sts COUNT,r24
+ 698               	.LVL24:
+ 699               	.L58:
+ 700               	.LM131:
+ 701 04a4 8091 0000 		lds r24,COUNT
+ 702               	.LVL25:
+ 703 04a8 8333      		cpi r24,lo8(51)
+ 704 04aa 01F4      		brne .L60
+ 705               	.LM132:
+ 706 04ac 8091 0000 		lds r24,NMEA_TYPE
+ 707 04b0 8130      		cpi r24,lo8(1)
+ 708 04b2 01F4      		brne .L61
+ 709               	.LM133:
+ 710 04b4 1092 0000 		sts (TEMP)+1,__zero_reg__
+ 711 04b8 1092 0000 		sts TEMP,__zero_reg__
+ 712               	.LM134:
+ 713 04bc 0D32      		cpi r16,lo8(45)
+ 714 04be 01F0      		breq .L60
+ 715               	.LM135:
+ 716 04c0 2091 0000 		lds r18,TEMP
+ 717 04c4 3091 0000 		lds r19,(TEMP)+1
+ 718 04c8 3A83      		std Y+2,r19
+ 719 04ca 2983      		std Y+1,r18
+ 720 04cc 602F      		mov r22,r16
+ 721 04ce 70E0      		ldi r23,lo8(0)
+ 722               	.LVL26:
+ 723 04d0 6053      		subi r22,lo8(-(-48))
+ 724 04d2 7040      		sbci r23,hi8(-(-48))
+ 725               	.LVL27:
+ 726 04d4 8827      		clr r24
+ 727 04d6 77FD      		sbrc r23,7
+ 728 04d8 8095      		com r24
+ 729 04da 982F      		mov r25,r24
+ 730               	.LVL28:
+ 731 04dc 20EA      		ldi r18,lo8(100000)
+ 732 04de 36E8      		ldi r19,hi8(100000)
+ 733 04e0 41E0      		ldi r20,hlo8(100000)
+ 734 04e2 50E0      		ldi r21,hhi8(100000)
+ 735 04e4 00D0      		rcall __mulsi3
+ 736               	.LVL29:
+ 737 04e6 E981      		ldd r30,Y+1
+ 738 04e8 FA81      		ldd r31,Y+2
+ 739 04ea E60F      		add r30,r22
+ 740 04ec F71F      		adc r31,r23
+ 741 04ee F093 0000 		sts (TEMP)+1,r31
+ 742 04f2 E093 0000 		sts TEMP,r30
+ 743 04f6 00C0      		rjmp .L60
+ 744               	.LVL30:
+ 745               	.L61:
+ 746               	.LM136:
+ 747 04f8 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 748               	.LM137:
+ 749 04fc 83E5      		ldi r24,lo8(83)
+ 750 04fe 8093 0000 		sts COUNT,r24
+ 751               	.L60:
+ 752               	.LM138:
+ 753 0502 8091 0000 		lds r24,COUNT
+ 754 0506 8433      		cpi r24,lo8(52)
+ 755 0508 01F4      		brne .L62
+ 756               	.LM139:
+ 757 050a 8091 0000 		lds r24,NMEA_TYPE
+ 758 050e 8130      		cpi r24,lo8(1)
+ 759 0510 01F4      		brne .L63
+ 760               	.LM140:
+ 761 0512 2091 0000 		lds r18,TEMP
+ 762 0516 3091 0000 		lds r19,(TEMP)+1
+ 763 051a 802F      		mov r24,r16
+ 764 051c 90E0      		ldi r25,lo8(0)
+ 765               	.LVL31:
+ 766 051e C097      		sbiw r24,48
+ 767 0520 60E1      		ldi r22,lo8(10000)
+ 768 0522 77E2      		ldi r23,hi8(10000)
+ 769 0524 00D0      		rcall __mulhi3
+ 770 0526 280F      		add r18,r24
+ 771 0528 391F      		adc r19,r25
+ 772 052a 3093 0000 		sts (TEMP)+1,r19
+ 773 052e 2093 0000 		sts TEMP,r18
+ 774 0532 00C0      		rjmp .L62
+ 775               	.L63:
+ 776               	.LM141:
+ 777 0534 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 778               	.LM142:
+ 779 0538 83E5      		ldi r24,lo8(83)
+ 780 053a 8093 0000 		sts COUNT,r24
+ 781               	.L62:
+ 782               	.LM143:
+ 783 053e 8091 0000 		lds r24,COUNT
+ 784 0542 8533      		cpi r24,lo8(53)
+ 785 0544 01F4      		brne .L64
+ 786               	.LM144:
+ 787 0546 8091 0000 		lds r24,NMEA_TYPE
+ 788 054a 8130      		cpi r24,lo8(1)
+ 789 054c 01F4      		brne .L65
+ 790               	.LM145:
+ 791 054e 2091 0000 		lds r18,TEMP
+ 792 0552 3091 0000 		lds r19,(TEMP)+1
+ 793 0556 205C      		subi r18,lo8(-(-4800))
+ 794 0558 3241      		sbci r19,hi8(-(-4800))
+ 795 055a 802F      		mov r24,r16
+ 796 055c 90E0      		ldi r25,lo8(0)
+ 797               	.LVL32:
+ 798 055e 64E6      		ldi r22,lo8(100)
+ 799 0560 70E0      		ldi r23,hi8(100)
+ 800 0562 00D0      		rcall __mulhi3
+ 801 0564 280F      		add r18,r24
+ 802 0566 391F      		adc r19,r25
+ 803 0568 3093 0000 		sts (TEMP)+1,r19
+ 804 056c 2093 0000 		sts TEMP,r18
+ 805 0570 00C0      		rjmp .L64
+ 806               	.LVL33:
+ 807               	.L65:
+ 808               	.LM146:
+ 809 0572 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 810               	.LM147:
+ 811 0576 83E5      		ldi r24,lo8(83)
+ 812 0578 8093 0000 		sts COUNT,r24
+ 813               	.L64:
+ 814               	.LM148:
+ 815 057c 8091 0000 		lds r24,COUNT
+ 816 0580 8633      		cpi r24,lo8(54)
+ 817 0582 01F4      		brne .L66
+ 818               	.LM149:
+ 819 0584 8091 0000 		lds r24,NMEA_TYPE
+ 820 0588 8130      		cpi r24,lo8(1)
+ 821 058a 01F4      		brne .L67
+ 822               	.LM150:
+ 823 058c 2091 0000 		lds r18,TEMP
+ 824 0590 3091 0000 		lds r19,(TEMP)+1
+ 825 0594 205C      		subi r18,lo8(-(-4800))
+ 826 0596 3241      		sbci r19,hi8(-(-4800))
+ 827 0598 802F      		mov r24,r16
+ 828 059a 90E0      		ldi r25,lo8(0)
+ 829               	.LVL34:
+ 830 059c 64E6      		ldi r22,lo8(100)
+ 831 059e 70E0      		ldi r23,hi8(100)
+ 832 05a0 00D0      		rcall __mulhi3
+ 833 05a2 280F      		add r18,r24
+ 834 05a4 391F      		adc r19,r25
+ 835 05a6 3093 0000 		sts (TEMP)+1,r19
+ 836 05aa 2093 0000 		sts TEMP,r18
+ 837 05ae 00C0      		rjmp .L66
+ 838               	.LVL35:
+ 839               	.L67:
+ 840               	.LM151:
+ 841 05b0 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 842               	.LM152:
+ 843 05b4 83E5      		ldi r24,lo8(83)
+ 844 05b6 8093 0000 		sts COUNT,r24
+ 845               	.L66:
+ 846               	.LM153:
+ 847 05ba 8091 0000 		lds r24,COUNT
+ 848 05be 8733      		cpi r24,lo8(55)
+ 849 05c0 01F4      		brne .L68
+ 850               	.LM154:
+ 851 05c2 8091 0000 		lds r24,NMEA_TYPE
+ 852 05c6 8130      		cpi r24,lo8(1)
+ 853 05c8 01F4      		brne .L69
+ 854               	.LM155:
+ 855 05ca 2091 0000 		lds r18,TEMP
+ 856 05ce 3091 0000 		lds r19,(TEMP)+1
+ 857 05d2 205E      		subi r18,lo8(-(-480))
+ 858 05d4 3140      		sbci r19,hi8(-(-480))
+ 859 05d6 802F      		mov r24,r16
+ 860 05d8 90E0      		ldi r25,lo8(0)
+ 861               	.LVL36:
+ 862 05da 6AE0      		ldi r22,lo8(10)
+ 863 05dc 70E0      		ldi r23,hi8(10)
+ 864 05de 00D0      		rcall __mulhi3
+ 865 05e0 280F      		add r18,r24
+ 866 05e2 391F      		adc r19,r25
+ 867 05e4 3093 0000 		sts (TEMP)+1,r19
+ 868 05e8 2093 0000 		sts TEMP,r18
+ 869 05ec 00C0      		rjmp .L68
+ 870               	.LVL37:
+ 871               	.L69:
+ 872               	.LM156:
+ 873 05ee 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 874               	.LM157:
+ 875 05f2 83E5      		ldi r24,lo8(83)
+ 876 05f4 8093 0000 		sts COUNT,r24
+ 877               	.L68:
+ 878               	.LM158:
+ 879 05f8 8091 0000 		lds r24,COUNT
+ 880 05fc 8833      		cpi r24,lo8(56)
+ 881 05fe 01F4      		brne .L70
+ 882               	.LM159:
+ 883 0600 8091 0000 		lds r24,NMEA_TYPE
+ 884 0604 8130      		cpi r24,lo8(1)
+ 885 0606 01F4      		brne .L71
+ 886               	.LM160:
+ 887 0608 0E32      		cpi r16,lo8(46)
+ 888 060a 01F4      		brne .L71
+ 889               	.LM161:
+ 890 060c 86E0      		ldi r24,lo8(6)
+ 891 060e 8093 0000 		sts NMEA_TYPE,r24
+ 892 0612 00C0      		rjmp .L70
+ 893               	.L71:
+ 894               	.LM162:
+ 895 0614 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 896               	.LM163:
+ 897 0618 83E5      		ldi r24,lo8(83)
+ 898 061a 8093 0000 		sts COUNT,r24
+ 899               	.L70:
+ 900               	.LM164:
+ 901 061e 8091 0000 		lds r24,COUNT
+ 902 0622 8933      		cpi r24,lo8(57)
+ 903 0624 01F4      		brne .L73
+ 904               	.LM165:
+ 905 0626 8091 0000 		lds r24,NMEA_TYPE
+ 906 062a 8130      		cpi r24,lo8(1)
+ 907 062c 01F4      		brne .L74
+ 908               	.LM166:
+ 909 062e 8091 0000 		lds r24,TEMP
+ 910 0632 9091 0000 		lds r25,(TEMP)+1
+ 911 0636 C097      		sbiw r24,48
+ 912 0638 800F      		add r24,r16
+ 913 063a 911D      		adc r25,__zero_reg__
+ 914 063c 9093 0000 		sts (TEMP)+1,r25
+ 915 0640 8093 0000 		sts TEMP,r24
+ 916               	.LM167:
+ 917 0644 8091 0000 		lds r24,TEMP
+ 918 0648 9091 0000 		lds r25,(TEMP)+1
+ 919               	.LVL38:
+ 920 064c 9093 0000 		sts (ALTITUDE)+1,r25
+ 921 0650 8093 0000 		sts ALTITUDE,r24
+ 922 0654 00C0      		rjmp .L73
+ 923               	.LVL39:
+ 924               	.L74:
+ 925               	.LM168:
+ 926 0656 1092 0000 		sts NMEA_TYPE,__zero_reg__
+ 927               	.LM169:
+ 928 065a 83E5      		ldi r24,lo8(83)
+ 929 065c 8093 0000 		sts COUNT,r24
+ 930               	.LVL40:
+ 931               	.L73:
+ 932               	.LM170:
+ 933 0660 8091 0000 		lds r24,COUNT
+ 934               	.LVL41:
+ 935 0664 8F5F      		subi r24,lo8(-(1))
+ 936 0666 8093 0000 		sts COUNT,r24
+ 937               	/* epilogue start */
+ 938               	.LM171:
+ 939 066a 0F90      		pop __tmp_reg__
+ 940 066c 0F90      		pop __tmp_reg__
+ 941 066e CF91      		pop r28
+ 942 0670 DF91      		pop r29
+ 943 0672 FF91      		pop r31
+ 944 0674 EF91      		pop r30
+ 945 0676 BF91      		pop r27
+ 946 0678 AF91      		pop r26
+ 947 067a 9F91      		pop r25
+ 948               	.LVL42:
+ 949 067c 8F91      		pop r24
+ 950 067e 7F91      		pop r23
+ 951 0680 6F91      		pop r22
+ 952 0682 5F91      		pop r21
+ 953 0684 4F91      		pop r20
+ 954 0686 3F91      		pop r19
+ 955 0688 2F91      		pop r18
+ 956 068a 0F91      		pop r16
+ 957               	.LVL43:
+ 958 068c 0F90      		pop r0
+ 959 068e 0FBE      		out __SREG__,r0
+ 960 0690 0F90      		pop r0
+ 961 0692 1F90      		pop __zero_reg__
+ 962 0694 1895      		reti
+ 963               	.LFE11:
+ 965               	.global	COUNT
+ 966               	.global	COUNT
+ 967               		.section .bss
+ 970               	COUNT:
+ 971 0000 00        		.skip 1,0
+ 972               	.global	TEMP
+ 973               	.global	TEMP
+ 976               	TEMP:
+ 977 0001 0000      		.skip 2,0
+ 1034               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart.c
+C:\Users\BILLBA~1\AppData\Local\Temp/ccf0uWbN.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccf0uWbN.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccf0uWbN.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccf0uWbN.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccf0uWbN.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccf0uWbN.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccf0uWbN.s:18     .text:00000000 UART_init
+C:\Users\BILLBA~1\AppData\Local\Temp/ccf0uWbN.s:43     .text:00000012 UART_putc
+C:\Users\BILLBA~1\AppData\Local\Temp/ccf0uWbN.s:62     .text:0000001a UART_getc
+C:\Users\BILLBA~1\AppData\Local\Temp/ccf0uWbN.s:80     .text:00000022 UART_flush
+C:\Users\BILLBA~1\AppData\Local\Temp/ccf0uWbN.s:100    .text:0000002c __vector_7
+C:\Users\BILLBA~1\AppData\Local\Temp/ccf0uWbN.s:970    .bss:00000000 COUNT
+C:\Users\BILLBA~1\AppData\Local\Temp/ccf0uWbN.s:976    .bss:00000001 TEMP
+
+UNDEFINED SYMBOLS
+NMEA_TYPE
+__mulhi3
+HOURS
+MINUTES
+BEARING
+SECONDS
+SPEED
+__mulsi3
+ALTITUDE
+__do_clear_bss

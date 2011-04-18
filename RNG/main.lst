@@ -54,14 +54,14 @@
   89               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\BILLBA~1\AppData\Local\Temp/ccPKjUM5.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccPKjUM5.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccPKjUM5.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccPKjUM5.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccPKjUM5.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccPKjUM5.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccPKjUM5.s:18     .text:00000000 main
-C:\Users\BILLBA~1\AppData\Local\Temp/ccPKjUM5.s:63     .bss:00000000 RANGE
+C:\Users\BILLBA~1\AppData\Local\Temp/cco1wZbb.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/cco1wZbb.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/cco1wZbb.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/cco1wZbb.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/cco1wZbb.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/cco1wZbb.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/cco1wZbb.s:18     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/cco1wZbb.s:63     .bss:00000000 RANGE
 
 UNDEFINED SYMBOLS
 adc_init

@@ -58,7 +58,7 @@
   68               	.LM12:
   69 0034 85B1      		in r24,37-32
   70               	.LVL0:
-  71 0036 8093 0000 		sts X_AXIS,r24
+  71 0036 8093 0000 		sts Z_AXIS,r24
   72               	.LM13:
   73 003a 87B1      		in r24,39-32
   74               	.LVL1:
@@ -85,7 +85,7 @@
   95               	.LM17:
   96 0058 85B1      		in r24,37-32
   97               	.LVL4:
-  98 005a 8093 0000 		sts Z_AXIS,r24
+  98 005a 8093 0000 		sts X_AXIS,r24
   99               	.LM18:
  100 005e 87B1      		in r24,39-32
  101               	.LVL5:
@@ -107,16 +107,16 @@
  150               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 adc.c
-C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:18     .text:00000000 adc_init
-C:\Users\BILLBA~1\AppData\Local\Temp/ccpuSn8F.s:49     .text:0000001a __vector_13
+C:\Users\BILLBA~1\AppData\Local\Temp/ccsYeOac.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccsYeOac.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccsYeOac.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccsYeOac.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccsYeOac.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccsYeOac.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccsYeOac.s:18     .text:00000000 adc_init
+C:\Users\BILLBA~1\AppData\Local\Temp/ccsYeOac.s:49     .text:0000001a __vector_13
 
 UNDEFINED SYMBOLS
-X_AXIS
-Y_AXIS
 Z_AXIS
+Y_AXIS
+X_AXIS

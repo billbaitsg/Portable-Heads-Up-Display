@@ -23,101 +23,150 @@
   31               	.LVL2:
   32 000a 8093 C100 		sts 193,r24
   33               	.LM5:
-  34 000e E2EC      		ldi r30,lo8(194)
-  35 0010 F0E0      		ldi r31,hi8(194)
-  36 0012 8081      		ld r24,Z
-  37 0014 8460      		ori r24,lo8(4)
-  38 0016 8083      		st Z,r24
-  39               	.LM6:
-  40 0018 8081      		ld r24,Z
-  41 001a 8063      		ori r24,lo8(48)
-  42 001c 8083      		st Z,r24
-  43               	/* epilogue start */
-  44               	.LM7:
-  45 001e 0895      		ret
-  46               	.LFE7:
-  48               	.global	UART_putc
-  50               	UART_putc:
-  51               	.LFB8:
+  34 000e 84E3      		ldi r24,lo8(52)
+  35 0010 8093 C200 		sts 194,r24
+  36               	/* epilogue start */
+  37               	.LM6:
+  38 0014 0895      		ret
+  39               	.LFE7:
+  41               	.global	UART_putc
+  43               	UART_putc:
+  44               	.LFB8:
+  45               	.LM7:
+  46               	.LVL3:
+  47               	/* prologue: function */
+  48               	/* frame size = 0 */
+  49 0016 982F      		mov r25,r24
+  50               	.LVL4:
+  51               	.L4:
   52               	.LM8:
-  53               	.LVL3:
-  54               	/* prologue: function */
-  55               	/* frame size = 0 */
-  56 0020 982F      		mov r25,r24
-  57               	.LVL4:
-  58               	.L4:
-  59               	.LM9:
-  60 0022 8091 C000 		lds r24,192
-  61 0026 85FF      		sbrs r24,5
-  62 0028 00C0      		rjmp .L4
-  63               	.LM10:
-  64 002a 9093 C600 		sts 198,r25
-  65               	/* epilogue start */
-  66               	.LM11:
-  67 002e 0895      		ret
-  68               	.LFE8:
-  70               	.global	UART_getc
-  72               	UART_getc:
-  73               	.LFB9:
-  74               	.LM12:
-  75               	/* prologue: function */
-  76               	/* frame size = 0 */
-  77               	.L8:
-  78               	.LM13:
-  79 0030 8091 C000 		lds r24,192
-  80 0034 87FF      		sbrs r24,7
-  81 0036 00C0      		rjmp .L8
-  82               	.LM14:
-  83 0038 8091 C600 		lds r24,198
-  84               	/* epilogue start */
-  85               	.LM15:
-  86 003c 0895      		ret
-  87               	.LFE9:
-  89               	.global	UART_flush
-  91               	UART_flush:
-  92               	.LFB10:
-  93               	.LM16:
-  94               	/* prologue: function */
-  95               	/* frame size = 0 */
-  96 003e 00C0      		rjmp .L12
-  97               	.L13:
-  98               	.LM17:
-  99 0040 8091 C600 		lds r24,198
- 100               	.LVL5:
- 101               	.L12:
- 102 0044 8091 C000 		lds r24,192
- 103               	.LVL6:
- 104 0048 87FD      		sbrc r24,7
- 105 004a 00C0      		rjmp .L13
- 106               	/* epilogue start */
- 107               	.LM18:
- 108 004c 0895      		ret
- 109               	.LFE10:
- 111               	.global	UART_BUF_CNT
- 112               	.global	UART_BUF_CNT
- 113               		.section .bss
- 116               	UART_BUF_CNT:
- 117 0000 00        		.skip 1,0
- 118               	.global	UART_FLAGS
- 119               	.global	UART_FLAGS
- 122               	UART_FLAGS:
- 123 0001 00        		.skip 1,0
- 124               		.comm UART_BUFFER,8,1
- 173               	.Letext0:
+  53 0018 8091 C000 		lds r24,192
+  54 001c 85FF      		sbrs r24,5
+  55 001e 00C0      		rjmp .L4
+  56               	.LM9:
+  57 0020 9093 C600 		sts 198,r25
+  58               	/* epilogue start */
+  59               	.LM10:
+  60 0024 0895      		ret
+  61               	.LFE8:
+  63               	.global	UART_getc
+  65               	UART_getc:
+  66               	.LFB10:
+  67               	.LM11:
+  68               	/* prologue: function */
+  69               	/* frame size = 0 */
+  70               	.L8:
+  71               	.LM12:
+  72 0026 8091 C000 		lds r24,192
+  73 002a 87FF      		sbrs r24,7
+  74 002c 00C0      		rjmp .L8
+  75               	.LM13:
+  76 002e 8091 C600 		lds r24,198
+  77               	/* epilogue start */
+  78               	.LM14:
+  79 0032 0895      		ret
+  80               	.LFE10:
+  82               	.global	UART_flush
+  84               	UART_flush:
+  85               	.LFB11:
+  86               	.LM15:
+  87               	/* prologue: function */
+  88               	/* frame size = 0 */
+  89 0034 00C0      		rjmp .L12
+  90               	.L13:
+  91               	.LM16:
+  92 0036 8091 C600 		lds r24,198
+  93               	.LVL5:
+  94               	.L12:
+  95 003a 8091 C000 		lds r24,192
+  96               	.LVL6:
+  97 003e 87FD      		sbrc r24,7
+  98 0040 00C0      		rjmp .L13
+  99               	/* epilogue start */
+ 100               	.LM17:
+ 101 0042 0895      		ret
+ 102               	.LFE11:
+ 104               	.global	UART_puts
+ 106               	UART_puts:
+ 107               	.LFB9:
+ 108               	.LM18:
+ 109               	.LVL7:
+ 110               	/* prologue: function */
+ 111               	/* frame size = 0 */
+ 112 0044 9C01      		movw r18,r24
+ 113               	.LM19:
+ 114 0046 DC01      		movw r26,r24
+ 115 0048 0D90      		ld __tmp_reg__,X+
+ 116 004a 0020      		tst __tmp_reg__
+ 117 004c 01F4      		brne .-6
+ 118 004e 1197      		sbiw r26,1
+ 119 0050 A81B      		sub r26,r24
+ 120 0052 B90B      		sbc r27,r25
+ 121 0054 90E0      		ldi r25,lo8(0)
+ 122               	.LVL8:
+ 123 0056 00C0      		rjmp .L16
+ 124               	.L18:
+ 125               	.LM20:
+ 126 0058 E20F      		add r30,r18
+ 127 005a F31F      		adc r31,r19
+ 128 005c 4081      		ld r20,Z
+ 129               	.LVL9:
+ 130               	.L17:
+ 131               	.LBB4:
+ 132               	.LBB5:
+ 133               	.LM21:
+ 134 005e 8091 C000 		lds r24,192
+ 135 0062 85FF      		sbrs r24,5
+ 136 0064 00C0      		rjmp .L17
+ 137               	.LBE5:
+ 138               	.LBE4:
+ 139               	.LM22:
+ 140 0066 9F5F      		subi r25,lo8(-(1))
+ 141               	.LBB7:
+ 142               	.LBB6:
+ 143               	.LM23:
+ 144 0068 4093 C600 		sts 198,r20
+ 145               	.LVL10:
+ 146               	.L16:
+ 147               	.LBE6:
+ 148               	.LBE7:
+ 149               	.LM24:
+ 150 006c E92F      		mov r30,r25
+ 151 006e F0E0      		ldi r31,lo8(0)
+ 152 0070 EA17      		cp r30,r26
+ 153 0072 FB07      		cpc r31,r27
+ 154 0074 00F0      		brlo .L18
+ 155               	.LVL11:
+ 156               	/* epilogue start */
+ 157               	.LM25:
+ 158 0076 0895      		ret
+ 159               	.LFE9:
+ 161               	.global	UART_BUF_CNT
+ 162               	.global	UART_BUF_CNT
+ 163               		.section .bss
+ 166               	UART_BUF_CNT:
+ 167 0000 00        		.skip 1,0
+ 168               	.global	UART_FLAGS
+ 169               	.global	UART_FLAGS
+ 172               	UART_FLAGS:
+ 173 0001 00        		.skip 1,0
+ 174               		.comm UART_BUFFER,8,1
+ 231               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 uart.c
-C:\Users\BILLTA~1\AppData\Local\Temp/ccGlL4d6.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccGlL4d6.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccGlL4d6.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccGlL4d6.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccGlL4d6.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccGlL4d6.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccGlL4d6.s:18     .text:00000000 UART_init
-C:\Users\BILLTA~1\AppData\Local\Temp/ccGlL4d6.s:50     .text:00000020 UART_putc
-C:\Users\BILLTA~1\AppData\Local\Temp/ccGlL4d6.s:72     .text:00000030 UART_getc
-C:\Users\BILLTA~1\AppData\Local\Temp/ccGlL4d6.s:91     .text:0000003e UART_flush
-C:\Users\BILLTA~1\AppData\Local\Temp/ccGlL4d6.s:116    .bss:00000000 UART_BUF_CNT
-C:\Users\BILLTA~1\AppData\Local\Temp/ccGlL4d6.s:122    .bss:00000001 UART_FLAGS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmAocj0.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmAocj0.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmAocj0.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmAocj0.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmAocj0.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmAocj0.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmAocj0.s:18     .text:00000000 UART_init
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmAocj0.s:43     .text:00000016 UART_putc
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmAocj0.s:65     .text:00000026 UART_getc
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmAocj0.s:84     .text:00000034 UART_flush
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmAocj0.s:106    .text:00000044 UART_puts
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmAocj0.s:166    .bss:00000000 UART_BUF_CNT
+C:\Users\BILLBA~1\AppData\Local\Temp/ccmAocj0.s:172    .bss:00000001 UART_FLAGS
                             *COM*:00000008 UART_BUFFER
 
 UNDEFINED SYMBOLS

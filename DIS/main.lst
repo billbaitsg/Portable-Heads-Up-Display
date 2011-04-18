@@ -6,145 +6,267 @@
    6               	__tmp_reg__ = 0
    7               	__zero_reg__ = 1
   15               	.Ltext0:
-  16               	.global	main
-  18               	main:
-  19               	.LFB7:
-  20               	.LM1:
-  21 0000 CF93      		push r28
-  22 0002 DF93      		push r29
-  23               	/* prologue: function */
-  24               	/* frame size = 0 */
-  25               	.LM2:
-  26 0004 0E94 0000 		call SPI_SlaveInit
-  27               	.LM3:
-  28 0008 83E3      		ldi r24,lo8(51)
-  29 000a 90E0      		ldi r25,hi8(51)
-  30 000c 0E94 0000 		call UART_init
-  31               	.LM4:
-  32               	/* #APP */
-  33               	 ;  43 "main.c" 1
-  34 0010 7894      		sei
-  35               	 ;  0 "" 2
-  36               	/* #NOAPP */
-  37               	.LBB12:
-  38               	.LBB13:
-  39               	.LBB14:
-  40               	.LBB15:
-  41               	.LM5:
-  42 0012 C8EC      		ldi r28,lo8(200)
-  43 0014 D0E0      		ldi r29,hi8(200)
-  44               	.LVL0:
-  45               	.L3:
-  46               	.LBE15:
-  47               	.LBE14:
-  48               	.LBE13:
-  49               	.LBE12:
-  50               	.LM6:
-  51 0016 8091 0000 		lds r24,X_AXIS
-  52               	.LVL1:
-  53 001a 8F5F      		subi r24,lo8(-(1))
-  54 001c 8093 0000 		sts X_AXIS,r24
-  55 0020 8150      		subi r24,lo8(-(-1))
-  56 0022 0E94 0000 		call UART_putc
-  57               	.LVL2:
-  58 0026 88E8      		ldi r24,lo8(5000)
-  59 0028 93E1      		ldi r25,hi8(5000)
-  60               	.LVL3:
-  61               	.L2:
-  62               	.LBB19:
-  63               	.LBB18:
-  64               	.LBB17:
-  65               	.LBB16:
-  66               	.LM7:
-  67 002a FE01      		movw r30,r28
-  68               	.LVL4:
-  69               	/* #APP */
-  70               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
-  71 002c 3197      		1: sbiw r30,1
-  72 002e 01F4      		brne 1b
-  73               	 ;  0 "" 2
-  74               	/* #NOAPP */
-  75               	.LBE16:
-  76               	.LBE17:
-  77               	.LM8:
-  78 0030 0197      		sbiw r24,1
-  79               	.LM9:
-  80 0032 01F4      		brne .L2
-  81 0034 00C0      		rjmp .L3
-  82               	.LBE18:
-  83               	.LBE19:
-  84               	.LFE7:
-  86               	.global	X_AXIS
-  87               	.global	X_AXIS
-  88               		.section .bss
-  91               	X_AXIS:
-  92 0000 00        		.skip 1,0
-  93               	.global	Y_AXIS
-  94               	.global	Y_AXIS
-  97               	Y_AXIS:
-  98 0001 00        		.skip 1,0
-  99               	.global	Z_AXIS
- 100               	.global	Z_AXIS
- 103               	Z_AXIS:
- 104 0002 00        		.skip 1,0
- 105               	.global	RANGE
- 106               	.global	RANGE
- 109               	RANGE:
- 110 0003 00        		.skip 1,0
- 111               	.global	LIGHT
- 112               	.global	LIGHT
- 115               	LIGHT:
- 116 0004 00        		.skip 1,0
- 117               	.global	ALTITUDE
- 118               	.global	ALTITUDE
- 121               	ALTITUDE:
- 122 0005 0000      		.skip 2,0
- 123               	.global	SPEED
- 124               	.global	SPEED
- 127               	SPEED:
- 128 0007 0000      		.skip 2,0
- 129               	.global	BEARING
- 130               	.global	BEARING
- 133               	BEARING:
- 134 0009 00        		.skip 1,0
- 135               	.global	HOURS
- 136               		.data
- 139               	HOURS:
- 140 0000 0C        		.byte	12
- 141               	.global	MINUTES
- 142               	.global	MINUTES
- 143               		.section .bss
- 146               	MINUTES:
- 147 000a 00        		.skip 1,0
- 148               	.global	SECONDS
- 149               	.global	SECONDS
- 152               	SECONDS:
- 153 000b 00        		.skip 1,0
- 178               	.Letext0:
+  16               		.data
+  17               	.LC0:
+  18 0000 0941 6363 		.string	"\tAccelerometer"
+  18      656C 6572 
+  18      6F6D 6574 
+  18      6572 00
+  19               	.LC1:
+  20 000f 0A0D 0952 		.string	"\n\r\tRange Finder"
+  20      616E 6765 
+  20      2046 696E 
+  20      6465 7200 
+  21               	.LC2:
+  22 001f 0A0D 0941 		.string	"\n\r\tAmbient Light"
+  22      6D62 6965 
+  22      6E74 204C 
+  22      6967 6874 
+  22      00
+  23               	.LC3:
+  24 0030 0909 0947 		.string	"\t\t\tGPS Data"
+  24      5053 2044 
+  24      6174 6100 
+  25               	.LC4:
+  26 003c 0A0A 0D09 		.string	"\n\n\r\t\t\tGPS Time"
+  26      0909 4750 
+  26      5320 5469 
+  26      6D65 00
+  27               		.text
+  28               	.global	main
+  30               	main:
+  31               	.LFB7:
+  32               	.LM1:
+  33 0000 CF93      		push r28
+  34 0002 DF93      		push r29
+  35               	/* prologue: function */
+  36               	/* frame size = 0 */
+  37               	.LM2:
+  38 0004 0E94 0000 		call SPI_SlaveInit
+  39               	.LM3:
+  40 0008 83E3      		ldi r24,lo8(51)
+  41 000a 90E0      		ldi r25,hi8(51)
+  42 000c 0E94 0000 		call UART_init
+  43               	.LM4:
+  44               	/* #APP */
+  45               	 ;  44 "main.c" 1
+  46 0010 7894      		sei
+  47               	 ;  0 "" 2
+  48               	/* #NOAPP */
+  49 0012 80ED      		ldi r24,lo8(2000)
+  50 0014 97E0      		ldi r25,hi8(2000)
+  51               	.LVL0:
+  52               	.LBB24:
+  53               	.LBB25:
+  54               	.LBB26:
+  55               	.LBB27:
+  56               	.LM5:
+  57 0016 28EC      		ldi r18,lo8(200)
+  58 0018 30E0      		ldi r19,hi8(200)
+  59               	.L2:
+  60 001a F901      		movw r30,r18
+  61               	.LVL1:
+  62               	/* #APP */
+  63               	 ;  105 "d:/ee programs/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  64 001c 3197      		1: sbiw r30,1
+  65 001e 01F4      		brne 1b
+  66               	 ;  0 "" 2
+  67               	/* #NOAPP */
+  68               	.LBE27:
+  69               	.LBE26:
+  70               	.LM6:
+  71 0020 0197      		sbiw r24,1
+  72               	.LM7:
+  73 0022 01F4      		brne .L2
+  74               	.LBE25:
+  75               	.LBE24:
+  76               	.LM8:
+  77 0024 0E94 0000 		call reset
+  78               	.LVL2:
+  79 0028 88E8      		ldi r24,lo8(5000)
+  80 002a 93E1      		ldi r25,hi8(5000)
+  81               	.LVL3:
+  82               	.LBB28:
+  83               	.LBB29:
+  84               	.LBB30:
+  85               	.LBB31:
+  86               	.LM9:
+  87 002c 28EC      		ldi r18,lo8(200)
+  88 002e 30E0      		ldi r19,hi8(200)
+  89               	.L3:
+  90 0030 F901      		movw r30,r18
+  91               	.LVL4:
+  92               	/* #APP */
+  93               	 ;  105 "d:/ee programs/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  94 0032 3197      		1: sbiw r30,1
+  95 0034 01F4      		brne 1b
+  96               	 ;  0 "" 2
+  97               	/* #NOAPP */
+  98               	.LBE31:
+  99               	.LBE30:
+ 100               	.LM10:
+ 101 0036 0197      		sbiw r24,1
+ 102               	.LM11:
+ 103 0038 01F4      		brne .L3
+ 104               	.LBE29:
+ 105               	.LBE28:
+ 106               	.LBB32:
+ 107               	.LBB33:
+ 108               	.LBB34:
+ 109               	.LBB35:
+ 110               	.LM12:
+ 111 003a C8EC      		ldi r28,lo8(200)
+ 112 003c D0E0      		ldi r29,hi8(200)
+ 113               	.LVL5:
+ 114               	.L10:
+ 115               	.LBE35:
+ 116               	.LBE34:
+ 117               	.LBE33:
+ 118               	.LBE32:
+ 119               	.LM13:
+ 120 003e 0E94 0000 		call cursor_home
+ 121               	.LVL6:
+ 122               	.LM14:
+ 123 0042 0E94 0000 		call display_counter
+ 124               	.LM15:
+ 125 0046 0E94 0000 		call cursor_home
+ 126               	.LM16:
+ 127 004a 80E0      		ldi r24,lo8(.LC0)
+ 128 004c 90E0      		ldi r25,hi8(.LC0)
+ 129 004e 0E94 0000 		call UART_puts
+ 130               	.LM17:
+ 131 0052 0E94 0000 		call display_x
+ 132               	.LM18:
+ 133 0056 0E94 0000 		call display_y
+ 134               	.LM19:
+ 135 005a 0E94 0000 		call display_z
+ 136               	.LM20:
+ 137 005e 80E0      		ldi r24,lo8(.LC1)
+ 138 0060 90E0      		ldi r25,hi8(.LC1)
+ 139 0062 0E94 0000 		call UART_puts
+ 140               	.LM21:
+ 141 0066 0E94 0000 		call display_r
+ 142               	.LM22:
+ 143 006a 80E0      		ldi r24,lo8(.LC2)
+ 144 006c 90E0      		ldi r25,hi8(.LC2)
+ 145 006e 0E94 0000 		call UART_puts
+ 146               	.LM23:
+ 147 0072 0E94 0000 		call display_l
+ 148               	.LM24:
+ 149 0076 0E94 0000 		call cursor_home
+ 150               	.LM25:
+ 151 007a 80E0      		ldi r24,lo8(.LC3)
+ 152 007c 90E0      		ldi r25,hi8(.LC3)
+ 153 007e 0E94 0000 		call UART_puts
+ 154               	.LM26:
+ 155 0082 0E94 0000 		call display_a
+ 156               	.LM27:
+ 157 0086 0E94 0000 		call display_v
+ 158               	.LM28:
+ 159 008a 0E94 0000 		call display_b
+ 160               	.LM29:
+ 161 008e 80E0      		ldi r24,lo8(.LC4)
+ 162 0090 90E0      		ldi r25,hi8(.LC4)
+ 163 0092 0E94 0000 		call UART_puts
+ 164               	.LM30:
+ 165 0096 0E94 0000 		call display_time
+ 166 009a 88EE      		ldi r24,lo8(1000)
+ 167 009c 93E0      		ldi r25,hi8(1000)
+ 168               	.LVL7:
+ 169               	.L4:
+ 170               	.LBB39:
+ 171               	.LBB38:
+ 172               	.LBB37:
+ 173               	.LBB36:
+ 174               	.LM31:
+ 175 009e FE01      		movw r30,r28
+ 176               	.LVL8:
+ 177               	/* #APP */
+ 178               	 ;  105 "d:/ee programs/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 179 00a0 3197      		1: sbiw r30,1
+ 180 00a2 01F4      		brne 1b
+ 181               	 ;  0 "" 2
+ 182               	/* #NOAPP */
+ 183               	.LBE36:
+ 184               	.LBE37:
+ 185               	.LM32:
+ 186 00a4 0197      		sbiw r24,1
+ 187               	.LM33:
+ 188 00a6 01F4      		brne .L4
+ 189 00a8 00C0      		rjmp .L10
+ 190               	.LBE38:
+ 191               	.LBE39:
+ 192               	.LFE7:
+ 194               	.global	X_AXIS
+ 195               		.data
+ 198               	X_AXIS:
+ 199 004b 64        		.byte	100
+ 200               	.global	Y_AXIS
+ 203               	Y_AXIS:
+ 204 004c 80        		.byte	-128
+ 205               	.global	Z_AXIS
+ 208               	Z_AXIS:
+ 209 004d 9C        		.byte	-100
+ 210               	.global	RANGE
+ 213               	RANGE:
+ 214 004e 0A        		.byte	10
+ 215               	.global	LIGHT
+ 218               	LIGHT:
+ 219 004f 0A        		.byte	10
+ 220               	.global	ALTITUDE
+ 223               	ALTITUDE:
+ 224 0050 3930      		.word	12345
+ 225               	.global	SPEED
+ 228               	SPEED:
+ 229 0052 D204      		.word	1234
+ 230               	.global	BEARING
+ 233               	BEARING:
+ 234 0054 7B        		.byte	123
+ 235               	.global	HOURS
+ 238               	HOURS:
+ 239 0055 0C        		.byte	12
+ 240               	.global	MINUTES
+ 243               	MINUTES:
+ 244 0056 22        		.byte	34
+ 245               	.global	SECONDS
+ 248               	SECONDS:
+ 249 0057 38        		.byte	56
+ 274               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:2      *ABS*:0000003f __SREG__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:3      *ABS*:0000003e __SP_H__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:4      *ABS*:0000003d __SP_L__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:5      *ABS*:00000034 __CCP__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:18     .text:00000000 main
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:91     .bss:00000000 X_AXIS
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:97     .bss:00000001 Y_AXIS
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:103    .bss:00000002 Z_AXIS
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:109    .bss:00000003 RANGE
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:115    .bss:00000004 LIGHT
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:121    .bss:00000005 ALTITUDE
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:127    .bss:00000007 SPEED
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:133    .bss:00000009 BEARING
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:139    .data:00000000 HOURS
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:146    .bss:0000000a MINUTES
-C:\Users\BILLTA~1\AppData\Local\Temp/ccns6yN9.s:152    .bss:0000000b SECONDS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:30     .text:00000000 main
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:198    .data:0000004b X_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:203    .data:0000004c Y_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:208    .data:0000004d Z_AXIS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:213    .data:0000004e RANGE
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:218    .data:0000004f LIGHT
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:223    .data:00000050 ALTITUDE
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:228    .data:00000052 SPEED
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:233    .data:00000054 BEARING
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:238    .data:00000055 HOURS
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:243    .data:00000056 MINUTES
+C:\Users\BILLBA~1\AppData\Local\Temp/ccZG4NHw.s:248    .data:00000057 SECONDS
 
 UNDEFINED SYMBOLS
 SPI_SlaveInit
 UART_init
-UART_putc
+reset
+cursor_home
+display_counter
+UART_puts
+display_x
+display_y
+display_z
+display_r
+display_l
+display_a
+display_v
+display_b
+display_time
 __do_copy_data
-__do_clear_bss

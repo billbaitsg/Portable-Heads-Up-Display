@@ -117,7 +117,7 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x2fc
+.text           0x00000000      0x408
  *(.vectors)
  .vectors       0x00000000       0x68 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
                 0x00000000                __vectors
@@ -197,24 +197,24 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00000092                __vector_16
                 0x00000092                __vector_18
                 0x00000092                __vector_20
- .text          0x00000096      0x236 main.o
+ .text          0x00000096      0x33c main.o
                 0x00000096                main
- .text          0x000002cc       0x2c spi.o
-                0x000002ee                SPI_getc
-                0x000002cc                SPI_MasterInit
-                0x000002e4                SPI_SlaveInit
-                0x000002da                SPI_putc
- .text          0x000002f8        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text          0x000002f8        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
-                0x000002f8                . = ALIGN (0x2)
+ .text          0x000003d2       0x32 spi.o
+                0x000003fa                SPI_getc
+                0x000003d2                SPI_MasterInit
+                0x000003f0                SPI_SlaveInit
+                0x000003e6                SPI_putc
+ .text          0x00000404        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text          0x00000404        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x00000404                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x000002f8        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x000002f8        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
-                0x000002f8                . = ALIGN (0x2)
+ .text.libgcc   0x00000404        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00000404        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x00000404                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000002f8        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x000002f8                exit
-                0x000002f8                _exit
+ .fini9         0x00000404        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00000404                exit
+                0x00000404                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -233,26 +233,29 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000002f8        0x4 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000404        0x4 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000002fc                _etext = .
+                0x00000408                _etext = .
 
-.data           0x00800100        0xe load address 0x000002fc
+.data           0x00800100        0xe load address 0x00000408
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168.o
  .data          0x00800100        0xe main.o
                 0x0080010b                HOURS
                 0x00800104                LIGHT
+                0x00800107                HSPEED
                 0x00800102                Z_AXIS
                 0x0080010d                SECONDS
                 0x00800103                RANGE
+                0x00800106                LALTITUDE
+                0x0080010a                LBEARING
                 0x00800101                Y_AXIS
-                0x00800107                SPEED
-                0x00800105                ALTITUDE
+                0x00800105                HALTITUDE
+                0x00800108                LSPEED
+                0x00800109                HBEARING
                 0x00800100                X_AXIS
                 0x0080010c                MINUTES
-                0x00800109                BEARING
  .data          0x0080010e        0x0 spi.o
  .data          0x0080010e        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .data          0x0080010e        0x0 d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
@@ -275,8 +278,8 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.bss*)
  *(COMMON)
                 0x0080010e                PROVIDE (__bss_end, .)
-                0x000002fc                __data_load_start = LOADADDR (.data)
-                0x0000030a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000408                __data_load_start = LOADADDR (.data)
+                0x00000416                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080010e        0x0
                 0x0080010e                PROVIDE (__noinit_start, .)
@@ -342,61 +345,67 @@ LOAD d:/ee programs/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00000020       0x20 spi.o
 
 .debug_pubnames
-                0x00000000       0xe6
+                0x00000000      0x10f
  *(.debug_pubnames)
  .debug_pubnames
-                0x00000000       0x95 main.o
+                0x00000000       0xbe main.o
  .debug_pubnames
-                0x00000095       0x51 spi.o
+                0x000000be       0x51 spi.o
 
-.debug_info     0x00000000      0x252
+.debug_info     0x00000000      0xefa
  *(.debug_info)
- .debug_info    0x00000000      0x175 main.o
- .debug_info    0x00000175       0xdd spi.o
+ .debug_info    0x00000000      0xe1d main.o
+ .debug_info    0x00000e1d       0xdd spi.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000       0xf5
+.debug_abbrev   0x00000000      0x1bb
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0x6a main.o
- .debug_abbrev  0x0000006a       0x8b spi.o
+ .debug_abbrev  0x00000000      0x130 main.o
+ .debug_abbrev  0x00000130       0x8b spi.o
 
-.debug_line     0x00000000      0x3cf
+.debug_line     0x00000000      0x7af
  *(.debug_line)
- .debug_line    0x00000000      0x2f8 main.o
- .debug_line    0x000002f8       0xd7 spi.o
+ .debug_line    0x00000000      0x6c8 main.o
+ .debug_line    0x000006c8       0xe7 spi.o
 
 .debug_frame    0x00000000       0x70
  *(.debug_frame)
  .debug_frame   0x00000000       0x20 main.o
  .debug_frame   0x00000020       0x50 spi.o
 
-.debug_str      0x00000000      0x126
+.debug_str      0x00000000      0x1b0
  *(.debug_str)
- .debug_str     0x00000000       0xe6 main.o
-                                0x124 (size before relaxing)
- .debug_str     0x000000e6       0x40 spi.o
+ .debug_str     0x00000000      0x170 main.o
+                                0x1a9 (size before relaxing)
+ .debug_str     0x00000170       0x40 spi.o
                                  0xfe (size before relaxing)
 
-.debug_loc      0x00000000       0xcb
+.debug_loc      0x00000000      0x407
  *(.debug_loc)
- .debug_loc     0x00000000       0xcb main.o
+ .debug_loc     0x00000000      0x407 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
 OUTPUT(main.elf elf32-avr)
 LOAD linker stubs
 
+.debug_ranges   0x00000000      0x108
+ .debug_ranges  0x00000000      0x108 main.o
+
 Cross Reference Table
 
 Symbol                                            File
-ALTITUDE                                          main.o
-BEARING                                           main.o
+HALTITUDE                                         main.o
+HBEARING                                          main.o
 HOURS                                             main.o
+HSPEED                                            main.o
+LALTITUDE                                         main.o
+LBEARING                                          main.o
 LIGHT                                             main.o
+LSPEED                                            main.o
 MINUTES                                           main.o
 RANGE                                             main.o
 SECONDS                                           main.o
-SPEED                                             main.o
 SPI_MasterInit                                    spi.o
                                                   main.o
 SPI_SlaveInit                                     spi.o

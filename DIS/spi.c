@@ -207,19 +207,22 @@ ISR(SPI_STC_vect)
 	{
 		if( type == 6 )	/* if the Altitude is sent */
 		{
-			ALTITUDE = (SPDR<<8);	/* High byte of Altitude */
+			ALTITUDE = 0;	/* reset Altitude */
+			ALTITUDE += (SPDR<<8);	/* High byte of Altitude */
 			cnt = 1;
 			type = 6;
 		}
 		else if( type == 7 )	/* if the Speed is sent */
 		{
-			SPEED = (SPDR<<8) ;	/* High byte of Speed */
+			SPEED = 0;	/* reset SPEED */
+			SPEED += (SPDR<<8) ;	/* High byte of Speed */
 			cnt = 1;
 			type = 7;
 		}
 		else if( type == 8 )	/* if the Bearing is sent */
 		{
-			BEARING = (SPDR<<8);	/* High byte of Bearing */
+			BEARING = 0;	/* reset BEARING */
+			BEARING += (SPDR<<8);	/* High byte of Bearing */
 			cnt = 1;
 			type = 8;
 		}

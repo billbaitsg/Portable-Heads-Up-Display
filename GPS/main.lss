@@ -1,0 +1,1632 @@
+
+main.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000920  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000000a  00800060  00000920  000009b4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000006  0080006a  0080006a  000009be  2**0
+                  ALLOC
+  3 .debug_aranges 00000060  00000000  00000000  000009be  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 000001c2  00000000  00000000  00000a1e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000527  00000000  00000000  00000be0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000249  00000000  00000000  00001107  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000923  00000000  00000000  00001350  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000120  00000000  00000000  00001c74  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000203  00000000  00000000  00001d94  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000001df  00000000  00000000  00001f97  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	14 c0       	rjmp	.+40     	; 0x2a <__ctors_end>
+   2:	2e c0       	rjmp	.+92     	; 0x60 <__bad_interrupt>
+   4:	2d c0       	rjmp	.+90     	; 0x60 <__bad_interrupt>
+   6:	2c c0       	rjmp	.+88     	; 0x60 <__bad_interrupt>
+   8:	2b c0       	rjmp	.+86     	; 0x60 <__bad_interrupt>
+   a:	2a c0       	rjmp	.+84     	; 0x60 <__bad_interrupt>
+   c:	29 c0       	rjmp	.+82     	; 0x60 <__bad_interrupt>
+   e:	26 c1       	rjmp	.+588    	; 0x25c <__vector_7>
+  10:	27 c0       	rjmp	.+78     	; 0x60 <__bad_interrupt>
+  12:	26 c0       	rjmp	.+76     	; 0x60 <__bad_interrupt>
+  14:	25 c0       	rjmp	.+74     	; 0x60 <__bad_interrupt>
+  16:	24 c0       	rjmp	.+72     	; 0x60 <__bad_interrupt>
+  18:	23 c0       	rjmp	.+70     	; 0x60 <__bad_interrupt>
+  1a:	69 c0       	rjmp	.+210    	; 0xee <__vector_13>
+  1c:	21 c0       	rjmp	.+66     	; 0x60 <__bad_interrupt>
+  1e:	72 c0       	rjmp	.+228    	; 0x104 <__vector_15>
+  20:	7b c0       	rjmp	.+246    	; 0x118 <__vector_16>
+  22:	1e c0       	rjmp	.+60     	; 0x60 <__bad_interrupt>
+  24:	1d c0       	rjmp	.+58     	; 0x60 <__bad_interrupt>
+  26:	1c c0       	rjmp	.+56     	; 0x60 <__bad_interrupt>
+  28:	1b c0       	rjmp	.+54     	; 0x60 <__bad_interrupt>
+
+0000002a <__ctors_end>:
+  2a:	11 24       	eor	r1, r1
+  2c:	1f be       	out	0x3f, r1	; 63
+  2e:	cf e5       	ldi	r28, 0x5F	; 95
+  30:	d1 e0       	ldi	r29, 0x01	; 1
+  32:	de bf       	out	0x3e, r29	; 62
+  34:	cd bf       	out	0x3d, r28	; 61
+
+00000036 <__do_copy_data>:
+  36:	10 e0       	ldi	r17, 0x00	; 0
+  38:	a0 e6       	ldi	r26, 0x60	; 96
+  3a:	b0 e0       	ldi	r27, 0x00	; 0
+  3c:	e0 e2       	ldi	r30, 0x20	; 32
+  3e:	f9 e0       	ldi	r31, 0x09	; 9
+  40:	02 c0       	rjmp	.+4      	; 0x46 <.do_copy_data_start>
+
+00000042 <.do_copy_data_loop>:
+  42:	05 90       	lpm	r0, Z+
+  44:	0d 92       	st	X+, r0
+
+00000046 <.do_copy_data_start>:
+  46:	aa 36       	cpi	r26, 0x6A	; 106
+  48:	b1 07       	cpc	r27, r17
+  4a:	d9 f7       	brne	.-10     	; 0x42 <.do_copy_data_loop>
+
+0000004c <__do_clear_bss>:
+  4c:	10 e0       	ldi	r17, 0x00	; 0
+  4e:	aa e6       	ldi	r26, 0x6A	; 106
+  50:	b0 e0       	ldi	r27, 0x00	; 0
+  52:	01 c0       	rjmp	.+2      	; 0x56 <.do_clear_bss_start>
+
+00000054 <.do_clear_bss_loop>:
+  54:	1d 92       	st	X+, r1
+
+00000056 <.do_clear_bss_start>:
+  56:	a0 37       	cpi	r26, 0x70	; 112
+  58:	b1 07       	cpc	r27, r17
+  5a:	e1 f7       	brne	.-8      	; 0x54 <.do_clear_bss_loop>
+  5c:	02 d0       	rcall	.+4      	; 0x62 <main>
+  5e:	5e c4       	rjmp	.+2236   	; 0x91c <_exit>
+
+00000060 <__bad_interrupt>:
+  60:	cf cf       	rjmp	.-98     	; 0x0 <__vectors>
+
+00000062 <main>:
+{
+	/* Local Variables */
+	unsigned char cmd = 0;
+	
+	/* Initialize software modules */
+	USI_SPI_initslave();	/* Initialize SPI as slave */
+  62:	95 d0       	rcall	.+298    	; 0x18e <USI_SPI_initslave>
+	UART_init();			/* Initialize UART for 9600, 8N1 */
+  64:	e5 d0       	rcall	.+458    	; 0x230 <UART_init>
+	
+	sei();	/* Enable global interrupts */
+  66:	78 94       	sei
+	
+	while(1)
+	{
+		if( !USI_SS )	/* if this SPI slave is selected */
+  68:	b4 99       	sbic	0x16, 4	; 22
+  6a:	3e c0       	rjmp	.+124    	; 0xe8 <main+0x86>
+		{
+			USI_SPI_SSn(0);		/* Active low slave selected */
+  6c:	80 e0       	ldi	r24, 0x00	; 0
+  6e:	d9 d0       	rcall	.+434    	; 0x222 <USI_SPI_SSn>
+			cmd = USI_SPI_getc();
+  70:	d0 d0       	rcall	.+416    	; 0x212 <USI_SPI_getc>
+			if( cmd == 'B' ) 		/* Heading requested */
+  72:	82 34       	cpi	r24, 0x42	; 66
+  74:	61 f4       	brne	.+24     	; 0x8e <main+0x2c>
+			{
+				USI_SPI_putc( (unsigned char)(BEARING>>8) );	/* send high byte of Bearing */
+  76:	80 91 62 00 	lds	r24, 0x0062
+  7a:	90 91 63 00 	lds	r25, 0x0063
+  7e:	89 2f       	mov	r24, r25
+  80:	9f d0       	rcall	.+318    	; 0x1c0 <USI_SPI_putc>
+				USI_SPI_wait();
+  82:	ca d0       	rcall	.+404    	; 0x218 <USI_SPI_wait>
+				USI_SPI_putc( (unsigned char)BEARING );	/* send low byte of Bearing */
+  84:	80 91 62 00 	lds	r24, 0x0062
+  88:	90 91 63 00 	lds	r25, 0x0063
+  8c:	2a c0       	rjmp	.+84     	; 0xe2 <main+0x80>
+				USI_SPI_wait();
+			}
+			else if( cmd == 'V' )	/* Speed requested (Velocity) */
+  8e:	86 35       	cpi	r24, 0x56	; 86
+  90:	61 f4       	brne	.+24     	; 0xaa <main+0x48>
+			{
+				USI_SPI_putc( (unsigned char)(SPEED>>8) );	/* send high byte of Speed */
+  92:	80 91 64 00 	lds	r24, 0x0064
+  96:	90 91 65 00 	lds	r25, 0x0065
+  9a:	89 2f       	mov	r24, r25
+  9c:	91 d0       	rcall	.+290    	; 0x1c0 <USI_SPI_putc>
+				USI_SPI_wait();
+  9e:	bc d0       	rcall	.+376    	; 0x218 <USI_SPI_wait>
+				USI_SPI_putc( (unsigned char)SPEED );	/* send low byte of Speed */
+  a0:	80 91 64 00 	lds	r24, 0x0064
+  a4:	90 91 65 00 	lds	r25, 0x0065
+  a8:	1c c0       	rjmp	.+56     	; 0xe2 <main+0x80>
+				USI_SPI_wait();
+			}
+			else if( cmd == 'A' )	/* Altitude requested */
+  aa:	81 34       	cpi	r24, 0x41	; 65
+  ac:	61 f4       	brne	.+24     	; 0xc6 <main+0x64>
+			{
+				USI_SPI_putc( (unsigned char)(ALTITUDE>>8) );	/* send high byte of Altitude */
+  ae:	80 91 60 00 	lds	r24, 0x0060
+  b2:	90 91 61 00 	lds	r25, 0x0061
+  b6:	89 2f       	mov	r24, r25
+  b8:	83 d0       	rcall	.+262    	; 0x1c0 <USI_SPI_putc>
+				USI_SPI_wait();
+  ba:	ae d0       	rcall	.+348    	; 0x218 <USI_SPI_wait>
+				USI_SPI_putc( (unsigned char)ALTITUDE );	/* send low byte of Altitude */
+  bc:	80 91 60 00 	lds	r24, 0x0060
+  c0:	90 91 61 00 	lds	r25, 0x0061
+  c4:	0e c0       	rjmp	.+28     	; 0xe2 <main+0x80>
+				USI_SPI_wait();
+			}
+			else if( cmd == 'H' )	/* Hours requested */
+  c6:	88 34       	cpi	r24, 0x48	; 72
+  c8:	19 f4       	brne	.+6      	; 0xd0 <main+0x6e>
+			{
+				USI_SPI_putc( HOURS );	/* send Hours */
+  ca:	80 91 66 00 	lds	r24, 0x0066
+  ce:	09 c0       	rjmp	.+18     	; 0xe2 <main+0x80>
+				USI_SPI_wait();
+			}
+			else if( cmd == 'M' )	/* Minutes requested */
+  d0:	8d 34       	cpi	r24, 0x4D	; 77
+  d2:	19 f4       	brne	.+6      	; 0xda <main+0x78>
+			{
+				USI_SPI_putc( MINUTES );	/* send Minutes */
+  d4:	80 91 67 00 	lds	r24, 0x0067
+  d8:	04 c0       	rjmp	.+8      	; 0xe2 <main+0x80>
+				USI_SPI_wait();
+			}
+			else if( cmd == 'S' )	/* Seconds requested */
+  da:	83 35       	cpi	r24, 0x53	; 83
+  dc:	29 f6       	brne	.-118    	; 0x68 <main+0x6>
+			{
+				USI_SPI_putc( SECONDS );	/* send Seconds */
+  de:	80 91 68 00 	lds	r24, 0x0068
+  e2:	6e d0       	rcall	.+220    	; 0x1c0 <USI_SPI_putc>
+				USI_SPI_wait();
+  e4:	99 d0       	rcall	.+306    	; 0x218 <USI_SPI_wait>
+  e6:	c0 cf       	rjmp	.-128    	; 0x68 <main+0x6>
+			else					/* Ignore all other requests */
+			{}	/* End of if */
+		}
+		else	/* if not selected, do nothing */
+		{
+			USI_SPI_SSn(1);		/* Active low slave not selected */
+  e8:	81 e0       	ldi	r24, 0x01	; 1
+  ea:	9b d0       	rcall	.+310    	; 0x222 <USI_SPI_SSn>
+  ec:	bd cf       	rjmp	.-134    	; 0x68 <main+0x6>
+
+000000ee <__vector_13>:
+ *  results in one clock period on the clock pin and for the USI counter.
+ */
+/*#pragma vector=TIMER0_COMP_vect */	/* Compiler specific directive */
+/*__interrupt void timer0comp_handler()*/
+ISR(TIMER0_COMPA_vect)
+{
+  ee:	1f 92       	push	r1
+  f0:	0f 92       	push	r0
+  f2:	0f b6       	in	r0, 0x3f	; 63
+  f4:	0f 92       	push	r0
+  f6:	11 24       	eor	r1, r1
+	USICR |= (1<<USITC);	// Toggle clock output pin.
+  f8:	68 9a       	sbi	0x0d, 0	; 13
+}
+  fa:	0f 90       	pop	r0
+  fc:	0f be       	out	0x3f, r0	; 63
+  fe:	0f 90       	pop	r0
+ 100:	1f 90       	pop	r1
+ 102:	18 95       	reti
+
+00000104 <__vector_15>:
+
+/* USI SPI start condition interrupt */
+ISR(USI_START_vect)
+{
+ 104:	1f 92       	push	r1
+ 106:	0f 92       	push	r0
+ 108:	0f b6       	in	r0, 0x3f	; 63
+ 10a:	0f 92       	push	r0
+ 10c:	11 24       	eor	r1, r1
+	/* not enabled */
+}
+ 10e:	0f 90       	pop	r0
+ 110:	0f be       	out	0x3f, r0	; 63
+ 112:	0f 90       	pop	r0
+ 114:	1f 90       	pop	r1
+ 116:	18 95       	reti
+
+00000118 <__vector_16>:
+ *  For all modes the USIDR contents are stored and flags are updated.
+ */
+/*#pragma vector=USI_OVF_vect*/	/* Compiler specific directive */
+/*__interrupt void usiovf_handler()*/
+ISR(USI_OVERFLOW_vect)
+{
+ 118:	1f 92       	push	r1
+ 11a:	0f 92       	push	r0
+ 11c:	0f b6       	in	r0, 0x3f	; 63
+ 11e:	0f 92       	push	r0
+ 120:	11 24       	eor	r1, r1
+ 122:	8f 93       	push	r24
+	// Master must now disable the compare match interrupt
+	// to prevent more USI counter clocks.
+	if( USI_SPI_status.masterMode == 1 ) {
+ 124:	80 91 6e 00 	lds	r24, 0x006E
+ 128:	80 ff       	sbrs	r24, 0
+ 12a:	03 c0       	rjmp	.+6      	; 0x132 <__vector_16+0x1a>
+		TIMSK &= ~(1<<OCIE0A);
+ 12c:	89 b7       	in	r24, 0x39	; 57
+ 12e:	8e 7f       	andi	r24, 0xFE	; 254
+ 130:	89 bf       	out	0x39, r24	; 57
+	}
+	
+	// Update flags and clear USI counter
+	USISR = (1<<USIOIF);
+ 132:	80 e4       	ldi	r24, 0x40	; 64
+ 134:	8e b9       	out	0x0e, r24	; 14
+	USI_SPI_status.transferComplete = 1;
+ 136:	80 91 6e 00 	lds	r24, 0x006E
+ 13a:	82 60       	ori	r24, 0x02	; 2
+ 13c:	80 93 6e 00 	sts	0x006E, r24
+
+	// Copy USIDR to buffer to prevent overwrite on next transfer.
+	storedUSIDR = USIDR;
+ 140:	8f b1       	in	r24, 0x0f	; 15
+ 142:	80 93 6f 00 	sts	0x006F, r24
+}
+ 146:	8f 91       	pop	r24
+ 148:	0f 90       	pop	r0
+ 14a:	0f be       	out	0x3f, r0	; 63
+ 14c:	0f 90       	pop	r0
+ 14e:	1f 90       	pop	r1
+ 150:	18 95       	reti
+
+00000152 <USI_SPI_initmaster>:
+ *  \param spi_mode  Required SPI mode, must be 0 or 1.
+ */
+void USI_SPI_initmaster(void)
+{
+	// Configure port directions.
+	USI_DIR_REG |= (1<<USI_DATAOUT_PIN) | (1<<USI_CLOCK_PIN); // Outputs.
+ 152:	87 b3       	in	r24, 0x17	; 23
+ 154:	80 6c       	ori	r24, 0xC0	; 192
+ 156:	87 bb       	out	0x17, r24	; 23
+	USI_DIR_REG &= ~(1<<USI_DATAIN_PIN);                      // Inputs.
+ 158:	bd 98       	cbi	0x17, 5	; 23
+	USI_OUT_REG |= (1<<USI_DATAIN_PIN);                       // Pull-ups.
+ 15a:	c5 9a       	sbi	0x18, 5	; 24
+	
+	// Configure USI to 3-wire master mode with overflow interrupt.
+	USICR = (1<<USIOIE) | (1<<USIWM0) |
+ 15c:	8a e5       	ldi	r24, 0x5A	; 90
+ 15e:	8d b9       	out	0x0d, r24	; 13
+	        (1<<USICS1) | (SPI_MODE<<USICS0) |
+	        (1<<USICLK);
+
+	// Enable 'Clear Timer on Compare match' and init prescaler.
+	TCCR0A = (1<<WGM01);
+ 160:	82 e0       	ldi	r24, 0x02	; 2
+ 162:	80 bf       	out	0x30, r24	; 48
+	TCCR0B = TC0_PS_SETTING;
+ 164:	83 bf       	out	0x33, r24	; 51
+	
+	// Init Output Compare Register.
+	OCR0A = TC0_COMPARE_VALUE;
+ 166:	83 e0       	ldi	r24, 0x03	; 3
+ 168:	86 bf       	out	0x36, r24	; 54
+	
+	// Init driver status register.
+	USI_SPI_status.masterMode       = 1;
+ 16a:	80 91 6e 00 	lds	r24, 0x006E
+ 16e:	81 60       	ori	r24, 0x01	; 1
+ 170:	80 93 6e 00 	sts	0x006E, r24
+	USI_SPI_status.transferComplete = 0;
+ 174:	80 91 6e 00 	lds	r24, 0x006E
+ 178:	8d 7f       	andi	r24, 0xFD	; 253
+ 17a:	80 93 6e 00 	sts	0x006E, r24
+	USI_SPI_status.writeCollision   = 0;
+ 17e:	80 91 6e 00 	lds	r24, 0x006E
+ 182:	8b 7f       	andi	r24, 0xFB	; 251
+ 184:	80 93 6e 00 	sts	0x006E, r24
+	
+	storedUSIDR = 0;
+ 188:	10 92 6f 00 	sts	0x006F, r1
+}
+ 18c:	08 95       	ret
+
+0000018e <USI_SPI_initslave>:
+ *  \param spi_mode  Required SPI mode, must be 0 or 1.
+ */
+void USI_SPI_initslave(void)
+{
+	// Configure port directions.
+	USI_DIR_REG |= (1<<USI_DATAOUT_PIN);                      // Outputs.
+ 18e:	be 9a       	sbi	0x17, 6	; 23
+	USI_DIR_REG &= ~(1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN); // Inputs.
+ 190:	bd 98       	cbi	0x17, 5	; 23
+	USI_OUT_REG |= (1<<USI_DATAIN_PIN) | (1<<USI_CLOCK_PIN);  // Pull-ups.
+ 192:	88 b3       	in	r24, 0x18	; 24
+ 194:	80 6a       	ori	r24, 0xA0	; 160
+ 196:	88 bb       	out	0x18, r24	; 24
+	
+	// Configure USI to 3-wire slave mode with overflow interrupt.
+	USICR = (1<<USIOIE) | (1<<USIWM0) |
+ 198:	88 e5       	ldi	r24, 0x58	; 88
+ 19a:	8d b9       	out	0x0d, r24	; 13
+	        (1<<USICS1) | (SPI_MODE<<USICS0);
+	
+	// Init driver status register.
+	USI_SPI_status.masterMode       = 0;
+ 19c:	80 91 6e 00 	lds	r24, 0x006E
+ 1a0:	8e 7f       	andi	r24, 0xFE	; 254
+ 1a2:	80 93 6e 00 	sts	0x006E, r24
+	USI_SPI_status.transferComplete = 0;
+ 1a6:	80 91 6e 00 	lds	r24, 0x006E
+ 1aa:	8d 7f       	andi	r24, 0xFD	; 253
+ 1ac:	80 93 6e 00 	sts	0x006E, r24
+	USI_SPI_status.writeCollision   = 0;
+ 1b0:	80 91 6e 00 	lds	r24, 0x006E
+ 1b4:	8b 7f       	andi	r24, 0xFB	; 251
+ 1b6:	80 93 6e 00 	sts	0x006E, r24
+	
+	storedUSIDR = 0;
+ 1ba:	10 92 6f 00 	sts	0x006F, r1
+}
+ 1be:	08 95       	ret
+
+000001c0 <USI_SPI_putc>:
+ *  and return without altering the data registers.
+ *
+ *  \returns  0 if a write collision occurred, 1 otherwise.
+ */
+char USI_SPI_putc( unsigned char val )
+{
+ 1c0:	28 2f       	mov	r18, r24
+	// Check if transmission in progress,
+	// i.e. USI counter unequal to zero.
+	if( (USISR & 0x0F) != 0 ) {
+ 1c2:	8e b1       	in	r24, 0x0e	; 14
+ 1c4:	90 e0       	ldi	r25, 0x00	; 0
+ 1c6:	8f 70       	andi	r24, 0x0F	; 15
+ 1c8:	90 70       	andi	r25, 0x00	; 0
+ 1ca:	89 2b       	or	r24, r25
+ 1cc:	31 f0       	breq	.+12     	; 0x1da <USI_SPI_putc+0x1a>
+		// Indicate write collision and return.
+		USI_SPI_status.writeCollision = 1;
+ 1ce:	80 91 6e 00 	lds	r24, 0x006E
+ 1d2:	84 60       	ori	r24, 0x04	; 4
+ 1d4:	80 93 6e 00 	sts	0x006E, r24
+ 1d8:	08 95       	ret
+		return;
+	}
+	
+	// Reinit flags.
+	USI_SPI_status.transferComplete = 0;
+ 1da:	80 91 6e 00 	lds	r24, 0x006E
+ 1de:	8d 7f       	andi	r24, 0xFD	; 253
+ 1e0:	80 93 6e 00 	sts	0x006E, r24
+	USI_SPI_status.writeCollision = 0;
+ 1e4:	80 91 6e 00 	lds	r24, 0x006E
+ 1e8:	8b 7f       	andi	r24, 0xFB	; 251
+ 1ea:	80 93 6e 00 	sts	0x006E, r24
+
+	// Put data in USI data register.
+	USIDR = val;
+ 1ee:	2f b9       	out	0x0f, r18	; 15
+	
+	// Master should now enable compare match interrupts.
+	if( USI_SPI_status.masterMode == 1 ) {
+ 1f0:	80 91 6e 00 	lds	r24, 0x006E
+ 1f4:	80 ff       	sbrs	r24, 0
+ 1f6:	06 c0       	rjmp	.+12     	; 0x204 <USI_SPI_putc+0x44>
+		TIFR |= (1<<OCF0A);   // Clear compare match flag.
+ 1f8:	88 b7       	in	r24, 0x38	; 56
+ 1fa:	81 60       	ori	r24, 0x01	; 1
+ 1fc:	88 bf       	out	0x38, r24	; 56
+		TIMSK |= (1<<OCIE0A); // Enable compare match interrupt.
+ 1fe:	89 b7       	in	r24, 0x39	; 57
+ 200:	81 60       	ori	r24, 0x01	; 1
+ 202:	89 bf       	out	0x39, r24	; 57
+	}
+
+	if( USI_SPI_status.writeCollision == 0 ) return 1;
+ 204:	80 91 6e 00 	lds	r24, 0x006E
+ 208:	86 95       	lsr	r24
+ 20a:	86 95       	lsr	r24
+ 20c:	80 95       	com	r24
+ 20e:	81 70       	andi	r24, 0x01	; 1
+	return 0;
+}
+ 210:	08 95       	ret
+
+00000212 <USI_SPI_getc>:
+ *  like you would read from the SPDR register in the native SPI module.
+ */
+unsigned char USI_SPI_getc(void)
+{
+	return storedUSIDR;
+}
+ 212:	80 91 6f 00 	lds	r24, 0x006F
+ 216:	08 95       	ret
+
+00000218 <USI_SPI_wait>:
+ *  This function waits until the transfer complete flag is set.
+ *  Use this function like you would wait for the native SPI interrupt flag.
+ */
+void USI_SPI_wait(void)
+{
+	do {} while( USI_SPI_status.transferComplete == 0 );
+ 218:	80 91 6e 00 	lds	r24, 0x006E
+ 21c:	81 ff       	sbrs	r24, 1
+ 21e:	fc cf       	rjmp	.-8      	; 0x218 <USI_SPI_wait>
+}
+ 220:	08 95       	ret
+
+00000222 <USI_SPI_SSn>:
+
+/* Changes USI MISO between input and output when slave is selected or not */
+void USI_SPI_SSn(unsigned char mode)
+{
+	if( mode == 0 )		/* Slave is selected */
+ 222:	88 23       	and	r24, r24
+ 224:	11 f4       	brne	.+4      	; 0x22a <USI_SPI_SSn+0x8>
+	{
+		USI_DIR_REG |= (1<<USI_DATAOUT_PIN);	/* Set MISO pin to output */
+ 226:	be 9a       	sbi	0x17, 6	; 23
+ 228:	08 95       	ret
+	}
+	else				/* Slave is not selected */
+	{
+		USI_DIR_REG &= ~(1<<USI_DATAOUT_PIN);	/* Set MISO pin to input w/o pull-up resistor */
+ 22a:	be 98       	cbi	0x17, 6	; 23
+		USI_OUT_REG &= ~(1<<USI_DATAOUT_PIN);	/* Turn off pull up resistor */
+ 22c:	c6 98       	cbi	0x18, 6	; 24
+ 22e:	08 95       	ret
+
+00000230 <UART_init>:
+void UART_init( void )
+{
+	/* UBRR = (fosc/16/baud)-1 = (8MHz/16/9600bps)-1 = 51.083 = 51 */
+	unsigned int ubrr = 51;
+	/* Set baud rate */
+	UBRRH = (unsigned char)(ubrr>>8);
+ 230:	12 b8       	out	0x02, r1	; 2
+	UBRRL = (unsigned char)ubrr;
+ 232:	83 e3       	ldi	r24, 0x33	; 51
+ 234:	89 b9       	out	0x09, r24	; 9
+	/* Enable receiver and transmitter */
+	UCSRB = (1<<RXEN)|(1<<TXEN);
+ 236:	88 e1       	ldi	r24, 0x18	; 24
+ 238:	8a b9       	out	0x0a, r24	; 10
+	/* Set frame format: 8 data, 1 stop bit */
+	UCSRC = (0<<USBS)|(3<<UCSZ0);
+ 23a:	86 e0       	ldi	r24, 0x06	; 6
+ 23c:	83 b9       	out	0x03, r24	; 3
+	/* Enable the USART Recieve Complete interrupt (USART_RXC) */
+	UCSRB |= (1<<RXCIE);	
+ 23e:	57 9a       	sbi	0x0a, 7	; 10
+}
+ 240:	08 95       	ret
+
+00000242 <UART_putc>:
+
+/* Send a byte via UART, from datasheet */
+void UART_putc( unsigned char data )
+{
+	/* Wait for empty transmit buffer */
+	while ( !( UCSRA & (1<<UDRE)) );
+ 242:	5d 9b       	sbis	0x0b, 5	; 11
+ 244:	fe cf       	rjmp	.-4      	; 0x242 <UART_putc>
+	/* Put data into buffer, sends the data */
+	UDR = data;
+ 246:	8c b9       	out	0x0c, r24	; 12
+}
+ 248:	08 95       	ret
+
+0000024a <UART_getc>:
+
+/* Get a byte via UART, from datasheet */
+unsigned char UART_getc( void )
+{
+	/* Wait for data to be received */
+	while ( !(UCSRA & (1<<RXC)) );
+ 24a:	5f 9b       	sbis	0x0b, 7	; 11
+ 24c:	fe cf       	rjmp	.-4      	; 0x24a <UART_getc>
+	/* Get and return received data from buffer */
+	return UDR;
+ 24e:	8c b1       	in	r24, 0x0c	; 12
+}
+ 250:	08 95       	ret
+
+00000252 <UART_flush>:
+
+/* Flush out the UART receive buffer, from datasheet */
+void UART_flush( void )
+{
+ 252:	01 c0       	rjmp	.+2      	; 0x256 <UART_flush+0x4>
+	unsigned char dummy;
+	while ( UCSRA & (1<<RXC) ) dummy = UDR;
+ 254:	8c b1       	in	r24, 0x0c	; 12
+ 256:	5f 99       	sbic	0x0b, 7	; 11
+ 258:	fd cf       	rjmp	.-6      	; 0x254 <UART_flush+0x2>
+}
+ 25a:	08 95       	ret
+
+0000025c <__vector_7>:
+
+/* UART receive complete interrupt */
+volatile unsigned char COUNT = 0;
+volatile unsigned int TEMP = 0;
+ISR( USART_RX_vect )
+{
+ 25c:	1f 92       	push	r1
+ 25e:	0f 92       	push	r0
+ 260:	0f b6       	in	r0, 0x3f	; 63
+ 262:	0f 92       	push	r0
+ 264:	11 24       	eor	r1, r1
+ 266:	0f 93       	push	r16
+ 268:	2f 93       	push	r18
+ 26a:	3f 93       	push	r19
+ 26c:	4f 93       	push	r20
+ 26e:	5f 93       	push	r21
+ 270:	6f 93       	push	r22
+ 272:	7f 93       	push	r23
+ 274:	8f 93       	push	r24
+ 276:	9f 93       	push	r25
+ 278:	af 93       	push	r26
+ 27a:	bf 93       	push	r27
+ 27c:	ef 93       	push	r30
+ 27e:	ff 93       	push	r31
+ 280:	df 93       	push	r29
+ 282:	cf 93       	push	r28
+ 284:	00 d0       	rcall	.+0      	; 0x286 <__vector_7+0x2a>
+ 286:	cd b7       	in	r28, 0x3d	; 61
+ 288:	de b7       	in	r29, 0x3e	; 62
+	/* Local Variables */
+	unsigned char rx = 0;
+	
+	/* Wait for completion of transmit (should be redundant) */
+	while ( !(UCSRA & (1<<RXC)) ){}
+ 28a:	5f 9b       	sbis	0x0b, 7	; 11
+ 28c:	fe cf       	rjmp	.-4      	; 0x28a <__vector_7+0x2e>
+	
+	rx = UDR;	/* Read UART Data Register into local variable */
+ 28e:	0c b1       	in	r16, 0x0c	; 12
+	
+	if( rx == '$' )	/* if start new sentence */
+ 290:	04 32       	cpi	r16, 0x24	; 36
+ 292:	21 f4       	brne	.+8      	; 0x29c <__vector_7+0x40>
+	{
+		COUNT = 0;	/* reset count */
+ 294:	10 92 6a 00 	sts	0x006A, r1
+		NMEA_TYPE = 0;	/* reset NMEA type */
+ 298:	10 92 6d 00 	sts	0x006D, r1
+	}
+
+	if( COUNT == 1 )	/* first character should always be G */
+ 29c:	80 91 6a 00 	lds	r24, 0x006A
+ 2a0:	81 30       	cpi	r24, 0x01	; 1
+ 2a2:	29 f4       	brne	.+10     	; 0x2ae <__vector_7+0x52>
+	{
+		if( rx != 'G' )	/* if it's not a G */
+ 2a4:	07 34       	cpi	r16, 0x47	; 71
+ 2a6:	19 f0       	breq	.+6      	; 0x2ae <__vector_7+0x52>
+		{
+			COUNT = 83;	/* set count to higher than max */
+ 2a8:	83 e5       	ldi	r24, 0x53	; 83
+ 2aa:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 2 )	/* second character should always be P */
+ 2ae:	80 91 6a 00 	lds	r24, 0x006A
+ 2b2:	82 30       	cpi	r24, 0x02	; 2
+ 2b4:	29 f4       	brne	.+10     	; 0x2c0 <__vector_7+0x64>
+	{
+		if( rx != 'P' )	/* if it's not a G */
+ 2b6:	00 35       	cpi	r16, 0x50	; 80
+ 2b8:	19 f0       	breq	.+6      	; 0x2c0 <__vector_7+0x64>
+		{
+			COUNT = 83;	/* set count to higher than max */
+ 2ba:	83 e5       	ldi	r24, 0x53	; 83
+ 2bc:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 3 )	/* third char should be V or G */
+ 2c0:	80 91 6a 00 	lds	r24, 0x006A
+ 2c4:	83 30       	cpi	r24, 0x03	; 3
+ 2c6:	79 f4       	brne	.+30     	; 0x2e6 <__vector_7+0x8a>
+	{
+		if( rx == 'V' )	/* if it's a V */
+ 2c8:	06 35       	cpi	r16, 0x56	; 86
+ 2ca:	11 f4       	brne	.+4      	; 0x2d0 <__vector_7+0x74>
+		{
+			NMEA_TYPE = 6;	/* set VTG type */
+ 2cc:	86 e0       	ldi	r24, 0x06	; 6
+ 2ce:	03 c0       	rjmp	.+6      	; 0x2d6 <__vector_7+0x7a>
+		}
+		else if( rx == 'G' )	/* if it's a G */
+ 2d0:	07 34       	cpi	r16, 0x47	; 71
+ 2d2:	21 f4       	brne	.+8      	; 0x2dc <__vector_7+0x80>
+		{
+			NMEA_TYPE = 1;	/* set GGA type */
+ 2d4:	81 e0       	ldi	r24, 0x01	; 1
+ 2d6:	80 93 6d 00 	sts	0x006D, r24
+ 2da:	05 c0       	rjmp	.+10     	; 0x2e6 <__vector_7+0x8a>
+		}
+		else
+		{
+			NMEA_TYPE = 0;	/* set no type */
+ 2dc:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;	/* set count higher than max */
+ 2e0:	83 e5       	ldi	r24, 0x53	; 83
+ 2e2:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 4 ) 	/* continue checking for VTG or GGA type */
+ 2e6:	80 91 6a 00 	lds	r24, 0x006A
+ 2ea:	84 30       	cpi	r24, 0x04	; 4
+ 2ec:	a9 f4       	brne	.+42     	; 0x318 <__vector_7+0xbc>
+	{
+		if( rx == 'T' && NMEA_TYPE == 6 )	/* if VTG is still valid */
+ 2ee:	04 35       	cpi	r16, 0x54	; 84
+ 2f0:	29 f4       	brne	.+10     	; 0x2fc <__vector_7+0xa0>
+ 2f2:	80 91 6d 00 	lds	r24, 0x006D
+ 2f6:	86 30       	cpi	r24, 0x06	; 6
+ 2f8:	51 f4       	brne	.+20     	; 0x30e <__vector_7+0xb2>
+ 2fa:	06 c0       	rjmp	.+12     	; 0x308 <__vector_7+0xac>
+		{
+			NMEA_TYPE = 6;	/* keep VTG type */
+		}
+		else if( rx == 'G' && NMEA_TYPE == 1 )	/* if GGA is still valid */
+ 2fc:	07 34       	cpi	r16, 0x47	; 71
+ 2fe:	39 f4       	brne	.+14     	; 0x30e <__vector_7+0xb2>
+ 300:	80 91 6d 00 	lds	r24, 0x006D
+ 304:	81 30       	cpi	r24, 0x01	; 1
+ 306:	19 f4       	brne	.+6      	; 0x30e <__vector_7+0xb2>
+		{
+			NMEA_TYPE = 1;	/* keep GGA type */
+ 308:	80 93 6d 00 	sts	0x006D, r24
+ 30c:	05 c0       	rjmp	.+10     	; 0x318 <__vector_7+0xbc>
+		}
+		else
+		{
+			NMEA_TYPE = 0;	/* no type */
+ 30e:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;	/* > max */
+ 312:	83 e5       	ldi	r24, 0x53	; 83
+ 314:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 5 ) 	/* continue checking for VTG or GGA type */
+ 318:	80 91 6a 00 	lds	r24, 0x006A
+ 31c:	85 30       	cpi	r24, 0x05	; 5
+ 31e:	a9 f4       	brne	.+42     	; 0x34a <__vector_7+0xee>
+	{
+		if( rx == 'G' && NMEA_TYPE == 6 )	/* if VTG is still valid */
+ 320:	07 34       	cpi	r16, 0x47	; 71
+ 322:	29 f4       	brne	.+10     	; 0x32e <__vector_7+0xd2>
+ 324:	80 91 6d 00 	lds	r24, 0x006D
+ 328:	86 30       	cpi	r24, 0x06	; 6
+ 32a:	51 f4       	brne	.+20     	; 0x340 <__vector_7+0xe4>
+ 32c:	06 c0       	rjmp	.+12     	; 0x33a <__vector_7+0xde>
+		{
+			NMEA_TYPE = 6;	/* keep VTG type */
+		}
+		else if( rx == 'A' && NMEA_TYPE == 1 )	/* if GGA is still valid */
+ 32e:	01 34       	cpi	r16, 0x41	; 65
+ 330:	39 f4       	brne	.+14     	; 0x340 <__vector_7+0xe4>
+ 332:	80 91 6d 00 	lds	r24, 0x006D
+ 336:	81 30       	cpi	r24, 0x01	; 1
+ 338:	19 f4       	brne	.+6      	; 0x340 <__vector_7+0xe4>
+		{
+			NMEA_TYPE = 1;	/* keep GGA type */
+ 33a:	80 93 6d 00 	sts	0x006D, r24
+ 33e:	05 c0       	rjmp	.+10     	; 0x34a <__vector_7+0xee>
+		}
+		else
+		{
+			NMEA_TYPE = 0;	/* no type */
+ 340:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;	/* > max */
+ 344:	83 e5       	ldi	r24, 0x53	; 83
+ 346:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 7 )
+ 34a:	80 91 6a 00 	lds	r24, 0x006A
+ 34e:	87 30       	cpi	r24, 0x07	; 7
+ 350:	89 f5       	brne	.+98     	; 0x3b4 <__vector_7+0x158>
+	{
+		if( NMEA_TYPE == 1 )	/* GPGGA */
+ 352:	80 91 6d 00 	lds	r24, 0x006D
+ 356:	81 30       	cpi	r24, 0x01	; 1
+ 358:	79 f4       	brne	.+30     	; 0x378 <__vector_7+0x11c>
+		{
+			TEMP = 0;
+ 35a:	10 92 6c 00 	sts	0x006C, r1
+ 35e:	10 92 6b 00 	sts	0x006B, r1
+			TEMP += (rx-48)*10;	/* tens digit of hours */
+ 362:	20 91 6b 00 	lds	r18, 0x006B
+ 366:	30 91 6c 00 	lds	r19, 0x006C
+ 36a:	20 5e       	subi	r18, 0xE0	; 224
+ 36c:	31 40       	sbci	r19, 0x01	; 1
+ 36e:	80 2f       	mov	r24, r16
+ 370:	90 e0       	ldi	r25, 0x00	; 0
+ 372:	6a e0       	ldi	r22, 0x0A	; 10
+ 374:	70 e0       	ldi	r23, 0x00	; 0
+ 376:	11 c0       	rjmp	.+34     	; 0x39a <__vector_7+0x13e>
+		}
+		else if( NMEA_TYPE == 6 )	/* GPVTG */
+ 378:	80 91 6d 00 	lds	r24, 0x006D
+ 37c:	86 30       	cpi	r24, 0x06	; 6
+ 37e:	a9 f4       	brne	.+42     	; 0x3aa <__vector_7+0x14e>
+		{
+			TEMP = 0;
+ 380:	10 92 6c 00 	sts	0x006C, r1
+ 384:	10 92 6b 00 	sts	0x006B, r1
+			TEMP += (rx-48)*1000;	/* thousands digit of course */
+ 388:	20 91 6b 00 	lds	r18, 0x006B
+ 38c:	30 91 6c 00 	lds	r19, 0x006C
+ 390:	80 2f       	mov	r24, r16
+ 392:	90 e0       	ldi	r25, 0x00	; 0
+ 394:	c0 97       	sbiw	r24, 0x30	; 48
+ 396:	68 ee       	ldi	r22, 0xE8	; 232
+ 398:	73 e0       	ldi	r23, 0x03	; 3
+ 39a:	95 d2       	rcall	.+1322   	; 0x8c6 <__mulhi3>
+ 39c:	28 0f       	add	r18, r24
+ 39e:	39 1f       	adc	r19, r25
+ 3a0:	30 93 6c 00 	sts	0x006C, r19
+ 3a4:	20 93 6b 00 	sts	0x006B, r18
+ 3a8:	05 c0       	rjmp	.+10     	; 0x3b4 <__vector_7+0x158>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 3aa:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 3ae:	83 e5       	ldi	r24, 0x53	; 83
+ 3b0:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 8 )
+ 3b4:	80 91 6a 00 	lds	r24, 0x006A
+ 3b8:	88 30       	cpi	r24, 0x08	; 8
+ 3ba:	89 f5       	brne	.+98     	; 0x41e <__vector_7+0x1c2>
+	{
+		if( NMEA_TYPE == 1 )	/* GPGGA */
+ 3bc:	80 91 6d 00 	lds	r24, 0x006D
+ 3c0:	81 30       	cpi	r24, 0x01	; 1
+ 3c2:	91 f4       	brne	.+36     	; 0x3e8 <__vector_7+0x18c>
+		{
+			TEMP += (rx-48);	/* ones digit of hours */
+ 3c4:	80 91 6b 00 	lds	r24, 0x006B
+ 3c8:	90 91 6c 00 	lds	r25, 0x006C
+ 3cc:	c0 97       	sbiw	r24, 0x30	; 48
+ 3ce:	80 0f       	add	r24, r16
+ 3d0:	91 1d       	adc	r25, r1
+ 3d2:	90 93 6c 00 	sts	0x006C, r25
+ 3d6:	80 93 6b 00 	sts	0x006B, r24
+			HOURS = TEMP;		/* set HOURS to temp */
+ 3da:	80 91 6b 00 	lds	r24, 0x006B
+ 3de:	90 91 6c 00 	lds	r25, 0x006C
+ 3e2:	80 93 66 00 	sts	0x0066, r24
+ 3e6:	1b c0       	rjmp	.+54     	; 0x41e <__vector_7+0x1c2>
+		}
+		else if( NMEA_TYPE == 6 )	/* GPVTG */
+ 3e8:	80 91 6d 00 	lds	r24, 0x006D
+ 3ec:	86 30       	cpi	r24, 0x06	; 6
+ 3ee:	91 f4       	brne	.+36     	; 0x414 <__vector_7+0x1b8>
+		{
+			TEMP += (rx-48)*100;	/* hundreds digit of course */
+ 3f0:	20 91 6b 00 	lds	r18, 0x006B
+ 3f4:	30 91 6c 00 	lds	r19, 0x006C
+ 3f8:	20 5c       	subi	r18, 0xC0	; 192
+ 3fa:	32 41       	sbci	r19, 0x12	; 18
+ 3fc:	80 2f       	mov	r24, r16
+ 3fe:	90 e0       	ldi	r25, 0x00	; 0
+ 400:	64 e6       	ldi	r22, 0x64	; 100
+ 402:	70 e0       	ldi	r23, 0x00	; 0
+ 404:	60 d2       	rcall	.+1216   	; 0x8c6 <__mulhi3>
+ 406:	28 0f       	add	r18, r24
+ 408:	39 1f       	adc	r19, r25
+ 40a:	30 93 6c 00 	sts	0x006C, r19
+ 40e:	20 93 6b 00 	sts	0x006B, r18
+ 412:	05 c0       	rjmp	.+10     	; 0x41e <__vector_7+0x1c2>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 414:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 418:	83 e5       	ldi	r24, 0x53	; 83
+ 41a:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 9 )
+ 41e:	80 91 6a 00 	lds	r24, 0x006A
+ 422:	89 30       	cpi	r24, 0x09	; 9
+ 424:	21 f5       	brne	.+72     	; 0x46e <__vector_7+0x212>
+	{
+		if( NMEA_TYPE == 1 )	/* GPGGA */
+ 426:	80 91 6d 00 	lds	r24, 0x006D
+ 42a:	81 30       	cpi	r24, 0x01	; 1
+ 42c:	29 f4       	brne	.+10     	; 0x438 <__vector_7+0x1dc>
+		{
+			TEMP = 0;
+ 42e:	10 92 6c 00 	sts	0x006C, r1
+ 432:	10 92 6b 00 	sts	0x006B, r1
+ 436:	04 c0       	rjmp	.+8      	; 0x440 <__vector_7+0x1e4>
+			TEMP += (rx-48)*10;	/* tens digit of minutes */
+		}
+		else if( NMEA_TYPE == 6 )	/* GPVTG */
+ 438:	80 91 6d 00 	lds	r24, 0x006D
+ 43c:	86 30       	cpi	r24, 0x06	; 6
+ 43e:	91 f4       	brne	.+36     	; 0x464 <__vector_7+0x208>
+		{
+			TEMP += (rx-48)*10;	/* tens digit of course */
+ 440:	20 91 6b 00 	lds	r18, 0x006B
+ 444:	30 91 6c 00 	lds	r19, 0x006C
+ 448:	20 5e       	subi	r18, 0xE0	; 224
+ 44a:	31 40       	sbci	r19, 0x01	; 1
+ 44c:	80 2f       	mov	r24, r16
+ 44e:	90 e0       	ldi	r25, 0x00	; 0
+ 450:	6a e0       	ldi	r22, 0x0A	; 10
+ 452:	70 e0       	ldi	r23, 0x00	; 0
+ 454:	38 d2       	rcall	.+1136   	; 0x8c6 <__mulhi3>
+ 456:	28 0f       	add	r18, r24
+ 458:	39 1f       	adc	r19, r25
+ 45a:	30 93 6c 00 	sts	0x006C, r19
+ 45e:	20 93 6b 00 	sts	0x006B, r18
+ 462:	05 c0       	rjmp	.+10     	; 0x46e <__vector_7+0x212>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 464:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 468:	83 e5       	ldi	r24, 0x53	; 83
+ 46a:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 10 )
+ 46e:	80 91 6a 00 	lds	r24, 0x006A
+ 472:	8a 30       	cpi	r24, 0x0A	; 10
+ 474:	21 f5       	brne	.+72     	; 0x4be <__vector_7+0x262>
+	{
+		if( NMEA_TYPE == 1 )	/* GPGGA */
+ 476:	80 91 6d 00 	lds	r24, 0x006D
+ 47a:	81 30       	cpi	r24, 0x01	; 1
+ 47c:	91 f4       	brne	.+36     	; 0x4a2 <__vector_7+0x246>
+		{
+			TEMP += (rx-48);	/* ones digit of minutes */
+ 47e:	80 91 6b 00 	lds	r24, 0x006B
+ 482:	90 91 6c 00 	lds	r25, 0x006C
+ 486:	c0 97       	sbiw	r24, 0x30	; 48
+ 488:	80 0f       	add	r24, r16
+ 48a:	91 1d       	adc	r25, r1
+ 48c:	90 93 6c 00 	sts	0x006C, r25
+ 490:	80 93 6b 00 	sts	0x006B, r24
+			MINUTES = TEMP;	/* set MINUTES to temp */
+ 494:	80 91 6b 00 	lds	r24, 0x006B
+ 498:	90 91 6c 00 	lds	r25, 0x006C
+ 49c:	80 93 67 00 	sts	0x0067, r24
+ 4a0:	0e c0       	rjmp	.+28     	; 0x4be <__vector_7+0x262>
+		}
+		else if( NMEA_TYPE == 6 )	/* GPVTG */
+ 4a2:	80 91 6d 00 	lds	r24, 0x006D
+ 4a6:	86 30       	cpi	r24, 0x06	; 6
+ 4a8:	29 f4       	brne	.+10     	; 0x4b4 <__vector_7+0x258>
+		{
+			if( rx == '.' )	/* should be a decimal point */
+ 4aa:	0e 32       	cpi	r16, 0x2E	; 46
+ 4ac:	19 f4       	brne	.+6      	; 0x4b4 <__vector_7+0x258>
+			{
+				NMEA_TYPE = 6;	/* keep GPVTG */
+ 4ae:	80 93 6d 00 	sts	0x006D, r24
+ 4b2:	05 c0       	rjmp	.+10     	; 0x4be <__vector_7+0x262>
+				COUNT = 83;
+			}
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 4b4:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 4b8:	83 e5       	ldi	r24, 0x53	; 83
+ 4ba:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 11 )
+ 4be:	80 91 6a 00 	lds	r24, 0x006A
+ 4c2:	8b 30       	cpi	r24, 0x0B	; 11
+ 4c4:	b9 f5       	brne	.+110    	; 0x534 <__vector_7+0x2d8>
+	{
+		if( NMEA_TYPE == 1 )	/* GPGGA */
+ 4c6:	80 91 6d 00 	lds	r24, 0x006D
+ 4ca:	81 30       	cpi	r24, 0x01	; 1
+ 4cc:	b1 f4       	brne	.+44     	; 0x4fa <__vector_7+0x29e>
+		{
+			TEMP = 0;
+ 4ce:	10 92 6c 00 	sts	0x006C, r1
+ 4d2:	10 92 6b 00 	sts	0x006B, r1
+			TEMP += (rx-48)*10;	/* tens digit of seconds */
+ 4d6:	20 91 6b 00 	lds	r18, 0x006B
+ 4da:	30 91 6c 00 	lds	r19, 0x006C
+ 4de:	20 5e       	subi	r18, 0xE0	; 224
+ 4e0:	31 40       	sbci	r19, 0x01	; 1
+ 4e2:	80 2f       	mov	r24, r16
+ 4e4:	90 e0       	ldi	r25, 0x00	; 0
+ 4e6:	6a e0       	ldi	r22, 0x0A	; 10
+ 4e8:	70 e0       	ldi	r23, 0x00	; 0
+ 4ea:	ed d1       	rcall	.+986    	; 0x8c6 <__mulhi3>
+ 4ec:	28 0f       	add	r18, r24
+ 4ee:	39 1f       	adc	r19, r25
+ 4f0:	30 93 6c 00 	sts	0x006C, r19
+ 4f4:	20 93 6b 00 	sts	0x006B, r18
+ 4f8:	1d c0       	rjmp	.+58     	; 0x534 <__vector_7+0x2d8>
+		}
+		else if( NMEA_TYPE == 6 )	/* GPVTG */
+ 4fa:	80 91 6d 00 	lds	r24, 0x006D
+ 4fe:	86 30       	cpi	r24, 0x06	; 6
+ 500:	a1 f4       	brne	.+40     	; 0x52a <__vector_7+0x2ce>
+		{
+			TEMP += (rx-48);	/* ones digit of course */
+ 502:	80 91 6b 00 	lds	r24, 0x006B
+ 506:	90 91 6c 00 	lds	r25, 0x006C
+ 50a:	c0 97       	sbiw	r24, 0x30	; 48
+ 50c:	80 0f       	add	r24, r16
+ 50e:	91 1d       	adc	r25, r1
+ 510:	90 93 6c 00 	sts	0x006C, r25
+ 514:	80 93 6b 00 	sts	0x006B, r24
+			BEARING = TEMP;	/* set BEARING to temp */
+ 518:	80 91 6b 00 	lds	r24, 0x006B
+ 51c:	90 91 6c 00 	lds	r25, 0x006C
+ 520:	90 93 63 00 	sts	0x0063, r25
+ 524:	80 93 62 00 	sts	0x0062, r24
+ 528:	05 c0       	rjmp	.+10     	; 0x534 <__vector_7+0x2d8>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 52a:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 52e:	83 e5       	ldi	r24, 0x53	; 83
+ 530:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 12 )
+ 534:	80 91 6a 00 	lds	r24, 0x006A
+ 538:	8c 30       	cpi	r24, 0x0C	; 12
+ 53a:	d9 f4       	brne	.+54     	; 0x572 <__vector_7+0x316>
+	{
+		if( NMEA_TYPE == 1 )	/* GPGGA */
+ 53c:	80 91 6d 00 	lds	r24, 0x006D
+ 540:	81 30       	cpi	r24, 0x01	; 1
+ 542:	91 f4       	brne	.+36     	; 0x568 <__vector_7+0x30c>
+		{
+			TEMP += (rx-48);	/* ones digit of seconds */
+ 544:	80 91 6b 00 	lds	r24, 0x006B
+ 548:	90 91 6c 00 	lds	r25, 0x006C
+ 54c:	c0 97       	sbiw	r24, 0x30	; 48
+ 54e:	80 0f       	add	r24, r16
+ 550:	91 1d       	adc	r25, r1
+ 552:	90 93 6c 00 	sts	0x006C, r25
+ 556:	80 93 6b 00 	sts	0x006B, r24
+			SECONDS = TEMP;		/* set SECONDS to temp */
+ 55a:	80 91 6b 00 	lds	r24, 0x006B
+ 55e:	90 91 6c 00 	lds	r25, 0x006C
+ 562:	80 93 68 00 	sts	0x0068, r24
+ 566:	05 c0       	rjmp	.+10     	; 0x572 <__vector_7+0x316>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 568:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 56c:	83 e5       	ldi	r24, 0x53	; 83
+ 56e:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	/* Parse out speed */
+	if( COUNT == 25 )
+ 572:	80 91 6a 00 	lds	r24, 0x006A
+ 576:	89 31       	cpi	r24, 0x19	; 25
+ 578:	f1 f4       	brne	.+60     	; 0x5b6 <__vector_7+0x35a>
+	{
+		if( NMEA_TYPE == 6 )	/* GPVTG */
+ 57a:	80 91 6d 00 	lds	r24, 0x006D
+ 57e:	86 30       	cpi	r24, 0x06	; 6
+ 580:	a9 f4       	brne	.+42     	; 0x5ac <__vector_7+0x350>
+		{
+			TEMP = 0;	/* reset temp */
+ 582:	10 92 6c 00 	sts	0x006C, r1
+ 586:	10 92 6b 00 	sts	0x006B, r1
+			TEMP += (rx-48)*10000;	/* ten thousands digit of speed */
+ 58a:	20 91 6b 00 	lds	r18, 0x006B
+ 58e:	30 91 6c 00 	lds	r19, 0x006C
+ 592:	80 2f       	mov	r24, r16
+ 594:	90 e0       	ldi	r25, 0x00	; 0
+ 596:	c0 97       	sbiw	r24, 0x30	; 48
+ 598:	60 e1       	ldi	r22, 0x10	; 16
+ 59a:	77 e2       	ldi	r23, 0x27	; 39
+ 59c:	94 d1       	rcall	.+808    	; 0x8c6 <__mulhi3>
+ 59e:	28 0f       	add	r18, r24
+ 5a0:	39 1f       	adc	r19, r25
+ 5a2:	30 93 6c 00 	sts	0x006C, r19
+ 5a6:	20 93 6b 00 	sts	0x006B, r18
+ 5aa:	05 c0       	rjmp	.+10     	; 0x5b6 <__vector_7+0x35a>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 5ac:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 5b0:	83 e5       	ldi	r24, 0x53	; 83
+ 5b2:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 26 )
+ 5b6:	80 91 6a 00 	lds	r24, 0x006A
+ 5ba:	8a 31       	cpi	r24, 0x1A	; 26
+ 5bc:	d1 f4       	brne	.+52     	; 0x5f2 <__vector_7+0x396>
+	{
+		if( NMEA_TYPE == 6 )	/* GPVTG */
+ 5be:	80 91 6d 00 	lds	r24, 0x006D
+ 5c2:	86 30       	cpi	r24, 0x06	; 6
+ 5c4:	89 f4       	brne	.+34     	; 0x5e8 <__vector_7+0x38c>
+		{
+			TEMP += (rx-48)*1000;	/* thousands digit of speed */
+ 5c6:	20 91 6b 00 	lds	r18, 0x006B
+ 5ca:	30 91 6c 00 	lds	r19, 0x006C
+ 5ce:	80 2f       	mov	r24, r16
+ 5d0:	90 e0       	ldi	r25, 0x00	; 0
+ 5d2:	c0 97       	sbiw	r24, 0x30	; 48
+ 5d4:	68 ee       	ldi	r22, 0xE8	; 232
+ 5d6:	73 e0       	ldi	r23, 0x03	; 3
+ 5d8:	76 d1       	rcall	.+748    	; 0x8c6 <__mulhi3>
+ 5da:	28 0f       	add	r18, r24
+ 5dc:	39 1f       	adc	r19, r25
+ 5de:	30 93 6c 00 	sts	0x006C, r19
+ 5e2:	20 93 6b 00 	sts	0x006B, r18
+ 5e6:	05 c0       	rjmp	.+10     	; 0x5f2 <__vector_7+0x396>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 5e8:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 5ec:	83 e5       	ldi	r24, 0x53	; 83
+ 5ee:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 27 )
+ 5f2:	80 91 6a 00 	lds	r24, 0x006A
+ 5f6:	8b 31       	cpi	r24, 0x1B	; 27
+ 5f8:	d9 f4       	brne	.+54     	; 0x630 <__vector_7+0x3d4>
+	{
+		if( NMEA_TYPE == 6 )	/* GPVTG */
+ 5fa:	80 91 6d 00 	lds	r24, 0x006D
+ 5fe:	86 30       	cpi	r24, 0x06	; 6
+ 600:	91 f4       	brne	.+36     	; 0x626 <__vector_7+0x3ca>
+		{
+			TEMP += (rx-48)*100;	/* hundreds digit of speed */
+ 602:	20 91 6b 00 	lds	r18, 0x006B
+ 606:	30 91 6c 00 	lds	r19, 0x006C
+ 60a:	20 5c       	subi	r18, 0xC0	; 192
+ 60c:	32 41       	sbci	r19, 0x12	; 18
+ 60e:	80 2f       	mov	r24, r16
+ 610:	90 e0       	ldi	r25, 0x00	; 0
+ 612:	64 e6       	ldi	r22, 0x64	; 100
+ 614:	70 e0       	ldi	r23, 0x00	; 0
+ 616:	57 d1       	rcall	.+686    	; 0x8c6 <__mulhi3>
+ 618:	28 0f       	add	r18, r24
+ 61a:	39 1f       	adc	r19, r25
+ 61c:	30 93 6c 00 	sts	0x006C, r19
+ 620:	20 93 6b 00 	sts	0x006B, r18
+ 624:	05 c0       	rjmp	.+10     	; 0x630 <__vector_7+0x3d4>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 626:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 62a:	83 e5       	ldi	r24, 0x53	; 83
+ 62c:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 28 )
+ 630:	80 91 6a 00 	lds	r24, 0x006A
+ 634:	8c 31       	cpi	r24, 0x1C	; 28
+ 636:	d9 f4       	brne	.+54     	; 0x66e <__vector_7+0x412>
+	{
+		if( NMEA_TYPE == 6 )	/* GPVTG */
+ 638:	80 91 6d 00 	lds	r24, 0x006D
+ 63c:	86 30       	cpi	r24, 0x06	; 6
+ 63e:	91 f4       	brne	.+36     	; 0x664 <__vector_7+0x408>
+		{
+			TEMP += (rx-48)*10;	/* tens digit of speed */
+ 640:	20 91 6b 00 	lds	r18, 0x006B
+ 644:	30 91 6c 00 	lds	r19, 0x006C
+ 648:	20 5e       	subi	r18, 0xE0	; 224
+ 64a:	31 40       	sbci	r19, 0x01	; 1
+ 64c:	80 2f       	mov	r24, r16
+ 64e:	90 e0       	ldi	r25, 0x00	; 0
+ 650:	6a e0       	ldi	r22, 0x0A	; 10
+ 652:	70 e0       	ldi	r23, 0x00	; 0
+ 654:	38 d1       	rcall	.+624    	; 0x8c6 <__mulhi3>
+ 656:	28 0f       	add	r18, r24
+ 658:	39 1f       	adc	r19, r25
+ 65a:	30 93 6c 00 	sts	0x006C, r19
+ 65e:	20 93 6b 00 	sts	0x006B, r18
+ 662:	05 c0       	rjmp	.+10     	; 0x66e <__vector_7+0x412>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 664:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 668:	83 e5       	ldi	r24, 0x53	; 83
+ 66a:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 29 )
+ 66e:	80 91 6a 00 	lds	r24, 0x006A
+ 672:	8d 31       	cpi	r24, 0x1D	; 29
+ 674:	71 f4       	brne	.+28     	; 0x692 <__vector_7+0x436>
+	{
+		if( NMEA_TYPE == 6 )	/* GPVTG */
+ 676:	80 91 6d 00 	lds	r24, 0x006D
+ 67a:	86 30       	cpi	r24, 0x06	; 6
+ 67c:	29 f4       	brne	.+10     	; 0x688 <__vector_7+0x42c>
+		{
+			if( rx == '.' )	/* should be a decimal point */
+ 67e:	0e 32       	cpi	r16, 0x2E	; 46
+ 680:	19 f4       	brne	.+6      	; 0x688 <__vector_7+0x42c>
+			{
+				NMEA_TYPE = 6;	/* keep GPVTG */
+ 682:	80 93 6d 00 	sts	0x006D, r24
+ 686:	05 c0       	rjmp	.+10     	; 0x692 <__vector_7+0x436>
+				COUNT = 83;
+			}
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 688:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 68c:	83 e5       	ldi	r24, 0x53	; 83
+ 68e:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 30 )
+ 692:	80 91 6a 00 	lds	r24, 0x006A
+ 696:	8e 31       	cpi	r24, 0x1E	; 30
+ 698:	e9 f4       	brne	.+58     	; 0x6d4 <__vector_7+0x478>
+	{
+		if( NMEA_TYPE == 6 )	/* GPVTG */
+ 69a:	80 91 6d 00 	lds	r24, 0x006D
+ 69e:	86 30       	cpi	r24, 0x06	; 6
+ 6a0:	a1 f4       	brne	.+40     	; 0x6ca <__vector_7+0x46e>
+		{
+			TEMP += (rx-48);	/* ones digit of speed */
+ 6a2:	80 91 6b 00 	lds	r24, 0x006B
+ 6a6:	90 91 6c 00 	lds	r25, 0x006C
+ 6aa:	c0 97       	sbiw	r24, 0x30	; 48
+ 6ac:	80 0f       	add	r24, r16
+ 6ae:	91 1d       	adc	r25, r1
+ 6b0:	90 93 6c 00 	sts	0x006C, r25
+ 6b4:	80 93 6b 00 	sts	0x006B, r24
+			SPEED = TEMP;	/* set SPEED to temp */
+ 6b8:	80 91 6b 00 	lds	r24, 0x006B
+ 6bc:	90 91 6c 00 	lds	r25, 0x006C
+ 6c0:	90 93 65 00 	sts	0x0065, r25
+ 6c4:	80 93 64 00 	sts	0x0064, r24
+ 6c8:	05 c0       	rjmp	.+10     	; 0x6d4 <__vector_7+0x478>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 6ca:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 6ce:	83 e5       	ldi	r24, 0x53	; 83
+ 6d0:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+	/* end of speed parser */
+
+	/* start altitude parser */
+	if( COUNT == 51 )
+ 6d4:	80 91 6a 00 	lds	r24, 0x006A
+ 6d8:	83 33       	cpi	r24, 0x33	; 51
+ 6da:	59 f5       	brne	.+86     	; 0x732 <__vector_7+0x4d6>
+	{
+		if( NMEA_TYPE == 1 )	/* GPGGA */
+ 6dc:	80 91 6d 00 	lds	r24, 0x006D
+ 6e0:	81 30       	cpi	r24, 0x01	; 1
+ 6e2:	11 f5       	brne	.+68     	; 0x728 <__vector_7+0x4cc>
+		{
+			TEMP = 0;
+ 6e4:	10 92 6c 00 	sts	0x006C, r1
+ 6e8:	10 92 6b 00 	sts	0x006B, r1
+			if( rx == '-' )		/* if altitude is negative */
+ 6ec:	0d 32       	cpi	r16, 0x2D	; 45
+ 6ee:	09 f1       	breq	.+66     	; 0x732 <__vector_7+0x4d6>
+			{
+				/* do nothing for now */
+			}
+			else
+			{
+				TEMP += (rx-48)*100000;	/* hundred thousands digit of altitude */
+ 6f0:	20 91 6b 00 	lds	r18, 0x006B
+ 6f4:	30 91 6c 00 	lds	r19, 0x006C
+ 6f8:	3a 83       	std	Y+2, r19	; 0x02
+ 6fa:	29 83       	std	Y+1, r18	; 0x01
+ 6fc:	60 2f       	mov	r22, r16
+ 6fe:	70 e0       	ldi	r23, 0x00	; 0
+ 700:	60 53       	subi	r22, 0x30	; 48
+ 702:	70 40       	sbci	r23, 0x00	; 0
+ 704:	88 27       	eor	r24, r24
+ 706:	77 fd       	sbrc	r23, 7
+ 708:	80 95       	com	r24
+ 70a:	98 2f       	mov	r25, r24
+ 70c:	20 ea       	ldi	r18, 0xA0	; 160
+ 70e:	36 e8       	ldi	r19, 0x86	; 134
+ 710:	41 e0       	ldi	r20, 0x01	; 1
+ 712:	50 e0       	ldi	r21, 0x00	; 0
+ 714:	ea d0       	rcall	.+468    	; 0x8ea <__mulsi3>
+ 716:	e9 81       	ldd	r30, Y+1	; 0x01
+ 718:	fa 81       	ldd	r31, Y+2	; 0x02
+ 71a:	e6 0f       	add	r30, r22
+ 71c:	f7 1f       	adc	r31, r23
+ 71e:	f0 93 6c 00 	sts	0x006C, r31
+ 722:	e0 93 6b 00 	sts	0x006B, r30
+ 726:	05 c0       	rjmp	.+10     	; 0x732 <__vector_7+0x4d6>
+			}
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 728:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 72c:	83 e5       	ldi	r24, 0x53	; 83
+ 72e:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 52 )
+ 732:	80 91 6a 00 	lds	r24, 0x006A
+ 736:	84 33       	cpi	r24, 0x34	; 52
+ 738:	d1 f4       	brne	.+52     	; 0x76e <__vector_7+0x512>
+	{
+		if( NMEA_TYPE == 1 )	/* GPGGA */
+ 73a:	80 91 6d 00 	lds	r24, 0x006D
+ 73e:	81 30       	cpi	r24, 0x01	; 1
+ 740:	89 f4       	brne	.+34     	; 0x764 <__vector_7+0x508>
+		{
+			TEMP += (rx-48)*10000;	/* ten thousands digit of altitude */
+ 742:	20 91 6b 00 	lds	r18, 0x006B
+ 746:	30 91 6c 00 	lds	r19, 0x006C
+ 74a:	80 2f       	mov	r24, r16
+ 74c:	90 e0       	ldi	r25, 0x00	; 0
+ 74e:	c0 97       	sbiw	r24, 0x30	; 48
+ 750:	60 e1       	ldi	r22, 0x10	; 16
+ 752:	77 e2       	ldi	r23, 0x27	; 39
+ 754:	b8 d0       	rcall	.+368    	; 0x8c6 <__mulhi3>
+ 756:	28 0f       	add	r18, r24
+ 758:	39 1f       	adc	r19, r25
+ 75a:	30 93 6c 00 	sts	0x006C, r19
+ 75e:	20 93 6b 00 	sts	0x006B, r18
+ 762:	05 c0       	rjmp	.+10     	; 0x76e <__vector_7+0x512>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 764:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 768:	83 e5       	ldi	r24, 0x53	; 83
+ 76a:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 53 )
+ 76e:	80 91 6a 00 	lds	r24, 0x006A
+ 772:	85 33       	cpi	r24, 0x35	; 53
+ 774:	d9 f4       	brne	.+54     	; 0x7ac <__vector_7+0x550>
+	{
+		if( NMEA_TYPE == 1 )	/* GPGGA */
+ 776:	80 91 6d 00 	lds	r24, 0x006D
+ 77a:	81 30       	cpi	r24, 0x01	; 1
+ 77c:	91 f4       	brne	.+36     	; 0x7a2 <__vector_7+0x546>
+		{
+			TEMP += (rx-48)*100;	/* thousands digit of altitude */
+ 77e:	20 91 6b 00 	lds	r18, 0x006B
+ 782:	30 91 6c 00 	lds	r19, 0x006C
+ 786:	20 5c       	subi	r18, 0xC0	; 192
+ 788:	32 41       	sbci	r19, 0x12	; 18
+ 78a:	80 2f       	mov	r24, r16
+ 78c:	90 e0       	ldi	r25, 0x00	; 0
+ 78e:	64 e6       	ldi	r22, 0x64	; 100
+ 790:	70 e0       	ldi	r23, 0x00	; 0
+ 792:	99 d0       	rcall	.+306    	; 0x8c6 <__mulhi3>
+ 794:	28 0f       	add	r18, r24
+ 796:	39 1f       	adc	r19, r25
+ 798:	30 93 6c 00 	sts	0x006C, r19
+ 79c:	20 93 6b 00 	sts	0x006B, r18
+ 7a0:	05 c0       	rjmp	.+10     	; 0x7ac <__vector_7+0x550>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 7a2:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 7a6:	83 e5       	ldi	r24, 0x53	; 83
+ 7a8:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 54 )
+ 7ac:	80 91 6a 00 	lds	r24, 0x006A
+ 7b0:	86 33       	cpi	r24, 0x36	; 54
+ 7b2:	d9 f4       	brne	.+54     	; 0x7ea <__vector_7+0x58e>
+	{
+		if( NMEA_TYPE == 1 )	/* GPGGA */
+ 7b4:	80 91 6d 00 	lds	r24, 0x006D
+ 7b8:	81 30       	cpi	r24, 0x01	; 1
+ 7ba:	91 f4       	brne	.+36     	; 0x7e0 <__vector_7+0x584>
+		{
+			TEMP += (rx-48)*100;	/* hundreds digit of altitude */
+ 7bc:	20 91 6b 00 	lds	r18, 0x006B
+ 7c0:	30 91 6c 00 	lds	r19, 0x006C
+ 7c4:	20 5c       	subi	r18, 0xC0	; 192
+ 7c6:	32 41       	sbci	r19, 0x12	; 18
+ 7c8:	80 2f       	mov	r24, r16
+ 7ca:	90 e0       	ldi	r25, 0x00	; 0
+ 7cc:	64 e6       	ldi	r22, 0x64	; 100
+ 7ce:	70 e0       	ldi	r23, 0x00	; 0
+ 7d0:	7a d0       	rcall	.+244    	; 0x8c6 <__mulhi3>
+ 7d2:	28 0f       	add	r18, r24
+ 7d4:	39 1f       	adc	r19, r25
+ 7d6:	30 93 6c 00 	sts	0x006C, r19
+ 7da:	20 93 6b 00 	sts	0x006B, r18
+ 7de:	05 c0       	rjmp	.+10     	; 0x7ea <__vector_7+0x58e>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 7e0:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 7e4:	83 e5       	ldi	r24, 0x53	; 83
+ 7e6:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 55 )
+ 7ea:	80 91 6a 00 	lds	r24, 0x006A
+ 7ee:	87 33       	cpi	r24, 0x37	; 55
+ 7f0:	d9 f4       	brne	.+54     	; 0x828 <__vector_7+0x5cc>
+	{
+		if( NMEA_TYPE == 1 )	/* GPGGA */
+ 7f2:	80 91 6d 00 	lds	r24, 0x006D
+ 7f6:	81 30       	cpi	r24, 0x01	; 1
+ 7f8:	91 f4       	brne	.+36     	; 0x81e <__vector_7+0x5c2>
+		{
+			TEMP += (rx-48)*10;	/* tens digit of altitude */
+ 7fa:	20 91 6b 00 	lds	r18, 0x006B
+ 7fe:	30 91 6c 00 	lds	r19, 0x006C
+ 802:	20 5e       	subi	r18, 0xE0	; 224
+ 804:	31 40       	sbci	r19, 0x01	; 1
+ 806:	80 2f       	mov	r24, r16
+ 808:	90 e0       	ldi	r25, 0x00	; 0
+ 80a:	6a e0       	ldi	r22, 0x0A	; 10
+ 80c:	70 e0       	ldi	r23, 0x00	; 0
+ 80e:	5b d0       	rcall	.+182    	; 0x8c6 <__mulhi3>
+ 810:	28 0f       	add	r18, r24
+ 812:	39 1f       	adc	r19, r25
+ 814:	30 93 6c 00 	sts	0x006C, r19
+ 818:	20 93 6b 00 	sts	0x006B, r18
+ 81c:	05 c0       	rjmp	.+10     	; 0x828 <__vector_7+0x5cc>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 81e:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 822:	83 e5       	ldi	r24, 0x53	; 83
+ 824:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 56 )
+ 828:	80 91 6a 00 	lds	r24, 0x006A
+ 82c:	88 33       	cpi	r24, 0x38	; 56
+ 82e:	79 f4       	brne	.+30     	; 0x84e <__vector_7+0x5f2>
+	{
+		if( NMEA_TYPE == 1 )	/* GPGGA */
+ 830:	80 91 6d 00 	lds	r24, 0x006D
+ 834:	81 30       	cpi	r24, 0x01	; 1
+ 836:	31 f4       	brne	.+12     	; 0x844 <__vector_7+0x5e8>
+		{
+			if( rx == '.' )	/* should be a decimal point */
+ 838:	0e 32       	cpi	r16, 0x2E	; 46
+ 83a:	21 f4       	brne	.+8      	; 0x844 <__vector_7+0x5e8>
+			{
+				NMEA_TYPE = 6;	/* keep GPVTG */
+ 83c:	86 e0       	ldi	r24, 0x06	; 6
+ 83e:	80 93 6d 00 	sts	0x006D, r24
+ 842:	05 c0       	rjmp	.+10     	; 0x84e <__vector_7+0x5f2>
+				COUNT = 83;
+			}
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 844:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 848:	83 e5       	ldi	r24, 0x53	; 83
+ 84a:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+
+	if( COUNT == 57 )
+ 84e:	80 91 6a 00 	lds	r24, 0x006A
+ 852:	89 33       	cpi	r24, 0x39	; 57
+ 854:	e9 f4       	brne	.+58     	; 0x890 <__vector_7+0x634>
+	{
+		if( NMEA_TYPE == 1 )	/* GPGGA */
+ 856:	80 91 6d 00 	lds	r24, 0x006D
+ 85a:	81 30       	cpi	r24, 0x01	; 1
+ 85c:	a1 f4       	brne	.+40     	; 0x886 <__vector_7+0x62a>
+		{
+			TEMP += (rx-48);	/* ones digit of altitude */
+ 85e:	80 91 6b 00 	lds	r24, 0x006B
+ 862:	90 91 6c 00 	lds	r25, 0x006C
+ 866:	c0 97       	sbiw	r24, 0x30	; 48
+ 868:	80 0f       	add	r24, r16
+ 86a:	91 1d       	adc	r25, r1
+ 86c:	90 93 6c 00 	sts	0x006C, r25
+ 870:	80 93 6b 00 	sts	0x006B, r24
+			ALTITUDE = TEMP;	/* set ALTITUDE to temp */
+ 874:	80 91 6b 00 	lds	r24, 0x006B
+ 878:	90 91 6c 00 	lds	r25, 0x006C
+ 87c:	90 93 61 00 	sts	0x0061, r25
+ 880:	80 93 60 00 	sts	0x0060, r24
+ 884:	05 c0       	rjmp	.+10     	; 0x890 <__vector_7+0x634>
+		}
+		else	/* oopsie state */
+		{
+			NMEA_TYPE = 0;	/* reset type */
+ 886:	10 92 6d 00 	sts	0x006D, r1
+			COUNT = 83;		/* reset count */
+ 88a:	83 e5       	ldi	r24, 0x53	; 83
+ 88c:	80 93 6a 00 	sts	0x006A, r24
+		}
+	}
+	/* end of altitude parser */
+
+
+	COUNT++;	/* increment count */
+ 890:	80 91 6a 00 	lds	r24, 0x006A
+ 894:	8f 5f       	subi	r24, 0xFF	; 255
+ 896:	80 93 6a 00 	sts	0x006A, r24
+//	else
+//	{
+//		/* Put character in buffer and increment counter */
+//		UART_BUFFER[UART_BUF_CNT++] = rx;
+//	}
+}
+ 89a:	0f 90       	pop	r0
+ 89c:	0f 90       	pop	r0
+ 89e:	cf 91       	pop	r28
+ 8a0:	df 91       	pop	r29
+ 8a2:	ff 91       	pop	r31
+ 8a4:	ef 91       	pop	r30
+ 8a6:	bf 91       	pop	r27
+ 8a8:	af 91       	pop	r26
+ 8aa:	9f 91       	pop	r25
+ 8ac:	8f 91       	pop	r24
+ 8ae:	7f 91       	pop	r23
+ 8b0:	6f 91       	pop	r22
+ 8b2:	5f 91       	pop	r21
+ 8b4:	4f 91       	pop	r20
+ 8b6:	3f 91       	pop	r19
+ 8b8:	2f 91       	pop	r18
+ 8ba:	0f 91       	pop	r16
+ 8bc:	0f 90       	pop	r0
+ 8be:	0f be       	out	0x3f, r0	; 63
+ 8c0:	0f 90       	pop	r0
+ 8c2:	1f 90       	pop	r1
+ 8c4:	18 95       	reti
+
+000008c6 <__mulhi3>:
+ 8c6:	55 27       	eor	r21, r21
+ 8c8:	00 24       	eor	r0, r0
+
+000008ca <__mulhi3_loop>:
+ 8ca:	80 ff       	sbrs	r24, 0
+ 8cc:	02 c0       	rjmp	.+4      	; 0x8d2 <__mulhi3_skip1>
+ 8ce:	06 0e       	add	r0, r22
+ 8d0:	57 1f       	adc	r21, r23
+
+000008d2 <__mulhi3_skip1>:
+ 8d2:	66 0f       	add	r22, r22
+ 8d4:	77 1f       	adc	r23, r23
+ 8d6:	61 15       	cp	r22, r1
+ 8d8:	71 05       	cpc	r23, r1
+ 8da:	21 f0       	breq	.+8      	; 0x8e4 <__mulhi3_exit>
+ 8dc:	96 95       	lsr	r25
+ 8de:	87 95       	ror	r24
+ 8e0:	00 97       	sbiw	r24, 0x00	; 0
+ 8e2:	99 f7       	brne	.-26     	; 0x8ca <__mulhi3_loop>
+
+000008e4 <__mulhi3_exit>:
+ 8e4:	95 2f       	mov	r25, r21
+ 8e6:	80 2d       	mov	r24, r0
+ 8e8:	08 95       	ret
+
+000008ea <__mulsi3>:
+ 8ea:	ff 27       	eor	r31, r31
+ 8ec:	ee 27       	eor	r30, r30
+ 8ee:	bb 27       	eor	r27, r27
+ 8f0:	aa 27       	eor	r26, r26
+
+000008f2 <__mulsi3_loop>:
+ 8f2:	60 ff       	sbrs	r22, 0
+ 8f4:	04 c0       	rjmp	.+8      	; 0x8fe <__mulsi3_skip1>
+ 8f6:	a2 0f       	add	r26, r18
+ 8f8:	b3 1f       	adc	r27, r19
+ 8fa:	e4 1f       	adc	r30, r20
+ 8fc:	f5 1f       	adc	r31, r21
+
+000008fe <__mulsi3_skip1>:
+ 8fe:	22 0f       	add	r18, r18
+ 900:	33 1f       	adc	r19, r19
+ 902:	44 1f       	adc	r20, r20
+ 904:	55 1f       	adc	r21, r21
+ 906:	96 95       	lsr	r25
+ 908:	87 95       	ror	r24
+ 90a:	77 95       	ror	r23
+ 90c:	67 95       	ror	r22
+ 90e:	89 f7       	brne	.-30     	; 0x8f2 <__mulsi3_loop>
+ 910:	00 97       	sbiw	r24, 0x00	; 0
+ 912:	76 07       	cpc	r23, r22
+ 914:	71 f7       	brne	.-36     	; 0x8f2 <__mulsi3_loop>
+
+00000916 <__mulsi3_exit>:
+ 916:	cf 01       	movw	r24, r30
+ 918:	bd 01       	movw	r22, r26
+ 91a:	08 95       	ret
+
+0000091c <_exit>:
+ 91c:	f8 94       	cli
+
+0000091e <__stop_program>:
+ 91e:	ff cf       	rjmp	.-2      	; 0x91e <__stop_program>

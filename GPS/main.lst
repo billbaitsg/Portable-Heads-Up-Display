@@ -1,0 +1,148 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB7:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 00D0      		rcall USI_SPI_initslave
+  25               	.LM3:
+  26 0002 00D0      		rcall UART_init
+  27               	.LM4:
+  28               	/* #APP */
+  29               	 ;  26 "main.c" 1
+  30 0004 7894      		sei
+  31               	 ;  0 "" 2
+  32               	.LVL0:
+  33               	/* #NOAPP */
+  34               	.L12:
+  35               	.LM5:
+  36 0006 B499      		sbic 54-32,4
+  37 0008 00C0      		rjmp .L2
+  38               	.LM6:
+  39 000a 80E0      		ldi r24,lo8(0)
+  40               	.LVL1:
+  41 000c 00D0      		rcall USI_SPI_SSn
+  42               	.LM7:
+  43 000e 00D0      		rcall USI_SPI_getc
+  44               	.LM8:
+  45 0010 8234      		cpi r24,lo8(66)
+  46               	.LVL2:
+  47 0012 01F4      		brne .L3
+  48               	.LM9:
+  49 0014 8091 0000 		lds r24,BEARING
+  50 0018 9091 0000 		lds r25,(BEARING)+1
+  51               	.LVL3:
+  52 001c 892F      		mov r24,r25
+  53 001e 00D0      		rcall USI_SPI_putc
+  54               	.LM10:
+  55 0020 00D0      		rcall USI_SPI_wait
+  56               	.LM11:
+  57 0022 8091 0000 		lds r24,BEARING
+  58 0026 9091 0000 		lds r25,(BEARING)+1
+  59 002a 00C0      		rjmp .L13
+  60               	.LVL4:
+  61               	.L3:
+  62               	.LM12:
+  63 002c 8635      		cpi r24,lo8(86)
+  64 002e 01F4      		brne .L5
+  65               	.LM13:
+  66 0030 8091 0000 		lds r24,SPEED
+  67 0034 9091 0000 		lds r25,(SPEED)+1
+  68               	.LVL5:
+  69 0038 892F      		mov r24,r25
+  70 003a 00D0      		rcall USI_SPI_putc
+  71               	.LM14:
+  72 003c 00D0      		rcall USI_SPI_wait
+  73               	.LM15:
+  74 003e 8091 0000 		lds r24,SPEED
+  75 0042 9091 0000 		lds r25,(SPEED)+1
+  76 0046 00C0      		rjmp .L13
+  77               	.LVL6:
+  78               	.L5:
+  79               	.LM16:
+  80 0048 8134      		cpi r24,lo8(65)
+  81 004a 01F4      		brne .L6
+  82               	.LM17:
+  83 004c 8091 0000 		lds r24,ALTITUDE
+  84 0050 9091 0000 		lds r25,(ALTITUDE)+1
+  85               	.LVL7:
+  86 0054 892F      		mov r24,r25
+  87 0056 00D0      		rcall USI_SPI_putc
+  88               	.LM18:
+  89 0058 00D0      		rcall USI_SPI_wait
+  90               	.LM19:
+  91 005a 8091 0000 		lds r24,ALTITUDE
+  92 005e 9091 0000 		lds r25,(ALTITUDE)+1
+  93 0062 00C0      		rjmp .L13
+  94               	.LVL8:
+  95               	.L6:
+  96               	.LM20:
+  97 0064 8834      		cpi r24,lo8(72)
+  98 0066 01F4      		brne .L7
+  99               	.LM21:
+ 100 0068 8091 0000 		lds r24,HOURS
+ 101               	.LVL9:
+ 102 006c 00C0      		rjmp .L13
+ 103               	.LVL10:
+ 104               	.L7:
+ 105               	.LM22:
+ 106 006e 8D34      		cpi r24,lo8(77)
+ 107 0070 01F4      		brne .L8
+ 108               	.LM23:
+ 109 0072 8091 0000 		lds r24,MINUTES
+ 110               	.LVL11:
+ 111 0076 00C0      		rjmp .L13
+ 112               	.LVL12:
+ 113               	.L8:
+ 114               	.LM24:
+ 115 0078 8335      		cpi r24,lo8(83)
+ 116 007a 01F4      		brne .L12
+ 117               	.LM25:
+ 118 007c 8091 0000 		lds r24,SECONDS
+ 119               	.LVL13:
+ 120               	.L13:
+ 121 0080 00D0      		rcall USI_SPI_putc
+ 122               	.LM26:
+ 123 0082 00D0      		rcall USI_SPI_wait
+ 124 0084 00C0      		rjmp .L12
+ 125               	.LVL14:
+ 126               	.L2:
+ 127               	.LM27:
+ 128 0086 81E0      		ldi r24,lo8(1)
+ 129               	.LVL15:
+ 130 0088 00D0      		rcall USI_SPI_SSn
+ 131 008a 00C0      		rjmp .L12
+ 132               	.LFE7:
+ 158               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDeI1wd.s:2      *ABS*:0000003f __SREG__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDeI1wd.s:3      *ABS*:0000003e __SP_H__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDeI1wd.s:4      *ABS*:0000003d __SP_L__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDeI1wd.s:5      *ABS*:00000034 __CCP__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDeI1wd.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDeI1wd.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\BILLBA~1\AppData\Local\Temp/ccDeI1wd.s:18     .text:00000000 main
+
+UNDEFINED SYMBOLS
+USI_SPI_initslave
+UART_init
+USI_SPI_SSn
+USI_SPI_getc
+BEARING
+USI_SPI_putc
+USI_SPI_wait
+SPEED
+ALTITUDE
+HOURS
+MINUTES
+SECONDS

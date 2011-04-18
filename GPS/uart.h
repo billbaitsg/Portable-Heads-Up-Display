@@ -16,7 +16,7 @@ Portable Heads Up Display
 #define UART_H
 
 	/* Includes */
-	#include <string.h>
+	//#include <string.h>
 
 	/* Function prototypes */
 	void UART_init( void );
@@ -24,8 +24,6 @@ Portable Heads Up Display
 	unsigned char UART_getc( void );
 	void UART_flush( void );
 	ISR( USART_RX_vect );
-	ISR( USART_TX_vect );
-	ISR( USART_UDRE_vect );
 	
 	/* Global Variables */
 	extern volatile char UART_BUFFER[];
